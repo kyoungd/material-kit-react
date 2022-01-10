@@ -1,4 +1,8 @@
-## this is the react front end for the material-front-end services.
+## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
+
+> Free React Admin Dashboard made with Material-UI components and React.
 
 ![preview](public/static/preview.png)
 
@@ -26,3 +30,11 @@
 - Recommended `node js 14+` and `npm 6+`
 - Install dependencies: `npm install` or `yarn install`
 - Start the server: `npm run start` or `yarn start`
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/TradeSimp-kit/minimal.free/blob/main/LICENSE.md) for more information.
+
+## Contact us
+
+Email Us: support@minimals.cc
