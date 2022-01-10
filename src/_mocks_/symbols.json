@@ -1,0 +1,57 @@
+{
+    "ADBE": {
+        "filteratr": true,
+        "atr": 20.52,
+        "close": 567.06,
+        "avgatr": 24.66,
+        "trendup": false,
+        "trenddown": false,
+        "keylevel": false,
+        "fibonachi": true,
+        "threebars": false
+    },
+    "ACWI": {
+        "filteratr": true,
+        "atr": 1.13,
+        "close": 105.78,
+        "avgatr": 1.32,
+        "trendup": true,
+        "trenddown": false,
+        "keylevel": false,
+        "fibonachi": true,
+        "threebars": false
+    },
+    "ABNB": {
+        "filteratr": false,
+        "atr": 7.74,
+        "close": 166.49,
+        "avgatr": 8.95,
+        "trendup": false,
+        "trenddown": false,
+        "keylevel": false,
+        "fibonachi": false,
+        "threebars": false
+    },
+    "AAPL": {
+        "filteratr": true,
+        "atr": 3.98,
+        "close": 177.57,
+        "avgatr": 4.59,
+        "trendup": true,
+        "trenddown": false,
+        "keylevel": false,
+        "fibonachi": false,
+        "threebars": false
+    },
+    "ADI": {
+        "filteratr": true,
+        "atr": 3.83,
+        "close": 175.77,
+        "avgatr": 4.56,
+        "trendup": true,
+        "trenddown": false,
+        "keylevel": false,
+        "fibonachi": true,
+        "threebars": false
+    }
+}
