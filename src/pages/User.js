@@ -45,6 +45,7 @@ const TABLE_HEAD = [
   { id: 'threebars', label: '3-bar', alignRight: false },
   { id: 'relvol', label: 'r-vol', alignRight: false },
   { id: 'vpro', label: 'v-pro', alignRight: false },
+  { id: 'ema', label: 'ema', alignRight: false },
   { id: '' }
 ];
 
@@ -115,7 +116,7 @@ export default function User() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = 'http://localhost:5000/symbols';
+        const url = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
         const res = await axios.get(url);
         const users = GetUsers(res.data);
         setUserList(users);
@@ -179,6 +180,14 @@ export default function User() {
 
   const isUserNotFound = filteredUsers.length === 0;
 
+  const getEma = (ema20, ema50, ema200) => {
+    let result = '';
+    if (ema20) result = '20';
+    if (ema50) result += result.length > 0 ? '|50' : '50';
+    if (ema200) result += result.length > 0 ? '|200' : '200';
+    return result.length > 0 ? result : '-';
+  };
+
   return (
     <Page title="Stocks | TradeSimp">
       <Container>
@@ -230,7 +239,10 @@ export default function User() {
                         fibonachi,
                         threebars,
                         relvol,
-                        vpro
+                        vpro,
+                        ema20,
+                        ema50,
+                        ema200
                       } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
@@ -259,11 +271,12 @@ export default function User() {
                           <TableCell align="left">${price}</TableCell>
                           <TableCell align="left">${atr}</TableCell>
                           <TableCell align="left">{trend}</TableCell>
-                          <TableCell align="left">{keylevel}</TableCell>
-                          <TableCell align="left">{fibonachi}</TableCell>
-                          <TableCell align="left">{threebars}</TableCell>
+                          <TableCell align="left">{keylevel ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{fibonachi ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{threebars ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{relvol}</TableCell>
-                          <TableCell align="left">{vpro}</TableCell>
+                          <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>

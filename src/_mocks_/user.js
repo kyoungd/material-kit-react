@@ -91,7 +91,19 @@ export function GetUsers(stocksIn) {
     const id = faker.datatype.uuid();
     const name = key;
     const stock = stocksIn[key];
-    const { atr, avgatr, relvol, volume, vpro } = stock;
+    const {
+      atr,
+      avgatr,
+      relvol,
+      volume,
+      vpro,
+      keylevel,
+      fibonachi,
+      threebars,
+      ema20,
+      ema50,
+      ema200
+    } = stock;
     const price = stock.close;
     let trend = '';
     if (stock.trendup) {
@@ -101,9 +113,6 @@ export function GetUsers(stocksIn) {
     } else {
       trend = 'side';
     }
-    const keylevel = stock.keylevel ? 'yes' : 'no';
-    const fibonachi = stock.fibonachi ? 'yes' : 'no';
-    const threebars = stock.threebars ? 'yes' : 'no';
     const row = {
       id,
       name,
@@ -116,7 +125,10 @@ export function GetUsers(stocksIn) {
       threebars,
       relvol,
       vpro,
-      volume
+      volume,
+      ema20,
+      ema50,
+      ema200
     };
     users.push(row);
   });
