@@ -18,8 +18,12 @@ import {
   Container,
   Typography,
   TableContainer,
-  TablePagination
+  TablePagination,
+  MenuItem,
+  FormControl,
+  Select
 } from '@mui/material';
+
 import axios from 'axios';
 
 // components
@@ -30,6 +34,8 @@ import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 //
 import { GetUsers } from '../_mocks_/user';
+import UserRank from '../components/UserRank';
+import UserDescription from '../components/UserDescription';
 
 const symbols = require('./symbols.json');
 
@@ -112,14 +118,27 @@ export default function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [USERLIST, setUserList] = useState(GetUsers(''));
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const url = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
-        const res = await axios.get(url);
-        const users = GetUsers(res.data);
+        const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
+        const res1 = await axios.get(url1);
+        const users = GetUsers(res1.data);
+        const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
+        const res2 = await axios.get(url2);
+        const newSelecteds = Object.keys(res2.data).map((n) => {
+          console.log(n);
+          return n;
+        });
         setUserList(users);
+        setFavorites(res2.data);
+        setSelected(newSelecteds);
+        return function cleanup() {
+          console.log('cleaning up');
+        };
       } catch (e) {
         console.log(e);
       }
@@ -134,19 +153,23 @@ export default function User() {
   };
 
   const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = USERLIST.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
+    console.log(event.target.checked);
+    setShowFavorites(!showFavorites);
+    // if (event.target.checked) {
+    //   const newSelecteds = USERLIST.map((n) => n.name);
+    //   setSelected(newSelecteds);
+    //   return;
+    // }
+    // setSelected([]);
   };
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
+    let addKey = false;
     let newSelected = [];
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
+      addKey = true;
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -157,6 +180,17 @@ export default function User() {
         selected.slice(selectedIndex + 1)
       );
     }
+    const stocks = favorites;
+    if (addKey) {
+      stocks[name] = {
+        description: '',
+        rank: 3,
+        created: new Date().toLocaleString()
+      };
+    } else {
+      delete stocks[name];
+    }
+    setFavorites(stocks);
     setSelected(newSelected);
   };
 
@@ -176,7 +210,9 @@ export default function User() {
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
 
-  const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
+  const filteredUsers = showFavorites
+    ? selected.map((key) => USERLIST.find((one) => one.name === key))
+    : applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
 
   const isUserNotFound = filteredUsers.length === 0;
 
@@ -186,6 +222,43 @@ export default function User() {
     if (ema50) result += result.length > 0 ? '|50' : '50';
     if (ema200) result += result.length > 0 ? '|200' : '200';
     return result.length > 0 ? result : '-';
+  };
+
+  const handleRankSelect = (symbol, rank) => {
+    const data = favorites;
+    data[symbol].rank = rank;
+    setFavorites(data);
+  };
+
+  const handleDescriptionChange = (symbol, description) => {
+    const data = favorites;
+    data[symbol].description = description;
+    setFavorites(data);
+  };
+
+  const extraLine = (name) => {
+    const id = `${name}-extra`;
+    // return (
+    //   <TableRow key={id}>
+    //     <TableCell colSpan="2">test 1</TableCell>
+    //     <TableCell colSpan="10">test 2</TableCell>
+    //   </TableRow>
+    // );
+
+    return (
+      <TableRow key={id}>
+        <TableCell colSpan="2">
+          <UserRank symbol={name} rank={favorites[name].rank} handleChange={handleRankSelect} />
+        </TableCell>
+        <TableCell colSpan="10">
+          <UserDescription
+            symbol={name}
+            description={favorites[name].description}
+            handleChange={handleDescriptionChange}
+          />
+        </TableCell>
+      </TableRow>
+    );
   };
 
   return (
@@ -246,7 +319,7 @@ export default function User() {
                       } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
-                      return (
+                      const lineItem = (
                         <TableRow
                           hover
                           key={id}
@@ -281,6 +354,14 @@ export default function User() {
                             <UserMoreMenu />
                           </TableCell>
                         </TableRow>
+                      );
+                      return isItemSelected ? (
+                        <>
+                          {lineItem}
+                          {extraLine(name)}
+                        </>
+                      ) : (
+                        lineItem
                       );
                     })}
                   {emptyRows > 0 && (
