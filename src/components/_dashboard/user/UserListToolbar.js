@@ -55,7 +55,17 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
         })
       }}
     >
-      {numSelected > 0 ? (
+      <SearchStyle
+        value={filterName}
+        onChange={onFilterName}
+        placeholder="Search stocks..."
+        startAdornment={
+          <InputAdornment position="start">
+            <Box component={Icon} icon={searchFill} sx={{ color: 'text.disabled' }} />
+          </InputAdornment>
+        }
+      />
+      {/* {numSelected > 0 ? (
         <Typography component="div" variant="subtitle1">
           {numSelected} selected
         </Typography>
@@ -70,7 +80,7 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
             </InputAdornment>
           }
         />
-      )}
+      )} */}
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
