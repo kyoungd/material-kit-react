@@ -18,17 +18,13 @@ import {
   Container,
   Typography,
   TableContainer,
-  TablePagination,
-  MenuItem,
-  FormControl,
-  Select
+  TablePagination
 } from '@mui/material';
 
 import axios from 'axios';
 
 // components
 import Page from '../components/Page';
-import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
@@ -110,6 +106,10 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+// export default function User() {
+//   return <div />;
+// }
+
 export default function User() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
@@ -117,33 +117,65 @@ export default function User() {
   const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [USERLIST, setUserList] = useState(GetUsers(''));
-  const [favorites, setFavorites] = useState([]);
+  const [USERLIST, setUserList] = useState(GetUsers([]));
+  const [favorites, setFavorites] = useState({});
   const [showFavorites, setShowFavorites] = useState(false);
 
+  console.log('showFavorites', showFavorites);
+  console.log('.................................');
+
   useEffect(() => {
-    async function fetchData() {
+    console.log('hello');
+
+    // let users;
+    // let res2;
+    // const mounted = true;
+    // (async () => {
+    //   try {
+    //     const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
+    //     const res1 = await axios.get(url1);
+    //     users = GetUsers(res1.data);
+    //     const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
+    //     res2 = await axios.get(url2);
+    //     if (mounted) {
+    //       const newSelecteds = Object.keys(res2.data).map((n) => n);
+    //       setUserList(users);
+    //       setSelected(newSelecteds);
+    //       setFavorites(res2.data);
+    //     }
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // })();
+    (async () => {
       try {
         const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
         const res1 = await axios.get(url1);
         const users = GetUsers(res1.data);
         const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
         const res2 = await axios.get(url2);
-        const newSelecteds = Object.keys(res2.data).map((n) => {
-          console.log(n);
-          return n;
-        });
+        const newSelecteds = Object.keys(res2.data).map((n) => n);
         setUserList(users);
         setFavorites(res2.data);
         setSelected(newSelecteds);
-        return function cleanup() {
-          console.log('cleaning up');
-        };
       } catch (e) {
         console.log(e);
       }
-    }
-    fetchData();
+    })();
+    // return function cleanup() {
+    //   const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
+    //   axios
+    //     .post(url2, favorites)
+    //     .then((response) => {
+    //       // Handle success.
+    //       console.log('favorites updated. ', response);
+    //     })
+    //     .catch((error) => {
+    //       // Handle error.
+    //       console.log('An error occurred while saving favorites:', error.response);
+    //     });
+    //   console.log('cleaning up');
+    // };
   }, []);
 
   const handleRequestSort = (event, property) => {
@@ -210,9 +242,13 @@ export default function User() {
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
 
-  const filteredUsers = showFavorites
-    ? selected.map((key) => USERLIST.find((one) => one.name === key))
-    : applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
+  const getFilteredUsers = () => {
+    if (USERLIST === []) return [];
+    if (showFavorites) return selected.map((key) => USERLIST.find((one) => one.name === key));
+    return applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
+  };
+
+  const filteredUsers = getFilteredUsers();
 
   const isUserNotFound = filteredUsers.length === 0;
 
@@ -261,6 +297,19 @@ export default function User() {
     );
   };
 
+  const saveFavoriteToHost = (fvs) => {
+    const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
+    axios
+      .post(url2, fvs)
+      .then((response) => {
+        // Handle success.
+        console.log('User profile', response.data);
+      })
+      .catch((error) => {
+        console.log('An error occurred:', error.response);
+      });
+  };
+
   return (
     <Page title="Stocks | TradeSimp">
       <Container>
@@ -273,6 +322,7 @@ export default function User() {
             component={RouterLink}
             to="#"
             startIcon={<Icon icon={plusFill} />}
+            onClick={() => saveFavoriteToHost(favorites)}
           >
             Favorites
           </Button>
@@ -365,14 +415,14 @@ export default function User() {
                       );
                     })}
                   {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
+                    <TableRow key="empty-rows" style={{ height: 53 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
                   )}
                 </TableBody>
                 {isUserNotFound && (
                   <TableBody>
-                    <TableRow>
+                    <TableRow key="user-not-found">
                       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
                         <SearchNotFound searchQuery={filterName} />
                       </TableCell>
