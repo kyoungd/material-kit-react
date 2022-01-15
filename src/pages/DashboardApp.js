@@ -12,9 +12,7 @@ import {
   AppOrderTimeline,
   AppCurrentVisits,
   AppWebsiteVisits,
-  AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates
+  AppTrafficBySite
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------

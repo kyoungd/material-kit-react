@@ -1,6 +1,6 @@
-import { filter } from 'lodash';
+// import { filter } from 'lodash';
 import { Icon } from '@iconify/react';
-import { sentenceCase } from 'change-case';
+// import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
@@ -9,7 +9,6 @@ import {
   Card,
   Table,
   Stack,
-  Avatar,
   Button,
   Checkbox,
   TableRow,
@@ -355,7 +354,6 @@ export default function User() {
                         id,
                         name,
                         atr,
-                        avgatr,
                         price,
                         trend,
                         keylevel,

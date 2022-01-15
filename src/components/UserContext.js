@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { GetUsers } from '../_mocks_/user';
 
 const UserStateContext = React.createContext();
 const UserDispatchContext = React.createContext();
@@ -12,20 +13,10 @@ function userReducer(state, action) {
       return { ...state, isAuthenticated: false };
     case 'SYMBOLS':
       return { ...state, symbols: action.payload };
-    case 'TWEETS':
-      return { ...state, tweets: action.payload };
-    case 'TWEET_SUMMARY':
-      return { ...state, tweetSummary: action.payload };
-    case 'NEWS':
-      return { ...state, news: action.payload };
-    case 'NEWS_SUMMARY':
-      return { ...state, newsSummary: action.payload };
+    case 'FAVORITES':
+      return { ...state, favorites: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
-    case 'SELECTION':
-      return { ...state, selected: action.payload };
-    case 'MEDIA':
-      return { ...state, media: action.payload };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -35,16 +26,9 @@ function userReducer(state, action) {
 function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, {
     isAuthenticated: !!localStorage.getItem('id_token'),
-    symbols: [],
-    settings: {},
-    tweets: {},
-    tweetSummary: {},
-    news: {},
-    newsSummary: {},
-    selected: '',
-    media: '',
-    studies: ['STUDYTHREEBARSCORE'],
-    studyResults: []
+    symbols: {},
+    favorites: {},
+    settings: {}
   });
 
   return (
@@ -55,7 +39,7 @@ function UserProvider({ children }) {
 }
 
 function useUserState() {
-  let context = React.useContext(UserStateContext);
+  const context = React.useContext(UserStateContext);
   if (context === undefined) {
     throw new Error('useUserState must be used within a UserProvider');
   }
@@ -63,23 +47,85 @@ function useUserState() {
 }
 
 function useUserDispatch() {
-  let context = React.useContext(UserDispatchContext);
+  const context = React.useContext(UserDispatchContext);
   if (context === undefined) {
     throw new Error('useUserDispatch must be used within a UserProvider');
   }
   return context;
 }
 
-
 // ###########################################################
 
-function loginUser(dispatch, login, password, history, setIsLoading, setError) {
+function token() {
+  const { isAuthenticated } = UserProvider();
+  return {
+    headers: {
+      Authorization: `Bearer ${isAuthenticated}`
+    }
+  };
+}
+
+function getFavorites(dispatch, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const url = process.env.REACT_APP_GET_FAVORITES || 'http://localhost:5000/favorites';
+  axios
+    .get(url, token())
+    .then((result) => {
+      setIsLoading(false);
+      setError(null);
+      dispatch({ type: 'FAVORITES', payload: result.data });
+    })
+    .catch((e) => {
+      setIsLoading(false);
+      setError(e.response);
+      console.log('An error occurred:', e.response);
+    });
+}
+
+function setFavorites(setIsLoading, setError) {
+  const { favorites } = UserProvider();
+  setError(false);
+  setIsLoading(true);
+  const url = process.env.REACT_APP_GET_FAVORITES || 'http://localhost:1337/api/favorites';
+  axios
+    .post(url, favorites, token())
+    .then(() => {
+      setIsLoading(false);
+      setError(null);
+    })
+    .catch((e) => {
+      setIsLoading(false);
+      setError(e.response);
+      console.log('An error occurred:', e.response);
+    });
+}
+
+function getSymobols(dispatch, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
+  axios
+    .get(url1, token())
+    .then((result) => {
+      const users = GetUsers(result.data);
+      dispatch({ type: 'SYMBOLS', payload: users });
+    })
+    .catch((e) => {
+      setIsLoading(false);
+      setError(e.response);
+      console.log('An error occurred:', e.response);
+    });
+}
+
+function loginUser(dispatch, login, password, navigate, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
 
   if (!!login && !!password) {
+    const url = process.env.REACT_APP_SERVER_LOGIN || 'http://localhost:1337/api/auth/local';
     axios
-      .post(process.env.REACT_APP_SERVER_LOGIN || 'http://localhost:1337/auth/local', {
+      .post(url, {
         identifier: login,
         password
       })
@@ -92,7 +138,9 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
 
-        history.push('/app/dashboard');
+        navigate('/dashboard', { replace: true });
+
+        // history.push('/app/dashboard');
       })
       .catch((error) => {
         // Handle error.
@@ -117,9 +165,11 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
 function registerUser(dispatch, name, login, password, history, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
+  const url =
+    process.env.REACT_APP_SERVER_REGISTER || 'http://localhost:1337/api/auth/local/register';
   if (!!name && !!login && !!password) {
     axios
-      .post(process.env.REACT_APP_SERVER_REGISTER || 'http://localhost:1337/auth/local/register', {
+      .post(url, {
         username: name,
         email: login,
         password
@@ -150,4 +200,14 @@ function signOut(dispatch, history) {
   history.push('/login');
 }
 
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut, registerUser };
+export {
+  getFavorites,
+  setFavorites,
+  getSymobols,
+  UserProvider,
+  useUserState,
+  useUserDispatch,
+  loginUser,
+  signOut,
+  registerUser
+};

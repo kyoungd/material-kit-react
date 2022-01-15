@@ -1,21 +1,28 @@
 // routes
-import Router from './routes';
+// import Router from './routes';
+import RouterAuthenticated from './routerAuthenticated';
+import RouterUnauthenticatd from './routerUnauthenticated';
 // theme
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
 // components
 import ScrollToTop from './components/ScrollToTop';
 import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+// context
+import { useUserState } from './components/UserContext';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
+  // global
+  const { isAuthenticated } = useUserState();
+
   return (
     <ThemeConfig>
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      <Router />
+      {isAuthenticated ? <RouterAuthenticated /> : <RouterUnauthenticatd />}
     </ThemeConfig>
   );
 }

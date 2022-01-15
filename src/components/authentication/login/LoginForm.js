@@ -17,11 +17,20 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
+// context
+import { useUserDispatch, loginUser, registerUser } from '../../UserContext';
+
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  // local
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // global
+  const userDispatch = useUserDispatch();
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
@@ -35,8 +44,15 @@ export default function LoginForm() {
       remember: true
     },
     validationSchema: LoginSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
+    onSubmit: (formValues) => {
+      loginUser(
+        userDispatch,
+        formValues.email,
+        formValues.password,
+        navigate,
+        setIsLoading,
+        setError
+      );
     }
   });
 

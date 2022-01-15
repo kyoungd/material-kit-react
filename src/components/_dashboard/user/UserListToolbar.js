@@ -5,15 +5,7 @@ import trash2Fill from '@iconify/icons-eva/trash-2-fill';
 import roundFilterList from '@iconify/icons-ic/round-filter-list';
 // material
 import { styled } from '@mui/material/styles';
-import {
-  Box,
-  Toolbar,
-  Tooltip,
-  IconButton,
-  Typography,
-  OutlinedInput,
-  InputAdornment
-} from '@mui/material';
+import { Box, Toolbar, Tooltip, IconButton, OutlinedInput, InputAdornment } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
