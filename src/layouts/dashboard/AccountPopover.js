@@ -11,6 +11,7 @@ import { Button, Box, Divider, MenuItem, Typography, Avatar, IconButton } from '
 import MenuPopover from '../../components/MenuPopover';
 //
 import account from '../../_mocks_/account';
+import { useUserDispatch, signOut } from '../../components/UserContext';
 
 // ----------------------------------------------------------------------
 
@@ -37,6 +38,7 @@ const MENU_OPTIONS = [
 export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const userDispatch = useUserDispatch();
 
   const handleOpen = () => {
     setOpen(true);
@@ -110,7 +112,14 @@ export default function AccountPopover() {
         ))}
 
         <Box sx={{ p: 2, pt: 1.5 }}>
-          <Button fullWidth color="inherit" variant="outlined">
+          <Button
+            fullWidth
+            color="inherit"
+            variant="outlined"
+            onClick={() => {
+              signOut(userDispatch);
+            }}
+          >
             Logout
           </Button>
         </Box>

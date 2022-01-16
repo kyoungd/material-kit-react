@@ -32,7 +32,9 @@ import { GetUsers } from '../_mocks_/user';
 import UserRank from '../components/UserRank';
 import UserDescription from '../components/UserDescription';
 
-const symbols = require('./symbols.json');
+import { useUserState } from '../components/UserContext';
+
+const textSubstitutes = require('./symbols.json');
 
 // ----------------------------------------------------------------------
 
@@ -82,8 +84,8 @@ function applySortFilter(array, comparator, query) {
     const regex2 = new RegExp('\\)', 'g');
     query = query.replace(regex2, ' )');
     query.split(' ').forEach((q) => {
-      const found = Object.keys(symbols).find((key) => key === q);
-      const item = found ? symbols[q] : q;
+      const found = Object.keys(textSubstitutes).find((key) => key === q);
+      const item = found ? textSubstitutes[q] : q;
       command += command === '' ? item : ` ${item}`;
     });
     console.log(command);
@@ -117,50 +119,35 @@ export default function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [USERLIST, setUserList] = useState(GetUsers([]));
-  const [favorites, setFavorites] = useState({});
+  const [stockFavorites, setStockFavorites] = useState({});
   const [showFavorites, setShowFavorites] = useState(false);
+
+  const { symbols, favorites } = useUserState();
 
   console.log('showFavorites', showFavorites);
   console.log('.................................');
 
   useEffect(() => {
     console.log('hello');
-
-    // let users;
-    // let res2;
-    // const mounted = true;
+    setUserList(symbols);
+    setStockFavorites(favorites);
+    const newSelecteds = Object.keys(favorites).map((n) => n);
+    setSelected(newSelecteds);
     // (async () => {
     //   try {
     //     const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
     //     const res1 = await axios.get(url1);
-    //     users = GetUsers(res1.data);
+    //     const users = GetUsers(res1.data);
     //     const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
-    //     res2 = await axios.get(url2);
-    //     if (mounted) {
-    //       const newSelecteds = Object.keys(res2.data).map((n) => n);
-    //       setUserList(users);
-    //       setSelected(newSelecteds);
-    //       setFavorites(res2.data);
-    //     }
+    //     const res2 = await axios.get(url2);
+    //     const newSelecteds = Object.keys(res2.data).map((n) => n);
+    //     setUserList(users);
+    //     setFavorites(res2.data);
+    //     setSelected(newSelecteds);
     //   } catch (e) {
     //     console.log(e);
     //   }
     // })();
-    (async () => {
-      try {
-        const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
-        const res1 = await axios.get(url1);
-        const users = GetUsers(res1.data);
-        const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
-        const res2 = await axios.get(url2);
-        const newSelecteds = Object.keys(res2.data).map((n) => n);
-        setUserList(users);
-        setFavorites(res2.data);
-        setSelected(newSelecteds);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
     // return function cleanup() {
     //   const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
     //   axios
@@ -175,7 +162,7 @@ export default function User() {
     //     });
     //   console.log('cleaning up');
     // };
-  }, []);
+  }, [favorites, symbols]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -211,7 +198,7 @@ export default function User() {
         selected.slice(selectedIndex + 1)
       );
     }
-    const stocks = favorites;
+    const stocks = stockFavorites;
     if (addKey) {
       stocks[name] = {
         description: '',
@@ -221,7 +208,7 @@ export default function User() {
     } else {
       delete stocks[name];
     }
-    setFavorites(stocks);
+    setStockFavorites(stocks);
     setSelected(newSelected);
   };
 
@@ -260,15 +247,15 @@ export default function User() {
   };
 
   const handleRankSelect = (symbol, rank) => {
-    const data = favorites;
+    const data = stockFavorites;
     data[symbol].rank = rank;
-    setFavorites(data);
+    setStockFavorites(data);
   };
 
   const handleDescriptionChange = (symbol, description) => {
-    const data = favorites;
+    const data = stockFavorites;
     data[symbol].description = description;
-    setFavorites(data);
+    setStockFavorites(data);
   };
 
   const extraLine = (name) => {
@@ -283,12 +270,16 @@ export default function User() {
     return (
       <TableRow key={id}>
         <TableCell colSpan="2">
-          <UserRank symbol={name} rank={favorites[name].rank} handleChange={handleRankSelect} />
+          <UserRank
+            symbol={name}
+            rank={stockFavorites[name].rank}
+            handleChange={handleRankSelect}
+          />
         </TableCell>
         <TableCell colSpan="10">
           <UserDescription
             symbol={name}
-            description={favorites[name].description}
+            description={stockFavorites[name].description}
             handleChange={handleDescriptionChange}
           />
         </TableCell>
@@ -321,7 +312,7 @@ export default function User() {
             component={RouterLink}
             to="#"
             startIcon={<Icon icon={plusFill} />}
-            onClick={() => saveFavoriteToHost(favorites)}
+            onClick={() => saveFavoriteToHost(stockFavorites)}
           >
             Favorites
           </Button>

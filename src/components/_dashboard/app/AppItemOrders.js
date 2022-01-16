@@ -1,12 +1,22 @@
-import { Icon } from '@iconify/react';
-import windowsFilled from '@iconify/icons-ant-design/windows-filled';
-// material
-import { alpha, styled } from '@mui/material/styles';
-import { Card, Typography } from '@mui/material';
+// import { Icon } from '@iconify/react';
+// import windowsFilled from '@iconify/icons-ant-design/windows-filled';
+// // material
+// import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { Card, Typography, Button } from '@mui/material';
+import PropTypes from 'prop-types';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
 
 // ----------------------------------------------------------------------
+
+AppItemOrders.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  getFavorites: PropTypes.func.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired
+};
 
 const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: 'none',
@@ -16,35 +26,38 @@ const RootStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.warning.lighter
 }));
 
-const IconWrapperStyle = styled('div')(({ theme }) => ({
-  margin: 'auto',
-  display: 'flex',
-  borderRadius: '50%',
-  alignItems: 'center',
-  width: theme.spacing(8),
-  height: theme.spacing(8),
-  justifyContent: 'center',
-  marginBottom: theme.spacing(3),
-  color: theme.palette.warning.dark,
-  backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.warning.dark, 0)} 0%, ${alpha(
-    theme.palette.warning.dark,
-    0.24
-  )} 100%)`
-}));
+// const IconWrapperStyle = styled('div')(({ theme }) => ({
+//   margin: 'auto',
+//   display: 'flex',
+//   borderRadius: '50%',
+//   alignItems: 'center',
+//   width: theme.spacing(8),
+//   height: theme.spacing(8),
+//   justifyContent: 'center',
+//   marginBottom: theme.spacing(3),
+//   color: theme.palette.warning.dark,
+//   backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.warning.dark, 0)} 0%, ${alpha(
+//     theme.palette.warning.dark,
+//     0.24
+//   )} 100%)`
+// }));
 
 // ----------------------------------------------------------------------
 
 const TOTAL = 1723315;
 
-export default function AppItemOrders() {
+export default function AppItemOrders({ dispatch, getFavorites, token, setIsLoading, setError }) {
   return (
     <RootStyle>
-      <IconWrapperStyle>
-        <Icon icon={windowsFilled} width={24} height={24} />
-      </IconWrapperStyle>
+      <Button
+        variant="outlined"
+        onClick={() => getFavorites(dispatch, token, setIsLoading, setError)}
+      >
+        GET FAVORITES
+      </Button>
       <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Eliminate Time Waste
+        Retrieve Favorites
       </Typography>
     </RootStyle>
   );

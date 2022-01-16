@@ -56,25 +56,26 @@ function useUserDispatch() {
 
 // ###########################################################
 
-function token() {
-  const { isAuthenticated } = UserProvider();
+function makeBearToken(token) {
   return {
     headers: {
-      Authorization: `Bearer ${isAuthenticated}`
+      Authorization: `Bearer ${token}`
     }
   };
 }
 
-function getFavorites(dispatch, setIsLoading, setError) {
+function getFavorites(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
-  const url = process.env.REACT_APP_GET_FAVORITES || 'http://localhost:5000/favorites';
+  const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
+  const bearerToken = makeBearToken(token);
   axios
-    .get(url, token())
+    .get(url, bearerToken)
     .then((result) => {
       setIsLoading(false);
       setError(null);
-      dispatch({ type: 'FAVORITES', payload: result.data });
+      const jsondata = result.data.data[0] === undefined ? {} : result.data.data[0].attributes.data;
+      dispatch({ type: 'FAVORITES', payload: jsondata });
     })
     .catch((e) => {
       setIsLoading(false);
@@ -83,13 +84,13 @@ function getFavorites(dispatch, setIsLoading, setError) {
     });
 }
 
-function setFavorites(setIsLoading, setError) {
+function setFavorites(setIsLoading, token, setError) {
   const { favorites } = UserProvider();
   setError(false);
   setIsLoading(true);
-  const url = process.env.REACT_APP_GET_FAVORITES || 'http://localhost:1337/api/favorites';
+  const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   axios
-    .post(url, favorites, token())
+    .post(url, favorites, token)
     .then(() => {
       setIsLoading(false);
       setError(null);
@@ -101,14 +102,15 @@ function setFavorites(setIsLoading, setError) {
     });
 }
 
-function getSymobols(dispatch, setIsLoading, setError) {
+function getSymbols(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
   const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
+  const bearerToken = makeBearToken(token);
   axios
-    .get(url1, token())
+    .get(url1, bearerToken)
     .then((result) => {
-      const users = GetUsers(result.data);
+      const users = GetUsers(result.data.data.attributes.data);
       dispatch({ type: 'SYMBOLS', payload: users });
     })
     .catch((e) => {
@@ -194,16 +196,15 @@ function registerUser(dispatch, name, login, password, history, setIsLoading, se
   }
 }
 
-function signOut(dispatch, history) {
+function signOut(dispatch) {
   localStorage.removeItem('id_token');
   dispatch({ type: 'SIGN_OUT_SUCCESS' });
-  history.push('/login');
 }
 
 export {
   getFavorites,
   setFavorites,
-  getSymobols,
+  getSymbols,
   UserProvider,
   useUserState,
   useUserDispatch,
