@@ -2,19 +2,18 @@
 // import bugFilled from '@iconify/icons-ant-design/bug-filled';
 // // material
 // import { alpha, styled } from '@mui/material/styles';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Card, Typography, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
+// import { fShortenNumber } from '../../../utils/formatNumber';
 
 // ----------------------------------------------------------------------
 
 AppBugReports.propTypes = {
   dispatch: PropTypes.func.isRequired,
   getSymbols: PropTypes.func.isRequired,
-  setIsLoading: PropTypes.func.isRequired,
-  setError: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired
 };
 
@@ -44,20 +43,25 @@ const RootStyle = styled(Card)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const TOTAL = 234;
+// const TOTAL = 234;
 
-export default function AppBugReports({ dispatch, getSymbols, token, setIsLoading, setError }) {
+export default function AppBugReports({ dispatch, getSymbols, token }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('not loaded');
+
   return (
     <RootStyle>
       <Button
-        variant="outlined"
+        variant="contained"
+        color="primary"
         onClick={() => getSymbols(dispatch, token, setIsLoading, setError)}
       >
         GET STOCKS
       </Button>
-      <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
+      {/* <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography> */}
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        More Revenue
+        {isLoading ? 'Loading... ' : ''}
+        {error}
       </Typography>
     </RootStyle>
   );

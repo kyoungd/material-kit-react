@@ -110,6 +110,8 @@ function getSymbols(dispatch, token, setIsLoading, setError) {
   axios
     .get(url1, bearerToken)
     .then((result) => {
+      setIsLoading(false);
+      setError(null);
       const users = GetUsers(result.data.data.attributes.data);
       dispatch({ type: 'SYMBOLS', payload: users });
     })

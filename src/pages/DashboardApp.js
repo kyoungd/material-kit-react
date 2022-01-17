@@ -33,28 +33,16 @@ export default function DashboardApp() {
         </Box>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWeeklySales />
+            <AppItemOrders dispatch={userDispatch} getFavorites={getFavorites} token={token} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppNewUsers />
+            <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppItemOrders
-              dispatch={userDispatch}
-              getFavorites={getFavorites}
-              token={token}
-              setIsLoading={setIsLoading}
-              setError={setError}
-            />
+            {/* <AppWeeklySales /> */}
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppBugReports
-              dispatch={userDispatch}
-              getSymbols={getSymbols}
-              token={token}
-              setIsLoading={setIsLoading}
-              setError={setError}
-            />
+            {/* <AppNewUsers /> */}
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
