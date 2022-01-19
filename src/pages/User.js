@@ -33,6 +33,8 @@ import UserRank from '../components/UserRank';
 import UserDescription from '../components/UserDescription';
 
 import { useUserState } from '../components/UserContext';
+import Chart from '../components/stockchart/Charts';
+import getStockData from '../utils/getStockData';
 
 const textSubstitutes = require('./symbols.json');
 
@@ -121,7 +123,8 @@ export default function User() {
   const [USERLIST, setUserList] = useState(GetUsers([]));
   const [stockFavorites, setStockFavorites] = useState({});
   const [showFavorites, setShowFavorites] = useState(false);
-
+  const [stockData, setStockData] = useState({});
+  const [chartSymbol, setChartSymbol] = useState('');
   const { symbols, favorites } = useUserState();
 
   console.log('showFavorites', showFavorites);
@@ -179,6 +182,10 @@ export default function User() {
     //   return;
     // }
     // setSelected([]);
+  };
+
+  const handleSymbolButtonPress = (symbol) => {
+    getStockData(stockData, symbol, setStockData, setChartSymbol);
   };
 
   const handleClick = (event, name) => {
@@ -318,6 +325,14 @@ export default function User() {
           </Button>
         </Stack>
 
+        {chartSymbol === '' || stockData[chartSymbol] === undefined ? (
+          <></>
+        ) : (
+          <Card>
+            <Chart type="svg" data={stockData[chartSymbol]} />
+          </Card>
+        )}
+
         <Card>
           <UserListToolbar
             numSelected={selected.length}
@@ -376,7 +391,12 @@ export default function User() {
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Typography variant="subtitle2" noWrap>
-                                {name}
+                                <Button
+                                  variant="text"
+                                  onClick={() => handleSymbolButtonPress(name)}
+                                >
+                                  {name}
+                                </Button>
                               </Typography>
                             </Stack>
                           </TableCell>

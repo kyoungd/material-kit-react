@@ -2,7 +2,7 @@
 // import windowsFilled from '@iconify/icons-ant-design/windows-filled';
 // // material
 // import { alpha, styled } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import { Card, Typography, Button } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -46,6 +46,12 @@ const RootStyle = styled(Card)(({ theme }) => ({
 export default function AppItemOrders({ dispatch, getFavorites, token }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('not loaded');
+
+  useEffect(() => {
+    if (error === 'not loaded') {
+      getFavorites(dispatch, token, setIsLoading, setError);
+    }
+  }, [dispatch, error, getFavorites, token]);
 
   return (
     <RootStyle>

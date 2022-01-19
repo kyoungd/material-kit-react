@@ -21,8 +21,6 @@ import { useUserDispatch, getFavorites, getSymbols, useUserState } from '../comp
 export default function DashboardApp() {
   const userDispatch = useUserDispatch();
   const { isAuthenticated } = useUserState();
-  const setIsLoading = (msg) => console.log(msg);
-  const setError = (msg) => console.log(msg);
   const token = isAuthenticated ? localStorage.getItem('id_token') : '';
 
   return (
