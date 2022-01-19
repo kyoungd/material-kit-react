@@ -17,6 +17,7 @@ import { discontinuousTimeScaleProvider } from 'react-stockcharts/lib/scale';
 import { OHLCTooltip } from 'react-stockcharts/lib/tooltip';
 import { fitWidth } from 'react-stockcharts/lib/helper';
 import { last } from 'react-stockcharts/lib/utils';
+import Checkbox from '@mui/material/Checkbox';
 
 class CandleStickChartWithZoomPan extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class CandleStickChartWithZoomPan extends React.Component {
     this.saveNode = this.saveNode.bind(this);
     this.resetYDomain = this.resetYDomain.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    this.state = { suffix: 1 };
+    this.state = { suffix: 1, showVolumeChart: true };
   }
 
   handleReset() {
@@ -66,56 +67,68 @@ class CandleStickChartWithZoomPan extends React.Component {
     const showGrid = true;
     const yGrid = showGrid ? { innerTickSize: -1 * gridWidth, tickStrokeOpacity: 0.2 } : {};
     const xGrid = showGrid ? { innerTickSize: -1 * gridHeight, tickStrokeOpacity: 0.2 } : {};
+    const label = { inputProps: { 'aria-label': 'volume' } };
 
     return (
-      <ChartCanvas
-        ref={this.saveNode}
-        height={height}
-        ratio={ratio}
-        width={width}
-        margin={{ left: 70, right: 70, top: 10, bottom: 30 }}
-        mouseMoveEvent={mouseMoveEvent}
-        panEvent={panEvent}
-        zoomEvent={zoomEvent}
-        clamp={clamp}
-        zoomAnchor={zoomAnchor}
-        type={type}
-        seriesName={`MSFT_${this.state.suffix}`}
-        data={data}
-        xScale={xScale}
-        xExtents={xExtents}
-        xAccessor={xAccessor}
-        displayXAccessor={displayXAccessor}
-      >
-        <Chart id={1} yExtents={(d) => [d.high, d.low]}>
-          <XAxis axisAt="bottom" orient="bottom" zoomEnabled={zoomEvent} {...xGrid} />
-          <YAxis axisAt="right" orient="right" ticks={5} zoomEnabled={zoomEvent} {...yGrid} />
+      <>
+        <Checkbox
+          {...label}
+          onChange={(event) => this.setState({ showVolumeChart: event.target.checked })}
+          defaultChecked
+        />
+        <ChartCanvas
+          ref={this.saveNode}
+          height={height}
+          ratio={ratio}
+          width={width}
+          margin={{ left: 70, right: 70, top: 10, bottom: 30 }}
+          mouseMoveEvent={mouseMoveEvent}
+          panEvent={panEvent}
+          zoomEvent={zoomEvent}
+          clamp={clamp}
+          zoomAnchor={zoomAnchor}
+          type={type}
+          seriesName={`MSFT_${this.state.suffix}`}
+          data={data}
+          xScale={xScale}
+          xExtents={xExtents}
+          xAccessor={xAccessor}
+          displayXAccessor={displayXAccessor}
+        >
+          <Chart id={1} yExtents={(d) => [d.high, d.low]}>
+            <XAxis axisAt="bottom" orient="bottom" zoomEnabled={zoomEvent} {...xGrid} />
+            <YAxis axisAt="right" orient="right" ticks={5} zoomEnabled={zoomEvent} {...yGrid} />
 
-          <MouseCoordinateY at="right" orient="right" displayFormat={format('.2f')} />
+            <MouseCoordinateY at="right" orient="right" displayFormat={format('.2f')} />
 
-          <CandlestickSeries />
-          <OHLCTooltip origin={[-40, 0]} />
-          <ZoomButtons onReset={this.handleReset} />
-        </Chart>
-        <Chart id={2} yExtents={(d) => d.volume} height={150} origin={(_w, h) => [0, h - 150]}>
-          <YAxis
-            axisAt="left"
-            orient="left"
-            ticks={5}
-            tickFormat={format('.2s')}
-            zoomEnabled={zoomEvent}
-          />
-
-          <MouseCoordinateX at="bottom" orient="bottom" displayFormat={timeFormat('%Y-%m-%d')} />
-          <MouseCoordinateY at="left" orient="left" displayFormat={format('.4s')} />
-
-          <BarSeries
-            yAccessor={(d) => d.volume}
-            fill={(d) => (d.close > d.open ? '#6BA583' : '#FF0000')}
-          />
-        </Chart>
-        <CrossHairCursor />
-      </ChartCanvas>
+            <CandlestickSeries />
+            <OHLCTooltip origin={[-40, 0]} />
+            <ZoomButtons onReset={this.handleReset} />
+          </Chart>
+          {this.state.showVolumeChart && (
+            <Chart id={2} yExtents={(d) => d.volume} height={150} origin={(_w, h) => [0, h - 150]}>
+              <YAxis
+                axisAt="left"
+                orient="left"
+                ticks={5}
+                tickFormat={format('.2s')}
+                zoomEnabled={zoomEvent}
+              />
+              <MouseCoordinateX
+                at="bottom"
+                orient="bottom"
+                displayFormat={timeFormat('%Y-%m-%d')}
+              />
+              <MouseCoordinateY at="left" orient="left" displayFormat={format('.4s')} />
+              <BarSeries
+                yAccessor={(d) => d.volume}
+                fill={(d) => (d.close > d.open ? '#6BA583' : '#FF0000')}
+              />
+            </Chart>
+          )}
+          <CrossHairCursor />
+        </ChartCanvas>
+      </>
     );
   }
 }
