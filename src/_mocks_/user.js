@@ -102,7 +102,9 @@ export function GetUsers(stocksIn) {
       threebars,
       ema20,
       ema50,
-      ema200
+      ema200,
+      ogap,
+      ogaps
     } = stock;
     const price = stock.close;
     let trend = '';
@@ -128,7 +130,9 @@ export function GetUsers(stocksIn) {
       volume,
       ema20,
       ema50,
-      ema200
+      ema200,
+      ogap,
+      ogaps
     };
     users.push(row);
   });

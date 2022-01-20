@@ -51,6 +51,7 @@ const TABLE_HEAD = [
   { id: 'relvol', label: 'r-vol', alignRight: false },
   { id: 'vpro', label: 'v-pro', alignRight: false },
   { id: 'ema', label: 'ema', alignRight: false },
+  { id: 'ogap', label: 'ogap', alignRight: false },
   { id: '' }
 ];
 
@@ -369,7 +370,8 @@ export default function User() {
                         vpro,
                         ema20,
                         ema50,
-                        ema200
+                        ema200,
+                        ogap
                       } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
@@ -409,6 +411,7 @@ export default function User() {
                           <TableCell align="left">{relvol}</TableCell>
                           <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
+                          <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>
