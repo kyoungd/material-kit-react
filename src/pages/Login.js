@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Card, Stack, Link, Container, Typography } from '@mui/material';
+import { Button, Card, Stack, Link, Container, Typography } from '@mui/material';
+import ModalVideo from 'react-modal-video';
 // layouts
 import AuthLayout from '../layouts/AuthLayout';
 // components
@@ -9,6 +11,8 @@ import Page from '../components/Page';
 import { MHidden } from '../components/@material-extend';
 import { LoginForm } from '../components/authentication/login';
 import AuthSocial from '../components/authentication/AuthSocial';
+
+import 'react-modal-video/scss/modal-video.scss';
 
 // ----------------------------------------------------------------------
 
@@ -40,6 +44,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
+  const [isOpen, setOpen] = useState(false);
   return (
     <RootStyle title="Login | TradeSimp">
       <AuthLayout>
@@ -62,9 +67,33 @@ export default function Login() {
         <ContentStyle>
           <Stack sx={{ mb: 5 }}>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to TradeSimp
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
+            <Typography sx={{ color: 'text.secondary' }}>
+              {' '}
+              Written by a TRADER to reduce time looking at the charts, and find more trades before
+              it happens.
+            </Typography>
+            <Typography sx={{ color: 'text.secondary' }}>
+              {' '}
+              <br />
+              You can register or use this account to test the app.
+              <br />
+              guest@tradesimp.com <br />
+              password
+            </Typography>
+            <>
+              <ModalVideo
+                channel="youtube"
+                autoplay
+                isOpen={isOpen}
+                videoId="UUUWIGx3hDE"
+                onClose={() => setOpen(false)}
+              />
+              <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
+                VIDEO EXPLAINER
+              </Button>
+            </>
           </Stack>
           <AuthSocial />
 
