@@ -71,8 +71,7 @@ export default function Login() {
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
               {' '}
-              Written by a TRADER to reduce time looking at the charts, and find more trades before
-              it happens.
+              Written by a TRADER to reduce time staring at the charts, and find more trades.
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
               {' '}

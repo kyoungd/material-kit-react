@@ -3,9 +3,10 @@
 // // material
 // import { alpha, styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import { Card, Typography, Button } from '@mui/material';
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+// import { styled } from '@mui/material/styles';
+// import { Card, Typography, Button } from '@mui/material';
 // utils
 // import { fShortenNumber } from '../../../utils/formatNumber';
 
@@ -17,13 +18,13 @@ AppItemOrders.propTypes = {
   token: PropTypes.string.isRequired
 };
 
-const RootStyle = styled(Card)(({ theme }) => ({
-  boxShadow: 'none',
-  textAlign: 'center',
-  padding: theme.spacing(5, 0),
-  color: theme.palette.warning.darker,
-  backgroundColor: theme.palette.warning.lighter
-}));
+// const RootStyle = styled(Card)(({ theme }) => ({
+//   boxShadow: 'none',
+//   textAlign: 'center',
+//   padding: theme.spacing(5, 0),
+//   color: theme.palette.warning.darker,
+//   backgroundColor: theme.palette.warning.lighter
+// }));
 
 // const IconWrapperStyle = styled('div')(({ theme }) => ({
 //   margin: 'auto',
@@ -54,19 +55,25 @@ export default function AppItemOrders({ dispatch, getFavorites, token }) {
   }, [dispatch, error, getFavorites, token]);
 
   return (
-    <RootStyle>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => getFavorites(dispatch, token, setIsLoading, setError)}
-      >
-        GET FAVORITES
-      </Button>
-      {/* <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography> */}
-      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        {isLoading ? 'Loading...' : ''}
-        {error}
-      </Typography>
-    </RootStyle>
+    <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+      {isLoading ? 'Favorite Loading...' : ''}
+      {error}
+    </Typography>
   );
+  // return (
+  //   <RootStyle>
+  //     <Button
+  //       variant="contained"
+  //       color="primary"
+  //       onClick={() => getFavorites(dispatch, token, setIsLoading, setError)}
+  //     >
+  //       GET FAVORITES
+  //     </Button>
+  //     {/* <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography> */}
+  //     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+  //       {isLoading ? 'Loading...' : ''}
+  //       {error}
+  //     </Typography>
+  //   </RootStyle>
+  // );
 }

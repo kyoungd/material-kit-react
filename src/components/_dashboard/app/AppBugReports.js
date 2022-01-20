@@ -2,10 +2,11 @@
 // import bugFilled from '@iconify/icons-ant-design/bug-filled';
 // // material
 // import { alpha, styled } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import { Card, Typography, Button } from '@mui/material';
 import PropTypes from 'prop-types';
+// import { styled } from '@mui/material/styles';
+// import { Card, Typography, Button } from '@mui/material';
 // utils
 // import { fShortenNumber } from '../../../utils/formatNumber';
 
@@ -17,13 +18,13 @@ AppBugReports.propTypes = {
   token: PropTypes.string.isRequired
 };
 
-const RootStyle = styled(Card)(({ theme }) => ({
-  boxShadow: 'none',
-  textAlign: 'center',
-  padding: theme.spacing(5, 0),
-  color: theme.palette.error.darker,
-  backgroundColor: theme.palette.error.lighter
-}));
+// const RootStyle = styled(Card)(({ theme }) => ({
+//   boxShadow: 'none',
+//   textAlign: 'center',
+//   padding: theme.spacing(5, 0),
+//   color: theme.palette.error.darker,
+//   backgroundColor: theme.palette.error.lighter
+// }));
 
 // const IconWrapperStyle = styled('div')(({ theme }) => ({
 //   margin: 'auto',
@@ -56,19 +57,25 @@ export default function AppBugReports({ dispatch, getSymbols, token }) {
   }, [dispatch, error, getSymbols, token]);
 
   return (
-    <RootStyle>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => getSymbols(dispatch, token, setIsLoading, setError)}
-      >
-        GET STOCKS
-      </Button>
-      {/* <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography> */}
-      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        {isLoading ? 'Loading... ' : ''}
-        {error}
-      </Typography>
-    </RootStyle>
+    <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+      {isLoading ? 'Symbol Loading... ' : ''}
+      {error}
+    </Typography>
   );
+  // return (
+  //   <RootStyle>
+  //     <Button
+  //       variant="contained"
+  //       color="primary"
+  //       onClick={() => getSymbols(dispatch, token, setIsLoading, setError)}
+  //     >
+  //       GET STOCKS
+  //     </Button>
+  //     {/* <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography> */}
+  //     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+  //       {isLoading ? 'Loading... ' : ''}
+  //       {error}
+  //     </Typography>
+  //   </RootStyle>
+  // );
 }
