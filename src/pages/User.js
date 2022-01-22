@@ -52,6 +52,7 @@ const TABLE_HEAD = [
   { id: 'vpro', label: 'v-pro', alignRight: false },
   { id: 'ema', label: 'ema', alignRight: false },
   { id: 'ogap', label: 'ogap', alignRight: false },
+  { id: 'floatp', label: 'float', alignRight: false },
   { id: 'engulf', label: 'eguf', alignRight: false },
   { id: '' }
 ];
@@ -311,7 +312,7 @@ export default function User() {
 
   return (
     <Page title="Stocks | TradeSimp">
-      <Container>
+      <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             Stocks
@@ -373,7 +374,9 @@ export default function User() {
                         ema20,
                         ema50,
                         ema200,
-                        ogap
+                        ogap,
+                        floats,
+                        floatp
                       } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
@@ -414,6 +417,7 @@ export default function User() {
                           <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
                           <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{floatp}%</TableCell>
                           <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
