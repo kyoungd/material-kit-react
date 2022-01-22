@@ -52,6 +52,7 @@ const TABLE_HEAD = [
   { id: 'vpro', label: 'v-pro', alignRight: false },
   { id: 'ema', label: 'ema', alignRight: false },
   { id: 'ogap', label: 'ogap', alignRight: false },
+  { id: 'engulf', label: 'eguf', alignRight: false },
   { id: '' }
 ];
 
@@ -368,6 +369,7 @@ export default function User() {
                         threebars,
                         relvol,
                         vpro,
+                        engulf,
                         ema20,
                         ema50,
                         ema200,
@@ -412,6 +414,7 @@ export default function User() {
                           <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
                           <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>

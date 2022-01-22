@@ -24,6 +24,8 @@
     "v-pro": "data['vpro']",
     "og": "data['ogap']",
     "ogap": "data['ogap']",
+    "engulf": "data['engulf']",
+    "eng": "data['engulf']",
     "overnightgapper": "data['ogap']",
     "ogs": "data['ogaps']",
     "and": "&&",
