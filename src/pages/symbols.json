@@ -6,7 +6,7 @@
     "trend": "data['trend']",
     "keylevel": "data['keylevel']",
     "level": "data['keylevel']",
-    "fibonachi": "data['fibonachi']",
+    "fibonacci": "data['fibonachi']",
     "fib": "data['fibonachi']",
     "threebars": "data['threebars']",
     "threebar": "data['threebars']",

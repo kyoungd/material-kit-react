@@ -5,6 +5,7 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
+import Tutorial from './pages/PageTutorial';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
@@ -20,6 +21,7 @@ export default function RouterAuthenticated() {
         { element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
+        { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
       ]

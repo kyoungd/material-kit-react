@@ -44,7 +44,8 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen1, setOpen1] = useState(false);
+  const [isOpen2, setOpen2] = useState(false);
   return (
     <RootStyle title="Login | TradeSimp">
       <AuthLayout>
@@ -67,32 +68,44 @@ export default function Login() {
         <ContentStyle>
           <Stack sx={{ mb: 5 }}>
             <Typography variant="h4" gutterBottom>
-              Sign in to TradeSimp
+              TradeSimp
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
               {' '}
-              Written by a TRADER to reduce time staring at the charts, and find more trades.
+              FIND MORE QUALITY TRADES WITH EASE.
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
+            <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
-              You can register or use this account to test the app.
+              You can register or use this account to test our app.
               <br />
               guest@tradesimp.com <br />
               password
             </Typography>
-            <>
+            <Typography sx={{ color: 'text.secondary', padding: 1 }}>
               <ModalVideo
                 channel="youtube"
                 autoplay
-                isOpen={isOpen}
-                videoId="UUUWIGx3hDE"
-                onClose={() => setOpen(false)}
+                isOpen={isOpen1}
+                videoId="9Pc226w3HFM"
+                onClose={() => setOpen1(false)}
               />
-              <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
-                VIDEO EXPLAINER
+              <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
+                VIDEO INTRODUCTION
               </Button>
-            </>
+            </Typography>
+            <Typography sx={{ color: 'text.secondary', padding: 1 }}>
+              <ModalVideo
+                channel="youtube"
+                autoplay
+                isOpen={isOpen2}
+                videoId="lqAEJIjPB38"
+                onClose={() => setOpen2(false)}
+              />
+              <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
+                DEMONSTRATION 1
+              </Button>
+            </Typography>
           </Stack>
           <AuthSocial />
 
