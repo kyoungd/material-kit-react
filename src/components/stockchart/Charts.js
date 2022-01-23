@@ -8,6 +8,7 @@ import { ChartCanvas, Chart, ZoomButtons } from 'react-stockcharts';
 import { BarSeries, CandlestickSeries } from 'react-stockcharts/lib/series';
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import {
+  PriceCoordinate,
   CrossHairCursor,
   MouseCoordinateX,
   MouseCoordinateY
@@ -44,7 +45,7 @@ class CandleStickChartWithZoomPan extends React.Component {
   }
 
   render() {
-    const { type, width, ratio } = this.props;
+    const { type, width, ratio, price, symbol } = this.props;
     const { mouseMoveEvent, panEvent, zoomEvent, zoomAnchor } = this.props;
     const { clamp } = this.props;
 
@@ -75,7 +76,8 @@ class CandleStickChartWithZoomPan extends React.Component {
           {...label}
           onChange={(event) => this.setState({ showVolumeChart: event.target.checked })}
           defaultChecked
-        />
+        />{' '}
+        {symbol}
         <ChartCanvas
           ref={this.saveNode}
           height={height}
@@ -104,6 +106,20 @@ class CandleStickChartWithZoomPan extends React.Component {
             <CandlestickSeries />
             <OHLCTooltip origin={[-40, 0]} />
             <ZoomButtons onReset={this.handleReset} />
+            {price > 0 && (
+              <PriceCoordinate
+                at="right"
+                orient="right"
+                price={price}
+                stroke="#3490DC"
+                strokeWidth={1}
+                fill="#FFFFFF"
+                textFill="#22292F"
+                arrowWidth={7}
+                strokeDasharray="ShortDash"
+                displayFormat={format('.2f')}
+              />
+            )}
           </Chart>
           {this.state.showVolumeChart && (
             <Chart id={2} yExtents={(d) => d.volume} height={150} origin={(_w, h) => [0, h - 150]}>
@@ -135,17 +151,21 @@ class CandleStickChartWithZoomPan extends React.Component {
 
 CandleStickChartWithZoomPan.propTypes = {
   data: PropTypes.array.isRequired,
+  price: PropTypes.number,
+  symbol: PropTypes.string,
   width: PropTypes.number.isRequired,
   ratio: PropTypes.number.isRequired,
   type: PropTypes.oneOf(['svg', 'hybrid']),
-  mouseMoveEvent: PropTypes.func,
-  panEvent: PropTypes.func,
-  zoomEvent: PropTypes.func,
+  mouseMoveEvent: PropTypes.bool,
+  panEvent: PropTypes.bool,
+  zoomEvent: PropTypes.bool,
   zoomAnchor: PropTypes.func,
-  clamp: PropTypes.func
+  clamp: PropTypes.bool
 };
 
 CandleStickChartWithZoomPan.defaultProps = {
+  price: 0,
+  symbol: '',
   type: 'svg',
   mouseMoveEvent: true,
   panEvent: true,

@@ -130,6 +130,8 @@ export default function User() {
   const [chartSymbol, setChartSymbol] = useState('');
   const { symbols, favorites } = useUserState();
 
+  const [stateKeyLevel, setStateKeyLevel] = useState(0);
+
   console.log('showFavorites', showFavorites);
   console.log('.................................');
 
@@ -189,6 +191,12 @@ export default function User() {
 
   const handleSymbolButtonPress = (symbol) => {
     getStockData(stockData, symbol, setStockData, setChartSymbol);
+    try {
+      const keylevel = USERLIST.find((user) => user.name === symbol).keylevels;
+      setStateKeyLevel(keylevel);
+    } catch (e) {
+      setStateKeyLevel(0);
+    }
   };
 
   const handleClick = (event, name) => {
@@ -310,6 +318,7 @@ export default function User() {
       });
   };
 
+  console.log('price -- ', stateKeyLevel);
   return (
     <Page title="Stocks | TradeSimp">
       <Container maxWidth={false}>
@@ -332,7 +341,12 @@ export default function User() {
           <></>
         ) : (
           <Card>
-            <Chart type="svg" data={stockData[chartSymbol]} />
+            <Chart
+              type="svg"
+              data={stockData[chartSymbol]}
+              price={stateKeyLevel}
+              symbol={chartSymbol}
+            />
           </Card>
         )}
 
@@ -366,6 +380,7 @@ export default function User() {
                         price,
                         trend,
                         keylevel,
+                        keylevels,
                         fibonachi,
                         threebars,
                         relvol,
