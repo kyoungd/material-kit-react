@@ -142,7 +142,9 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
 
-        navigate('/dashboard', { replace: true });
+        setTimeout(() => {
+          navigate('/dashboard/app', { replace: true });
+        }, 1000);
 
         // history.push('/app/dashboard');
       })
@@ -153,7 +155,7 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
 
     // setTimeout(() => {
     //   localStorage.setItem('id_token', 1)
-    //   setError(null)
+    //   setError(null)f
     //   setIsLoading(false)
     //   dispatch({ type: 'LOGIN_SUCCESS' })
 
@@ -185,7 +187,7 @@ function registerUser(dispatch, name, login, password, history, setIsLoading, se
         setError(null);
         setIsLoading(false);
         dispatch({ type: 'REGISTRATION_SUCCESS', payload: response.data.user });
-        history.push('/app/dashboard');
+        history.push('/dashboard/app');
       })
       .catch((error) => {
         // Handle error.
