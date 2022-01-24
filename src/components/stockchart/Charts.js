@@ -5,7 +5,7 @@ import { format } from 'd3-format';
 import { timeFormat } from 'd3-time-format';
 
 import { ChartCanvas, Chart, ZoomButtons } from 'react-stockcharts';
-import { BarSeries, CandlestickSeries } from 'react-stockcharts/lib/series';
+import { BarSeries, CandlestickSeries, LineSeries } from 'react-stockcharts/lib/series';
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import {
   PriceCoordinate,
@@ -16,6 +16,7 @@ import {
 
 import { discontinuousTimeScaleProvider } from 'react-stockcharts/lib/scale';
 import { OHLCTooltip } from 'react-stockcharts/lib/tooltip';
+import { ema } from 'react-stockcharts/lib/indicator';
 import { fitWidth } from 'react-stockcharts/lib/helper';
 import { last } from 'react-stockcharts/lib/utils';
 import Checkbox from '@mui/material/Checkbox';
@@ -50,6 +51,23 @@ class CandleStickChartWithZoomPan extends React.Component {
     const { clamp } = this.props;
 
     const { data: initialData } = this.props;
+
+    const ema20 = ema()
+      .id(0)
+      .options({ windowSize: 20 })
+      .merge((d, c) => {
+        d.ema20 = c;
+      })
+      .accessor((d) => d.ema20);
+
+    const ema50 = ema()
+      .id(2)
+      .options({ windowSize: 50 })
+      .merge((d, c) => {
+        d.ema50 = c;
+      })
+      .accessor((d) => d.ema50);
+    const calculatedData = ema50(ema20(initialData));
 
     const xScaleProvider = discontinuousTimeScaleProvider.inputDateAccessor((d) => d.date);
     const { data, xScale, xAccessor, displayXAccessor } = xScaleProvider(initialData);
@@ -104,6 +122,8 @@ class CandleStickChartWithZoomPan extends React.Component {
             <MouseCoordinateY at="right" orient="right" displayFormat={format('.2f')} />
 
             <CandlestickSeries />
+            <LineSeries yAccessor={ema20.accessor()} stroke={ema20.stroke()} />
+            <LineSeries yAccessor={ema50.accessor()} stroke={ema50.stroke()} />
             <OHLCTooltip origin={[-40, 0]} />
             <ZoomButtons onReset={this.handleReset} />
             {price > 0 && (
