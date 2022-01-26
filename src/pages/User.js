@@ -54,6 +54,7 @@ const TABLE_HEAD = [
   { id: 'ogap', label: 'ogap', alignRight: false },
   { id: 'floatp', label: 'float', alignRight: false },
   { id: 'engulf', label: 'eguf', alignRight: false },
+  { id: 'dtop', label: 'dtop', alignRight: false },
   { id: '' }
 ];
 
@@ -390,6 +391,7 @@ export default function User() {
                         ema50,
                         ema200,
                         ogap,
+                        dtop,
                         floats,
                         floatp
                       } = row;
@@ -434,6 +436,7 @@ export default function User() {
                           <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{floatp}%</TableCell>
                           <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>
