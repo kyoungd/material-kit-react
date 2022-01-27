@@ -320,6 +320,23 @@ export default function User() {
       });
   };
 
+  const gapperLinks = (name) => (
+    <>
+      -
+      <a href={`https://finviz.com/quote.ashx?t=${name}`} target="_blank" rel="noreferrer">
+        N
+      </a>
+      -
+      <a
+        href="https://www.sec.gov/edgar/searchedgar/companysearch.html"
+        target="_blank"
+        rel="noreferrer"
+      >
+        F
+      </a>
+    </>
+  );
+
   console.log('price -- ', stateKeyLevel);
   return (
     <Page title="Stocks | TradeSimp">
@@ -436,10 +453,13 @@ export default function User() {
                           <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
                           <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
-                          <TableCell align="left">{lng ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{floatp}%</TableCell>
                           <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">
+                            {lng ? `yes` : 'no'}
+                            {lng ? gapperLinks(name) : ''}
+                          </TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>
