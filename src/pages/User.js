@@ -457,8 +457,7 @@ export default function User() {
                           <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">
-                            {lng ? `yes` : 'no'}
-                            {lng ? gapperLinks(name) : ''}
+                            {lng}%{lng ? gapperLinks(name) : ''}
                           </TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
