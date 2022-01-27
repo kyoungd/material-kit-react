@@ -108,6 +108,7 @@ export function GetUsers(stocksIn) {
       ogap,
       ogaps,
       dtop,
+      lng,
       floats,
       floatp
     } = stock;
@@ -141,6 +142,7 @@ export function GetUsers(stocksIn) {
       ogap,
       ogaps,
       dtop,
+      lng,
       floats,
       floatp
     };

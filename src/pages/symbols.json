@@ -21,6 +21,8 @@
     "vpro": "data['vpro']",
     "volumeprofile": "data['vpro']",
     "vprofile": "data['vpro']",
+    "lng": "data['lng']",
+    "gapper": "data['lng']",
     "v-pro": "data['vpro']",
     "og": "data['ogap']",
     "ogap": "data['ogap']",
