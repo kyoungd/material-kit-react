@@ -5,7 +5,12 @@ import { format } from 'd3-format';
 import { timeFormat } from 'd3-time-format';
 
 import { ChartCanvas, Chart, ZoomButtons } from 'react-stockcharts';
-import { BarSeries, CandlestickSeries, LineSeries } from 'react-stockcharts/lib/series';
+import {
+  BarSeries,
+  VolumeProfileSeries,
+  CandlestickSeries,
+  LineSeries
+} from 'react-stockcharts/lib/series';
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import {
   PriceCoordinate,
@@ -46,7 +51,7 @@ class CandleStickChartWithZoomPan extends React.Component {
   }
 
   render() {
-    const { type, width, ratio, price, symbol } = this.props;
+    const { type, width, ratio, price, symbol, fib1, fib2 } = this.props;
     const { mouseMoveEvent, panEvent, zoomEvent, zoomAnchor } = this.props;
     const { clamp } = this.props;
 
@@ -121,6 +126,7 @@ class CandleStickChartWithZoomPan extends React.Component {
 
             <MouseCoordinateY at="right" orient="right" displayFormat={format('.2f')} />
 
+            <VolumeProfileSeries />
             <CandlestickSeries />
             <LineSeries yAccessor={ema20.accessor()} stroke={ema20.stroke()} />
             <LineSeries yAccessor={ema50.accessor()} stroke={ema50.stroke()} />
@@ -131,6 +137,34 @@ class CandleStickChartWithZoomPan extends React.Component {
                 at="right"
                 orient="right"
                 price={price}
+                stroke="#3490DC"
+                strokeWidth={1}
+                fill="#FFFFFF"
+                textFill="#22292F"
+                arrowWidth={7}
+                strokeDasharray="LongDash"
+                displayFormat={format('.2f')}
+              />
+            )}
+            {fib1 > 0 && (
+              <PriceCoordinate
+                at="left"
+                orient="left"
+                price={fib1}
+                stroke="#3490DC"
+                strokeWidth={1}
+                fill="#FFFFFF"
+                textFill="#22292F"
+                arrowWidth={7}
+                strokeDasharray="ShortDash"
+                displayFormat={format('.2f')}
+              />
+            )}
+            {fib2 > 0 && (
+              <PriceCoordinate
+                at="left"
+                orient="left"
+                price={fib2}
                 stroke="#3490DC"
                 strokeWidth={1}
                 fill="#FFFFFF"
@@ -172,6 +206,8 @@ class CandleStickChartWithZoomPan extends React.Component {
 CandleStickChartWithZoomPan.propTypes = {
   data: PropTypes.array.isRequired,
   price: PropTypes.number,
+  fib1: PropTypes.number,
+  fib2: PropTypes.number,
   symbol: PropTypes.string,
   width: PropTypes.number.isRequired,
   ratio: PropTypes.number.isRequired,
@@ -185,6 +221,8 @@ CandleStickChartWithZoomPan.propTypes = {
 
 CandleStickChartWithZoomPan.defaultProps = {
   price: 0,
+  fib1: 0,
+  fib2: 0,
   symbol: '',
   type: 'svg',
   mouseMoveEvent: true,

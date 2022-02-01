@@ -101,6 +101,7 @@ export function GetUsers(stocksIn) {
       keylevel,
       keylevels,
       fibonachi,
+      fibs,
       threebars,
       ema20,
       ema50,
@@ -109,18 +110,12 @@ export function GetUsers(stocksIn) {
       ogaps,
       dtop,
       lng,
+      trend,
+      reverse,
       floats,
       floatp
     } = stock;
     const price = stock.close;
-    let trend = '';
-    if (stock.trendup) {
-      trend = 'up';
-    } else if (stock.trenddown) {
-      trend = 'down';
-    } else {
-      trend = 'side';
-    }
     const row = {
       id,
       name,
@@ -128,9 +123,11 @@ export function GetUsers(stocksIn) {
       avgatr,
       price,
       trend,
+      reverse,
       keylevel,
       keylevels,
       fibonachi,
+      fibs,
       threebars,
       relvol,
       vpro,

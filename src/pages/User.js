@@ -45,6 +45,7 @@ const TABLE_HEAD = [
   { id: 'price', label: 'Price', alignRight: false },
   { id: 'atr', label: 'ATR', alignRight: false },
   { id: 'trend', label: 'Trend', alignRight: false },
+  { id: 'reverse', label: 'Rev', alignRight: false },
   { id: 'keylevel', label: 'Level', alignRight: false },
   { id: 'fibonachi', label: 'Fib', alignRight: false },
   { id: 'threebars', label: '3-bar', alignRight: false },
@@ -133,6 +134,7 @@ export default function User() {
   const { symbols, favorites } = useUserState();
 
   const [stateKeyLevel, setStateKeyLevel] = useState(0);
+  const [fibonaccis, setFibonaccis] = useState({});
 
   console.log('showFavorites', showFavorites);
   console.log('.................................');
@@ -198,6 +200,12 @@ export default function User() {
       setStateKeyLevel(keylevel);
     } catch (e) {
       setStateKeyLevel(0);
+    }
+    try {
+      const { fibs } = USERLIST.find((user) => user.name === symbol).fibs;
+      setFibonaccis(fibs);
+    } catch (e) {
+      setFibonaccis({ fib1: 0, fib2: 0 });
     }
   };
 
@@ -338,6 +346,11 @@ export default function User() {
   );
 
   console.log('price -- ', stateKeyLevel);
+  const fib1 =
+    fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
+  const fib2 =
+    fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib2 : 0;
+
   return (
     <Page title="Stocks | TradeSimp">
       <Container maxWidth={false}>
@@ -364,6 +377,8 @@ export default function User() {
               type="svg"
               data={stockData[chartSymbol]}
               price={stateKeyLevel}
+              fib1={fib1}
+              fib2={fib2}
               symbol={chartSymbol}
             />
           </Card>
@@ -398,9 +413,11 @@ export default function User() {
                         atr,
                         price,
                         trend,
+                        reverse,
                         keylevel,
                         keylevels,
                         fibonachi,
+                        fibs,
                         threebars,
                         relvol,
                         vpro,
@@ -446,6 +463,7 @@ export default function User() {
                           <TableCell align="left">${price}</TableCell>
                           <TableCell align="left">${atr}</TableCell>
                           <TableCell align="left">{trend}</TableCell>
+                          <TableCell align="left">{reverse}</TableCell>
                           <TableCell align="left">{keylevel ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{fibonachi ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{threebars ? 'yes' : 'no'}</TableCell>

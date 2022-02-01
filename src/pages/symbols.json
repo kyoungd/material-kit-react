@@ -4,6 +4,8 @@
     "close": "data['price']",
     "avgatr": "data['avgatr']",
     "trend": "data['trend']",
+    "reverse": "data['reverse']",
+    "rev": "data['reverse']",
     "keylevel": "data['keylevel']",
     "level": "data['keylevel']",
     "fibonacci": "data['fibonachi']",
