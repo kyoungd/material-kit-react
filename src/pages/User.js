@@ -195,15 +195,14 @@ export default function User() {
 
   const handleSymbolButtonPress = (symbol) => {
     getStockData(stockData, symbol, setStockData, setChartSymbol);
+    const item = USERLIST.find((user) => user.name === symbol);
     try {
-      const keylevel = USERLIST.find((user) => user.name === symbol).keylevels;
-      setStateKeyLevel(keylevel);
+      if (item) setStateKeyLevel(item.keylevels);
     } catch (e) {
       setStateKeyLevel(0);
     }
     try {
-      const { fibs } = USERLIST.find((user) => user.name === symbol).fibs;
-      setFibonaccis(fibs);
+      if (item) setFibonaccis(item.fibs);
     } catch (e) {
       setFibonaccis({ fib1: 0, fib2: 0 });
     }
@@ -345,11 +344,11 @@ export default function User() {
     </>
   );
 
-  console.log('price -- ', stateKeyLevel);
   const fib1 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
   const fib2 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib2 : 0;
+  console.log(`price - ${stateKeyLevel} ${fib1} ${fib2} `);
 
   return (
     <Page title="Stocks | TradeSimp">

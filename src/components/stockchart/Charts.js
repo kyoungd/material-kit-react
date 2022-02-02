@@ -15,6 +15,7 @@ import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import {
   PriceCoordinate,
   CrossHairCursor,
+  EdgeIndicator,
   MouseCoordinateX,
   MouseCoordinateY
 } from 'react-stockcharts/lib/coordinates';
@@ -146,32 +147,22 @@ class CandleStickChartWithZoomPan extends React.Component {
                 displayFormat={format('.2f')}
               />
             )}
-            {fib1 > 0 && (
-              <PriceCoordinate
-                at="left"
+            {fib1 > 0 && fib2 > 0 && (
+              <EdgeIndicator
+                itemType="first"
                 orient="left"
-                price={fib1}
-                stroke="#3490DC"
-                strokeWidth={1}
-                fill="#FFFFFF"
-                textFill="#22292F"
-                arrowWidth={7}
-                strokeDasharray="ShortDash"
-                displayFormat={format('.2f')}
+                edgeAt="left"
+                yAccessor={() => fib1}
+                fill={() => (fib1 > fib2 ? '#6BA583' : '#FF0000')}
               />
             )}
-            {fib2 > 0 && (
-              <PriceCoordinate
-                at="left"
+            {fib1 > 0 && fib2 > 0 && (
+              <EdgeIndicator
+                itemType="first"
                 orient="left"
-                price={fib2}
-                stroke="#3490DC"
-                strokeWidth={1}
-                fill="#FFFFFF"
-                textFill="#22292F"
-                arrowWidth={7}
-                strokeDasharray="ShortDash"
-                displayFormat={format('.2f')}
+                edgeAt="left"
+                yAccessor={() => fib2}
+                fill={() => (fib1 > fib2 ? '#FF0000' : '#6BA583')}
               />
             )}
           </Chart>
