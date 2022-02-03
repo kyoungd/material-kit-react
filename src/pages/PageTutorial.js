@@ -24,7 +24,7 @@ export default function PageTutorial() {
     <RootStyle title="Tutorial | TradeSimp">
       <Container>
         <MotionContainer initial="initial" open>
-          <Box sx={{ margin: 'auto' }}>
+          <Box sx={{ margin: 'auto' }} min-height="5%">
             <motion.div variants={varBounceIn}>
               <Typography variant="h3" paragraph>
                 Key Terms
@@ -73,12 +73,20 @@ export default function PageTutorial() {
                   current price near a key support/resistance level? yes or no.
                 </li>
                 <li>
-                  <strong>oguf</strong> - OVERNIGHT GAPPER (boolean) Is the current price near a
+                  <strong>gap</strong> - PRICE GAPPER (boolean) Is the current price near a
+                  historical Gapper? yes or no.
+                </li>
+                <li>
+                  <strong>ogap</strong> - OVERNIGHT GAPPER (boolean) Is the current price near a
                   fresh Overnight Gapper? yes or no.
                 </li>
                 <li>
                   <strong>price</strong> - CLOSE PRICE (dollar) Price of the stock in decimals. 5 or
                   24.95 or 127.10.
+                </li>
+                <li>
+                  <strong>reverse</strong> - TREND REVERSAL (bool) market trend reversal. After
+                  trending, reversal pattern was detected.
                 </li>
                 <li>
                   <strong>r-vol</strong> - RELATIVE VOLUME (integer) Relative volume in terms of

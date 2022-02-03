@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
 // material
 import { visuallyHidden } from '@mui/utils';
-import { Box, Checkbox, TableRow, TableCell, TableHead, TableSortLabel } from '@mui/material';
+import {
+  Button,
+  Box,
+  Checkbox,
+  TableRow,
+  TableCell,
+  TableHead,
+  TableSortLabel
+} from '@mui/material';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +38,17 @@ export default function UserListHead({
     onRequestSort(event, property);
   };
 
+  const BootstrapTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black
+    }
+  }));
+
   return (
     <TableHead>
       <TableRow>
@@ -50,7 +71,9 @@ export default function UserListHead({
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
-              {headCell.label}
+              <BootstrapTooltip title={headCell.info}>
+                <Button>{headCell.label}</Button>
+              </BootstrapTooltip>
               {orderBy === headCell.id ? (
                 <Box sx={{ ...visuallyHidden }}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}

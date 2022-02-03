@@ -41,22 +41,22 @@ const textSubstitutes = require('./symbols.json');
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'price', label: 'Price', alignRight: false },
-  { id: 'atr', label: 'ATR', alignRight: false },
-  { id: 'trend', label: 'Trend', alignRight: false },
-  { id: 'reverse', label: 'Rev', alignRight: false },
-  { id: 'keylevel', label: 'Level', alignRight: false },
-  { id: 'fibonachi', label: 'Fib', alignRight: false },
-  { id: 'threebars', label: '3-bar', alignRight: false },
-  { id: 'relvol', label: 'r-vol', alignRight: false },
-  { id: 'vpro', label: 'v-pro', alignRight: false },
-  { id: 'ema', label: 'ema', alignRight: false },
-  { id: 'ogap', label: 'ogap', alignRight: false },
-  { id: 'floatp', label: 'float', alignRight: false },
-  { id: 'engulf', label: 'eguf', alignRight: false },
-  { id: 'dtop', label: 'dtop', alignRight: false },
-  { id: 'lng', label: 'lng', alignRight: false },
+  { id: 'name', label: 'Name', alignRight: false, info: 'company symbol' },
+  { id: 'price', label: 'Price', alignRight: false, info: 'closing price' },
+  { id: 'atr', label: 'ATR', alignRight: false, info: 'ATR' },
+  { id: 'trend', label: 'Trend', alignRight: false, info: 'trend count' },
+  { id: 'reverse', label: 'Rev', alignRight: false, info: 'reversal trend' },
+  { id: 'keylevel', label: 'Level', alignRight: false, info: 'weekly support/resistance line' },
+  { id: 'fibonachi', label: 'Fib', alignRight: false, info: 'fibonacci retrace' },
+  { id: 'threebars', label: '3-bar', alignRight: false, info: 'trhee bar play' },
+  { id: 'relvol', label: 'r-vol', alignRight: false, info: 'relative volume' },
+  { id: 'vpro', label: 'v-pro', alignRight: false, info: 'near a volume profile area' },
+  { id: 'ema', label: 'ema', alignRight: false, info: 'EMA 20, 50 or 200' },
+  { id: 'gap', label: 'gap', alignRight: false, info: 'unfilled price gapper' },
+  { id: 'floatp', label: 'float', alignRight: false, info: 'percent float' },
+  { id: 'engulf', label: 'eguf', alignRight: false, info: 'engulfing candle' },
+  { id: 'dtop', label: 'dtop', alignRight: false, info: 'double top/bottom' },
+  { id: 'ogap', label: 'ogap', alignRight: false, info: 'overnight gapper' },
   { id: '' }
 ];
 
@@ -424,9 +424,9 @@ export default function User() {
                         ema20,
                         ema50,
                         ema200,
-                        ogap,
+                        gap,
                         dtop,
-                        lng,
+                        ogap,
                         floats,
                         floatp
                       } = row;
@@ -469,12 +469,12 @@ export default function User() {
                           <TableCell align="left">{relvol}</TableCell>
                           <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
-                          <TableCell align="left">{ogap ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">{gap ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{floatp}%</TableCell>
                           <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">
-                            {lng}%{lng ? gapperLinks(name) : ''}
+                            {ogap}%{ogap ? gapperLinks(name) : ''}
                           </TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
