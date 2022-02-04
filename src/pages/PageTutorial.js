@@ -24,7 +24,7 @@ export default function PageTutorial() {
     <RootStyle title="Tutorial | TradeSimp">
       <Container>
         <MotionContainer initial="initial" open>
-          <Box sx={{ margin: 'auto' }} min-height="5%">
+          <Box sx={{ margin: 'auto', min-height: 5% }}>
             <motion.div variants={varBounceIn}>
               <Typography variant="h3" paragraph>
                 Key Terms
