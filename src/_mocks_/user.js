@@ -94,6 +94,7 @@ export function GetUsers(stocksIn) {
     const {
       atr,
       avgatr,
+      cik,
       relvol,
       volume,
       vpro,
@@ -121,6 +122,7 @@ export function GetUsers(stocksIn) {
       name,
       atr,
       avgatr,
+      cik,
       price,
       trend,
       reverse,

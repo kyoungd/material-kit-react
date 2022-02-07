@@ -57,6 +57,7 @@ const TABLE_HEAD = [
   { id: 'engulf', label: 'eguf', alignRight: false, info: 'engulfing candle' },
   { id: 'dtop', label: 'dtop', alignRight: false, info: 'double top/bottom' },
   { id: 'ogap', label: 'ogap', alignRight: false, info: 'overnight gapper' },
+  { id: 'news', label: 'news', alignRight: false, info: 'overnight gapper' },
   { id: '' }
 ];
 
@@ -410,6 +411,7 @@ export default function User() {
                         id,
                         name,
                         atr,
+                        cik,
                         price,
                         trend,
                         reverse,
@@ -475,6 +477,27 @@ export default function User() {
                           <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">
                             {ogap}%{ogap ? gapperLinks(name) : ''}
+                          </TableCell>
+                          <TableCell align="left">
+                            <a
+                              href={`https://finviz.com/quote.ashx?t=${name}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              n
+                            </a>
+                            &nbsp;
+                            <a
+                              href={
+                                cik === '0' || cik === undefined
+                                  ? `https://www.sec.gov/edgar/searchedgar/companysearch.html`
+                                  : `https://www.sec.gov/edgar/browse/?CIK=${cik}&owner=exclude`
+                              }
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              f
+                            </a>
                           </TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
