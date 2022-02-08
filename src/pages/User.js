@@ -57,7 +57,8 @@ const TABLE_HEAD = [
   { id: 'engulf', label: 'eguf', alignRight: false, info: 'engulfing candle' },
   { id: 'dtop', label: 'dtop', alignRight: false, info: 'double top/bottom' },
   { id: 'ogap', label: 'ogap', alignRight: false, info: 'overnight gapper' },
-  { id: 'news', label: 'news', alignRight: false, info: 'overnight gapper' },
+  { id: 'news', label: 'news', alignRight: false, info: 'news and SEC filing' },
+  { id: 'rsi', label: 'rsi', alignRight: false, info: 'RSI divergence' },
   { id: '' }
 ];
 
@@ -429,6 +430,7 @@ export default function User() {
                         gap,
                         dtop,
                         ogap,
+                        rsi,
                         floats,
                         floatp
                       } = row;
@@ -499,6 +501,7 @@ export default function User() {
                               f
                             </a>
                           </TableCell>
+                          <TableCell align="left">{rsi ? 'yes' : 'no'}</TableCell>
                           <TableCell align="right">
                             <UserMoreMenu />
                           </TableCell>

@@ -25,6 +25,7 @@
     "vprofile": "data['vpro']",
     "%": "",
     "$": "",
+    "rsi": "data['rsi']",
     "gapper": "data['gap']",
     "v-pro": "data['vpro']",
     "og": "data['ogap']",
