@@ -26,7 +26,7 @@ UserPopup.propTypes = {
 export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+  const [maxWidth, setMaxWidth] = React.useState('md');
 
   const handleClickOpen = () => {
     setOpen(true);

@@ -68,7 +68,6 @@ const TABLE_HEAD = [
     alignRight: false,
     info: 'Candlestick pattern (E)ngulfing candle, (D)ouble top and (R)si divergence, (F)ibonacci Retracement, (3) bar play'
   },
-  { id: 'corr', label: 'corr', alignRight: false, info: 'correlation and ivnerse correlation' },
   { id: '' }
 ];
 
@@ -502,10 +501,6 @@ export default function User() {
                           <TableCell align="left">
                             {engulf ? 'E' : '-'}/{dtop ? 'D' : '-'}/{rsi ? 'R' : '-'}/
                             {fibonachi ? 'F' : '-'}/{threebars ? '3' : '-'}
-                          </TableCell>
-                          <TableCell align="left">
-                            {!corr || corr.length === 0 ? '-' : corr.length.toString()}/
-                            {!cinv || cinv.length === 0 ? '-' : cinv.length.toString()}
                           </TableCell>
                           <TableCell align="right">
                             <UserPopup data={row} />
