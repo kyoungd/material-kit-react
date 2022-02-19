@@ -60,7 +60,7 @@ class CandleStickChartWithZoomPan extends React.Component {
 
     const ema20 = ema()
       .id(0)
-      .options({ windowSize: 20 })
+      .options({ windowSize: 14 })
       .merge((d, c) => {
         d.ema20 = c;
       })

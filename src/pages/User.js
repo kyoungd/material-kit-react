@@ -7,17 +7,19 @@ import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
   Card,
+  Grid,
   Table,
   Stack,
   Button,
   Checkbox,
+  Container,
   TableRow,
   TableBody,
   TableCell,
-  Container,
-  Typography,
   TableContainer,
-  TablePagination
+  TablePagination,
+  Tooltip,
+  Typography
 } from '@mui/material';
 
 import axios from 'axios';
@@ -35,6 +37,8 @@ import UserDescription from '../components/UserDescription';
 import { useUserState } from '../components/UserContext';
 import Chart from '../components/stockchart/Charts';
 import getStockData from '../utils/getStockData';
+import UserPopup from '../components/UserPopup';
+import StockSearchButtons from '../components/StockSearchButtons';
 
 const textSubstitutes = require('./symbols.json');
 
@@ -43,25 +47,57 @@ const textSubstitutes = require('./symbols.json');
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false, info: 'company symbol' },
   { id: 'price', label: 'Price', alignRight: false, info: 'closing price' },
-  { id: 'atr', label: 'ATR', alignRight: false, info: 'ATR' },
-  { id: 'trend', label: 'Trend', alignRight: false, info: 'trend count' },
-  { id: 'reverse', label: 'Rev', alignRight: false, info: 'reversal trend' },
-  { id: 'keylevel', label: 'Level', alignRight: false, info: 'weekly support/resistance line' },
-  { id: 'fibonachi', label: 'Fib', alignRight: false, info: 'fibonacci retrace' },
-  { id: 'threebars', label: '3-bar', alignRight: false, info: 'trhee bar play' },
+  { id: 'trend', label: 'Trend/Rev', alignRight: false, info: 'trend/Reverse count' },
+  {
+    id: 'keylevel',
+    label: 'Level',
+    alignRight: false,
+    info: '(SR)weekly support/resistance line, (V)olume profile'
+  },
   { id: 'relvol', label: 'r-vol', alignRight: false, info: 'relative volume' },
-  { id: 'vpro', label: 'v-pro', alignRight: false, info: 'near a volume profile area' },
   { id: 'ema', label: 'ema', alignRight: false, info: 'EMA 20, 50 or 200' },
-  { id: 'gap', label: 'gap', alignRight: false, info: 'unfilled price gapper' },
-  { id: 'floatp', label: 'float', alignRight: false, info: 'percent float' },
-  { id: 'engulf', label: 'eguf', alignRight: false, info: 'engulfing candle' },
-  { id: 'dtop', label: 'dtop', alignRight: false, info: 'double top/bottom' },
-  { id: 'ogap', label: 'ogap', alignRight: false, info: 'overnight gapper' },
-  { id: 'news', label: 'news', alignRight: false, info: 'news and SEC filing' },
-  { id: 'rsi', label: 'rsi', alignRight: false, info: 'RSI divergence' },
+  {
+    id: 'gap',
+    label: 'gap/night',
+    alignRight: false,
+    info: 'unfilled price gapper, historial gap and overnight gap'
+  },
+  {
+    id: 'pattern',
+    label: 'pattern',
+    alignRight: false,
+    info: 'Candlestick pattern (E)ngulfing candle, (D)ouble top and (R)si divergence, (F)ibonacci Retracement, (3) bar play'
+  },
+  { id: 'corr', label: 'corr', alignRight: false, info: 'correlation and ivnerse correlation' },
   { id: '' }
 ];
 
+const EXPLAINERS = [
+  {
+    id: 'confluence',
+    label: 'Confluence',
+    info: 'Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.',
+    text: 'level and ema50 and trend >= 2 and rev > 0 and rev <= 1.5'
+  },
+  {
+    id: 'rsi',
+    label: 'RSI Diverge',
+    info: 'Price is near a weekly support and resistance, and recent RSI divergence.',
+    text: 'level and rsi'
+  },
+  {
+    id: 'gap',
+    label: 'Night Gap',
+    info: 'Overnight gap near a weekly support and resistance.',
+    text: 'level and ogap >= 5'
+  },
+  {
+    id: 'dtop',
+    label: 'Candlestick',
+    info: 'Price is near a weekly support and resistance, and recent RSI divergence.',
+    text: 'level and ema50 amd (dtop or rsi or engulf)'
+  }
+];
 // ----------------------------------------------------------------------
 
 function descendingComparator(a, b, orderBy) {
@@ -329,23 +365,6 @@ export default function User() {
       });
   };
 
-  const gapperLinks = (name) => (
-    <>
-      -
-      <a href={`https://finviz.com/quote.ashx?t=${name}`} target="_blank" rel="noreferrer">
-        N
-      </a>
-      -
-      <a
-        href="https://www.sec.gov/edgar/searchedgar/companysearch.html"
-        target="_blank"
-        rel="noreferrer"
-      >
-        F
-      </a>
-    </>
-  );
-
   const fib1 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
   const fib2 =
@@ -392,6 +411,9 @@ export default function User() {
             onFilterName={handleFilterByName}
           />
 
+          <Card>
+            <StockSearchButtons data={EXPLAINERS} searchFunc={setFilterName} />
+          </Card>
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
@@ -413,6 +435,8 @@ export default function User() {
                         name,
                         atr,
                         cik,
+                        corr,
+                        cinv,
                         price,
                         trend,
                         reverse,
@@ -464,46 +488,27 @@ export default function User() {
                             </Stack>
                           </TableCell>
                           <TableCell align="left">${price}</TableCell>
-                          <TableCell align="left">${atr}</TableCell>
-                          <TableCell align="left">{trend}</TableCell>
-                          <TableCell align="left">{reverse}</TableCell>
-                          <TableCell align="left">{keylevel ? 'yes' : 'no'}</TableCell>
-                          <TableCell align="left">{fibonachi ? 'yes' : 'no'}</TableCell>
-                          <TableCell align="left">{threebars ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">
+                            {trend} / {reverse}
+                          </TableCell>
+                          <TableCell align="left">
+                            {keylevel ? 'SR' : '-'}/{vpro ? 'V' : '-'}
+                          </TableCell>
                           <TableCell align="left">{relvol}</TableCell>
-                          <TableCell align="left">{vpro ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
-                          <TableCell align="left">{gap ? 'yes' : 'no'}</TableCell>
-                          <TableCell align="left">{floatp}%</TableCell>
-                          <TableCell align="left">{engulf ? 'yes' : 'no'}</TableCell>
-                          <TableCell align="left">{dtop ? 'yes' : 'no'}</TableCell>
                           <TableCell align="left">
-                            {ogap}%{ogap ? gapperLinks(name) : ''}
+                            {gap ? 'yes' : 'no'}/{ogap}%
                           </TableCell>
                           <TableCell align="left">
-                            <a
-                              href={`https://finviz.com/quote.ashx?t=${name}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              n
-                            </a>
-                            &nbsp;
-                            <a
-                              href={
-                                cik === '0' || cik === undefined
-                                  ? `https://www.sec.gov/edgar/searchedgar/companysearch.html`
-                                  : `https://www.sec.gov/edgar/browse/?CIK=${cik}&owner=exclude`
-                              }
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              f
-                            </a>
+                            {engulf ? 'E' : '-'}/{dtop ? 'D' : '-'}/{rsi ? 'R' : '-'}/
+                            {fibonachi ? 'F' : '-'}/{threebars ? '3' : '-'}
                           </TableCell>
-                          <TableCell align="left">{rsi ? 'yes' : 'no'}</TableCell>
+                          <TableCell align="left">
+                            {!corr || corr.length === 0 ? '-' : corr.length.toString()}/
+                            {!cinv || cinv.length === 0 ? '-' : cinv.length.toString()}
+                          </TableCell>
                           <TableCell align="right">
-                            <UserMoreMenu />
+                            <UserPopup data={row} />
                           </TableCell>
                         </TableRow>
                       );
