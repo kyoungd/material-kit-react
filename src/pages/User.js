@@ -123,19 +123,21 @@ export default function User() {
   console.log('.................................');
 
   const userDispatch = useUserDispatch();
-  if (USERLIST.length === 0) setUserList(symbols);
-  if (stockFavorites.length === 0) setStockFavorites(favorites);
-  if (Object.entries(selected).length > 0) {
-    const newSelecteds = Object.keys(favorites).map((n) => n);
-    setSelected(newSelecteds);
-  }
 
   useEffect(() => {
     console.log('useEffect');
+    if (USERLIST.length === 0) setUserList(symbols);
+    if (stockFavorites.length === 0) setStockFavorites(favorites);
+    if (Object.entries(favorites).length > 0) {
+      const newSelecteds = Object.keys(favorites).map((n) => n);
+      setSelected(newSelecteds);
+    }
     return () => {
       const token = localStorage.getItem('id_token');
-      setFavorites(userDispatch, token, null, null, stockFavorites);
-      console.log('useEffect clean up');
+      if (JSON.stringify(favorites) !== JSON.stringify(stockFavorites)) {
+        setFavorites(userDispatch, token, null, null, stockFavorites);
+        console.log('useEffect.  Save chagnes in favorites');
+      } else console.log('useEffect.  No change.');
     };
   }, []);
 
@@ -283,6 +285,8 @@ export default function User() {
   };
 
   const extraLine = (name) => {
+    if (Object.keys(stockFavorites).length === 0) return <></>;
+
     const id = `${name}-extra`;
     // return (
     //   <TableRow key={id}>

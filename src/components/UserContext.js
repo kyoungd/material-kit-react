@@ -90,8 +90,9 @@ function setFavorites(dispatch, token, setIsLoading, setError, favorites) {
   if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(true);
   if (setError !== null && setError !== undefined) setError(false);
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
+  const bearerToken = makeBearToken(token);
   axios
-    .post(url, favorites, token)
+    .post(url, favorites, bearerToken)
     .then(() => {
       if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(false);
       if (setError !== null && setError !== undefined) setError(null);
