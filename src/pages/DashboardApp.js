@@ -27,7 +27,7 @@ export default function DashboardApp() {
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
   const userDispatch = useUserDispatch();
-  const { isAuthenticated } = useUserState();
+  const { isAuthenticated, symbols, favorites } = useUserState();
   const token = isAuthenticated ? localStorage.getItem('id_token') : '';
 
   return (
@@ -82,8 +82,16 @@ export default function DashboardApp() {
           </Button>
         </Box>
         <Box sx={{ pb: 5 }}>
-          <AppItemOrders dispatch={userDispatch} getFavorites={getFavorites} token={token} />
-          <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+          {Object.keys(favorites).length <= 0 ? (
+            <AppItemOrders dispatch={userDispatch} getFavorites={getFavorites} token={token} />
+          ) : (
+            <></>
+          )}
+          {Object.keys(symbols).length <= 0 ? (
+            <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+          ) : (
+            <></>
+          )}
         </Box>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>

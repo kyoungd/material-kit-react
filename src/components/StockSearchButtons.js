@@ -24,7 +24,7 @@ export default function StockSearchButtons(props) {
     const firstSize = data.length;
     const secondSize = 1;
     const code = data.map((line, index) => (
-      <Grid key={{ index }} item xs={{ firstSize }} sm={{ secondSize }}>
+      <Grid key={line.id} item xs={12} sm={2}>
         <Box fontWeight="fontWeightMedium" display="inline">
           <Tooltip title={line.info}>
             <Button variant="contained" color="primary" onClick={() => searchFunc(line.text)}>

@@ -34,69 +34,15 @@ import { GetUsers } from '../_mocks_/user';
 import UserRank from '../components/UserRank';
 import UserDescription from '../components/UserDescription';
 
-import { useUserState } from '../components/UserContext';
+import { useUserState, useUserDispatch, setFavorites } from '../components/UserContext';
 import Chart from '../components/stockchart/Charts';
 import getStockData from '../utils/getStockData';
 import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
 
 const textSubstitutes = require('./symbols.json');
-
-// ----------------------------------------------------------------------
-
-const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false, info: 'company symbol' },
-  { id: 'price', label: 'Price', alignRight: false, info: 'closing price' },
-  { id: 'trend', label: 'Trend/Rev', alignRight: false, info: 'trend/Reverse count' },
-  {
-    id: 'keylevel',
-    label: 'Level',
-    alignRight: false,
-    info: '(SR)weekly support/resistance line, (V)olume profile'
-  },
-  { id: 'relvol', label: 'r-vol', alignRight: false, info: 'relative volume' },
-  { id: 'ema', label: 'ema', alignRight: false, info: 'EMA 20, 50 or 200' },
-  {
-    id: 'gap',
-    label: 'gap/night',
-    alignRight: false,
-    info: 'unfilled price gapper, historial gap and overnight gap'
-  },
-  {
-    id: 'pattern',
-    label: 'pattern',
-    alignRight: false,
-    info: 'Candlestick pattern (E)ngulfing candle, (D)ouble top and (R)si divergence, (F)ibonacci Retracement, (3) bar play'
-  },
-  { id: '' }
-];
-
-const EXPLAINERS = [
-  {
-    id: 'confluence',
-    label: 'Confluence',
-    info: 'Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.',
-    text: 'level and ema50 and trend >= 2 and rev > 0 and rev <= 1.5'
-  },
-  {
-    id: 'rsi',
-    label: 'RSI Diverge',
-    info: 'Price is near a weekly support and resistance, and recent RSI divergence.',
-    text: 'level and rsi'
-  },
-  {
-    id: 'gap',
-    label: 'Night Gap',
-    info: 'Overnight gap near a weekly support and resistance.',
-    text: 'level and ogap >= 5'
-  },
-  {
-    id: 'dtop',
-    label: 'Candlestick',
-    info: 'Price is near a weekly support and resistance, and recent RSI divergence.',
-    text: 'level and ema50 amd (dtop or rsi or engulf)'
-  }
-];
+const TABLE_HEAD = require('./UserTableHead.json');
+const EXPLAINERS = require('./UserButtonSetup.json');
 // ----------------------------------------------------------------------
 
 function descendingComparator(a, b, orderBy) {
@@ -176,12 +122,26 @@ export default function User() {
   console.log('showFavorites', showFavorites);
   console.log('.................................');
 
-  useEffect(() => {
-    console.log('hello');
-    setUserList(symbols);
-    setStockFavorites(favorites);
+  const userDispatch = useUserDispatch();
+  if (USERLIST.length === 0) setUserList(symbols);
+  if (stockFavorites.length === 0) setStockFavorites(favorites);
+  if (Object.entries(selected).length > 0) {
     const newSelecteds = Object.keys(favorites).map((n) => n);
     setSelected(newSelecteds);
+  }
+
+  useEffect(() => {
+    console.log('useEffect');
+    return () => {
+      const token = localStorage.getItem('id_token');
+      setFavorites(userDispatch, token, null, null, stockFavorites);
+      console.log('useEffect clean up');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log('hello');
+
     // (async () => {
     //   try {
     //     const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:5000/symbols';
@@ -211,7 +171,7 @@ export default function User() {
     //     });
     //   console.log('cleaning up');
     // };
-  }, [favorites, symbols]);
+  }, []);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -351,19 +311,6 @@ export default function User() {
     );
   };
 
-  const saveFavoriteToHost = (fvs) => {
-    const url2 = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:5000/favorites';
-    axios
-      .post(url2, fvs)
-      .then((response) => {
-        // Handle success.
-        console.log('User profile', response.data);
-      })
-      .catch((error) => {
-        console.log('An error occurred:', error.response);
-      });
-  };
-
   const fib1 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
   const fib2 =
@@ -382,7 +329,6 @@ export default function User() {
             component={RouterLink}
             to="#"
             startIcon={<Icon icon={plusFill} />}
-            onClick={() => saveFavoriteToHost(stockFavorites)}
           >
             Favorites
           </Button>
@@ -457,7 +403,8 @@ export default function User() {
                         floats,
                         floatp
                       } = row;
-                      const isItemSelected = selected.indexOf(name) !== -1;
+                      const isItemSelected =
+                        Object.entries(selected).length > 0 ? selected.indexOf(name) !== -1 : false;
 
                       const lineItem = (
                         <TableRow

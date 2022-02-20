@@ -1,0 +1,26 @@
+[
+    {
+        "id": "confluence",
+        "label": "Confluence",
+        "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
+        "text": "level and ema50 and trend >= 2 and rev > 0 and rev <= 1.5"
+    },
+    {
+        "id": "rsi",
+        "label": "RSI Diverge",
+        "info": "Price is near a weekly support and resistance, and recent RSI divergence.",
+        "text": "level and rsi"
+    },
+    {
+        "id": "gap",
+        "label": "Night Gap",
+        "info": "Overnight gap near a weekly support and resistance.",
+        "text": "level and ogap >= 5"
+    },
+    {
+        "id": "dtop",
+        "label": "Candlestick",
+        "info": "Price is near a weekly support and resistance, and recent RSI divergence.",
+        "text": "level and ema50 amd (dtop or rsi or engulf)"
+    }
+]

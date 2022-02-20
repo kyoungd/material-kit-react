@@ -84,20 +84,21 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
     });
 }
 
-function setFavorites(setIsLoading, token, setError) {
-  const { favorites } = UserProvider();
-  setError(false);
-  setIsLoading(true);
+function setFavorites(dispatch, token, setIsLoading, setError, favorites) {
+  // const { favorites } = UserProvider();
+  dispatch({ type: 'FAVORITES', payload: favorites });
+  if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(true);
+  if (setError !== null && setError !== undefined) setError(false);
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   axios
     .post(url, favorites, token)
     .then(() => {
-      setIsLoading(false);
-      setError(null);
+      if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(false);
+      if (setError !== null && setError !== undefined) setError(null);
     })
     .catch((e) => {
-      setIsLoading(false);
-      setError(e.response);
+      if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(false);
+      if (setError !== null && setError !== undefined) setError(e.response);
       console.log('An error occurred:', e.response);
     });
 }
