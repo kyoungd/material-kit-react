@@ -48,6 +48,9 @@
         "info": "Candlestick pattern (E)ngulfing candle, (D)ouble top and (R)si divergence, (F)ibonacci Retracement, (3) bar play"
     },
     {
-        "id": ""
+        "id": "",
+        "label": "",
+        "alignRight": false,
+        "info": ""
     }
 ]

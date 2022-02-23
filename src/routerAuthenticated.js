@@ -9,10 +9,14 @@ import Tutorial from './pages/PageTutorial';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
+import { useUserState, useUserDispatch } from './components/UserContext';
 
 // --------------------------------- yes -------------------------------------
 
 export default function RouterAuthenticated() {
+  const userDispatch = useUserDispatch();
+  const { symbols, favorites } = useUserState();
+
   return useRoutes([
     {
       path: '/dashboard',
@@ -20,7 +24,10 @@ export default function RouterAuthenticated() {
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
+        {
+          path: 'user',
+          element: <User symbols={symbols} favorites={favorites} userDispatch={userDispatch} />
+        },
         { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }

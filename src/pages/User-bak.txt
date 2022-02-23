@@ -2,7 +2,6 @@
 import { Icon } from '@iconify/react';
 // import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
 // material
@@ -22,17 +21,15 @@ import {
   Typography
 } from '@mui/material';
 
-import axios from 'axios';
-
 // components
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
+import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
 //
 import { GetUsers } from '../_mocks_/user';
-import UserRank from '../components/UserRank';
-import UserDescription from '../components/UserDescription';
+// import UserRank from '../components/UserRank';
+// import UserDescription from '../components/UserDescription';
 
 import { useUserState, useUserDispatch } from '../components/UserContext';
 import Chart from '../components/stockchart/Charts';
@@ -44,12 +41,6 @@ const textSubstitutes = require('./symbols.json');
 const TABLE_HEAD = require('./UserTableHead.json');
 const EXPLAINERS = require('./UserButtonSetup.json');
 // ----------------------------------------------------------------------
-
-User.propTypes = {
-  favorites: PropTypes.object.isRequired,
-  symbols: PropTypes.object.isRequired,
-  userDispatch: PropTypes.func.isRequired
-};
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -108,7 +99,7 @@ function applySortFilter(array, comparator, query) {
 //   return <div />;
 // }
 
-export default function User(props) {
+export default function User() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
@@ -120,24 +111,29 @@ export default function User(props) {
   const [showFavorites, setShowFavorites] = useState(false);
   const [stockData, setStockData] = useState({});
   const [chartSymbol, setChartSymbol] = useState('');
+  const { symbols, favorites } = useUserState();
 
   const [stateKeyLevel, setStateKeyLevel] = useState(0);
   const [fibonaccis, setFibonaccis] = useState({});
 
+  console.log('begining');
+
+  const userDispatch = useUserDispatch();
+
   useEffect(() => {
     console.log('useEffect - initialize');
-    if (USERLIST.length === 0) setUserList(props.symbols);
-    if (Object.keys(stockFavorites).length === 0) setStockFavorites(props.favorites);
-    if (Object.entries(props.favorites).length > 0) {
-      const newSelecteds = Object.keys(props.favorites).map((n) => n);
+    if (USERLIST.length === 0) setUserList(symbols);
+    if (Object.keys(stockFavorites).length === 0) setStockFavorites(favorites);
+    if (Object.entries(favorites).length > 0) {
+      const newSelecteds = Object.keys(favorites).map((n) => n);
       setSelected(newSelecteds);
     }
     return () => {
       console.log('useEffect - return');
-      props.userDispatch({ type: 'FAVORITES', payload: props.favorites, work: 'SAVE' });
-      console.log('useEffect.  Save chagnes in props.favorites');
+      if (JSON.stringify(favorites) !== JSON.stringify(stockFavorites))
+        userDispatch({ type: 'FAVORITES', payload: stockFavorites, work: 'SAVE' });
     };
-  }, []);
+  }, [USERLIST.length, favorites, stockFavorites, symbols, userDispatch]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';

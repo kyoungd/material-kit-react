@@ -14,6 +14,9 @@ function userReducer(state, action) {
     case 'SYMBOLS':
       return { ...state, symbols: action.payload };
     case 'FAVORITES':
+      if ('work' in action && action.work === 'SAVE') {
+        saveFavorites(action.payload);
+      }
       return { ...state, favorites: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
@@ -84,24 +87,22 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
     });
 }
 
-function setFavorites(dispatch, token, setIsLoading, setError, favorites) {
-  // const { favorites } = UserProvider();
-  dispatch({ type: 'FAVORITES', payload: favorites });
-  if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(true);
-  if (setError !== null && setError !== undefined) setError(false);
+function saveFavorites(favorites) {
+  const token = localStorage.getItem('id_token');
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   const bearerToken = makeBearToken(token);
   axios
     .post(url, favorites, bearerToken)
     .then(() => {
-      if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(false);
-      if (setError !== null && setError !== undefined) setError(null);
+      console.log('favorite saved to server');
     })
     .catch((e) => {
-      if (setIsLoading !== null && setIsLoading !== undefined) setIsLoading(false);
-      if (setError !== null && setError !== undefined) setError(e.response);
-      console.log('An error occurred:', e.response);
+      console.log('saveFavorites():  An error occurred:', e.response);
     });
+}
+
+function setFavorites(dispatch, token, setIsLoading, setError, favorites) {
+  // const { favorites } = UserProvider();
 }
 
 function getSymbols(dispatch, token, setIsLoading, setError) {
