@@ -50,14 +50,8 @@ export default function UserPopup(props) {
   const showCorrelations = (corr) => {
     let correlation = '';
     for (const line in corr) {
-      const symbol = Object.keys(corr[line])[0];
-      const value = corr[line][symbol];
-      const item = `${symbol}: ${Math.round(value * 100)}%`;
-      if (correlation === '') {
-        correlation = item;
-      } else {
-        correlation += `, ${item}`;
-      }
+      const symbol = corr[line];
+      correlation = correlation === '' ? symbol : `${correlation}, ${symbol}`;
     }
     return correlation === '' ? 'None' : correlation;
   };

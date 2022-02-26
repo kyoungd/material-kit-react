@@ -47,7 +47,7 @@ const EXPLAINERS = require('./UserButtonSetup.json');
 
 User.propTypes = {
   favorites: PropTypes.object.isRequired,
-  symbols: PropTypes.object.isRequired,
+  symbols: PropTypes.array.isRequired,
   userDispatch: PropTypes.func.isRequired
 };
 
