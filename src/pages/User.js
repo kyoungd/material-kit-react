@@ -308,6 +308,7 @@ export default function User(props) {
                         threebars,
                         relvol,
                         vpro,
+                        td,
                         engulf,
                         ema20,
                         ema50,
@@ -351,7 +352,7 @@ export default function User(props) {
                           </TableCell>
                           <TableCell align="left">${price}</TableCell>
                           <TableCell align="left">
-                            {trend} / {reverse}
+                            {trend} / {reverse} / {td}
                           </TableCell>
                           <TableCell align="left">
                             {keylevel ? 'SR' : '-'}/{vpro ? 'V' : '-'}

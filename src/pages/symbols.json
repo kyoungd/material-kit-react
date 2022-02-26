@@ -23,6 +23,8 @@
     "vpro": "data['vpro']",
     "volumeprofile": "data['vpro']",
     "vprofile": "data['vpro']",
+    "trending": "data['td']",
+    "streaking": "data['td']",
     "%": "",
     "$": "",
     "rsi": "data['rsi']",

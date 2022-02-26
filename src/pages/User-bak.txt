@@ -304,6 +304,7 @@ export default function User() {
                         threebars,
                         relvol,
                         vpro,
+                        td,
                         engulf,
                         ema20,
                         ema50,
