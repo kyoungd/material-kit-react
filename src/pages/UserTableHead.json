@@ -13,9 +13,9 @@
     },
     {
         "id": "trend",
-        "label": "Trend/Rev",
+        "label": "Trend/Rev/Stk",
         "alignRight": false,
-        "info": "trend/Reverse count"
+        "info": "trend/Reverse/Streak count"
     },
     {
         "id": "keylevel",
