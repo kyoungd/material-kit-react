@@ -18,7 +18,8 @@ import {
 import { LoadingButton } from '@mui/lab';
 
 // context
-import { useUserDispatch, loginUser, registerUser } from '../../UserContext';
+import { useUserDispatch, loginUser } from '../../UserContext';
+// import { useUserDispatch, loginUser, registerUser } from '../../UserContext';
 
 // ----------------------------------------------------------------------
 
@@ -56,7 +57,8 @@ export default function LoginForm() {
     }
   });
 
-  const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
+  // const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
+  const { errors, touched, values, handleSubmit, getFieldProps } = formik;
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
@@ -107,15 +109,10 @@ export default function LoginForm() {
           </Link>
         </Stack>
 
-        <LoadingButton
-          fullWidth
-          size="large"
-          type="submit"
-          variant="contained"
-          loading={isSubmitting}
-        >
+        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isLoading}>
           Login
         </LoadingButton>
+        {error && <p>{error}</p>}
       </Form>
     </FormikProvider>
   );

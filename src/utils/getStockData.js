@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 function dateFormat(date, fstr, utc) {
   utc = utc ? 'getUTC' : 'get';
   return fstr.replace(/%[YmdHMS]/g, (m) => {

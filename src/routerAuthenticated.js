@@ -26,7 +26,13 @@ export default function RouterAuthenticated() {
         { path: 'app', element: <DashboardApp /> },
         {
           path: 'user',
-          element: <User symbols={symbols} favorites={favorites} userDispatch={userDispatch} />
+          element: (
+            <User
+              symbols={symbols.length === undefined ? [] : symbols}
+              favorites={favorites}
+              userDispatch={userDispatch}
+            />
+          )
         },
         { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products /> },

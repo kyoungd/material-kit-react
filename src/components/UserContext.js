@@ -101,10 +101,6 @@ function saveFavorites(favorites) {
     });
 }
 
-function setFavorites(dispatch, token, setIsLoading, setError, favorites) {
-  // const { favorites } = UserProvider();
-}
-
 function getSymbols(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
@@ -210,7 +206,6 @@ function signOut(dispatch) {
 
 export {
   getFavorites,
-  setFavorites,
   getSymbols,
   UserProvider,
   useUserState,

@@ -5,16 +5,16 @@ import ModalVideo from 'react-modal-video';
 // components
 import Page from '../components/Page';
 import {
-  AppTasks,
-  AppNewUsers,
   AppBugReports,
   AppItemOrders,
   AppNewsUpdate,
-  AppWeeklySales,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite
+  AppOrderTimeline
+  // AppTasks,
+  // AppNewUsers,
+  // AppWeeklySales,
+  // AppCurrentVisits,
+  // AppWebsiteVisits,
+  // AppTrafficBySite
 } from '../components/_dashboard/app';
 import { useUserDispatch, getFavorites, getSymbols, useUserState } from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';

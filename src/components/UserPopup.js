@@ -6,14 +6,14 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import FormControl from '@mui/material/FormControl';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Select from '@mui/material/Select';
+// import Switch from '@mui/material/Switch';
 import IconButton from '@mui/material/IconButton';
 import { Icon } from '@iconify/react';
 import eyeFill from '@iconify/icons-eva/eye-fill';
@@ -25,8 +25,6 @@ UserPopup.propTypes = {
 
 export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('md');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,17 +32,6 @@ export default function UserPopup(props) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleMaxWidthChange = (event) => {
-    setMaxWidth(
-      // @ts-expect-error autofill of arbitrary value is not handled.
-      event.target.value
-    );
-  };
-
-  const handleFullWidthChange = (event) => {
-    setFullWidth(event.target.checked);
   };
 
   const showCorrelations = (corr) => {
@@ -93,7 +80,7 @@ export default function UserPopup(props) {
       <IconButton aria-label="fingerprint" color="secondary" onClick={handleClickOpen}>
         <Icon icon={eyeFill} color="#1C9CEA" width={32} height={32} />
       </IconButton>
-      <Dialog fullWidth={fullWidth} maxWidth={maxWidth} open={open} onClose={handleClose}>
+      <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose}>
         <DialogTitle>{props.data.name}</DialogTitle>
         <DialogContent>
           <Typography component="div">

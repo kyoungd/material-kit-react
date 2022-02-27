@@ -1,14 +1,13 @@
 // import { filter } from 'lodash';
-import { Icon } from '@iconify/react';
+// import { Icon } from '@iconify/react';
 // import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import plusFill from '@iconify/icons-eva/plus-fill';
-import { Link as RouterLink } from 'react-router-dom';
+// import plusFill from '@iconify/icons-eva/plus-fill';
+// import { Link as RouterLink } from 'react-router-dom';
 // material
 import {
   Card,
-  Grid,
   Table,
   Stack,
   Button,
@@ -22,19 +21,14 @@ import {
   Typography
 } from '@mui/material';
 
-import axios from 'axios';
-
 // components
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
+import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
+// import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 //
 import { GetUsers } from '../_mocks_/user';
-import UserRank from '../components/UserRank';
-import UserDescription from '../components/UserDescription';
-
-import { useUserState, useUserDispatch } from '../components/UserContext';
 import Chart from '../components/stockchart/Charts';
 import getStockData from '../utils/getStockData';
 import UserPopup from '../components/UserPopup';
@@ -126,18 +120,23 @@ export default function User(props) {
 
   useEffect(() => {
     console.log('useEffect - initialize');
-    if (USERLIST.length === 0) setUserList(props.symbols);
-    if (Object.keys(stockFavorites).length === 0) setStockFavorites(props.favorites);
-    if (Object.entries(props.favorites).length > 0) {
-      const newSelecteds = Object.keys(props.favorites).map((n) => n);
-      setSelected(newSelecteds);
-    }
+    setUserList(props.symbols);
+    setStockFavorites(props.favorites);
+    const newSelecteds = Object.keys(props.favorites).map((n) => n);
+    setSelected(newSelecteds);
+
+    // if (USERLIST.length === 0) setUserList(props.symbols);
+    // if (Object.keys(stockFavorites).length === 0) setStockFavorites(props.favorites);
+    // if (Object.entries(props.favorites).length > 0) {
+    //   const newSelecteds = Object.keys(props.favorites).map((n) => n);
+    //   setSelected(newSelecteds);
+    // }
     return () => {
       console.log('useEffect - return');
       props.userDispatch({ type: 'FAVORITES', payload: props.favorites, work: 'SAVE' });
       console.log('useEffect.  Save chagnes in props.favorites');
     };
-  }, []);
+  }, [props]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';

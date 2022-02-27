@@ -17,13 +17,8 @@ StockSearchButtons.propTypes = {
 };
 
 export default function StockSearchButtons(props) {
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('md');
-
   const showButtonGroup = (data, searchFunc) => {
-    const firstSize = data.length;
-    const secondSize = 1;
-    const code = data.map((line, index) => (
+    const code = data.map((line) => (
       <Grid key={line.id} item xs={12} sm={2}>
         <Box fontWeight="fontWeightMedium" display="inline">
           <Tooltip title={line.info}>
@@ -39,7 +34,7 @@ export default function StockSearchButtons(props) {
 
   return (
     <>
-      <Box fullWidth={fullWidth} maxWidth={maxWidth}>
+      <Box fullWidth="md" maxWidth>
         <Typography component="div">
           <Grid container spacing={3}>
             {showButtonGroup(props.data, props.searchFunc)}
