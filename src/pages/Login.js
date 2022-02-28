@@ -77,6 +77,8 @@ export default function Login() {
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
+              Search stock patterns as well as technical indicators.
+              <br />
               You can register or use this account to test our app.
               <br />
               guest@tradesimp.com <br />

@@ -81,9 +81,9 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
       dispatch({ type: 'FAVORITES', payload: jsondata });
     })
     .catch((e) => {
-      setIsLoading(false);
-      setError(e.response);
-      console.log('An error occurred:', e.response);
+      const jsondata = {};
+      dispatch({ type: 'FAVORITES', payload: jsondata });
+      console.log('UserContext.getFavorites(). Warning:', e.response);
     });
 }
 
@@ -121,6 +121,14 @@ function getSymbols(dispatch, token, setIsLoading, setError) {
     });
 }
 
+function loginSuccess(dispatch, navigate, user, jwt) {
+  localStorage.setItem('id_token', jwt);
+  dispatch({ type: 'LOGIN_SUCCESS', payload: user });
+  setTimeout(() => {
+    navigate('/dashboard/app', { replace: true });
+  }, 2000);
+}
+
 function loginUser(dispatch, login, password, navigate, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
@@ -143,7 +151,7 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
 
         setTimeout(() => {
           navigate('/dashboard/app', { replace: true });
-        }, 1000);
+        }, 2000);
 
         // history.push('/app/dashboard');
       })
@@ -211,6 +219,7 @@ export {
   useUserState,
   useUserDispatch,
   loginUser,
+  loginSuccess,
   signOut,
   registerUser
 };
