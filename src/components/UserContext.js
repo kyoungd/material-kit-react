@@ -126,7 +126,7 @@ function loginSuccess(dispatch, navigate, user, jwt) {
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
   setTimeout(() => {
     navigate('/dashboard/app', { replace: true });
-  }, 2000);
+  }, 500);
 }
 
 function loginUser(dispatch, login, password, navigate, setIsLoading, setError) {
@@ -151,7 +151,7 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
 
         setTimeout(() => {
           navigate('/dashboard/app', { replace: true });
-        }, 2000);
+        }, 500);
 
         // history.push('/app/dashboard');
       })
