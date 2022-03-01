@@ -18,9 +18,11 @@ export default function AuthSocial() {
           </Button>
         </a>
 
-        <Button fullWidth size="large" color="inherit" variant="outlined">
-          <Icon icon={facebookFill} color="#1877F2" height={24} />
-        </Button>
+        <a href={`${backendUrl}/api/connect/facebook`}>
+          <Button fullWidth size="large" color="inherit" variant="outlined">
+            <Icon icon={facebookFill} color="#1877F2" height={24} />
+          </Button>
+        </a>
 
         <Button fullWidth size="large" color="inherit" variant="outlined">
           <Icon icon={twitterFill} color="#1C9CEA" height={24} />

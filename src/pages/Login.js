@@ -93,7 +93,7 @@ export default function Login() {
                 onClose={() => setOpen1(false)}
               />
               <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                VIDEO INTRODUCTION
+                INTRODUCTION
               </Button>
             </Typography>
             <Typography sx={{ color: 'text.secondary', padding: 1 }}>
@@ -105,7 +105,7 @@ export default function Login() {
                 onClose={() => setOpen2(false)}
               />
               <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                DEMONSTRATION 1
+                DEMONSTRATION
               </Button>
             </Typography>
           </Stack>
