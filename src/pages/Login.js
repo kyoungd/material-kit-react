@@ -84,30 +84,32 @@ export default function Login() {
               guest@tradesimp.com <br />
               password
             </Typography>
-            <Typography sx={{ color: 'text.secondary', padding: 1 }}>
-              <ModalVideo
-                channel="youtube"
-                autoplay
-                isOpen={isOpen1}
-                videoId="9Pc226w3HFM"
-                onClose={() => setOpen1(false)}
-              />
-              <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                INTRODUCTION
-              </Button>
-            </Typography>
-            <Typography sx={{ color: 'text.secondary', padding: 1 }}>
-              <ModalVideo
-                channel="youtube"
-                autoplay
-                isOpen={isOpen2}
-                videoId="lqAEJIjPB38"
-                onClose={() => setOpen2(false)}
-              />
-              <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                DEMONSTRATION
-              </Button>
-            </Typography>
+            <Stack direction="row" spacing={2}>
+              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
+                <ModalVideo
+                  channel="youtube"
+                  autoplay
+                  isOpen={isOpen1}
+                  videoId="9Pc226w3HFM"
+                  onClose={() => setOpen1(false)}
+                />
+                <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
+                  INTRODUCTION
+                </Button>
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
+                <ModalVideo
+                  channel="youtube"
+                  autoplay
+                  isOpen={isOpen2}
+                  videoId="lqAEJIjPB38"
+                  onClose={() => setOpen2(false)}
+                />
+                <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
+                  DEMONSTRATION
+                </Button>
+              </Typography>
+            </Stack>
           </Stack>
           <AuthSocial />
 
