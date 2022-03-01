@@ -81,8 +81,6 @@ export default function Login() {
               <br />
               You can register or use this account to test our app.
               <br />
-              guest@tradesimp.com <br />
-              password
             </Typography>
             <Stack direction="row" spacing={2}>
               <Typography sx={{ color: 'text.secondary', padding: 1 }}>

@@ -17,6 +17,7 @@ export default function RouterUnauthenticatd() {
       children: [
         { path: '/connect/google/redirect', element: <LoginRedirect providerName="google" /> },
         { path: '/connect/facebook/redirect', element: <LoginRedirect providerName="facebook" /> },
+        { path: '/connect/twitter/redirect', element: <LoginRedirect providerName="twitter" /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },

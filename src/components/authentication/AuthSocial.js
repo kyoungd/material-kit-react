@@ -24,9 +24,11 @@ export default function AuthSocial() {
           </Button>
         </a>
 
-        <Button fullWidth size="large" color="inherit" variant="outlined">
-          <Icon icon={twitterFill} color="#1C9CEA" height={24} />
-        </Button>
+        <a href={`${backendUrl}/api/connect/twitter`}>
+          <Button fullWidth size="large" color="inherit" variant="outlined">
+            <Icon icon={twitterFill} color="#1C9CEA" height={24} />
+          </Button>
+        </a>
       </Stack>
 
       <Divider sx={{ my: 3 }}>
