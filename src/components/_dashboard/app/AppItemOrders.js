@@ -3,7 +3,7 @@
 // // material
 // import { alpha, styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
-import { Typography } from '@mui/material';
+import { Typography, LinearProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { styled } from '@mui/material/styles';
 // import { Card, Typography, Button } from '@mui/material';
@@ -56,7 +56,8 @@ export default function AppItemOrders({ dispatch, getFavorites, token }) {
 
   return (
     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-      {isLoading ? 'Favorite Loading...' : ''}
+      {isLoading ? 'LOADING FAVORITES' : ''}
+      {isLoading ? <LinearProgress /> : ''}
       {error}
     </Typography>
   );

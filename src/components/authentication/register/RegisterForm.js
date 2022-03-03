@@ -6,35 +6,45 @@ import eyeFill from '@iconify/icons-eva/eye-fill';
 import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 import { useNavigate } from 'react-router-dom';
 // material
-import { Stack, TextField, IconButton, InputAdornment } from '@mui/material';
+import { Stack, TextField, IconButton, InputAdornment, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-
 // ----------------------------------------------------------------------
+import { registerUser, useUserDispatch } from '../../UserContext';
 
 export default function RegisterForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const userDispatch = useUserDispatch();
 
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string()
+    userName: Yup.string()
       .min(2, 'Too Short!')
       .max(50, 'Too Long!')
       .required('First name required'),
-    lastName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Last name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().required('Password is required')
   });
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      userName: '',
       email: '',
       password: ''
     },
     validationSchema: RegisterSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
+    onSubmit: (formValues) => {
+      registerUser(
+        userDispatch,
+        navigate,
+        formValues.userName,
+        formValues.email,
+        formValues.password,
+        setIsLoading,
+        setMessage
+      );
     }
   });
 
@@ -44,24 +54,13 @@ export default function RegisterForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <TextField
-              fullWidth
-              label="First name"
-              {...getFieldProps('firstName')}
-              error={Boolean(touched.firstName && errors.firstName)}
-              helperText={touched.firstName && errors.firstName}
-            />
-
-            <TextField
-              fullWidth
-              label="Last name"
-              {...getFieldProps('lastName')}
-              error={Boolean(touched.lastName && errors.lastName)}
-              helperText={touched.lastName && errors.lastName}
-            />
-          </Stack>
-
+          <TextField
+            fullWidth
+            label="user name"
+            {...getFieldProps('userName')}
+            error={Boolean(touched.userName && errors.userName)}
+            helperText={touched.userName && errors.userName}
+          />
           <TextField
             fullWidth
             autoComplete="username"
@@ -71,7 +70,6 @@ export default function RegisterForm() {
             error={Boolean(touched.email && errors.email)}
             helperText={touched.email && errors.email}
           />
-
           <TextField
             fullWidth
             autoComplete="current-password"
@@ -90,7 +88,8 @@ export default function RegisterForm() {
             error={Boolean(touched.password && errors.password)}
             helperText={touched.password && errors.password}
           />
-
+          {isLoading && <Typography sx={{ color: 'text.secondary' }}>Loading...</Typography>}
+          {message && <Typography sx={{ color: 'text.secondary' }}>{message}</Typography>}
           <LoadingButton
             fullWidth
             size="large"

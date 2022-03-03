@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import { setMilliseconds } from 'date-fns';
 import { GetUsers } from '../_mocks_/user';
 
 const UserStateContext = React.createContext();
@@ -175,34 +176,38 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
   }
 }
 
-function registerUser(dispatch, name, login, password, history, setIsLoading, setError) {
+function registerUser(dispatch, navigate, name, email, password, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
   const url =
     process.env.REACT_APP_SERVER_REGISTER || 'http://localhost:1337/api/auth/local/register';
-  if (!!name && !!login && !!password) {
+  if (!!name && !!email && !!password) {
     axios
       .post(url, {
         username: name,
-        email: login,
+        email,
         password
       })
       .then((response) => {
         // Handle success.
-        console.log('User profile', response.data.user);
-        console.log('User token', response.data.jwt);
-        setError(null);
+        // console.log('User profile', response.data.user);
+        // console.log('User token', response.data.jwt);
+        localStorage.setItem('id_token', response.data.jwt);
+        setError('');
         setIsLoading(false);
-        dispatch({ type: 'REGISTRATION_SUCCESS', payload: response.data.user });
-        history.push('/dashboard/app');
+        dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
+        setTimeout(() => {
+          navigate('/dashboard/app', { replace: true });
+        }, 500);
       })
       .catch((error) => {
         // Handle error.
+        setIsLoading(false);
+        setError(error);
         console.log('An error occurred:', error.response);
       });
   } else {
-    dispatch({ type: 'REGISTRATION_FAILURE' });
-    setError(true);
+    setError('Registration failed.  Missing username, email or password.');
     setIsLoading(false);
   }
 }

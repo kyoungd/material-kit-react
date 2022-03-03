@@ -17,18 +17,18 @@ import { fDateTime } from '../../../utils/formatTime';
 
 const TIMELINES = [
   {
-    title: 'Production Release (Paid)',
-    time: '2022-04-01T08:00:00.000Z',
+    title: 'Email Registration added',
+    time: '2022-03-01T08:00:00.000Z',
     type: 'order1'
   },
   {
-    title: 'Beta Release (Free)',
-    time: '2022-03-01T08:00:00.000Z',
+    title: 'Google, Facebook, Twitter Sign-in added',
+    time: '2022-02-28T08:00:00.000Z',
     type: 'order2'
   },
   {
-    title: 'Video Tutorial',
-    time: '2022-03-01T08:00:00.000Z',
+    title: 'Data overflow error fixed',
+    time: '2022-02-26T08:00:00.000Z',
     type: 'order3'
   },
   {

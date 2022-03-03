@@ -15,8 +15,9 @@ import Scrollbar from '../../Scrollbar';
 
 const NEWS = [
   {
-    title: 'Near a major support resistance and close < 50 and fibonachi retrace ',
-    description: 'level = yes and price < 50 and fib = yes',
+    title: 'How to find stocks to trade',
+    description:
+      'Wait until two green buttons are lit.  When the lights are gree, click on the stock menu',
     image: mockImgCover(1),
     postedAt: faker.date.soon()
   },

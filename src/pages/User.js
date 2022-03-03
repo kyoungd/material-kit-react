@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 // import { filter } from 'lodash';
 // import { Icon } from '@iconify/react';
 // import { sentenceCase } from 'change-case';
@@ -235,10 +237,55 @@ export default function User(props) {
     return result.length > 0 ? result : '-';
   };
 
+  const buildWeekData = (weekdata) => {
+    const { open } = weekdata[0];
+    const { close } = weekdata[weekdata.length - 1];
+    const high = Math.max(...weekdata.map((row) => row.high));
+    const low = Math.min(...weekdata.map((row) => row.low));
+    const volume = weekdata.map((row) => row.volume).reduce((a, b) => a + b);
+    return { date: weekdata[0].date, open, close, high, low, volume };
+  };
+
+  const dailyToWeeklyStockData = (daily) => {
+    // eslint-disable-next-line no-restricted-syntax
+    // eslint-disable-next-line guard-for-in
+    const weekly = [];
+    let weekdata = [];
+    let lastDayOfWeek = 0;
+    for (const day in daily) {
+      const row = daily[day];
+      const dayOfWeek = row.date.getDay();
+      if (lastDayOfWeek < dayOfWeek) weekdata.push(row);
+      else {
+        if (weekdata.length > 0) {
+          weekly.push(buildWeekData(weekdata));
+          weekdata = [];
+        }
+        weekdata.push(row);
+      }
+      lastDayOfWeek = dayOfWeek;
+      console.log(day);
+    }
+    if (weekdata.length > 0) weekly.push(buildWeekData(weekdata));
+    return weekly;
+  };
+
   const fib1 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
   const fib2 =
     fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib2 : 0;
+
+  const isNoSelection = chartSymbol === '' || stockData[chartSymbol] === undefined;
+
+  let daily;
+  let weekly;
+  if (!isNoSelection) {
+    daily = stockData[chartSymbol];
+    if (daily !== undefined && daily !== null) {
+      // eslint-disable-next-line no-unused-vars
+      weekly = dailyToWeeklyStockData(daily);
+    }
+  }
 
   return (
     <Page title="Stocks | TradeSimp">
@@ -249,19 +296,31 @@ export default function User(props) {
           </Typography>
         </Stack>
 
-        {chartSymbol === '' || stockData[chartSymbol] === undefined ? (
+        {isNoSelection ? (
           <></>
         ) : (
-          <Card>
-            <Chart
-              type="svg"
-              data={stockData[chartSymbol]}
-              price={stateKeyLevel}
-              fib1={fib1}
-              fib2={fib2}
-              symbol={chartSymbol}
-            />
-          </Card>
+          <>
+            <Card>
+              <Chart
+                type="svg"
+                data={daily}
+                price={stateKeyLevel}
+                fib1={fib1}
+                fib2={fib2}
+                symbol={chartSymbol}
+              />
+            </Card>
+            <Card>
+              <Chart
+                type="svg"
+                data={weekly}
+                price={stateKeyLevel}
+                fib1={fib1}
+                fib2={fib2}
+                symbol={chartSymbol}
+              />
+            </Card>
+          </>
         )}
 
         <Card>

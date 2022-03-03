@@ -1,6 +1,7 @@
 // material
 import { useState } from 'react';
-import { Button, Box, Grid, Container, Typography } from '@mui/material';
+import { Button, Box, Grid, Container, Typography, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import ModalVideo from 'react-modal-video';
 // components
 import Page from '../components/Page';
@@ -89,6 +90,13 @@ export default function DashboardApp() {
           )}
           {Object.keys(symbols).length <= 0 ? (
             <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+          ) : (
+            <></>
+          )}
+          {Object.keys(favorites).length > 0 && Object.keys(symbols).length > 0 ? (
+            <Link underline="none" variant="subtitle2" component={RouterLink} to="/dashboard/user">
+              FIND STOCKS TO TRADE
+            </Link>
           ) : (
             <></>
           )}

@@ -2,7 +2,7 @@
 // import bugFilled from '@iconify/icons-ant-design/bug-filled';
 // // material
 // import { alpha, styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+import { Typography, LinearProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import { styled } from '@mui/material/styles';
@@ -58,7 +58,8 @@ export default function AppBugReports({ dispatch, getSymbols, token }) {
 
   return (
     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-      {isLoading ? 'Symbol Loading... ' : ''}
+      {isLoading ? 'LOADING SYMBOLS' : ''}
+      {isLoading ? <LinearProgress /> : ''}
       {error}
     </Typography>
   );

@@ -70,16 +70,11 @@ export default function Login() {
             <Typography variant="h4" gutterBottom>
               TradeSimp
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
-              {' '}
-              FIND MORE QUALITY TRADES WITH EASE.
-            </Typography>
+            <Typography sx={{ color: 'text.secondary' }}> FIND STOCKS TO TRADE.</Typography>
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
-              Search stock patterns as well as technical indicators.
-              <br />
-              You can register or use this account to test our app.
+              Find quality stocks to trade using patterns and indicators.
               <br />
             </Typography>
             <Stack direction="row" spacing={2}>
