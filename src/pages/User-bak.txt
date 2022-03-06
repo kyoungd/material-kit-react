@@ -301,7 +301,6 @@ export default function User() {
                         keylevels,
                         fibonachi,
                         fibs,
-                        threebars,
                         relvol,
                         vpro,
                         td,
@@ -313,6 +312,9 @@ export default function User() {
                         dtop,
                         ogap,
                         rsi,
+                        vc,
+                        wh,
+                        wr,
                         floats,
                         floatp
                       } = row;

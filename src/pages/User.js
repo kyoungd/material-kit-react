@@ -363,7 +363,6 @@ export default function User(props) {
                         keylevels,
                         fibonachi,
                         fibs,
-                        threebars,
                         relvol,
                         vpro,
                         td,
@@ -375,6 +374,9 @@ export default function User(props) {
                         dtop,
                         ogap,
                         rsi,
+                        vc,
+                        wh,
+                        wr,
                         floats,
                         floatp
                       } = row;
@@ -422,7 +424,7 @@ export default function User(props) {
                           </TableCell>
                           <TableCell align="left">
                             {engulf ? 'E' : '-'}/{dtop ? 'D' : '-'}/{rsi ? 'R' : '-'}/
-                            {fibonachi ? 'F' : '-'}/{threebars ? '3' : '-'}
+                            {fibonachi ? 'F' : '-'}/-
                           </TableCell>
                           <TableCell align="right">
                             <UserPopup data={row} />

@@ -106,7 +106,6 @@ export function GetUsers(stocksIn) {
       keylevels,
       fibonachi,
       fibs,
-      threebars,
       ema20,
       ema50,
       ema200,
@@ -117,6 +116,9 @@ export function GetUsers(stocksIn) {
       rsi,
       trend,
       reverse,
+      vc,
+      wr,
+      wh,
       floats,
       floatp
     } = stock;
@@ -136,7 +138,6 @@ export function GetUsers(stocksIn) {
       keylevels,
       fibonachi,
       fibs,
-      threebars,
       relvol,
       vpro,
       td,
@@ -150,6 +151,9 @@ export function GetUsers(stocksIn) {
       gaps,
       dtop,
       ogap,
+      vc,
+      wr,
+      wh,
       floats,
       floatp
     };
