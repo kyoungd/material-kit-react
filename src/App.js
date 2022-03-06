@@ -9,13 +9,14 @@ import GlobalStyles from './theme/globalStyles';
 import ScrollToTop from './components/ScrollToTop';
 import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 // context
+import { CookieUserAuthenticated } from './utils/cookies';
 import { useUserState } from './components/UserContext';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
   // global
-  const { isAuthenticated } = useUserState();
+  const isAuthenticated = CookieUserAuthenticated();
 
   return (
     <ThemeConfig>

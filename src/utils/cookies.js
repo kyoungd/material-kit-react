@@ -1,4 +1,3 @@
-
 export function setWithExpiry(key, value, ttl) {
   const now = new Date();
 
@@ -27,4 +26,63 @@ export function getWithExpiry(key) {
     return null;
   }
   return item.value;
+}
+
+const keyToken = 'token';
+const keySymbols = 'symbols';
+const keyFavorites = 'favorites';
+const oneMinute = 1000 * 60;
+const oneHour = 1000 * 60 * 60;
+
+export function CookieSetToken(value) {
+  setWithExpiry(keyToken, value, oneMinute * 30);
+}
+
+export function CookieSetFavorites(value) {
+  setWithExpiry(keyFavorites, value, oneHour * 8);
+}
+
+export function CookieSetSymbols(value) {
+  setWithExpiry(keySymbols, value, oneHour * 8);
+}
+
+export function CookieUserAuthenticated() {
+  return !!getWithExpiry(keyToken);
+}
+
+export function CookieGetToken() {
+  const token = getWithExpiry(keyToken);
+  if (token) {
+    CookieSetToken(token); // refresh token
+  } else {
+    if (CookieGetFavorites()) CookieDeleteFavorites();
+    if (CookieGetSymbols()) CookieDeleteSymbols();
+  }
+  return token;
+}
+
+export function CookieSignOut() {
+  if (CookieGetFavorites()) CookieDeleteFavorites();
+  if (CookieGetSymbols()) CookieDeleteSymbols();
+  if (CookieGetToken()) CookieDeleteToken();
+}
+
+export function CookieGetFavorites() {
+  return getWithExpiry(keyFavorites);
+}
+
+export function CookieGetSymbols() {
+  return getWithExpiry(keySymbols);
+}
+
+function CookieDeleteFavorites() {
+  localStorage.removeItem(keyFavorites);
+}
+
+function CookieDeleteSymbols() {
+  localStorage.removeItem(keySymbols);
+}
+
+function CookieDeleteToken() {
+  localStorage.removeItem(keyToken);
 }

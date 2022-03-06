@@ -17,6 +17,7 @@ import {
   // AppWebsiteVisits,
   // AppTrafficBySite
 } from '../components/_dashboard/app';
+import { CookieGetToken } from '../utils/cookies';
 import { useUserDispatch, getFavorites, getSymbols, useUserState } from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';
 
@@ -29,7 +30,7 @@ export default function DashboardApp() {
   const [isOpen4, setOpen4] = useState(false);
   const userDispatch = useUserDispatch();
   const { isAuthenticated, symbols, favorites } = useUserState();
-  const token = isAuthenticated ? localStorage.getItem('id_token') : '';
+  const token = isAuthenticated ? CookieGetToken() : '';
 
   return (
     <Page title="Dashboard | TradeSimp">

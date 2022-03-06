@@ -2,6 +2,16 @@ import React from 'react';
 import axios from 'axios';
 // import { setMilliseconds } from 'date-fns';
 import { GetUsers } from '../_mocks_/user';
+import {
+  CookieUserAuthenticated,
+  CookieGetFavorites,
+  CookieGetToken,
+  CookieGetSymbols,
+  CookieSetFavorites,
+  CookieSetToken,
+  CookieSetSymbols,
+  CookieSignOut
+} from '../utils/cookies';
 
 const UserStateContext = React.createContext();
 const UserDispatchContext = React.createContext();
@@ -11,11 +21,14 @@ function userReducer(state, action) {
     case 'LOGIN_SUCCESS':
       return { ...state, isAuthenticated: true };
     case 'SIGN_OUT_SUCCESS':
+      CookieSignOut();
       return { ...state, isAuthenticated: false };
     case 'SYMBOLS':
+      CookieSetSymbols(action.payload);
       return { ...state, symbols: action.payload };
     case 'FAVORITES':
       if ('work' in action && action.work === 'SAVE') {
+        CookieSetFavorites(action.payload);
         saveFavorites(action.payload);
       }
       return { ...state, favorites: action.payload };
@@ -29,7 +42,7 @@ function userReducer(state, action) {
 // eslint-disable-next-line react/prop-types
 function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: !!localStorage.getItem('id_token'),
+    isAuthenticated: CookieUserAuthenticated(),
     symbols: {},
     favorites: {},
     settings: {}
@@ -68,7 +81,7 @@ function makeBearToken(token) {
   };
 }
 
-function getFavorites(dispatch, token, setIsLoading, setError) {
+function downloadFavorite(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
@@ -82,14 +95,26 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
       dispatch({ type: 'FAVORITES', payload: jsondata });
     })
     .catch((e) => {
-      const jsondata = {};
-      dispatch({ type: 'FAVORITES', payload: jsondata });
-      console.log('UserContext.getFavorites(). Warning:', e.response);
+      setIsLoading(false);
+      setError(e.response);
+      console.log('An error occurred:', e.response);
     });
 }
 
+function getFavorites(dispatch, token, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const jsondata = CookieGetFavorites();
+  if (jsondata) {
+    dispatch({ type: 'FAVORITES', payload: jsondata });
+    setIsLoading(false);
+    setError(null);
+  } else downloadFavorite(dispatch, token, setIsLoading, setError);
+}
+
 function saveFavorites(favorites) {
-  const token = localStorage.getItem('id_token');
+  // const token = localStorage.getItem('id_token');
+  const token = CookieGetToken();
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   const bearerToken = makeBearToken(token);
   axios
@@ -102,7 +127,7 @@ function saveFavorites(favorites) {
     });
 }
 
-function getSymbols(dispatch, token, setIsLoading, setError) {
+function downloadSymbols(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
   const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
@@ -122,8 +147,15 @@ function getSymbols(dispatch, token, setIsLoading, setError) {
     });
 }
 
+function getSymbols(dispatch, token, setIsLoading, setError) {
+  const data = CookieGetSymbols();
+  if (data) dispatch({ type: 'SYMBOLS', payload: data });
+  else downloadSymbols(dispatch, token, setIsLoading, setError);
+}
+
 function loginSuccess(dispatch, navigate, user, jwt) {
-  localStorage.setItem('id_token', jwt);
+  CookieSetToken(jwt);
+  // localStorage.setItem('id_token', jwt);
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
   setTimeout(() => {
     navigate('/dashboard/app', { replace: true });
@@ -145,7 +177,8 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
         // Handle success.
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
-        localStorage.setItem('id_token', response.data.jwt);
+        CookieSetToken(response.data.jwt);
+        // localStorage.setItem('id_token', response.data.jwt);
         setError(null);
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
@@ -192,7 +225,8 @@ function registerUser(dispatch, navigate, name, email, password, setIsLoading, s
         // Handle success.
         // console.log('User profile', response.data.user);
         // console.log('User token', response.data.jwt);
-        localStorage.setItem('id_token', response.data.jwt);
+        // localStorage.setItem('id_token', response.data.jwt);
+        CookieSetToken(response.data.jwt);
         setError('');
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
@@ -213,7 +247,7 @@ function registerUser(dispatch, navigate, name, email, password, setIsLoading, s
 }
 
 function signOut(dispatch) {
-  localStorage.removeItem('id_token');
+  // localStorage.removeItem('id_token');
   dispatch({ type: 'SIGN_OUT_SUCCESS' });
 }
 

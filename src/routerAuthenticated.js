@@ -22,7 +22,7 @@ export default function RouterAuthenticated() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" replace /> },
+        { element: <Navigate to="/dashboard/app" replace="true" /> },
         { path: 'app', element: <DashboardApp /> },
         {
           path: 'user',
