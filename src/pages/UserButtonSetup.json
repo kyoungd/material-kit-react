@@ -18,6 +18,12 @@
         "text": "vc >= 700"
     },
     {
+        "id": "wick",
+        "label": "Long Wick",
+        "info": "Long Wick is a good future trend indicator.",
+        "text": "(wicksize > 400 or wick > 300) and level"
+    },
+    {
         "id": "rsi",
         "label": "RSI Diverge",
         "info": "Price is near a weekly support and resistance, and recent RSI divergence.",
