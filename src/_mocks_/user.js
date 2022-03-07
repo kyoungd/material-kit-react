@@ -119,6 +119,7 @@ export function GetUsers(stocksIn) {
       vc,
       wr,
       wh,
+      pj,
       floats,
       floatp
     } = stock;
@@ -154,6 +155,7 @@ export function GetUsers(stocksIn) {
       vc,
       wr,
       wh,
+      pj,
       floats,
       floatp
     };

@@ -157,9 +157,7 @@ function loginSuccess(dispatch, navigate, user, jwt) {
   CookieSetToken(jwt);
   // localStorage.setItem('id_token', jwt);
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
-  setTimeout(() => {
-    navigate('/dashboard/app', { replace: true });
-  }, 500);
+  navigate('/dashboard/app', { replace: true });
 }
 
 function loginUser(dispatch, login, password, navigate, setIsLoading, setError) {
@@ -183,9 +181,7 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });
 
-        setTimeout(() => {
-          navigate('/dashboard/app', { replace: true });
-        }, 500);
+        navigate('/dashboard/app', { replace: true });
 
         // history.push('/app/dashboard');
       })
