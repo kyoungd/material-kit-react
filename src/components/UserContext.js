@@ -27,6 +27,7 @@ function userReducer(state, action) {
       CookieSetSymbols(action.payload);
       return { ...state, symbols: action.payload };
     case 'FAVORITES':
+      console.log('FAVORITES:', action);
       if ('work' in action && action.work === 'SAVE') {
         CookieSetFavorites(action.payload);
         saveFavorites(action.payload);
@@ -91,8 +92,13 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
     .then((result) => {
       setIsLoading(false);
       setError(null);
-      const jsondata = result.data.data[0] === undefined ? {} : result.data.data[0].attributes.data;
-      dispatch({ type: 'FAVORITES', payload: jsondata });
+      try {
+        const jsondata = result.data.data.attributes.data;
+        dispatch({ type: 'FAVORITES', payload: jsondata });
+      } catch (ex) {
+        console.log('downloadFavorite(): An error occurred:', ex);
+        dispatch({ type: 'FAVORITES', payload: [] });
+      }
     })
     .catch((e) => {
       setIsLoading(false);
@@ -105,11 +111,12 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
   const jsondata = CookieGetFavorites();
-  if (jsondata) {
+  if (jsondata === null) downloadFavorite(dispatch, token, setIsLoading, setError);
+  else {
     dispatch({ type: 'FAVORITES', payload: jsondata });
     setIsLoading(false);
     setError(null);
-  } else downloadFavorite(dispatch, token, setIsLoading, setError);
+  }
 }
 
 function saveFavorites(favorites) {
@@ -120,7 +127,7 @@ function saveFavorites(favorites) {
   axios
     .post(url, favorites, bearerToken)
     .then(() => {
-      console.log('favorite saved to server');
+      console.log('saveFavorites(): favorite saved to server');
     })
     .catch((e) => {
       console.log('saveFavorites():  An error occurred:', e.response);
@@ -149,8 +156,8 @@ function downloadSymbols(dispatch, token, setIsLoading, setError) {
 
 function getSymbols(dispatch, token, setIsLoading, setError) {
   const data = CookieGetSymbols();
-  if (data) dispatch({ type: 'SYMBOLS', payload: data });
-  else downloadSymbols(dispatch, token, setIsLoading, setError);
+  if (data === null) downloadSymbols(dispatch, token, setIsLoading, setError);
+  else dispatch({ type: 'SYMBOLS', payload: data });
 }
 
 function loginSuccess(dispatch, navigate, user, jwt) {

@@ -14,7 +14,6 @@ import { useUserState, useUserDispatch } from './components/UserContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
-import PageLoginSuccess from './pages/PageLoginSuccess';
 
 // --------------------------------- yes -------------------------------------
 
@@ -55,7 +54,6 @@ export default function Router() {
         { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
         { path: '/', element: <Navigate to="/login" /> },
-        { path: '/loginsuccess', element: <PageLoginSuccess /> },
         { path: '*', element: <Navigate to="/404" /> }
       ]
     },

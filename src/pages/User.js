@@ -126,18 +126,6 @@ export default function User(props) {
     setStockFavorites(props.favorites);
     const newSelecteds = Object.keys(props.favorites).map((n) => n);
     setSelected(newSelecteds);
-
-    // if (USERLIST.length === 0) setUserList(props.symbols);
-    // if (Object.keys(stockFavorites).length === 0) setStockFavorites(props.favorites);
-    // if (Object.entries(props.favorites).length > 0) {
-    //   const newSelecteds = Object.keys(props.favorites).map((n) => n);
-    //   setSelected(newSelecteds);
-    // }
-    return () => {
-      console.log('useEffect - return');
-      props.userDispatch({ type: 'FAVORITES', payload: props.favorites, work: 'SAVE' });
-      console.log('useEffect.  Save chagnes in props.favorites');
-    };
   }, [props]);
 
   const handleRequestSort = (event, property) => {
@@ -199,6 +187,7 @@ export default function User(props) {
     } else {
       delete stocks[name];
     }
+    props.userDispatch({ type: 'FAVORITES', payload: stocks, work: 'SAVE' });
     setStockFavorites(stocks);
     setSelected(newSelected);
   };
@@ -264,7 +253,7 @@ export default function User(props) {
         weekdata.push(row);
       }
       lastDayOfWeek = dayOfWeek;
-      console.log(day);
+      // console.log(day);
     }
     if (weekdata.length > 0) weekly.push(buildWeekData(weekdata));
     return weekly;
