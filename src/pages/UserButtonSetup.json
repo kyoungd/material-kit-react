@@ -1,13 +1,13 @@
 [
     {
-        "id": "confluence",
-        "label": "Trending Wick",
+        "id": "trend",
+        "label": "Trend end with long wicks",
         "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
         "text": "level and ema50 and rev > 0 and rev <= 1.5 and wick > 250"
     },
     {
         "id": "trending",
-        "label": "Trending",
+        "label": "Long Trends",
         "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
         "text": "ema50 and rev > 0 and rev <= 1.5 and streak > 20"
     },
@@ -18,10 +18,10 @@
         "text": "vc >= 700"
     },
     {
-        "id": "wick",
-        "label": "Long Wick",
-        "info": "Long Wick is a good future trend indicator.",
-        "text": "(wicksize > 400 or wick > 300) and level"
+        "id": "doubletop",
+        "label": "Multiple Tops",
+        "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
+        "text": "dtop and level and ema50"
     },
     {
         "id": "rsi",
