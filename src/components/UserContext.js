@@ -182,7 +182,7 @@ function downloadStockData(pState, symbol, pushData, pushSymbol) {
           });
         });
         const newData = pState;
-        newData[symbol] = dataArray;
+        newData[symbol] = dataArray.reverse();
         pushData(newData);
         pushSymbol(symbol);
       } catch (ex) {
