@@ -160,6 +160,40 @@ function getSymbols(dispatch, token, setIsLoading, setError) {
   else dispatch({ type: 'SYMBOLS', payload: data });
 }
 
+function downloadStockData(pState, symbol, pushData, pushSymbol) {
+  const token = CookieGetToken();
+  const url = process.env.REACT_APP_ASSET_DATA_URL || 'http://localhost:1337/api/assets';
+  const fullUrl = `${url}?symbol=${symbol}&timeframe=1Day`;
+  const bearerToken = makeBearToken(token);
+  axios
+    .get(fullUrl, bearerToken)
+    .then((result) => {
+      try {
+        const { data } = result.data.data.attributes;
+        const dataArray = [];
+        data.forEach((item) => {
+          dataArray.push({
+            date: new Date(item.Date),
+            open: item.Open,
+            high: item.High,
+            low: item.Low,
+            close: item.Close,
+            volume: item.Volume
+          });
+        });
+        const newData = pState;
+        newData[symbol] = dataArray;
+        pushData(newData);
+        pushSymbol(symbol);
+      } catch (ex) {
+        console.log('downloadFavorite(): An error occurred:', ex);
+      }
+    })
+    .catch((e) => {
+      console.log('An error occurred:', e.response);
+    });
+}
+
 function loginSuccess(dispatch, navigate, user, jwt) {
   CookieSetToken(jwt);
   // localStorage.setItem('id_token', jwt);
@@ -263,5 +297,6 @@ export {
   loginUser,
   loginSuccess,
   signOut,
+  downloadStockData,
   registerUser
 };

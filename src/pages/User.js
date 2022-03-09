@@ -32,7 +32,9 @@ import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
 //
 import { GetUsers } from '../_mocks_/user';
 import Chart from '../components/stockchart/Charts';
-import getStockData from '../utils/getStockData';
+// import getStockData from '../utils/getStockData';
+import { downloadStockData } from '../components/UserContext';
+
 import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
 
@@ -146,7 +148,8 @@ export default function User(props) {
   };
 
   const handleSymbolButtonPress = (symbol) => {
-    getStockData(stockData, symbol, setStockData, setChartSymbol);
+    // getStockData(stockData, symbol, setStockData, setChartSymbol);
+    downloadStockData(stockData, symbol, setStockData, setChartSymbol);
     const item = USERLIST.find((user) => user.name === symbol);
     try {
       if (item) setStateKeyLevel(item.keylevels);
