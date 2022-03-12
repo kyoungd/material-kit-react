@@ -18,16 +18,16 @@
         "text": "level and rev > 1 and rev <= 2 and streak > 15"
     },
     {
-        "id": "vc",
-        "label": "Volume Climax",
-        "info": "Volume Climax within last 5 days.  VC is a good indicator for a trend change.",
-        "text": "vc >= 700"
-    },
-    {
         "id": "doubletop",
         "label": "Double Top",
         "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
         "text": "dtop and level and ema50"
+    },
+    {
+        "id": "vc",
+        "label": "Volume Climax",
+        "info": "Volume Climax within last 5 days.  VC is a good indicator for a trend change.",
+        "text": "vc >= 700"
     },
     {
         "id": "wickoff",

@@ -213,7 +213,10 @@ export default function User(props) {
 
   const getFilteredUsers = () => {
     if (USERLIST === []) return [];
-    if (showFavorites) return selected.map((key) => USERLIST.find((one) => one.name === key));
+    if (showFavorites) {
+      const filterSelected = selected.filter((key) => USERLIST.find((one) => one.name === key));
+      return filterSelected.map((key) => USERLIST.find((one) => one.name === key));
+    }
     return applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
   };
 
