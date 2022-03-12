@@ -19,7 +19,7 @@ StockSearchButtons.propTypes = {
 export default function StockSearchButtons(props) {
   const showButtonGroup = (data, searchFunc) => {
     const code = data.map((line) => (
-      <Grid key={line.id} item xs={12} sm={2}>
+      <Grid key={line.id} item xs={12} sm={1}>
         <Box fontWeight="fontWeightMedium" display="inline">
           <Tooltip title={line.info}>
             <Button variant="contained" color="primary" onClick={() => searchFunc(line.text)}>

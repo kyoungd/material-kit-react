@@ -1,21 +1,21 @@
 [
     {
         "id": "trend",
-        "label": "Reversal + Price Action",
+        "label": "Price Action",
         "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
-        "text": "level and rev > 0 and rev <= 1.5 and wick > 250"
+        "text": "level and streak > 15 and wick > 250"
     },
     {
         "id": "trending",
-        "label": "Reversal + Long Trend",
+        "label": "Reversal",
         "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and rev > 0 and rev <= 1.5 and streak > 20"
+        "text": "level and rev > 0 and rev <= 1 and streak > 15"
     },
     {
-        "id": "reversals",
-        "label": "Reversals",
+        "id": "newtrend",
+        "label": "New Trend",
         "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and rev > 0 and rev <= 1.5"
+        "text": "level and rev > 1 and rev <= 2 and streak > 15"
     },
     {
         "id": "vc",
@@ -25,15 +25,15 @@
     },
     {
         "id": "doubletop",
-        "label": "Double/Triple Top",
+        "label": "Double Top",
         "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
         "text": "dtop and level and ema50"
     },
     {
-        "id": "rsi",
-        "label": "RSI Diverge",
-        "info": "Price is near a weekly support and resistance, and recent RSI divergence.",
-        "text": "streak > 20 and rsi"
+        "id": "wickoff",
+        "label": "Wyckoff",
+        "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
+        "text": "ad price price > 5"
     },
     {
         "id": "gap",

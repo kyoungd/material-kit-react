@@ -343,6 +343,7 @@ export default function User(props) {
                     .map((row) => {
                       const {
                         id,
+                        ad,
                         name,
                         atr,
                         cik,

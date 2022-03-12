@@ -92,6 +92,7 @@ export function GetUsers(stocksIn) {
     const name = key;
     const stock = stocksIn[key];
     const {
+      ad,
       atr,
       avgatr,
       cik,
@@ -126,6 +127,7 @@ export function GetUsers(stocksIn) {
     const price = stock.close;
     const row = {
       id,
+      ad,
       name,
       atr,
       avgatr,
