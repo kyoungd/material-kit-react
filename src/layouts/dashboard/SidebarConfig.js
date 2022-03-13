@@ -19,7 +19,7 @@ const sidebarConfig = [
   },
   {
     title: 'tutorial',
-    path: '/dashboard/tutorial',
+    path: '/dashboard/products',
     icon: getIcon(alert)
   }
 ];

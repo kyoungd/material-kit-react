@@ -291,6 +291,14 @@ export default function User(props) {
           </Typography>
         </Stack>
 
+        <Container maxwidth={false}>
+          <StockSearchButtons
+            data={EXPLAINERS}
+            searchFunc={setFilterName}
+            resetFunc={setChartSymbol}
+          />
+        </Container>
+
         {isNoSelection ? (
           <></>
         ) : (
@@ -325,9 +333,6 @@ export default function User(props) {
             onFilterName={handleFilterByName}
           />
 
-          <Card>
-            <StockSearchButtons data={EXPLAINERS} searchFunc={setFilterName} />
-          </Card>
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
