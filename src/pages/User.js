@@ -369,6 +369,7 @@ export default function User(props) {
                         gap,
                         dtop,
                         ogap,
+                        oc,
                         rsi,
                         vc,
                         wh,
@@ -417,7 +418,7 @@ export default function User(props) {
                           <TableCell align="left">{relvol}</TableCell>
                           <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
                           <TableCell align="left">
-                            {gap ? 'yes' : 'no'}/{ogap}%
+                            {gap ? 'yes' : 'no'}/{ogap}%/{oc ? 'yes' : 'no'}
                           </TableCell>
                           <TableCell align="left">
                             {engulf ? 'E' : '-'}/{dtop ? 'D' : '-'}/{rsi ? 'R' : '-'}/

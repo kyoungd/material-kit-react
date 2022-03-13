@@ -31,14 +31,14 @@
     },
     {
         "id": "wickoff",
-        "label": "Wyckoff",
+        "label": "Wyckoff AD",
         "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
-        "text": "ad price price > 5"
+        "text": "ad and price >= 10"
     },
     {
-        "id": "gap",
-        "label": "Night Gap",
-        "info": "Overnight gap near a weekly support and resistance.",
-        "text": "ogap >= 5"
+        "id": "center",
+        "label": "Center Of C",
+        "info": "Volume Profile Center of Control.  Quick day trade signal.  The Open of the new day is within the range of last day's volume profile range (20%-80%).  It should have high probability to returning to this price at least once today.",
+        "text": "center and price >= 10"
     }
 ]
