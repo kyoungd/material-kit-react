@@ -28,6 +28,7 @@ export default function DashboardApp() {
   const [isOpen2, setOpen2] = useState(false);
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
+  const [isForceDownload, setForceDownload] = useState(false);
   const userDispatch = useUserDispatch();
   const { isAuthenticated, symbols, favorites } = useUserState();
   const token = isAuthenticated ? CookieGetToken() : '';
@@ -39,15 +40,8 @@ export default function DashboardApp() {
           <Typography variant="h4">Welcome to TradeSimp</Typography>
         </Box>
         <Box sx={{ pb: 5 }}>
-          <ModalVideo
-            channel="youtube"
-            autoplay
-            isOpen={isOpen1}
-            videoId="UUUWIGx3hDE"
-            onClose={() => setOpen1(false)}
-          />
-          <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-            VIDEO EXPLAINER
+          <Button variant="contained" color="primary" onClick={() => setForceDownload(true)}>
+            FORCE DOWNLOAD
           </Button>
           &nbsp;
           <ModalVideo
@@ -84,17 +78,18 @@ export default function DashboardApp() {
           </Button>
         </Box>
         <Box sx={{ pb: 5 }}>
-          {Object.keys(favorites).length <= 0 ? (
+          {isForceDownload || Object.keys(favorites).length <= 0 ? (
             <AppItemOrders dispatch={userDispatch} getFavorites={getFavorites} token={token} />
           ) : (
             <></>
           )}
-          {Object.keys(symbols).length <= 0 ? (
+          {isForceDownload || Object.keys(symbols).length <= 0 ? (
             <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
           ) : (
             <></>
           )}
-          {Object.keys(favorites).length > 0 && Object.keys(symbols).length > 0 ? (
+          {isForceDownload ||
+          (Object.keys(favorites).length > 0 && Object.keys(symbols).length > 0) ? (
             <Link underline="none" variant="subtitle2" component={RouterLink} to="/dashboard/user">
               FIND STOCKS TO TRADE
             </Link>

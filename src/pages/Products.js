@@ -50,7 +50,7 @@ export default function EcommerceShop() {
     <Page title="Dashboard: Products | TradeSimp">
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Products
+          Video Tutorials
         </Typography>
 
         <Stack
