@@ -20,6 +20,7 @@ import {
 import { CookieGetToken } from '../utils/cookies';
 import { useUserDispatch, getFavorites, getSymbols, useUserState } from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';
+import ExpertShop from '../components/ExpertShop';
 
 // ----------------------------------------------------------------------
 
@@ -99,7 +100,7 @@ export default function DashboardApp() {
         </Box>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
-            <AppNewsUpdate />
+            <ExpertShop />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>

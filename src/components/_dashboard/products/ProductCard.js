@@ -29,7 +29,7 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   const [isOpen, setOpen] = useState(false);
-  const { name, cover, price, colors, status, priceSale, videoUrl } = product;
+  const { name, cover, price, colors, status, priceSale, videoUrl, description } = product;
 
   return (
     <>
@@ -68,9 +68,18 @@ export default function ShopProductCard({ product }) {
             </Typography>
           </Link>
 
-          <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <ColorPreview colors={colors} />
+          <Stack direction="column" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle1">
+              <Typography variant="body2" align="center" sx={{ mt: 3 }}>
+                {description}
+              </Typography>
+            </Typography>
+            <Box
+              sx={{
+                padding: '0.5rem',
+                align: 'center'
+              }}
+            >
               <Typography
                 component="span"
                 variant="body1"
@@ -83,7 +92,7 @@ export default function ShopProductCard({ product }) {
               </Typography>
               &nbsp;
               {fCurrency(price)}
-            </Typography>
+            </Box>
           </Stack>
         </Stack>
       </Card>
