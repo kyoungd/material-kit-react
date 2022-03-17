@@ -14,8 +14,8 @@ const EXPERTS = [
     cover: '/static/mock-images/covers/expert_1.png',
     videlUrl: 'N9SUmtuGnHQ',
     link: 'expert/confluence',
-    price: 99.95,
-    priceSale: 109.95,
+    price: '',
+    priceSale: '',
     freeTrial: true,
     status: ''
   },
@@ -26,8 +26,8 @@ const EXPERTS = [
     cover: '/static/mock-images/covers/expert_2.jpg',
     videlUrl: 'C9G5KgB9Ze4',
     link: 'expert/market-cycle',
-    price: 99.95,
-    priceSale: 109.95,
+    price: '',
+    priceSale: '',
     freeTrial: true,
     status: ''
   },

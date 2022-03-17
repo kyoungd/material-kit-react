@@ -21,7 +21,7 @@
         "id": "doubletop",
         "label": "CONFLUENCE - Double Top",
         "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
-        "text": "dtop and level and ema50"
+        "text": "dtop and rsi"
     },
     {
         "id": "vc",

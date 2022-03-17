@@ -74,25 +74,27 @@ export default function ShopProductCard({ product }) {
                 {description}
               </Typography>
             </Typography>
-            <Box
-              sx={{
-                padding: '0.5rem',
-                align: 'center'
-              }}
-            >
-              <Typography
-                component="span"
-                variant="body1"
+            {price && price > 0 && (
+              <Box
                 sx={{
-                  color: 'text.disabled',
-                  textDecoration: 'line-through'
+                  padding: '0.5rem',
+                  align: 'center'
                 }}
               >
-                {priceSale && fCurrency(priceSale)}
-              </Typography>
-              &nbsp;
-              {fCurrency(price)}
-            </Box>
+                <Typography
+                  component="span"
+                  variant="body1"
+                  sx={{
+                    color: 'text.disabled',
+                    textDecoration: 'line-through'
+                  }}
+                >
+                  {priceSale && priceSale > 0 && fCurrency(priceSale)}
+                </Typography>
+                &nbsp;
+                {fCurrency(price)}
+              </Box>
+            )}
           </Stack>
         </Stack>
       </Card>
