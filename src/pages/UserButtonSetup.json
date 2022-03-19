@@ -3,19 +3,19 @@
         "id": "trend",
         "label": "CONFLUENCE - Price Action",
         "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
-        "text": "level and streak > 15 and wick > 250"
+        "text": "level and ema50 and streak > 15 and wick > 250"
     },
     {
         "id": "trending",
         "label": "CONFLUENCE - Reversal",
         "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and rev > 0 and rev <= 1 and streak > 15"
+        "text": "level and ema50 and rev > 0 and rev <= 1 and streak > 15"
     },
     {
         "id": "newtrend",
         "label": "CONFLUENCE - New Trend",
         "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and rev > 1 and rev <= 2 and streak > 15"
+        "text": "level and ema50 and rev > 1 and rev <= 2 and streak > 15"
     },
     {
         "id": "doubletop",
@@ -39,6 +39,6 @@
         "id": "center",
         "label": "DAY TRADE - Center Of Control",
         "info": "Volume Profile Center of Control.  Quick day trade signal.  The Open of the new day is within the range of last day's volume profile range (20%-80%).  It should have high probability to returning to this price at least once today.",
-        "text": "center and price >= 10"
+        "text": "center and price >= 6"
     }
 ]
