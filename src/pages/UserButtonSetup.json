@@ -3,7 +3,7 @@
         "id": "trend",
         "label": "CONFLUENCE - Price Action",
         "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
-        "text": "level and ema50 and streak > 15 and wick > 150"
+        "text": "level and ema50 and streak > 15"
     },
     {
         "id": "trending",
