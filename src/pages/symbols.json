@@ -38,6 +38,8 @@
     "pj": "data['pj']",
     "%": "",
     "$": "",
+    "vs": "data['vs']",
+    "vsa": "data['vs']",
     "rsi": "data['rsi']",
     "gapper": "data['gap']",
     "v-pro": "data['vpro']",

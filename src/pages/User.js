@@ -380,6 +380,7 @@ export default function User(props) {
                         wh,
                         wr,
                         pj,
+                        vs,
                         floats,
                         floatp
                       } = row;

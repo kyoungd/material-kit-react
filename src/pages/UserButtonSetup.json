@@ -25,9 +25,9 @@
     },
     {
         "id": "vc",
-        "label": "MARKET CYCLE - Volume Climax",
-        "info": "Volume Climax within last 5 days.  VC is a good indicator for a trend change.",
-        "text": "vc >= 700"
+        "label": "MARKET CYCLE - VSA",
+        "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle due to Market Maker activities.",
+        "text": "vsa = 1 or vsa = 2"
     },
     {
         "id": "wickoff",
