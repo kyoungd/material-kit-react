@@ -103,8 +103,9 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
     })
     .catch((e) => {
       console.log('>>>>>>> error:', e);
+      dispatch({ type: 'FAVORITES', payload: [] });
       setIsLoading(false);
-      setError(e.response);
+      setError(null);
       console.log('An error occurred:', e.response);
     });
 }
