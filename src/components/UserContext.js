@@ -195,8 +195,9 @@ function downloadStockData(pState, symbol, pushData, pushSymbol) {
 }
 
 function loginSuccess(dispatch, navigate, user, jwt) {
+  console.log('loginSuccess():', user);
   CookieSetToken(jwt);
-  // localStorage.setItem('id_token', jwt);
+  localStorage.setItem('id_token', jwt);
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
   navigate('/dashboard/app', { replace: true });
 }
