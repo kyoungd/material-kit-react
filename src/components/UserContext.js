@@ -87,6 +87,8 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
   setIsLoading(true);
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   const bearerToken = makeBearToken(token);
+  console.log(url);
+  console.log(bearerToken);
   axios
     .get(url, bearerToken)
     .then((result) => {
@@ -104,6 +106,7 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
       setIsLoading(false);
       setError(e.response);
       console.log('An error occurred:', e.response);
+      dispatch({ type: 'FAVORITES', payload: [] });
     });
 }
 

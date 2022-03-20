@@ -25,6 +25,7 @@ export default function LoginRedirect(props) {
         if (res.status !== 200) {
           throw new Error(`Couldn't login to Strapi. Status: ${res.status}`);
         }
+        console.log('Successfully logged with the provider.  HTTP 200');
         return res;
       })
       .then((res) => res.json())
