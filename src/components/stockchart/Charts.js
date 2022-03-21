@@ -16,9 +16,8 @@ import { BarSeries, CandlestickSeries, LineSeries, RSISeries } from 'react-stock
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import {
   CrossHairCursor,
-  EdgeIndicator,
   CurrentCoordinate,
-  MouseCoordinateX,
+  PriceCoordinate,
   MouseCoordinateY
 } from 'react-stockcharts/lib/coordinates';
 
@@ -45,7 +44,7 @@ class CandlestickChart extends React.Component {
     this.onDrawCompleteChart1 = this.onDrawCompleteChart1.bind(this);
     this.onDrawCompleteChart3 = this.onDrawCompleteChart3.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
-    this.onFibComplete1 = this.onFibComplete1.bind(this);
+    this.onFibComplete2 = this.onFibComplete2.bind(this);
 
     this.saveInteractiveNodes = saveInteractiveNodes.bind(this);
     this.getInteractiveNodes = getInteractiveNodes.bind(this);
@@ -84,6 +83,7 @@ class CandlestickChart extends React.Component {
   }
 
   handleSelection(interactives) {
+    console.log('handleSelection.interactives: ', interactives);
     const state = toObject(interactives, (each) => [`iactive_${each.chartId}`, each.objects]);
     this.setState(state);
   }
@@ -121,7 +121,8 @@ class CandlestickChart extends React.Component {
     });
   }
 
-  onFibComplete1(iactive_2) {
+  onFibComplete2(iactive_2) {
+    console.log('fib_2: ', iactive_2);
     this.setState({
       iactive_2,
       enableFib: false
@@ -201,7 +202,7 @@ class CandlestickChart extends React.Component {
       })
       .accessor((d) => d.rsi);
 
-    const { type, data: initialData, symbol, width, ratio } = this.props;
+    const { type, data: initialData, symbol, width, ratio, price } = this.props;
 
     const calculatedData = ema12(ema50(rsiCalculator(initialData)));
     const xScaleProvider = discontinuousTimeScaleProvider.inputDateAccessor((d) => d.date);
@@ -302,13 +303,27 @@ class CandlestickChart extends React.Component {
             <CurrentCoordinate yAccessor={ema50.accessor()} fill={ema50.stroke()} />
             <CurrentCoordinate yAccessor={ema12.accessor()} fill={ema12.stroke()} />
 
-            <EdgeIndicator
+            {price > 0 && (
+              <PriceCoordinate
+                at="right"
+                orient="right"
+                price={price}
+                stroke="#3490DC"
+                strokeWidth={1}
+                fill="#FFFFFF"
+                textFill="#22292F"
+                arrowWidth={7}
+                strokeDasharray="LongDash"
+                displayFormat={format('.2f')}
+              />
+            )}
+            {/* <EdgeIndicator
               itemType="last"
               orient="right"
               edgeAt="right"
               yAccessor={(d) => d.close}
               fill={(d) => (d.close > d.open ? '#6BA583' : '#FF0000')}
-            />
+            /> */}
 
             <OHLCTooltip origin={[-40, 0]} />
 
@@ -341,10 +356,10 @@ class CandlestickChart extends React.Component {
               trends={this.state.iactive_1}
             />
             <FibonacciRetracement
-              ref={this.saveInteractiveNodes('FibonacciRetracement', 1)}
+              ref={this.saveInteractiveNodes('FibonacciRetracement', 2)}
               enabled={this.state.enableFib}
               retracements={this.state.iactive_2}
-              onComplete={this.onFibComplete1}
+              onComplete={this.onFibComplete2}
             />
           </Chart>
           {this.state.showVolumeChart && (
