@@ -15,22 +15,47 @@ import DialogTitle from '@mui/material/DialogTitle';
 // import Select from '@mui/material/Select';
 // import Switch from '@mui/material/Switch';
 import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
 import { Icon } from '@iconify/react';
 import eyeFill from '@iconify/icons-eva/eye-fill';
 import PropTypes from 'prop-types';
 
 UserPopup.propTypes = {
+  favs: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
 
 export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = React.useState('');
+
+  React.useEffect(() => {
+    const valueDescription =
+      props.favs[props.data.name] === undefined ? '' : props.favs[props.data.name].description;
+    setDescription(valueDescription);
+  }, [props]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    const newFavs = { ...props.favs };
+    const symbol = props.data.name;
+    const initDescription = newFavs[symbol] === undefined ? '' : newFavs[symbol].description;
+    if (initDescription.trim() !== description.trim()) {
+      if (newFavs[symbol] === undefined) {
+        newFavs[symbol] = {
+          created: new Date(),
+          description,
+          rank: 3
+        };
+      } else {
+        newFavs[symbol].description = description;
+      }
+      props.onClose(symbol, newFavs);
+    }
     setOpen(false);
   };
 
@@ -74,6 +99,10 @@ export default function UserPopup(props) {
       </a>
     </>
   );
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
 
   return (
     <>
@@ -157,6 +186,20 @@ export default function UserPopup(props) {
               </Grid>
             </Grid>
           </Typography>
+
+          <Typography component="div">
+            <TextField
+              id="id-description"
+              label="description"
+              style={{ width: '100%' }}
+              multiline
+              maxRows={3}
+              value={description}
+              onChange={handleDescriptionChange}
+              variant="standard"
+            />
+          </Typography>
+
           <Box
             noValidate
             component="form"
