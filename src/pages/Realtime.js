@@ -28,10 +28,9 @@ import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
-
 // import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 //
-// import { GetUsers } from '../_mocks_/user';
+import { GetUsers } from '../_mocks_/user';
 import Chart from '../components/stockchart/Charts';
 // import getStockData from '../utils/getStockData';
 import { downloadStockData } from '../components/UserContext';
@@ -39,16 +38,15 @@ import { downloadStockData } from '../components/UserContext';
 import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
 
+const textSubstitutes = require('./symbols.json');
+const TABLE_HEAD = require('./UserTableHead.json');
+const EXPLAINERS = require('./UserButtonSetup.json');
 // ----------------------------------------------------------------------
 
-User.propTypes = {
+Realtime.propTypes = {
   favorites: PropTypes.object.isRequired,
   symbols: PropTypes.array.isRequired,
-  userDispatch: PropTypes.func.isRequired,
-  translation: PropTypes.array.isRequired,
-  tableHead: PropTypes.array.isRequired,
-  explainers: PropTypes.array.isRequired,
-  rowContent: PropTypes.func.isRequired
+  userDispatch: PropTypes.func.isRequired
 };
 
 function descendingComparator(a, b, orderBy) {
@@ -67,7 +65,7 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-function applySortFilter(array, comparator, query, translation) {
+function applySortFilter(array, comparator, query) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -81,8 +79,8 @@ function applySortFilter(array, comparator, query, translation) {
     const regex2 = new RegExp('\\)', 'g');
     query = query.replace(regex2, ' )');
     query.split(' ').forEach((q) => {
-      const found = Object.keys(translation).find((key) => key === q);
-      const item = found ? translation[q] : q;
+      const found = Object.keys(textSubstitutes).find((key) => key === q);
+      const item = found ? textSubstitutes[q] : q;
       command += command === '' ? item : ` ${item}`;
     });
     console.log(command);
@@ -108,14 +106,14 @@ function applySortFilter(array, comparator, query, translation) {
 //   return <div />;
 // }
 
-export default function User(props) {
+export default function Realtime(props) {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [USERLIST, setUserList] = useState([]);
+  const [USERLIST, setUserList] = useState(GetUsers([]));
   const [stockFavorites, setStockFavorites] = useState({});
   const [showFavorites, setShowFavorites] = useState(false);
   const [stockData, setStockData] = useState({});
@@ -232,7 +230,7 @@ export default function User(props) {
       const filterSelected = selected.filter((key) => USERLIST.find((one) => one.name === key));
       return filterSelected.map((key) => USERLIST.find((one) => one.name === key));
     }
-    return applySortFilter(USERLIST, getComparator(order, orderBy), filterName, props.translation);
+    return applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
   };
 
   const filteredUsers = getFilteredUsers();
@@ -308,7 +306,7 @@ export default function User(props) {
 
         <Container maxwidth={false}>
           <StockSearchButtons
-            data={props.explainers}
+            data={EXPLAINERS}
             searchFunc={setFilterName}
             resetFunc={setChartSymbol}
           />
@@ -354,7 +352,7 @@ export default function User(props) {
                 <UserListHead
                   order={order}
                   orderBy={orderBy}
-                  headLabel={props.tableHead}
+                  headLabel={TABLE_HEAD}
                   rowCount={USERLIST.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
@@ -364,15 +362,48 @@ export default function User(props) {
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
+                      const {
+                        id,
+                        ad,
+                        name,
+                        atr,
+                        cik,
+                        corr,
+                        cinv,
+                        price,
+                        trend,
+                        reverse,
+                        keylevel,
+                        keylevels,
+                        fibonachi,
+                        fibs,
+                        relvol,
+                        vpro,
+                        td,
+                        engulf,
+                        ema20,
+                        ema50,
+                        ema200,
+                        gap,
+                        dtop,
+                        ogap,
+                        oc,
+                        rsi,
+                        vc,
+                        wh,
+                        wr,
+                        pj,
+                        vs,
+                        floats,
+                        floatp
+                      } = row;
                       const isItemSelected =
-                        Object.entries(selected).length > 0
-                          ? selected.indexOf(row.name) !== -1
-                          : false;
+                        Object.entries(selected).length > 0 ? selected.indexOf(name) !== -1 : false;
 
                       const lineItem = (
                         <TableRow
                           hover
-                          key={row.id}
+                          key={id}
                           tabIndex={-1}
                           role="checkbox"
                           selected={isItemSelected}
@@ -381,7 +412,7 @@ export default function User(props) {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.name)}
+                              onChange={(event) => handleClick(event, name)}
                             />
                           </TableCell>
                           <TableCell component="th" scope="row" padding="none">
@@ -389,14 +420,29 @@ export default function User(props) {
                               <Typography variant="subtitle2" noWrap>
                                 <Button
                                   variant="text"
-                                  onClick={() => handleSymbolButtonPress(row.name)}
+                                  onClick={() => handleSymbolButtonPress(name)}
                                 >
-                                  {row.name}
+                                  {name}
                                 </Button>
                               </Typography>
                             </Stack>
                           </TableCell>
-                          {props.rowContent(row)}
+                          <TableCell align="left">${price}</TableCell>
+                          <TableCell align="left">
+                            {trend} / {reverse} / {td}
+                          </TableCell>
+                          <TableCell align="left">
+                            {keylevel ? 'SR' : '-'}/{vpro ? 'V' : '-'}
+                          </TableCell>
+                          <TableCell align="left">{relvol}</TableCell>
+                          <TableCell align="left">{getEma(ema20, ema50, ema200)}</TableCell>
+                          <TableCell align="left">
+                            {gap ? 'yes' : 'no'}/{ogap}%/{oc ? 'yes' : 'no'}
+                          </TableCell>
+                          <TableCell align="left">
+                            {engulf ? 'E' : '-'}/{dtop ? 'D' : '-'}/{rsi ? 'R' : '-'}/
+                            {fibonachi ? 'F' : '-'}/-
+                          </TableCell>
                           <TableCell align="right">
                             <UserPopup
                               data={row}

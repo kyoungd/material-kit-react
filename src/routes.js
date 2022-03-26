@@ -15,6 +15,12 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
 
+import USER_ROW from './layouts/User/UserRow';
+
+const USER_TRANSLATION = require('./layouts/User/UserTranslation.json');
+const USER_TABLE_HEAD = require('./layouts/User/UserTableHead.json');
+const USER_EXPLAINERS = require('./layouts/User/UserButtonSetup.json');
+
 // --------------------------------- yes -------------------------------------
 
 export default function Router() {
@@ -35,6 +41,10 @@ export default function Router() {
               symbols={symbols.length === undefined ? [] : symbols}
               favorites={favorites}
               userDispatch={userDispatch}
+              translation={USER_TRANSLATION}
+              tableHead={USER_TABLE_HEAD}
+              explainers={USER_EXPLAINERS}
+              rowContent={USER_ROW}
             />
           )
         },

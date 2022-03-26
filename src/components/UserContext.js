@@ -33,6 +33,8 @@ function userReducer(state, action) {
         saveFavorites(action.payload);
       }
       return { ...state, favorites: action.payload };
+    case 'REALTIME':
+      return { ...state, realtime: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
     default:
@@ -46,7 +48,8 @@ function UserProvider({ children }) {
     isAuthenticated: CookieUserAuthenticated(),
     symbols: {},
     favorites: {},
-    settings: {}
+    settings: {},
+    realtime: []
   });
 
   return (
@@ -134,6 +137,28 @@ function saveFavorites(favorites) {
     })
     .catch((e) => {
       console.log('saveFavorites():  An error occurred:', e.response);
+    });
+}
+
+function downloadRealtime(dispatch, token, setIsLoading = null, setError = null) {
+  if (setError) setError(false);
+  if (setIsLoading) setIsLoading(true);
+  const url1 =
+    process.env.REACT_APP_REALTIME_SERVICE ||
+    'http://localhost:1337/api/realtimes?datatype=VSA&timeframe=15Min';
+  const bearerToken = makeBearToken(token);
+  axios
+    .get(url1, bearerToken)
+    .then((result) => {
+      if (setIsLoading) setIsLoading(false);
+      if (setError) setError(null);
+      const users = GetUsers(result.data.data.attributes.data);
+      dispatch({ type: 'SYMBOLS', payload: users });
+    })
+    .catch((e) => {
+      if (setIsLoading) setIsLoading(false);
+      if (setError) setError(e.response);
+      console.log('An error occurred:', e.response);
     });
 }
 
