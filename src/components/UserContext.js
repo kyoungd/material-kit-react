@@ -166,7 +166,7 @@ function downloadRealtimes(
   if (setIsLoading !== null) setIsLoading(true);
   const url1 =
     process.env.REACT_APP_REALTIME_SERVICE ||
-    'http://localhost:1337/api/realtimess?datatype=VSA&timeframe=15Min';
+    'https://simp-admin.herokuapp.com/api/realtimes?datatype=VSA&timeframe=15Min';
   const bearerToken = makeBearToken(token);
   axios
     .get(url1, bearerToken)
