@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import pieChart2Fill from '@iconify/icons-eva/pie-chart-2-fill';
 import peopleFill from '@iconify/icons-eva/people-fill';
+import activityFill from '@iconify/icons-eva/activity-fill';
 import alert from '@iconify/icons-eva/alert-triangle-outline';
 // ----------------------------------------------------------------------
 
@@ -16,6 +17,11 @@ const sidebarConfig = [
     title: 'stocks',
     path: '/dashboard/user',
     icon: getIcon(peopleFill)
+  },
+  {
+    title: 'realtime',
+    path: '/dashboard/realtime',
+    icon: getIcon(activityFill)
   },
   {
     title: 'tutorial',

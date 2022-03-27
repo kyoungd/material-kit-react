@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import searchFill from '@iconify/icons-eva/search-fill';
+import arrowDown from '@iconify/icons-eva/arrow-circle-down-outline';
 import trash2Fill from '@iconify/icons-eva/trash-2-fill';
 import roundFilterList from '@iconify/icons-ic/round-filter-list';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Toolbar, Tooltip, IconButton, OutlinedInput, InputAdornment } from '@mui/material';
+import { getRealtimes, useUserDispatch } from '../../UserContext';
+import { CookieGetToken } from '../../../utils/cookies';
 
 // ----------------------------------------------------------------------
 
@@ -38,12 +41,14 @@ UserListToolbar.propTypes = {
 };
 
 export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+  const userDispatch = useUserDispatch();
+  const token = CookieGetToken();
   return (
     <RootStyle
       sx={{
         ...(numSelected > 0 && {
           color: 'primary.main',
-          bgcolor: 'primary.lighter'
+          bgcolor: 'primary.white'
         })
       }}
     >
@@ -74,19 +79,15 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
         />
       )} */}
 
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <Icon icon={trash2Fill} />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <Icon icon={roundFilterList} />
-          </IconButton>
-        </Tooltip>
-      )}
+      <Tooltip title="Download New Data">
+        <IconButton
+          onClick={() => {
+            getRealtimes(userDispatch, token, null, null, onFilterName);
+          }}
+        >
+          <Icon icon={arrowDown} />
+        </IconButton>
+      </Tooltip>
     </RootStyle>
   );
 }

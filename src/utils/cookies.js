@@ -30,6 +30,7 @@ export function getWithExpiry(key) {
 
 const keyToken = 'token';
 const keySymbols = 'symbols';
+const keyRealtimes = 'realtimes';
 const keyFavorites = 'favorites';
 const oneMinute = 1000 * 60;
 const oneHour = 1000 * 60 * 60;
@@ -44,6 +45,10 @@ export function CookieSetFavorites(value) {
 
 export function CookieSetSymbols(value) {
   setWithExpiry(keySymbols, value, oneHour * 8);
+}
+
+export function CookieSetRealtimes(value) {
+  setWithExpiry(keyRealtimes, value, oneHour * 8);
 }
 
 export function CookieUserAuthenticated() {
@@ -75,14 +80,22 @@ export function CookieGetSymbols() {
   return getWithExpiry(keySymbols);
 }
 
-function CookieDeleteFavorites() {
+export function CookieGetRealtimess() {
+  return getWithExpiry(keyRealtimes);
+}
+
+export function CookieDeleteFavorites() {
   localStorage.removeItem(keyFavorites);
 }
 
-function CookieDeleteSymbols() {
+export function CookieDeleteSymbols() {
   localStorage.removeItem(keySymbols);
 }
 
-function CookieDeleteToken() {
+export function CookieDeleteRealtimes() {
+  localStorage.removeItem(keyRealtimes);
+}
+
+export function CookieDeleteToken() {
   localStorage.removeItem(keyToken);
 }

@@ -7,6 +7,7 @@ import {
   CookieGetFavorites,
   CookieGetToken,
   CookieGetSymbols,
+  CookieSetRealtimes,
   CookieSetFavorites,
   CookieSetToken,
   CookieSetSymbols,
@@ -34,7 +35,8 @@ function userReducer(state, action) {
       }
       return { ...state, favorites: action.payload };
     case 'REALTIME':
-      return { ...state, realtime: action.payload };
+      CookieSetRealtimes(action.payload);
+      return { ...state, realtimes: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
     default:
@@ -49,7 +51,7 @@ function UserProvider({ children }) {
     symbols: {},
     favorites: {},
     settings: {},
-    realtime: []
+    realtimes: []
   });
 
   return (
@@ -109,7 +111,7 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
       dispatch({ type: 'FAVORITES', payload: [] });
       setIsLoading(false);
       setError(null);
-      console.log('An error occurred:', e.response);
+      console.log('An error occurred:', e);
     });
 }
 
@@ -136,30 +138,60 @@ function saveFavorites(favorites) {
       console.log('saveFavorites(): favorite saved to server');
     })
     .catch((e) => {
-      console.log('saveFavorites():  An error occurred:', e.response);
+      console.log('saveFavorites():  An error occurred:', e);
     });
 }
 
-function downloadRealtime(dispatch, token, setIsLoading = null, setError = null) {
-  if (setError) setError(false);
-  if (setIsLoading) setIsLoading(true);
+function parseRealtimes(data) {
+  const stocks = data.map((item) => {
+    const row = {
+      id: item.id,
+      name: item.attributes.symbol,
+      vsa: item.attributes.data.vsa,
+      price: item.attributes.data.price
+    };
+    return row;
+  });
+  return stocks;
+}
+
+function downloadRealtimes(
+  dispatch,
+  token,
+  setIsLoading = null,
+  setError = null,
+  setDownloadData = null
+) {
+  if (setError !== null) setError(false);
+  if (setIsLoading !== null) setIsLoading(true);
   const url1 =
     process.env.REACT_APP_REALTIME_SERVICE ||
-    'http://localhost:1337/api/realtimes?datatype=VSA&timeframe=15Min';
+    'http://localhost:1337/api/realtimess?datatype=VSA&timeframe=15Min';
   const bearerToken = makeBearToken(token);
   axios
     .get(url1, bearerToken)
     .then((result) => {
-      if (setIsLoading) setIsLoading(false);
-      if (setError) setError(null);
-      const users = GetUsers(result.data.data.attributes.data);
-      dispatch({ type: 'SYMBOLS', payload: users });
+      if (setIsLoading !== null) setIsLoading(false);
+      if (setError !== null) setError(null);
+      const stocks = parseRealtimes(result.data.data);
+      if (setDownloadData !== null) setDownloadData(stocks);
+      dispatch({ type: 'REALTIME', payload: stocks });
     })
     .catch((e) => {
-      if (setIsLoading) setIsLoading(false);
-      if (setError) setError(e.response);
-      console.log('An error occurred:', e.response);
+      if (setIsLoading !== null) setIsLoading(false);
+      if (setError !== null) setError(`realtime -> ${e.message}`);
+      console.log('An error occurred:', e.message);
     });
+}
+
+function getRealtimes(
+  dispatch,
+  token,
+  setIsLoading = null,
+  setError = null,
+  setDownloadData = null
+) {
+  downloadRealtimes(dispatch, token, setIsLoading, setError, setDownloadData);
 }
 
 function downloadSymbols(dispatch, token, setIsLoading, setError) {
@@ -320,6 +352,7 @@ function signOut(dispatch) {
 export {
   getFavorites,
   getSymbols,
+  getRealtimes,
   UserProvider,
   useUserState,
   useUserDispatch,

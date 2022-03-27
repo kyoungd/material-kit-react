@@ -6,8 +6,9 @@ import ModalVideo from 'react-modal-video';
 // components
 import Page from '../components/Page';
 import {
-  AppBugReports,
-  AppItemOrders,
+  AppDownloadSymbols,
+  AppDownloadFavorites,
+  AppDownloadRealtimes,
   AppNewsUpdate,
   AppOrderTimeline
   // AppTasks,
@@ -18,7 +19,13 @@ import {
   // AppTrafficBySite
 } from '../components/_dashboard/app';
 import { CookieGetToken } from '../utils/cookies';
-import { useUserDispatch, getFavorites, getSymbols, useUserState } from '../components/UserContext';
+import {
+  useUserDispatch,
+  getFavorites,
+  getSymbols,
+  getRealtimes,
+  useUserState
+} from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';
 import ExpertShop from '../components/ExpertShop';
 
@@ -80,23 +87,28 @@ export default function DashboardApp() {
         </Box>
         <Box sx={{ pb: 5 }}>
           {isForceDownload || Object.keys(favorites).length <= 0 ? (
-            <AppItemOrders dispatch={userDispatch} getFavorites={getFavorites} token={token} />
+            <AppDownloadFavorites
+              dispatch={userDispatch}
+              getFavorites={getFavorites}
+              token={token}
+            />
           ) : (
             <></>
           )}
           {isForceDownload || Object.keys(symbols).length <= 0 ? (
-            <AppBugReports dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+            <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} />
           ) : (
             <></>
           )}
-          {isForceDownload ||
+          <AppDownloadRealtimes dispatch={userDispatch} getRealtimes={getRealtimes} token={token} />
+          {/* {isForceDownload ||
           (Object.keys(favorites).length > 0 && Object.keys(symbols).length > 0) ? (
             <Link underline="none" variant="subtitle2" component={RouterLink} to="/dashboard/user">
               FIND STOCKS TO TRADE
             </Link>
           ) : (
             <></>
-          )}
+          )} */}
         </Box>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>

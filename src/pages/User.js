@@ -48,7 +48,8 @@ User.propTypes = {
   translation: PropTypes.array.isRequired,
   tableHead: PropTypes.array.isRequired,
   explainers: PropTypes.array.isRequired,
-  rowContent: PropTypes.func.isRequired
+  rowContent: PropTypes.func.isRequired,
+  pageType: PropTypes.string.isRequired
 };
 
 function descendingComparator(a, b, orderBy) {
@@ -239,14 +240,6 @@ export default function User(props) {
 
   const isUserNotFound = filteredUsers.length === 0;
 
-  const getEma = (ema20, ema50, ema200) => {
-    let result = '';
-    if (ema20) result = '20';
-    if (ema50) result += result.length > 0 ? '|50' : '50';
-    if (ema200) result += result.length > 0 ? '|200' : '200';
-    return result.length > 0 ? result : '-';
-  };
-
   const buildWeekData = (weekdata) => {
     const { open } = weekdata[0];
     const { close } = weekdata[weekdata.length - 1];
@@ -302,7 +295,7 @@ export default function User(props) {
       <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Stocks
+            {props.pageType === 'DAILY' ? 'Stocks Daily' : 'Stocks Realtime'}
           </Typography>
         </Stack>
 
@@ -345,7 +338,7 @@ export default function User(props) {
           <UserListToolbar
             numSelected={selected.length}
             filterName={filterName}
-            onFilterName={handleFilterByName}
+            onFilterName={props.pageType === 'REALTIME' ? setUserList : handleFilterByName}
           />
 
           <Scrollbar>
@@ -387,23 +380,28 @@ export default function User(props) {
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Typography variant="subtitle2" noWrap>
-                                <Button
-                                  variant="text"
-                                  onClick={() => handleSymbolButtonPress(row.name)}
-                                >
-                                  {row.name}
-                                </Button>
+                                {props.pageType === 'DAILY' && (
+                                  <Button
+                                    variant="text"
+                                    onClick={() => handleSymbolButtonPress(row.name)}
+                                  >
+                                    {row.name}
+                                  </Button>
+                                )}
+                                {props.pageType === 'REALTIME' && row.name}
                               </Typography>
                             </Stack>
                           </TableCell>
                           {props.rowContent(row)}
-                          <TableCell align="right">
-                            <UserPopup
-                              data={row}
-                              favs={stockFavorites}
-                              onClose={userPopupOnClose}
-                            />
-                          </TableCell>
+                          {props.pageType === 'DAILY' && (
+                            <TableCell align="right">
+                              <UserPopup
+                                data={row}
+                                favs={stockFavorites}
+                                onClose={userPopupOnClose}
+                              />
+                            </TableCell>
+                          )}
                         </TableRow>
                       );
                       return lineItem;

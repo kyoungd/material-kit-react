@@ -1,0 +1,22 @@
+{
+    "price": "data['price']",
+    "close": "data['price']",
+    "volume": "data['volume']",
+    "period": "data['timeframe']",
+    "timeframe": "data['timeframe']",
+    "vs": "data['vs']",
+    "vsa": "data['vs']",
+    "%": "",
+    "$": "",
+    "and": "&&",
+    "or": "||",
+    "not": "!",
+    "yes": "true",
+    "no": "false",
+    "=": "===",
+    "<>": "!==",
+    "up": "'up'",
+    "down": "'down'",
+    "side": "'side'",
+    "sideway": "'side'"
+}

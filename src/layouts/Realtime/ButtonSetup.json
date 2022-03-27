@@ -1,0 +1,20 @@
+[
+    {
+        "id": "thrust",
+        "label": "VSA - up/down thrust",
+        "info": "Wyckoff pattern.  Low spread and extremely high volume in a trending market.  Future reversal indicator.",
+        "text": "vsa = 1"
+    },
+    {
+        "id": "climax",
+        "label": "VSA - selling/buying climax",
+        "info": "Wyckoff pattern.  Hig spread and extremely high volume in a trending market.  Future reversal indicator.",
+        "text": "vsa = 2"
+    },
+    {
+        "id": "doji",
+        "label": "VSA - Wyckoff doji",
+        "info": "Wyckoff pattern.  Recent high/low, trending low, and volume smaller than last 2 bars.  Feture reversal indicator.",
+        "text": "vsa = 10"
+    }
+]

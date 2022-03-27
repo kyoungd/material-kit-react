@@ -1,0 +1,32 @@
+[
+    {
+        "id": "name",
+        "label": "Name",
+        "alignRight": false,
+        "info": "company symbol"
+    },
+    {
+        "id": "price",
+        "label": "Price",
+        "alignRight": false,
+        "info": "closing price"
+    },
+    {
+        "id": "thrust",
+        "label": "Up/Down Thrust",
+        "alignRight": false,
+        "info": "Trend count the consecutive higher higher (up) /lower lows (down).  Reverse counts the break from the last consecutive trend.  Streak counts the nubmer of days an asset has been rising/falling rapidly.  It is calculated by price being outside of ema 14 and ema 50, and ema 14 being outside of ema 50."
+    },
+    {
+        "id": "climax",
+        "label": "Selling/Buying Cliamx",
+        "alignRight": false,
+        "info": "(SR)weekly support/resistance line, (V)olume profile"
+    },
+    {
+        "id": "doji",
+        "label": "Doji",
+        "alignRight": false,
+        "info": "Relative Volume"
+    }
+]

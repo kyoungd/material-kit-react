@@ -16,16 +16,21 @@ import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
 
 import USER_ROW from './layouts/User/UserRow';
+import RT_ROW from './layouts/Realtime/DisplayRow';
 
 const USER_TRANSLATION = require('./layouts/User/UserTranslation.json');
 const USER_TABLE_HEAD = require('./layouts/User/UserTableHead.json');
 const USER_EXPLAINERS = require('./layouts/User/UserButtonSetup.json');
 
+const RT_TRANSLATION = require('./layouts/Realtime/Translation.json');
+const RT_TABLE_HEAD = require('./layouts/Realtime/TableHead.json');
+const RT_EXPLAINERS = require('./layouts/Realtime/ButtonSetup.json');
+
 // --------------------------------- yes -------------------------------------
 
 export default function Router() {
   const userDispatch = useUserDispatch();
-  const { symbols, favorites } = useUserState();
+  const { symbols, favorites, realtimes } = useUserState();
 
   return useRoutes([
     {
@@ -45,6 +50,22 @@ export default function Router() {
               tableHead={USER_TABLE_HEAD}
               explainers={USER_EXPLAINERS}
               rowContent={USER_ROW}
+              pageType="DAILY"
+            />
+          )
+        },
+        {
+          path: 'realtime',
+          element: (
+            <User
+              symbols={realtimes}
+              favorites={favorites}
+              userDispatch={userDispatch}
+              translation={RT_TRANSLATION}
+              tableHead={RT_TABLE_HEAD}
+              explainers={RT_EXPLAINERS}
+              rowContent={RT_ROW}
+              pageType="REALTIME"
             />
           )
         },

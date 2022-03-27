@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 // ----------------------------------------------------------------------
 
-AppBugReports.propTypes = {
+AppDownloadSymbols.propTypes = {
   dispatch: PropTypes.func.isRequired,
   getSymbols: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired
@@ -46,7 +46,7 @@ AppBugReports.propTypes = {
 
 // const TOTAL = 234;
 
-export default function AppBugReports({ dispatch, getSymbols, token }) {
+export default function AppDownloadSymbols({ dispatch, getSymbols, token }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('not loaded');
 

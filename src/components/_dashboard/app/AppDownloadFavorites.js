@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 // ----------------------------------------------------------------------
 
-AppItemOrders.propTypes = {
+AppDownloadFavorites.propTypes = {
   dispatch: PropTypes.func.isRequired,
   getFavorites: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired
@@ -44,7 +44,7 @@ AppItemOrders.propTypes = {
 
 // ----------------------------------------------------------------------
 
-export default function AppItemOrders({ dispatch, getFavorites, token }) {
+export default function AppDownloadFavorites({ dispatch, getFavorites, token }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('not loaded');
 
