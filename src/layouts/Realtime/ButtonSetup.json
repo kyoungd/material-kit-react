@@ -12,6 +12,18 @@
         "text": "vsa = 2"
     },
     {
+        "id": "effort",
+        "label": "VSA - Effort Price Divergence",
+        "info": "Wyckoff pattern.  Effort and Price divergence.  Future reversal indicator.",
+        "text": "vsa = 3 or vsa = 4"
+    },
+    {
+        "id": "momentum",
+        "label": "VSA - Momentum Indicator",
+        "info": "Wyckoff pattern.  Continuing momentum based on volume.  Future larger frame continuation indicator.",
+        "text": "vsa = 5 or vsa = 6 or vsa = 7"
+    },
+    {
         "id": "doji",
         "label": "VSA - Wyckoff doji",
         "info": "Wyckoff pattern.  Recent high/low, trending low, and volume smaller than last 2 bars.  Feture reversal indicator.",

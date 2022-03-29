@@ -24,6 +24,18 @@
         "info": "(SR)weekly support/resistance line, (V)olume profile"
     },
     {
+        "id": "effort",
+        "label": "Effort Divergence",
+        "alignRight": false,
+        "info": "Divergence between effort and price movement"
+    },
+    {
+        "id": "continiuation",
+        "label": "Continuation",
+        "alignRight": false,
+        "info": "Contiuation indicator based on price/volume trend"
+    },
+    {
         "id": "doji",
         "label": "Doji",
         "alignRight": false,
