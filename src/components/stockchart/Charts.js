@@ -383,7 +383,7 @@ class CandlestickChart extends React.Component {
               padding={{ top: 10, bottom: 10 }}
             >
               <XAxis axisAt="bottom" orient="bottom" showTicks={false} outerTickSize={0} />
-              <YAxis axisAt="right" orient="right" tickValues={[20, 50, 80]} />
+              <YAxis axisAt="right" orient="right" tickValues={[30, 50, 70]} />
               <MouseCoordinateY at="right" orient="right" displayFormat={format('.2f')} />
 
               <RSISeries yAccessor={(d) => d.rsi} />
