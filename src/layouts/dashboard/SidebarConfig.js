@@ -14,12 +14,12 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
-    title: 'stocks',
+    title: 'swing trade',
     path: '/dashboard/user',
     icon: getIcon(peopleFill)
   },
   {
-    title: 'realtime',
+    title: 'day trade',
     path: '/dashboard/realtime',
     icon: getIcon(activityFill)
   },
