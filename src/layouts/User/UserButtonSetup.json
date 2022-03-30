@@ -1,27 +1,21 @@
 [
     {
-        "id": "trend",
-        "label": "CONFLUENCE - Price Action",
-        "info": "Price is near a weekly support and resistance, ema50 and begining of a new trend after a med-high contiuation.",
-        "text": "level and ema50 and streak > 15 and wick > 100"
+        "id": "doubletop",
+        "label": "CONFLUENCE - Double Top",
+        "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
+        "text": "level and ema50 and wick > 100 and (dtop or engulf)"
     },
     {
         "id": "trending",
         "label": "CONFLUENCE - Reversal",
-        "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and ema50 and rev > 0 and rev <= 1 and streak > 15"
+        "info": "These are assets that has been trending daily for a 15 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
+        "text": "level and ema50 and rev > 0 and rev <= 1 and streak > 15 and wick > 100"
     },
     {
         "id": "newtrend",
         "label": "CONFLUENCE - New Trend",
-        "info": "These are assets that has been trending daily for a 25 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
-        "text": "level and ema50 and rev > 1 and rev <= 2 and streak > 15"
-    },
-    {
-        "id": "doubletop",
-        "label": "CONFLUENCE - Double Top",
-        "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
-        "text": "dtop and rsi"
+        "info": "These are assets that has been trending daily for a 15 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
+        "text": "level and ema50 and rev > 1 and rev <= 2 and streak > 15 and wick > 150"
     },
     {
         "id": "vc",
