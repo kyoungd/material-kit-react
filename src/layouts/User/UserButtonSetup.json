@@ -2,25 +2,25 @@
     {
         "id": "doubletop",
         "label": "CONFLUENCE - Double Top",
-        "info": "Multiple tops or bottoms are a good indicator for many different scenarios including accumlation/distribution and reversal",
+        "info": "Multiple tops/bottoms or engulfing cnadle with key levels and ema 50 and recent long wicks.  The market structure is worth investigating.",
         "text": "level and ema50 and wick > 100 and (dtop or engulf)"
     },
     {
         "id": "trending",
         "label": "CONFLUENCE - Reversal",
-        "info": "These are assets that has been trending daily for a 15 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
+        "info": "These are assets that has been trending daily for a 15 days or more.  The close price is near a key level and ema50 with long wicks.  In Elliot wave pattern, it should be finished the last wave and starting a new one.  Wave 1 or Wave A.",
         "text": "level and ema50 and rev > 0 and rev <= 1 and streak > 15 and wick > 100"
     },
     {
         "id": "newtrend",
         "label": "CONFLUENCE - New Trend",
-        "info": "These are assets that has been trending daily for a 15 days or more.  Trending is defined by close being above the ema14 and ema50, and ema14 above the ema50.",
+        "info": "These are assets that has been trending daily for a 15 days or more.  ",
         "text": "level and ema50 and rev > 1 and rev <= 2 and streak > 15 and wick > 150"
     },
     {
         "id": "vc",
         "label": "MARKET CYCLE - VSA",
-        "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle due to Market Maker activities.",
+        "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).  2. Buying/selling climax (reversal).  3 and 4. Effort and spread divergence (reversal).  5. No supply Bar (continuation).  6. Pseudo Up/down thrust (continuation). 7. Pseudo inverse down/up thrust (reversal).  8. Inverse down/up thrust (reversal). 9. Failed effort buying/selling climax (reversal).  10. wyckoff doji (reversal).",
         "text": "vsa = 1 or vsa = 2"
     },
     {
@@ -28,11 +28,5 @@
         "label": "MARKET CYCLE - Wyckoff AD",
         "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
         "text": "ad and price >= 10"
-    },
-    {
-        "id": "center",
-        "label": "DAY TRADE - Center Of Control",
-        "info": "Volume Profile Center of Control.  Quick day trade signal.  The Open of the new day is within the range of last day's volume profile range (20%-80%).  It should have high probability to returning to this price at least once today.",
-        "text": "center and price >= 6"
     }
 ]
