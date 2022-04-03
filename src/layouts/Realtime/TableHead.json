@@ -40,5 +40,11 @@
         "label": "Doji",
         "alignRight": false,
         "info": "Relative Volume"
+    },
+    {
+        "id": "candle",
+        "label": "Candle",
+        "alignRight": false,
+        "info": "Candle Stick Pattern, Morning/Evening Star and Engulfing Pattern"
     }
 ]

@@ -11,6 +11,7 @@ export default function UserRow(row) {
         {row.vsa === 5 || row.vsa === 6 || row.vsa === 7 ? 'yes' : 'no'}
       </TableCell>
       <TableCell align="left">{row.vsa === 10 ? 'yes' : 'no'}</TableCell>
+      <TableCell align="left">{row.st || row.ef ? 'yes' : 'no'}</TableCell>
     </>
   );
 }

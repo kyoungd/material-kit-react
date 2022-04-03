@@ -28,5 +28,11 @@
         "label": "VSA - Wyckoff doji",
         "info": "Wyckoff pattern.  Recent high/low, trending low, and volume smaller than last 2 bars.  Feture reversal indicator.",
         "text": "vsa = 10"
+    },
+    {
+        "id": "doji",
+        "label": "VSA - Wyckoff doji",
+        "info": "Wyckoff pattern.  Recent high/low, trending low, and volume smaller than last 2 bars.  Feture reversal indicator.",
+        "text": "star or engulf"
     }
 ]
