@@ -30,9 +30,9 @@
         "text": "vsa = 10"
     },
     {
-        "id": "doji",
-        "label": "VSA - Wyckoff doji",
-        "info": "Wyckoff pattern.  Recent high/low, trending low, and volume smaller than last 2 bars.  Feture reversal indicator.",
-        "text": "star or engulf"
+        "id": "stick",
+        "label": "Cancle Stick",
+        "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
+        "text": "cs > 0"
     }
 ]
