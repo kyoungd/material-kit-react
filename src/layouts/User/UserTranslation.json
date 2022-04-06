@@ -24,6 +24,8 @@
     "accumulation": "data['ad']",
     "trending": "data['td']",
     "streak": "data['td']",
+    "st": "data['st']",
+    "star": "data['st']",
     "wh": "data['wh']",
     "wicksize": "data['wh']",
     "wick": "data['wr']",
