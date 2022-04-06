@@ -8,8 +8,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 // import DialogContentText from '@mui/material/DialogContentText';
-// import FormControl from '@mui/material/FormControl';
-// import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 // import InputLabel from '@mui/material/InputLabel';
 // import MenuItem from '@mui/material/MenuItem';
 // import Select from '@mui/material/Select';
@@ -29,11 +31,14 @@ UserPopup.propTypes = {
 export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
   const [description, setDescription] = React.useState('');
+  const [viewState, setViewState] = React.useState(0);
 
   React.useEffect(() => {
-    const valueDescription =
-      props.favs[props.data.name] === undefined ? '' : props.favs[props.data.name].description;
+    const item = props.favs[props.data.name];
+    const valueDescription = item === undefined ? '' : item.description;
     setDescription(valueDescription);
+    const vstate = item === undefined ? 0 : item.rank;
+    setViewState(vstate);
   }, [props]);
 
   const handleClickOpen = () => {
@@ -44,15 +49,17 @@ export default function UserPopup(props) {
     const newFavs = { ...props.favs };
     const symbol = props.data.name;
     const initDescription = newFavs[symbol] === undefined ? '' : newFavs[symbol].description;
-    if (initDescription.trim() !== description.trim()) {
+    const initViewState = newFavs[symbol] === undefined ? 0 : newFavs[symbol].rank;
+    if (initDescription.trim() !== description.trim() || initViewState !== viewState) {
       if (newFavs[symbol] === undefined) {
         newFavs[symbol] = {
           created: new Date(),
           description,
-          rank: 3
+          rank: viewState
         };
       } else {
         newFavs[symbol].description = description;
+        newFavs[symbol].rank = viewState;
       }
       props.onClose(symbol, newFavs);
     }
@@ -102,6 +109,10 @@ export default function UserPopup(props) {
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
+  };
+
+  const handleChangeViewState = (event) => {
+    setViewState(event.target.value);
   };
 
   return (
@@ -200,6 +211,21 @@ export default function UserPopup(props) {
             />
           </Typography>
 
+          <Typography component="div">
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                value={viewState}
+                onChange={handleChangeViewState}
+              >
+                <FormControlLabel value="a" control={<Radio />} label="Active" />
+                <FormControlLabel value="o" control={<Radio />} label="Watch" />
+                <FormControlLabel value="w" control={<Radio />} label="Wait" />
+              </RadioGroup>
+            </FormControl>
+          </Typography>
           <Box
             noValidate
             component="form"

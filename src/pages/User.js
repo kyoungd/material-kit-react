@@ -23,6 +23,11 @@ import {
   Typography
 } from '@mui/material';
 
+import { Icon } from '@iconify/react';
+import highPriority from '@iconify/icons-eva/checkmark-circle-2-fill';
+import mediumPriority from '@iconify/icons-eva/checkmark-circle-2-outline';
+import lowPriority from '@iconify/icons-eva/clock-outline';
+
 // components
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
@@ -280,6 +285,21 @@ export default function User(props) {
 
   const isNoSelection = chartSymbol === '' || stockData[chartSymbol] === undefined;
 
+  const showPriority = (favs, symbol) => {
+    const item = favs[symbol];
+    if (item === undefined) return <></>;
+    switch (item.rank) {
+      case 'a':
+        return <Icon icon={highPriority} color="#1C9CEA" width={16} height={16} />;
+      case 'o':
+        return <Icon icon={mediumPriority} color="#1C9CEA" width={16} height={16} />;
+      case 'w':
+        return <Icon icon={lowPriority} color="#EA9C1C" width={16} height={16} />;
+      default:
+        return <></>;
+    }
+  };
+
   let daily;
   let weekly;
   if (!isNoSelection) {
@@ -372,10 +392,13 @@ export default function User(props) {
                           aria-checked={isItemSelected}
                         >
                           <TableCell padding="checkbox">
-                            <Checkbox
-                              checked={isItemSelected}
-                              onChange={(event) => handleClick(event, row.name)}
-                            />
+                            <Stack direction="row" justifyContent="space-between">
+                              <Checkbox
+                                checked={isItemSelected}
+                                onChange={(event) => handleClick(event, row.name)}
+                              />{' '}
+                              {showPriority(stockFavorites, row.name)}
+                            </Stack>
                           </TableCell>
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
