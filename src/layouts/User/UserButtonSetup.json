@@ -28,5 +28,11 @@
         "label": "MARKET CYCLE - Wyckoff AD",
         "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
         "text": "ad and price >= 10"
+    },
+    {
+        "id": "overnight",
+        "label": "Overnight Gapper",
+        "info": "For a quick day trading fun, overnight gapper is a good start",
+        "text": "ogap > 5"
     }
 ]
