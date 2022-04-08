@@ -21,7 +21,7 @@
         "id": "vc",
         "label": "MARKET CYCLE - VSA",
         "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).  2. Buying/selling climax (reversal).  3 and 4. Effort and spread divergence (reversal).  5. No supply Bar (continuation).  6. Pseudo Up/down thrust (continuation). 7. Pseudo inverse down/up thrust (reversal).  8. Inverse down/up thrust (reversal). 9. Failed effort buying/selling climax (reversal).  10. wyckoff doji (reversal).",
-        "text": "vsa > 0 and level"
+        "text": "vsa = 1 or vsa = 2"
     },
     {
         "id": "wickoff",
