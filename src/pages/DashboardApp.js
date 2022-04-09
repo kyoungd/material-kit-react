@@ -1,7 +1,7 @@
 // material
 import { useState } from 'react';
 import { Button, Box, Grid, Container, Typography, Link } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate } from 'react-router-dom';
 import ModalVideo from 'react-modal-video';
 // components
 import Page from '../components/Page';
@@ -39,6 +39,9 @@ export default function DashboardApp() {
   const [isForceDownload, setForceDownload] = useState(false);
   const userDispatch = useUserDispatch();
   const { isAuthenticated, symbols, favorites } = useUserState();
+
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+
   const token = isAuthenticated ? CookieGetToken() : '';
 
   return (

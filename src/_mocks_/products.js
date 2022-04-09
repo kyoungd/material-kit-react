@@ -6,8 +6,8 @@ import { mockImgProduct } from '../utils/mockImages';
 // ----------------------------------------------------------------------
 
 const PRODUCT_NAME = [
-  'WHAT WE DO',
-  '30 MINUTES A DAY',
+  'OVERVIEW',
+  'CONFLUENCE - Double Tops',
   'ADVANCED OPERATION',
   'PRICE ACTION',
   'TREND REVERSAL',
@@ -18,7 +18,7 @@ const PRODUCT_NAME = [
   'VOLUME PROFILE CENTER OF CONTROL'
 ];
 const VIDEO_URL = [
-  'QH2-TGUlwu4',
+  '0XIjoHJWLgs',
   'QH2-TGUlwu4',
   'QH2-TGUlwu4',
   'asDBegQaupM',

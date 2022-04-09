@@ -5,8 +5,9 @@
 // import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import plusFill from '@iconify/icons-eva/plus-fill';
-// import { Link as RouterLink } from 'react-router-dom';
+// import plusFill from '@iconify/icons-eva/plus-fill';  const { isAuthenticated, symbols, favorites } = useUserState();
+
+import { Navigate } from 'react-router-dom';
 // material
 import {
   Card,
@@ -39,7 +40,7 @@ import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
 // import { GetUsers } from '../_mocks_/user';
 import Chart from '../components/stockchart/Charts';
 // import getStockData from '../utils/getStockData';
-import { downloadStockData } from '../components/UserContext';
+import { downloadStockData, useUserState } from '../components/UserContext';
 
 import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
@@ -137,6 +138,9 @@ export default function User(props) {
     const newSelecteds = Object.keys(props.favorites).map((n) => n);
     setSelected(newSelecteds);
   }, [props]);
+
+  const { isAuthenticated } = useUserState();
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -315,7 +319,7 @@ export default function User(props) {
       <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            {props.pageType === 'DAILY' ? 'Assets Daily' : 'Assets Realtime'}
+            {props.pageType === 'DAILY' ? 'Daily' : '15 Minutes'}
           </Typography>
         </Stack>
 
