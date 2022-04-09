@@ -107,34 +107,30 @@ export default function ChartPopup(props) {
       >
         <DialogTitle id="responsive-dialog-title">{props.symbol}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
-            <Typography component="div">
-              <FormControl>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
-                  value={timeframe}
-                  onChange={handleChangeTimeframe}
-                >
-                  <FormControlLabel value="d" control={<Radio />} label="Daily" />
-                  <FormControlLabel value="w" control={<Radio />} label="Weekly" />
-                </RadioGroup>
-              </FormControl>
-              <Card>
-                <Chart
-                  type="svg"
-                  data={timeframe === 'd' ? daily : weekly}
-                  price={props.price}
-                  symbol={chartSymbol}
-                  fib1={fib1}
-                  fib2={fib2}
-                />
-              </Card>
-            </Typography>
-          </DialogContentText>
+          <Typography component="div">
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                value={timeframe}
+                onChange={handleChangeTimeframe}
+              >
+                <FormControlLabel value="d" control={<Radio />} label="Daily" />
+                <FormControlLabel value="w" control={<Radio />} label="Weekly" />
+              </RadioGroup>
+            </FormControl>
+            <Card>
+              <Chart
+                type="svg"
+                data={timeframe === 'd' ? daily : weekly}
+                price={props.price}
+                symbol={chartSymbol}
+                fib1={fib1}
+                fib2={fib2}
+              />
+            </Card>
+          </Typography>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>

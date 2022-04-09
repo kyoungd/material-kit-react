@@ -216,7 +216,6 @@ class CandlestickChart extends React.Component {
     return (
       <>
         <Stack spacing={2} direction="row" justifyContent="flex-start" alignItems="center">
-          {symbol}
           <Checkbox
             {...label1}
             onChange={(event) => this.setState({ showVolumeChart: event.target.checked })}

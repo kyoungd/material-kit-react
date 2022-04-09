@@ -149,13 +149,10 @@ export default function User(props) {
     // setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let addKey = false;
+  const selectionMath = (selectedIndex, name, selected) => {
     let newSelected = [];
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
-      addKey = true;
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -166,6 +163,13 @@ export default function User(props) {
         selected.slice(selectedIndex + 1)
       );
     }
+    return newSelected;
+  };
+
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
+    const addKey = selectedIndex === -1;
+    const newSelected = selectionMath(selectedIndex, name, selected);
     const stocks = stockFavorites;
     if (addKey) {
       stocks[name] = {
@@ -258,33 +262,6 @@ export default function User(props) {
             resetFunc={resetStockSearchButton}
           />
         </Container>
-
-        {/* {isNoSelection ? (
-          <></>
-        ) : (
-          <>
-            <Card>
-              <Chart
-                type="svg"
-                data={daily}
-                price={stateKeyLevel}
-                fib1={fib1}
-                fib2={fib2}
-                symbol={chartSymbol}
-              />
-            </Card>
-            <Card>
-              <Chart
-                type="svg"
-                data={weekly}
-                price={stateKeyLevel}
-                fib1={fib1}
-                fib2={fib2}
-                symbol={chartSymbol}
-              />
-            </Card>
-          </>
-        )} */}
 
         <Card>
           <UserListToolbar
