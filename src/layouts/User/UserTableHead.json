@@ -46,11 +46,5 @@
         "label": "pattern",
         "alignRight": false,
         "info": "Candlestick pattern (E)ngulfing candle, (D)ouble top and (R)si divergence, (F)ibonacci Retracement, (3) bar play"
-    },
-    {
-        "id": "",
-        "label": "info",
-        "alignRight": false,
-        "info": "Click on it and a popup will show you additional information about the asset."
     }
 ]

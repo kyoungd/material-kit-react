@@ -186,17 +186,24 @@ export default function User(props) {
   };
 
   const userPopupOnClose = (symbol, favs) => {
-    const selectedIndex = selected.indexOf(symbol);
-    if (selectedIndex === -1) {
-      let newSelected = [];
-      newSelected = newSelected.concat(selected, symbol);
-      setSelected(newSelected);
-    }
-    if (favs[symbol]) {
-      props.userDispatch({ type: 'FAVORITES', payload: favs, work: 'SAVE' });
-      setStockFavorites(favs);
-    }
+    const newSelected = Object.keys(favs).map((n) => n);
+    setSelected(newSelected);
+    props.userDispatch({ type: 'FAVORITES', payload: favs, work: 'SAVE' });
+    setStockFavorites(favs);
   };
+
+  // const userPopupOnClose = (symbol, favs) => {
+  //   const selectedIndex = selected.indexOf(symbol);
+  //   if (selectedIndex === -1) {
+  //     let newSelected = [];
+  //     newSelected = newSelected.concat(selected, symbol);
+  //     setSelected(newSelected);
+  //   }
+  //   if (favs[symbol]) {
+  //     props.userDispatch({ type: 'FAVORITES', payload: favs, work: 'SAVE' });
+  //     setStockFavorites(favs);
+  //   }
+  // };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -302,9 +309,11 @@ export default function User(props) {
                         >
                           <TableCell padding="checkbox">
                             <Stack direction="row" justifyContent="space-between">
-                              <Checkbox
-                                checked={isItemSelected}
-                                onChange={(event) => handleClick(event, row.name)}
+                              <UserPopup
+                                isChecked={isItemSelected}
+                                data={row}
+                                favs={stockFavorites}
+                                onClose={userPopupOnClose}
                               />{' '}
                               {showPriority(stockFavorites, row.name)}
                             </Stack>
@@ -324,15 +333,6 @@ export default function User(props) {
                             </Stack>
                           </TableCell>
                           {props.rowContent(row)}
-                          {props.pageType === 'DAILY' && (
-                            <TableCell align="right">
-                              <UserPopup
-                                data={row}
-                                favs={stockFavorites}
-                                onClose={userPopupOnClose}
-                              />
-                            </TableCell>
-                          )}
                         </TableRow>
                       );
                       return lineItem;

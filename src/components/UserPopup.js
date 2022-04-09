@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
+import Checkbox from '@mui/material/Checkbox';
 // import InputLabel from '@mui/material/InputLabel';
 // import MenuItem from '@mui/material/MenuItem';
 // import Select from '@mui/material/Select';
@@ -23,6 +24,7 @@ import eyeFill from '@iconify/icons-eva/eye-fill';
 import PropTypes from 'prop-types';
 
 UserPopup.propTypes = {
+  isChecked: PropTypes.bool.isRequired,
   favs: PropTypes.array.isRequired,
   onClose: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
@@ -31,13 +33,13 @@ UserPopup.propTypes = {
 export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
   const [description, setDescription] = React.useState('');
-  const [viewState, setViewState] = React.useState(0);
+  const [viewState, setViewState] = React.useState('');
 
   React.useEffect(() => {
     const item = props.favs[props.data.name];
     const valueDescription = item === undefined ? '' : item.description;
     setDescription(valueDescription);
-    const vstate = item === undefined ? 0 : item.rank;
+    const vstate = item === undefined ? '' : item.rank;
     setViewState(vstate);
   }, [props]);
 
@@ -51,17 +53,22 @@ export default function UserPopup(props) {
     const initDescription = newFavs[symbol] === undefined ? '' : newFavs[symbol].description;
     const initViewState = newFavs[symbol] === undefined ? 0 : newFavs[symbol].rank;
     if (initDescription.trim() !== description.trim() || initViewState !== viewState) {
-      if (newFavs[symbol] === undefined) {
-        newFavs[symbol] = {
-          created: new Date(),
-          description,
-          rank: viewState
-        };
-      } else {
-        newFavs[symbol].description = description;
-        newFavs[symbol].rank = viewState;
+      if (viewState === 'd') {
+        if (newFavs[symbol]) delete newFavs[symbol];
+        props.onClose(symbol, newFavs);
+      } else if (['a', 'o', 'w'].indexOf(viewState) >= 0) {
+        if (newFavs[symbol] === undefined) {
+          newFavs[symbol] = {
+            created: new Date(),
+            description,
+            rank: viewState
+          };
+        } else {
+          newFavs[symbol].description = description;
+          newFavs[symbol].rank = viewState;
+        }
+        props.onClose(symbol, newFavs);
       }
-      props.onClose(symbol, newFavs);
     }
     setOpen(false);
   };
@@ -118,7 +125,7 @@ export default function UserPopup(props) {
   return (
     <>
       <IconButton aria-label="fingerprint" color="secondary" onClick={handleClickOpen}>
-        <Icon icon={eyeFill} color="#1C9CEA" width={32} height={32} />
+        <Checkbox checked={props.isChecked} />
       </IconButton>
       <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose}>
         <DialogTitle>{props.data.name}</DialogTitle>
@@ -223,6 +230,7 @@ export default function UserPopup(props) {
                 <FormControlLabel value="a" control={<Radio />} label="Active" />
                 <FormControlLabel value="o" control={<Radio />} label="Watch" />
                 <FormControlLabel value="w" control={<Radio />} label="Wait" />
+                <FormControlLabel value="d" control={<Radio />} label="DELETE" />
               </RadioGroup>
             </FormControl>
           </Typography>
