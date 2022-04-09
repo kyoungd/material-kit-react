@@ -13,7 +13,6 @@ import {
   Card,
   Table,
   Stack,
-  Button,
   Checkbox,
   Container,
   TableRow,
@@ -34,13 +33,9 @@ import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
-
 // import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
-//
-// import { GetUsers } from '../_mocks_/user';
-import Chart from '../components/stockchart/Charts';
-// import getStockData from '../utils/getStockData';
-import { downloadStockData, useUserState } from '../components/UserContext';
+import ChartPopup from '../components/stockchart/ChartPopup';
+import { useUserState } from '../components/UserContext';
 
 import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
@@ -125,11 +120,6 @@ export default function User(props) {
   const [USERLIST, setUserList] = useState([]);
   const [stockFavorites, setStockFavorites] = useState({});
   const [showFavorites, setShowFavorites] = useState(false);
-  const [stockData, setStockData] = useState({});
-  const [chartSymbol, setChartSymbol] = useState('');
-
-  const [stateKeyLevel, setStateKeyLevel] = useState(0);
-  const [fibonaccis, setFibonaccis] = useState({});
 
   useEffect(() => {
     console.log('useEffect - initialize');
@@ -157,22 +147,6 @@ export default function User(props) {
     //   return;
     // }
     // setSelected([]);
-  };
-
-  const handleSymbolButtonPress = (symbol) => {
-    // getStockData(stockData, symbol, setStockData, setChartSymbol);
-    downloadStockData(stockData, symbol, setStockData, setChartSymbol);
-    const item = USERLIST.find((user) => user.name === symbol);
-    try {
-      if (item) setStateKeyLevel(item.keylevels);
-    } catch (e) {
-      setStateKeyLevel(0);
-    }
-    try {
-      if (item) setFibonaccis(item.fibs);
-    } catch (e) {
-      setFibonaccis({ fib1: 0, fib2: 0 });
-    }
   };
 
   const handleClick = (event, name) => {
@@ -249,46 +223,6 @@ export default function User(props) {
 
   const isUserNotFound = filteredUsers.length === 0;
 
-  const buildWeekData = (weekdata) => {
-    const { open } = weekdata[0];
-    const { close } = weekdata[weekdata.length - 1];
-    const high = Math.max(...weekdata.map((row) => row.high));
-    const low = Math.min(...weekdata.map((row) => row.low));
-    const volume = weekdata.map((row) => row.volume).reduce((a, b) => a + b);
-    return { date: weekdata[0].date, open, close, high, low, volume };
-  };
-
-  const dailyToWeeklyStockData = (daily) => {
-    // eslint-disable-next-line no-restricted-syntax
-    // eslint-disable-next-line guard-for-in
-    const weekly = [];
-    let weekdata = [];
-    let lastDayOfWeek = 0;
-    for (const day in daily) {
-      const row = daily[day];
-      const dayOfWeek = row.date.getDay();
-      if (lastDayOfWeek < dayOfWeek) weekdata.push(row);
-      else {
-        if (weekdata.length > 0) {
-          weekly.push(buildWeekData(weekdata));
-          weekdata = [];
-        }
-        weekdata.push(row);
-      }
-      lastDayOfWeek = dayOfWeek;
-      // console.log(day);
-    }
-    if (weekdata.length > 0) weekly.push(buildWeekData(weekdata));
-    return weekly;
-  };
-
-  const fib1 =
-    fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib1 : 0;
-  const fib2 =
-    fibonaccis !== undefined && Object.keys(fibonaccis).length === 2 ? fibonaccis.fib2 : 0;
-
-  const isNoSelection = chartSymbol === '' || stockData[chartSymbol] === undefined;
-
   const showPriority = (favs, symbol) => {
     const item = favs[symbol];
     if (item === undefined) return <></>;
@@ -304,15 +238,9 @@ export default function User(props) {
     }
   };
 
-  let daily;
-  let weekly;
-  if (!isNoSelection) {
-    daily = stockData[chartSymbol];
-    if (daily !== undefined && daily !== null) {
-      // eslint-disable-next-line no-unused-vars
-      weekly = dailyToWeeklyStockData(daily);
-    }
-  }
+  const resetStockSearchButton = (key) => {
+    console.log('resetStockSearchButton() - ', key);
+  };
 
   return (
     <Page title="TRADESIMP">
@@ -327,11 +255,11 @@ export default function User(props) {
           <StockSearchButtons
             data={props.explainers}
             searchFunc={setFilterName}
-            resetFunc={setChartSymbol}
+            resetFunc={resetStockSearchButton}
           />
         </Container>
 
-        {isNoSelection ? (
+        {/* {isNoSelection ? (
           <></>
         ) : (
           <>
@@ -356,7 +284,7 @@ export default function User(props) {
               />
             </Card>
           </>
-        )}
+        )} */}
 
         <Card>
           <UserListToolbar
@@ -407,15 +335,14 @@ export default function User(props) {
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Typography variant="subtitle2" noWrap>
-                                {props.pageType === 'DAILY' && (
-                                  <Button
-                                    variant="text"
-                                    onClick={() => handleSymbolButtonPress(row.name)}
-                                  >
-                                    {row.name}
-                                  </Button>
-                                )}
-                                {props.pageType === 'REALTIME' && row.name}
+                                <ChartPopup
+                                  symbol={row.name}
+                                  price={
+                                    USERLIST.find((user) => user.name === row.name)
+                                      ? USERLIST.find((user) => user.name === row.name).keylevels
+                                      : 0
+                                  }
+                                />
                               </Typography>
                             </Stack>
                           </TableCell>

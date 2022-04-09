@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { format } from 'd3-format';
-import { timeFormat } from 'd3-time-format';
 
 import { ChartCanvas, Chart } from 'react-stockcharts';
 import { BarSeries, CandlestickSeries, LineSeries, RSISeries } from 'react-stockcharts/lib/series';

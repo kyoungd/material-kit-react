@@ -1,7 +1,7 @@
 // material
 import { useState } from 'react';
-import { Button, Box, Grid, Container, Typography, Link } from '@mui/material';
-import { Link as RouterLink, Navigate } from 'react-router-dom';
+import { Button, Box, Grid, Container, Typography } from '@mui/material';
+import { Navigate } from 'react-router-dom';
 import ModalVideo from 'react-modal-video';
 // components
 import Page from '../components/Page';
@@ -9,7 +9,7 @@ import {
   AppDownloadSymbols,
   AppDownloadFavorites,
   AppDownloadRealtimes,
-  AppNewsUpdate,
+  // AppNewsUpdate,
   AppOrderTimeline
   // AppTasks,
   // AppNewUsers,
@@ -32,7 +32,6 @@ import ExpertShop from '../components/ExpertShop';
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
