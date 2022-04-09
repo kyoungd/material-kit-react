@@ -26,7 +26,7 @@ ChartPopup.propTypes = {
 
 export default function ChartPopup(props) {
   const [open, setOpen] = React.useState(false);
-  const [viewState, setViewState] = React.useState('d');
+  const [timeframe, setTimeframe] = React.useState('d');
   const [stockData, setStockData] = React.useState({});
   const [chartSymbol, setChartSymbol] = React.useState('');
   const [fibonachi, setFibonachi] = React.useState({});
@@ -47,8 +47,8 @@ export default function ChartPopup(props) {
     setOpen(false);
   };
 
-  const handleChangeViewState = (event) => {
-    setViewState(event.target.value);
+  const handleChangeTimeframe = (event) => {
+    setTimeframe(event.target.value);
   };
 
   const buildWeekData = (weekdata) => {
@@ -116,8 +116,8 @@ export default function ChartPopup(props) {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
-                  value={viewState}
-                  onChange={handleChangeViewState}
+                  value={timeframe}
+                  onChange={handleChangeTimeframe}
                 >
                   <FormControlLabel value="d" control={<Radio />} label="Daily" />
                   <FormControlLabel value="w" control={<Radio />} label="Weekly" />
@@ -126,7 +126,7 @@ export default function ChartPopup(props) {
               <Card>
                 <Chart
                   type="svg"
-                  data={viewState === 'd' ? daily : weekly}
+                  data={timeframe === 'd' ? daily : weekly}
                   price={props.price}
                   symbol={chartSymbol}
                   fib1={fib1}
