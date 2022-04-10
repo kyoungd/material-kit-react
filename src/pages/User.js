@@ -174,7 +174,7 @@ export default function User(props) {
     if (addKey) {
       stocks[name] = {
         description: '',
-        rank: 3,
+        rank: 'w',
         created: new Date().toLocaleString()
       };
     } else {
@@ -309,12 +309,16 @@ export default function User(props) {
                         >
                           <TableCell padding="checkbox">
                             <Stack direction="row" justifyContent="space-between">
-                              <UserPopup
+                              <Checkbox
+                                checked={isItemSelected}
+                                onChange={(event) => handleClick(event, row.name)}
+                              />{' '}
+                              {/* <UserPopup
                                 isChecked={isItemSelected}
                                 data={row}
                                 favs={stockFavorites}
                                 onClose={userPopupOnClose}
-                              />{' '}
+                              />{' '} */}
                               {showPriority(stockFavorites, row.name)}
                             </Stack>
                           </TableCell>

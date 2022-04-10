@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -178,7 +179,7 @@ export default function ChartPopup(props) {
   };
 
   const selectionDashboard = () => (
-    <>
+    <Box m={2} pt={3}>
       <Typography component="div">
         <Box fontWeight="fontWeightMedium" display="inline">
           CORRELATIONS:
@@ -267,7 +268,7 @@ export default function ChartPopup(props) {
         />
       </Typography>
 
-      <Typography component="div">
+      <Typography component="div" m={2} pt={2}>
         <FormControl>
           <RadioGroup
             row
@@ -283,7 +284,7 @@ export default function ChartPopup(props) {
           </RadioGroup>
         </FormControl>
       </Typography>
-    </>
+    </Box>
   );
 
   return (
@@ -300,19 +301,19 @@ export default function ChartPopup(props) {
         <DialogContent>
           <Typography component="div">
             <FormControl>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                value={timeframe}
-                onChange={handleChangeTimeframe}
-              >
-                <FormControlLabel value="d" control={<Radio />} label="Daily" />
-                <FormControlLabel value="w" control={<Radio />} label="Weekly" />
-                <FormControlLabel value="i" control={<Radio />} label="Information" />
-              </RadioGroup>
+              <ButtonGroup aria-label="outlined button group" onClick={handleChangeTimeframe}>
+                <Button variant={timeframe === 'd' ? 'contained' : 'outlined'} value="d">
+                  Daily
+                </Button>
+                <Button variant={timeframe === 'w' ? 'contained' : 'outlined'} value="w">
+                  Weekly
+                </Button>
+                <Button variant={timeframe === 'i' ? 'contained' : 'outlined'} value="i">
+                  Information
+                </Button>
+              </ButtonGroup>
             </FormControl>
-            <Card>
+            <Card variant="outlined">
               {timeframe === 'd' && (
                 <Chart
                   type="svg"
