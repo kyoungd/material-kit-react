@@ -20,6 +20,7 @@ import {
   TableCell,
   TableContainer,
   TablePagination,
+  Tooltip,
   Typography
 } from '@mui/material';
 
@@ -239,11 +240,23 @@ export default function User(props) {
     if (item === undefined) return <></>;
     switch (item.rank) {
       case 'a':
-        return <Icon icon={highPriority} color="#1C9CEA" width={16} height={16} />;
+        return (
+          <Tooltip title={item.description}>
+            <Icon icon={highPriority} color="#1C9CEA" width={16} height={16} />
+          </Tooltip>
+        );
       case 'o':
-        return <Icon icon={mediumPriority} color="#1C9CEA" width={16} height={16} />;
+        return (
+          <Tooltip title={item.description}>
+            <Icon icon={mediumPriority} color="#1C9CEA" width={16} height={16} />
+          </Tooltip>
+        );
       case 'w':
-        return <Icon icon={lowPriority} color="#EA9C1C" width={16} height={16} />;
+        return (
+          <Tooltip title={item.description}>
+            <Icon icon={lowPriority} color="#EA9C1C" width={16} height={16} />
+          </Tooltip>
+        );
       default:
         return <></>;
     }
@@ -274,7 +287,7 @@ export default function User(props) {
           <UserListToolbar
             numSelected={selected.length}
             filterName={filterName}
-            onFilterName={props.pageType === 'REALTIME' ? setUserList : handleFilterByName}
+            onFilterName={handleFilterByName}
           />
 
           <Scrollbar>
