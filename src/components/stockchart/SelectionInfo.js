@@ -1,106 +1,51 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import * as React from 'react';
-import Card from '@mui/material/Card';
+import { Box, Typography, Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+// import DialogContentText from '@mui/material/DialogContentText';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import { Box, Typography, Grid } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Select from '@mui/material/Select';
+// import Switch from '@mui/material/Switch';
+import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
-// import useMediaQuery from '@mui/material/useMediaQuery';
-// import { useTheme } from '@mui/material/styles';
+import { Icon } from '@iconify/react';
+import eyeFill from '@iconify/icons-eva/eye-fill';
 import PropTypes from 'prop-types';
-import Chart from './Charts';
-import { downloadStockData } from '../UserContext';
 
-ChartPopup.propTypes = {
-  symbol: PropTypes.string,
-  price: PropTypes.number,
+UserPopup.propTypes = {
+  isChecked: PropTypes.bool.isRequired,
   favs: PropTypes.array.isRequired,
   onClose: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
 
-export default function ChartPopup(props) {
+export default function UserPopup(props) {
   const [open, setOpen] = React.useState(false);
-  const [timeframe, setTimeframe] = React.useState('d');
-  const [stockData, setStockData] = React.useState({});
-  const [chartSymbol, setChartSymbol] = React.useState('');
-  const [fibonachi, setFibonachi] = React.useState({});
   const [description, setDescription] = React.useState('');
   const [viewState, setViewState] = React.useState('');
 
-  //   const theme = useTheme();
-  //   const fullScreen = useMediaQuery(theme.breakpoints.down(''));
-
   React.useEffect(() => {
-    downloadStockData(stockData, props.symbol, setStockData, setChartSymbol);
-    setFibonachi({ fib1: 0, fib2: 0 });
     const item = props.favs[props.data.name];
     const valueDescription = item === undefined ? '' : item.description;
     setDescription(valueDescription);
     const vstate = item === undefined ? '' : item.rank;
     setViewState(vstate);
-  }, [props, stockData]);
+  }, [props]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
-  const handleChangeTimeframe = (event) => {
-    setTimeframe(event.target.value);
-  };
-
-  const buildWeekData = (weekdata) => {
-    const { open } = weekdata[0];
-    const { close } = weekdata[weekdata.length - 1];
-    const high = Math.max(...weekdata.map((row) => row.high));
-    const low = Math.min(...weekdata.map((row) => row.low));
-    const volume = weekdata.map((row) => row.volume).reduce((a, b) => a + b);
-    return { date: weekdata[0].date, open, close, high, low, volume };
-  };
-
-  const dailyToWeeklyStockData = (daily) => {
-    // eslint-disable-next-line no-restricted-syntax
-    // eslint-disable-next-line guard-for-in
-    const weekly = [];
-    let weekdata = [];
-    let lastDayOfWeek = 0;
-    for (const day in daily) {
-      const row = daily[day];
-      const dayOfWeek = row.date.getDay();
-      if (lastDayOfWeek < dayOfWeek) weekdata.push(row);
-      else {
-        if (weekdata.length > 0) {
-          weekly.push(buildWeekData(weekdata));
-          weekdata = [];
-        }
-        weekdata.push(row);
-      }
-      lastDayOfWeek = dayOfWeek;
-      // console.log(day);
-    }
-    if (weekdata.length > 0) weekly.push(buildWeekData(weekdata));
-    return weekly;
-  };
-
-  const fib1 = fibonachi !== undefined && Object.keys(fibonachi).length === 2 ? fibonachi.fib1 : 0;
-  const fib2 = fibonachi !== undefined && Object.keys(fibonachi).length === 2 ? fibonachi.fib2 : 0;
-
-  let daily = [];
-  let weekly = [];
-  daily = stockData[chartSymbol];
-  if (daily !== undefined && daily !== null) {
-    // eslint-disable-next-line no-unused-vars
-    weekly = dailyToWeeklyStockData(daily);
-  }
 
   const handleClose = () => {
     const newFavs = { ...props.favs };
@@ -177,7 +122,7 @@ export default function ChartPopup(props) {
     setViewState(event.target.value);
   };
 
-  const selectionDashboard = () => (
+  return (
     <>
       <Typography component="div">
         <Box fontWeight="fontWeightMedium" display="inline">
@@ -284,65 +229,5 @@ export default function ChartPopup(props) {
         </FormControl>
       </Typography>
     </>
-  );
-
-  return (
-    <div>
-      <Button onClick={handleClickOpen}>{props.symbol}</Button>
-      <Dialog
-        fullWidth
-        maxWidth="lg"
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <DialogTitle id="responsive-dialog-title">{props.symbol}</DialogTitle>
-        <DialogContent>
-          <Typography component="div">
-            <FormControl>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                value={timeframe}
-                onChange={handleChangeTimeframe}
-              >
-                <FormControlLabel value="d" control={<Radio />} label="Daily" />
-                <FormControlLabel value="w" control={<Radio />} label="Weekly" />
-                <FormControlLabel value="i" control={<Radio />} label="Information" />
-              </RadioGroup>
-            </FormControl>
-            <Card>
-              {timeframe === 'd' && (
-                <Chart
-                  type="svg"
-                  data={daily}
-                  price={props.price}
-                  symbol={chartSymbol}
-                  fib1={fib1}
-                  fib2={fib2}
-                />
-              )}
-              {timeframe === 'w' && (
-                <Chart
-                  type="svg"
-                  data={daily}
-                  price={props.price}
-                  symbol={chartSymbol}
-                  fib1={fib1}
-                  fib2={fib2}
-                />
-              )}
-              {timeframe === 'i' && selectionDashboard()}
-            </Card>
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
   );
 }

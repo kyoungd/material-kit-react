@@ -328,6 +328,9 @@ export default function User(props) {
                                       ? USERLIST.find((user) => user.name === row.name).keylevels
                                       : 0
                                   }
+                                  data={row}
+                                  favs={stockFavorites}
+                                  onClose={userPopupOnClose}
                                 />
                               </Typography>
                             </Stack>
