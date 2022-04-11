@@ -7,7 +7,7 @@ import arrowDown from '@iconify/icons-eva/arrow-circle-down-outline';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Toolbar, Tooltip, IconButton, OutlinedInput, InputAdornment } from '@mui/material';
-import { getRealtimes, useUserDispatch } from '../../UserContext';
+import { getRealtimes, getSymbols, useUserDispatch } from '../../UserContext';
 import { CookieGetToken } from '../../../utils/cookies';
 
 // ----------------------------------------------------------------------
@@ -83,6 +83,7 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
         <IconButton
           onClick={() => {
             getRealtimes(userDispatch, token, null, null, onFilterName);
+            getSymbols(userDispatch, token, null, null);
           }}
         >
           <Icon icon={arrowDown} />

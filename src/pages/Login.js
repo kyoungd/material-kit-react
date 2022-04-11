@@ -70,11 +70,15 @@ export default function Login() {
             <Typography variant="h4" gutterBottom>
               TradeSimp
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}> FIND STOCKS TO TRADE.</Typography>
+            <Typography sx={{ color: 'text.secondary' }}>
+              {' '}
+              FIND STOCKS TO TRADE WITH A FEW MOUSE CLICKS
+            </Typography>
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
-              Find quality stocks to trade using patterns and indicators.
+              Trading is not hard. Finding the right setup for trades, that is the hard part. We can
+              help with that.
               <br />
             </Typography>
             <Stack direction="row" spacing={2}>

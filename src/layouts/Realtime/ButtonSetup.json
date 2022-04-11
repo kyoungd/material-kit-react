@@ -13,7 +13,7 @@
     },
     {
         "id": "stick",
-        "label": "Cancle Stick",
+        "label": "Candle Stick",
         "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
         "text": "cs > 0"
     }

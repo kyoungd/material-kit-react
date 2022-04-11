@@ -132,6 +132,7 @@ export default function User(props) {
 
   const { isAuthenticated } = useUserState();
   if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
