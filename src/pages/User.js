@@ -272,7 +272,7 @@ export default function User(props) {
       <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            {props.pageType === 'DAILY' ? 'Daily' : '15 Minutes'}
+            {props.pageType === 'DAILY' ? 'Daily' : '5 Minutes'}
           </Typography>
         </Stack>
 

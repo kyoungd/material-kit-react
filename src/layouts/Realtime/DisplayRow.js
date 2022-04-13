@@ -8,7 +8,7 @@ export default function UserRow(row) {
       <TableCell align="left">{row.vsa === 2 ? 'yes' : 'no'}</TableCell>
       <TableCell align="left">{row.sd ? 'yes' : 'no'}</TableCell>
       <TableCell align="left">{row.ab ? 'yes' : 'no'}</TableCell>
-      <TableCell align="left">{row.st || row.ef ? 'yes' : 'no'}</TableCell>
+      <TableCell align="left">{row.cs > 0 ? 'yes' : 'no'}</TableCell>
     </>
   );
 }

@@ -12,13 +12,13 @@
         "text": "vsa = 2"
     },
     {
-        "id": "climax",
+        "id": "zone",
         "label": "Supply and Demand zone",
         "info": "supply and demand.  Do not use this indicator within the first 30 minutes of the market open.",
         "text": "zone"
     },
     {
-        "id": "climax",
+        "id": "abcd",
         "label": "ABCD pattern",
         "info": "ABCD pattern with MACD Histogram",
         "text": "abcd"

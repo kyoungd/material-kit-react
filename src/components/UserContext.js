@@ -148,6 +148,9 @@ function parseRealtimes(data) {
       id: item.id,
       name: item.attributes.symbol,
       vsa: item.attributes.data.vsa,
+      sd: item.attributes.data.sd,
+      cs: item.attributes.data.cs,
+      ab: item.attributes.data.ab,
       price: item.attributes.data.price
     };
     return row;
@@ -166,7 +169,7 @@ function downloadRealtimes(
   if (setIsLoading !== null) setIsLoading(true);
   const url1 =
     process.env.REACT_APP_REALTIME_SERVICE ||
-    'https://simp-admin.herokuapp.com/api/realtimes?datatype=VSA&timeframe=15Min';
+    'https://simp-admin.herokuapp.com/api/realtimes?datatype=cs&timeframe=5Min';
   const bearerToken = makeBearToken(token);
   axios
     .get(url1, bearerToken)
