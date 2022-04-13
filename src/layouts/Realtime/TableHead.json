@@ -24,22 +24,16 @@
         "info": "(SR)weekly support/resistance line, (V)olume profile"
     },
     {
-        "id": "effort",
-        "label": "Effort Divergence",
+        "id": "zone",
+        "label": "Supply Demand",
         "alignRight": false,
-        "info": "Divergence between effort and price movement"
+        "info": "Daily supply and demand zone.  Min/Max of today's price."
     },
     {
-        "id": "continiuation",
-        "label": "Continuation",
+        "id": "abcd",
+        "label": "ABCD Pattern",
         "alignRight": false,
-        "info": "Contiuation indicator based on price/volume trend"
-    },
-    {
-        "id": "doji",
-        "label": "Doji",
-        "alignRight": false,
-        "info": "Relative Volume"
+        "info": "ABCD pattern with MACD confirmation"
     },
     {
         "id": "candle",

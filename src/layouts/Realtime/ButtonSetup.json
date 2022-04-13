@@ -12,6 +12,18 @@
         "text": "vsa = 2"
     },
     {
+        "id": "climax",
+        "label": "Supply and Demand zone",
+        "info": "supply and demand.  Do not use this indicator within the first 30 minutes of the market open.",
+        "text": "zone"
+    },
+    {
+        "id": "climax",
+        "label": "ABCD pattern",
+        "info": "ABCD pattern with MACD Histogram",
+        "text": "abcd"
+    },
+    {
         "id": "stick",
         "label": "Candle Stick",
         "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
