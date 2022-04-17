@@ -3,13 +3,13 @@
         "id": "thrust",
         "label": "VSA - up/down thrust",
         "info": "Wyckoff pattern.  Low spread and extremely high volume in a trending market.  Future reversal indicator.",
-        "text": "vsa = 1"
+        "text": "thrust"
     },
     {
         "id": "climax",
         "label": "VSA - selling/buying climax",
         "info": "Wyckoff pattern.  Hig spread and extremely high volume in a trending market.  Future reversal indicator.",
-        "text": "vsa = 2"
+        "text": "climax"
     },
     {
         "id": "zone",

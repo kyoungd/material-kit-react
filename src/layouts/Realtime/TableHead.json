@@ -24,21 +24,33 @@
         "info": "(SR)weekly support/resistance line, (V)olume profile"
     },
     {
-        "id": "zone",
-        "label": "Supply Demand",
+        "id": "engulf",
+        "label": "Engulfing Candle",
         "alignRight": false,
-        "info": "Daily supply and demand zone.  Min/Max of today's price."
+        "info": "Candlestick pattern, Engulfing candle."
+    },
+    {
+        "id": "star",
+        "label": "Star Candle",
+        "alignRight": false,
+        "info": "Morning/Evening Star candle."
     },
     {
         "id": "abcd",
         "label": "ABCD Pattern",
         "alignRight": false,
-        "info": "ABCD pattern with MACD confirmation"
+        "info": "ABCD pattern.  Look for momentum with MACD histogram."
     },
     {
-        "id": "candle",
-        "label": "Candle",
+        "id": "pivot",
+        "label": "Pivot Anchor",
         "alignRight": false,
-        "info": "Candle Stick Pattern, Morning/Evening Star and Engulfing Pattern"
+        "info": "Pivot can be an anchor if the close of the data started near the pivot, moved away and come back."
+    },
+    {
+        "id": "zone",
+        "label": "Supply Demand",
+        "alignRight": false,
+        "info": "Daily supply and demand zone. The zone was not touched by previous pricement."
     }
 ]
