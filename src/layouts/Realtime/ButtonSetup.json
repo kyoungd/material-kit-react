@@ -27,6 +27,6 @@
         "id": "stick",
         "label": "Candle Stick",
         "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
-        "text": "cs > 0"
+        "text": "engulf or star"
     }
 ]
