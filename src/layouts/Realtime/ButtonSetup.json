@@ -24,6 +24,12 @@
         "text": "abcd"
     },
     {
+        "id": "pivot",
+        "label": "Pivot Anchor",
+        "info": "Use pivot point as an anchor",
+        "text": "pivot"
+    },
+    {
         "id": "stick",
         "label": "Candle Stick",
         "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
