@@ -132,7 +132,7 @@ export default function User(props) {
 
   const { isAuthenticated } = useUserState();
   if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
+  // if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -289,6 +289,8 @@ export default function User(props) {
             numSelected={selected.length}
             filterName={filterName}
             onFilterName={handleFilterByName}
+            onRefreshData={setUserList}
+            pageType={props.pageType}
           />
 
           <Scrollbar>
@@ -339,17 +341,20 @@ export default function User(props) {
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
                               <Typography variant="subtitle2" noWrap>
-                                <ChartPopup
-                                  symbol={row.name}
-                                  price={
-                                    USERLIST.find((user) => user.name === row.name)
-                                      ? USERLIST.find((user) => user.name === row.name).keylevels
-                                      : 0
-                                  }
-                                  data={row}
-                                  favs={stockFavorites}
-                                  onClose={userPopupOnClose}
-                                />
+                                {props.pageType === 'DAILY' && (
+                                  <ChartPopup
+                                    symbol={row.name}
+                                    price={
+                                      USERLIST.find((user) => user.name === row.name)
+                                        ? USERLIST.find((user) => user.name === row.name).keylevels
+                                        : 0
+                                    }
+                                    data={row}
+                                    favs={stockFavorites}
+                                    onClose={userPopupOnClose}
+                                  />
+                                )}
+                                {props.pageType === 'REALTIME' && <p>{row.name}</p>}
                               </Typography>
                             </Stack>
                           </TableCell>

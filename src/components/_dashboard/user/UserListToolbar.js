@@ -37,10 +37,18 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
 UserListToolbar.propTypes = {
   numSelected: PropTypes.number,
   filterName: PropTypes.string,
-  onFilterName: PropTypes.func
+  onFilterName: PropTypes.func,
+  onDownloadCallback: PropTypes.func,
+  pageType: PropTypes.string
 };
 
-export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+export default function UserListToolbar({
+  numSelected,
+  filterName,
+  onFilterName,
+  onDownloadCallback,
+  pageType
+}) {
   const userDispatch = useUserDispatch();
   const token = CookieGetToken();
   return (
@@ -82,8 +90,10 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
       <Tooltip title="Download New Data">
         <IconButton
           onClick={() => {
-            getRealtimes(userDispatch, token, null, null, onFilterName);
-            getSymbols(userDispatch, token, null, null);
+            if (pageType === 'REALTIME')
+              getRealtimes(userDispatch, token, null, null, onDownloadCallback);
+            if (pageType === 'DAILY')
+              getSymbols(userDispatch, token, null, null, onDownloadCallback);
           }}
         >
           <Icon icon={arrowDown} />
