@@ -351,6 +351,7 @@ export default function User(props) {
                                     }
                                     data={row}
                                     favs={stockFavorites}
+                                    setFavs={setStockFavorites}
                                     onClose={userPopupOnClose}
                                   />
                                 )}

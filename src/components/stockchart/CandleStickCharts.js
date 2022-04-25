@@ -41,7 +41,6 @@ class CandlestickChart extends React.Component {
     super(props);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.onDrawCompleteChart1 = this.onDrawCompleteChart1.bind(this);
-    this.onDrawCompleteChart3 = this.onDrawCompleteChart3.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
     this.onFibComplete2 = this.onFibComplete2.bind(this);
 
@@ -58,15 +57,18 @@ class CandlestickChart extends React.Component {
     // 	],
     // 	iactive_3: []
     // };
-    this.state = {
-      enableTrendLine: false,
-      enableFib: false,
-      iactive_1: [],
-      iactive_3: [],
-      showVolumeChart: true,
-      showRsiChart: true,
-      iactive_2: []
-    };
+    const chartData = JSON.parse(props.idata);
+    this.state =
+      Object.entries(chartData).length === 0
+        ? {
+            enableTrendLine: false,
+            enableFib: false,
+            iactive_1: [],
+            showVolumeChart: true,
+            showRsiChart: true,
+            iactive_2: []
+          }
+        : chartData;
   }
 
   saveCanvasNode(node) {
@@ -82,7 +84,6 @@ class CandlestickChart extends React.Component {
   }
 
   handleSelection(interactives) {
-    console.log('handleSelection.interactives: ', interactives);
     const state = toObject(interactives, (each) => [`iactive_${each.chartId}`, each.objects]);
     this.setState(state);
   }
@@ -103,29 +104,28 @@ class CandlestickChart extends React.Component {
     // 1. draw complete of trendline
     // 2. drag complete of trendline
     console.log('trend_1: ', iactive_1);
-    this.setState({
-      enableTrendLine: false,
-      iactive_1: this.acceptTrendlines(iactive_1)
-    });
-  }
-
-  onDrawCompleteChart3(iactive_3) {
-    // this gets called on
-    // 1. draw complete of trendline
-    // 2. drag complete of trendline
-    console.log('trend_3: ', iactive_3);
-    this.setState({
-      enableTrendLine: false,
-      iactive_3: this.acceptTrendlines(iactive_3)
-    });
+    this.setState(
+      {
+        enableTrendLine: false,
+        iactive_1: this.acceptTrendlines(iactive_1)
+      },
+      () => {
+        this.props.setidata(this.state);
+      }
+    );
   }
 
   onFibComplete2(iactive_2) {
     console.log('fib_2: ', iactive_2);
-    this.setState({
-      iactive_2,
-      enableFib: false
-    });
+    this.setState(
+      {
+        iactive_2,
+        enableFib: false
+      },
+      () => {
+        this.props.setidata(this.state);
+      }
+    );
   }
 
   onKeyPress(e) {
@@ -134,15 +134,13 @@ class CandlestickChart extends React.Component {
     switch (keyCode) {
       case 46: {
         // DEL
-        const { iactive_1, iactive_2, iactive_3 } = this.state;
+        const { iactive_1, iactive_2 } = this.state;
         const niactive_1 = iactive_1.filter((each) => !each.selected);
         const niactive_2 = iactive_2.filter((each) => !each.selected);
-        const niactive_3 = iactive_3.filter((each) => !each.selected);
         this.canvasNode.cancelDrag();
         this.setState({
           iactive_1: niactive_1,
-          iactive_2: niactive_2,
-          iactive_3: niactive_3
+          iactive_2: niactive_2
         });
         break;
       }
@@ -170,6 +168,12 @@ class CandlestickChart extends React.Component {
         this.setState({
           enableFib: true
         });
+        break;
+      }
+      case 71: {
+        // G - Enable Grid id
+        console.log('ggggggggggg');
+        console.log(JSON.stringify(this.state.iactive_1, 4));
         break;
       }
       default:
@@ -391,16 +395,6 @@ class CandlestickChart extends React.Component {
                 yAccessor={(d) => d.rsi}
                 options={rsiCalculator.options()}
               />
-              <TrendLine
-                ref={this.saveInteractiveNodes('Trendline', 3)}
-                enabled={this.state.enableTrendLine}
-                type="RAY"
-                snap={false}
-                snapTo={(d) => [d.high, d.low]}
-                onStart={() => console.log('START')}
-                onComplete={this.onDrawCompleteChart3}
-                trends={this.state.iactive_3}
-              />
             </Chart>
           )}
           <CrossHairCursor />
@@ -424,6 +418,8 @@ CandlestickChart.propTypes = {
   symbol: PropTypes.string,
   width: PropTypes.number.isRequired,
   ratio: PropTypes.number.isRequired,
+  idata: PropTypes.object.isRequired,
+  setidata: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['svg', 'hybrid'])
 };
 

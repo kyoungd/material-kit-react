@@ -18,13 +18,13 @@ import TextField from '@mui/material/TextField';
 // import useMediaQuery from '@mui/material/useMediaQuery';
 // import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
-import Chart from './Charts';
+import CandleStickChart from './CandleStickCharts';
 import { downloadStockData } from '../UserContext';
 
 ChartPopup.propTypes = {
   symbol: PropTypes.string,
   price: PropTypes.number,
-  favs: PropTypes.array.isRequired,
+  favs: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
@@ -37,6 +37,7 @@ export default function ChartPopup(props) {
   const [fibonachi, setFibonachi] = React.useState({});
   const [description, setDescription] = React.useState('');
   const [viewState, setViewState] = React.useState('');
+  const [iChartData, setIChartData] = React.useState({});
 
   //   const theme = useTheme();
   //   const fullScreen = useMediaQuery(theme.breakpoints.down(''));
@@ -47,9 +48,17 @@ export default function ChartPopup(props) {
     const item = props.favs[props.data.name];
     const valueDescription = item === undefined ? '' : item.description;
     setDescription(valueDescription);
+    const interactiveChartData =
+      item === undefined || !('iChartData' in item) ? {} : item.iChartData;
+    setIChartData(interactiveChartData);
     const vstate = item === undefined ? '' : item.rank;
     setViewState(vstate);
   }, [props, stockData]);
+
+  const handleSetChartData = (value) => {
+    console.log('handleIChartData', value);
+    setIChartData(value);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -108,6 +117,7 @@ export default function ChartPopup(props) {
     const symbol = props.data.name;
     const initDescription = newFavs[symbol] === undefined ? '' : newFavs[symbol].description;
     const initViewState = newFavs[symbol] === undefined ? 0 : newFavs[symbol].rank;
+    const initChartData = newFavs[symbol] === undefined ? {} : newFavs[symbol].iChartData;
     if (initDescription.trim() !== description.trim() || initViewState !== viewState) {
       if (viewState === 'd') {
         if (newFavs[symbol]) delete newFavs[symbol];
@@ -117,11 +127,13 @@ export default function ChartPopup(props) {
           newFavs[symbol] = {
             created: new Date(),
             description,
-            rank: viewState
+            rank: viewState,
+            iChartData: JSON.stringify(iChartData)
           };
         } else {
           newFavs[symbol].description = description;
           newFavs[symbol].rank = viewState;
+          newFavs[symbol].iChartData = JSON.stringify(iChartData);
         }
         props.onClose(symbol, newFavs);
       }
@@ -315,23 +327,28 @@ export default function ChartPopup(props) {
             </FormControl>
             <Card variant="outlined">
               {timeframe === 'd' && (
-                <Chart
+                <CandleStickChart
                   type="svg"
                   data={daily}
                   price={props.price}
                   symbol={chartSymbol}
+                  favs={props.favs}
                   fib1={fib1}
                   fib2={fib2}
+                  idata={iChartData}
+                  setidata={handleSetChartData}
                 />
               )}
               {timeframe === 'w' && (
-                <Chart
+                <CandleStickChart
                   type="svg"
                   data={daily}
                   price={props.price}
                   symbol={chartSymbol}
                   fib1={fib1}
                   fib2={fib2}
+                  idata={iChartData}
+                  setidata={handleSetChartData}
                 />
               )}
               {timeframe === 'i' && selectionDashboard()}
