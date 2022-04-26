@@ -57,18 +57,20 @@ class CandlestickChart extends React.Component {
     // 	],
     // 	iactive_3: []
     // };
-    const chartData = JSON.parse(props.idata);
-    this.state =
-      Object.entries(chartData).length === 0
-        ? {
-            enableTrendLine: false,
-            enableFib: false,
-            iactive_1: [],
-            showVolumeChart: true,
-            showRsiChart: true,
-            iactive_2: []
-          }
-        : chartData;
+    const defaultState = {
+      enableTrendLine: false,
+      enableFib: false,
+      iactive_1: [],
+      showVolumeChart: true,
+      showRsiChart: true,
+      iactive_2: []
+    };
+    try {
+      const chartData = JSON.parse(props.idata);
+      this.state = Object.entries(chartData).length === 0 ? defaultState : chartData;
+    } catch {
+      this.state = defaultState;
+    }
   }
 
   saveCanvasNode(node) {

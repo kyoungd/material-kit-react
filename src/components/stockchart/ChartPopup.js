@@ -117,7 +117,6 @@ export default function ChartPopup(props) {
     const symbol = props.data.name;
     const initDescription = newFavs[symbol] === undefined ? '' : newFavs[symbol].description;
     const initViewState = newFavs[symbol] === undefined ? 0 : newFavs[symbol].rank;
-    const initChartData = newFavs[symbol] === undefined ? {} : newFavs[symbol].iChartData;
     if (initDescription.trim() !== description.trim() || initViewState !== viewState) {
       if (viewState === 'd') {
         if (newFavs[symbol]) delete newFavs[symbol];
