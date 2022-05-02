@@ -169,7 +169,7 @@ function downloadRealtimes(
   if (setIsLoading !== null) setIsLoading(true);
   const url1 =
     process.env.REACT_APP_REALTIME_SERVICE ||
-    'https://simp-admin.herokuapp.com/api/realtimes?datatype=cs&timeframe=5Min';
+    'https://simp-admin.herokuapp.com/api/realtimes?datatype=cs&timeframe=15Min';
   const bearerToken = makeBearToken(token);
   axios
     .get(url1, bearerToken)
