@@ -8,9 +8,9 @@ import { mockImgProduct } from '../utils/mockImages';
 
 const EXPERTS = [
   {
-    title: 'CONFLUENCE',
+    title: 'SWING TRADE',
     description:
-      'Using a combination of multiple technical analysis that all points to the same direction to position yourself for the next big move with better odds. It is the basics of all technical analysis.',
+      'These tools are deisgned for swing-trades.  We prefer to trend-trading and this application is good for finding new trends.  There are other tools like volume spread analysis, double top, overnight gap and others.',
     cover: '/static/mock-images/covers/expert_1.png',
     videlUrl: 'N9SUmtuGnHQ',
     link: 'expert/confluence',
@@ -20,9 +20,9 @@ const EXPERTS = [
     status: ''
   },
   {
-    title: 'MARKET CYCLE',
+    title: 'INTRADAY TRADE',
     description:
-      'Wyckoff method improves market timing when establishing a position in anticipation of a coming move where a favorable reward/risk ratio exists.  Work with the market makers, not against them',
+      'This one searches the 15-minute bars to detect a certain pattern.  It flags stocks that are at Supply-Demand zone, ABC pattern, Pivot Point and VSA.  There are too much noise in smaller time frames.',
     cover: '/static/mock-images/covers/expert_2.jpg',
     videlUrl: 'C9G5KgB9Ze4',
     link: 'expert/market-cycle',

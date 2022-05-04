@@ -12,6 +12,7 @@ export default function UserRow(row) {
       <TableCell align="center">{(row.cs & 4) === 4 ? 'yes' : 'no'}</TableCell>
       <TableCell align="center">{(row.cs & 8) === 8 ? 'yes' : 'no'}</TableCell>
       <TableCell align="center">{(row.cs & 16) === 16 ? 'yes' : 'no'}</TableCell>
+      <TableCell align="center">{row.tf}</TableCell>
     </>
   );
 }

@@ -151,7 +151,8 @@ function parseRealtimes(data) {
       sd: item.attributes.data.sd,
       cs: item.attributes.data.cs,
       ab: item.attributes.data.ab,
-      price: item.attributes.data.price
+      price: item.attributes.data.price,
+      tf: item.attributes.timeframe
     };
     return row;
   });

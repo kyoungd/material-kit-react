@@ -17,9 +17,24 @@ import { fDateTime } from '../../../utils/formatTime';
 
 const TIMELINES = [
   {
-    title: 'Email Registration added',
-    time: '2022-03-01T08:00:00.000Z',
-    type: 'order1'
+    title: 'Unit testing with live data',
+    time: '2022-05-01T08:00:00.000Z',
+    type: 'order7'
+  },
+  {
+    title: 'Real-time Volume Analysis',
+    time: '2022-04-25T08:00:00.000Z',
+    type: 'order8'
+  },
+  {
+    title: 'Real-time ABC Pattern',
+    time: '2022-04-10T08:00:00.000Z',
+    type: 'order8'
+  },
+  {
+    title: 'Real-time Supply Demand Zone',
+    time: '2022-04-19T08:00:00.000Z',
+    type: 'order9'
   },
   {
     title: 'Google, Facebook, Twitter Sign-in added',

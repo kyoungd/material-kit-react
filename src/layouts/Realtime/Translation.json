@@ -4,6 +4,7 @@
     "volume": " data['volume'] ",
     "period": " data['timeframe'] ",
     "timeframe": " data['timeframe'] ",
+    "tf": " data['tf'] ",
     "vs": " data['vsa'] ",
     "vsa": " data['vsa'] ",
     "cs": " data['cs'] ",
