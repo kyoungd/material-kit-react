@@ -123,7 +123,7 @@ export default function User(props) {
   const [showFavorites, setShowFavorites] = useState(false);
 
   useEffect(() => {
-    console.log('useEffect - initialize');
+    console.log('useEffect - initialize ', props.symbols);
     setUserList(props.symbols);
     setStockFavorites(props.favorites);
     const newSelecteds = Object.keys(props.favorites).map((n) => n);
@@ -269,14 +269,14 @@ export default function User(props) {
 
   return (
     <Page title="TRADESIMP">
-      <Container maxWidth={false}>
+      <Container maxWidth="lg">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            {props.pageType === 'DAILY' ? 'Daily' : '5 Minutes'}
+            {props.pageType === 'DAILY' ? 'DAILY' : 'INTRADAY'}
           </Typography>
         </Stack>
 
-        <Container maxwidth={false}>
+        <Container maxwidth="lg">
           <StockSearchButtons
             data={props.explainers}
             searchFunc={setFilterName}

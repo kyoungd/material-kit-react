@@ -420,7 +420,7 @@ CandlestickChart.propTypes = {
   symbol: PropTypes.string,
   width: PropTypes.number.isRequired,
   ratio: PropTypes.number.isRequired,
-  idata: PropTypes.object.isRequired,
+  idata: PropTypes.string.isRequired,
   setidata: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['svg', 'hybrid'])
 };

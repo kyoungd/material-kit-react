@@ -21,7 +21,7 @@ export default function UserRow(row) {
       <TableCell align="left">{row.vs}</TableCell>
       <TableCell align="left">{getEma(row.ema20, row.ema50, row.ema200)}</TableCell>
       <TableCell align="left">
-        {row.gap ? 'yes' : 'no'}/{row.ogap}%/{row.oc ? 'yes' : 'no'}
+        {row.gap ? 'yes' : ''}/{row.ogap}%/{row.oc ? 'yes' : ''}
       </TableCell>
       <TableCell align="left">
         {row.engulf ? 'E' : '-'}/{row.dtop ? 'D' : '-'}/{row.rsi ? 'R' : '-'}/

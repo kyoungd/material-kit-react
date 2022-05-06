@@ -142,7 +142,7 @@ function saveFavorites(favorites) {
     });
 }
 
-function parseRealtimes(data) {
+function extractRealtime(data) {
   const stocks = data.map((item) => {
     const row = {
       id: item.id,
@@ -152,11 +152,63 @@ function parseRealtimes(data) {
       cs: item.attributes.data.cs,
       ab: item.attributes.data.ab,
       price: item.attributes.data.price,
-      tf: item.attributes.timeframe
+      tf: item.attributes.timeframe,
+      up: item.attributes.createdAt
     };
     return row;
   });
   return stocks;
+}
+
+function sortRealtime(data) {
+  return data.sort(
+    (row1, row2) => row1.name.localeCompare(row2.name) || row2.up.localeCompare(row1.up)
+  );
+}
+
+function groupBySymbol(data) {
+  const groupByCategory = data.reduce((group, row) => {
+    const { name } = row;
+    group[name] = group[name] ?? [];
+    group[name].push(row);
+    return group;
+  }, {});
+  return groupByCategory;
+}
+
+function filterTf(rows) {
+  const min15 = rows.filter((row) => row.tf === '15Min');
+  const min5 = rows.filter((row) => row.tf === '5Min');
+  let tf = min5 ? '5-Min' : '';
+  if (min15) tf += tf.length > 0 ? ',15-Min' : '15-Min';
+  return tf;
+}
+
+function cleanUpRealtime(data) {
+  const result = Object.keys(data).map((key) => {
+    const rows = data[key].sort((row1, row2) => row2.up.localeCompare(row1.up));
+    const row = rows[0];
+    let cs = 0;
+    let vs = 0;
+    rows.forEach((item) => {
+      // eslint-disable-next-line no-bitwise
+      cs |= item.cs;
+      // eslint-disable-next-line no-bitwise
+      vs |= item.vs;
+    });
+    row.cs = cs;
+    row.vs = vs;
+    row.tf = filterTf(rows);
+    return row;
+  });
+  return result;
+}
+function parseRealtimes(data) {
+  const data1 = extractRealtime(data);
+  const data2 = sortRealtime(data1);
+  const data3 = groupBySymbol(data2);
+  const data4 = cleanUpRealtime(data3);
+  return data4;
 }
 
 function downloadRealtimes(
