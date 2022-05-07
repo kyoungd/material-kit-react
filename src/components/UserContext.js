@@ -162,7 +162,7 @@ function extractRealtime(data) {
 
 function sortRealtime(data) {
   return data.sort(
-    (row1, row2) => row1.name.localeCompare(row2.name) || row2.up.localeCompare(row1.up)
+    (row1, row2) => row2.tf.localeCompare(row1.tf) || row1.name.localeCompare(row2.name)
   );
 }
 
@@ -206,9 +206,9 @@ function cleanUpRealtime(data) {
 function parseRealtimes(data) {
   const data1 = extractRealtime(data);
   const data2 = sortRealtime(data1);
-  const data3 = groupBySymbol(data2);
-  const data4 = cleanUpRealtime(data3);
-  return data4;
+  // const data3 = groupBySymbol(data2);
+  // const data4 = cleanUpRealtime(data3);
+  return data2;
 }
 
 function downloadRealtimes(
