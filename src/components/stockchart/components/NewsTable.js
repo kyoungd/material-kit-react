@@ -9,7 +9,12 @@ import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
 
 NewsTable.propTypes = {
-  newsList: PropTypes.array.isRequired
+  newsList: PropTypes.array.isRequired,
+  includeSymbols: PropTypes.bool
+};
+
+NewsTable.defaultProps = {
+  includeSymbols: false
 };
 
 function dateString(ondate) {
@@ -27,6 +32,7 @@ export default function NewsTable(props) {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
+            {props.includeSymbols && <TableCell align="right">Symbols</TableCell>}
             <TableCell align="right">Sentiment</TableCell>
             <TableCell align="right">Headline</TableCell>
             <TableCell align="right">Summary</TableCell>
@@ -39,11 +45,12 @@ export default function NewsTable(props) {
               <TableCell component="th" scope="row" sx={{ minWidth: 80 }}>
                 {dateString(row.news_on)}
               </TableCell>
+              <TableCell align="center">{row.symbols}</TableCell>
               <TableCell align="right">{(row.sentiment * 100).toFixed(2)}</TableCell>
               <TableCell align="right">{row.headline}</TableCell>
               <TableCell align="right">{row.summary}</TableCell>
               <TableCell align="right">
-                <a href="{row.url}" target="_blank">
+                <a href={row.url} target="_blank" rel="noreferrer">
                   NEWS SOURCE
                 </a>
               </TableCell>

@@ -6,25 +6,25 @@ import PropTypes from 'prop-types';
 
 AppDownloadRealtimes.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  getRealtimes: PropTypes.func.isRequired,
+  callForData: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired
 };
 
 // ----------------------------------------------------------------------
 
-export default function AppDownloadRealtimes({ dispatch, getRealtimes, token }) {
+export default function AppDownloadRealtimes({ dispatch, callForData, token }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('not loaded');
 
   useEffect(() => {
     if (error === 'not loaded') {
-      getRealtimes(dispatch, token, setIsLoading, setError);
+      callForData(dispatch, token, setIsLoading, setError);
     }
-  }, [dispatch, error, getRealtimes, token]);
+  }, [dispatch, error, callForData, token]);
 
   return (
     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-      {isLoading ? 'LOADING REALTIMES' : ''}
+      {isLoading ? 'LOADING DATA' : ''}
       {isLoading ? <LinearProgress /> : ''}
       {error}
     </Typography>

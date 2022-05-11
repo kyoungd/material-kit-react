@@ -24,6 +24,11 @@ const sidebarConfig = [
     icon: getIcon(activityFill)
   },
   {
+    title: 'news',
+    path: '/dashboard/news',
+    icon: getIcon(activityFill)
+  },
+  {
     title: 'tutorial',
     path: '/dashboard/products',
     icon: getIcon(alert)

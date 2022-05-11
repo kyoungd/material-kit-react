@@ -24,6 +24,7 @@ import {
   getFavorites,
   getSymbols,
   getRealtimes,
+  getTop10News,
   useUserState
 } from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';
@@ -98,11 +99,27 @@ export default function DashboardApp() {
             <></>
           )}
           {isForceDownload || Object.keys(symbols).length <= 0 ? (
-            <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+            <>
+              <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+              <AppDownloadRealtimes
+                dispatch={userDispatch}
+                callForData={getSymbols}
+                token={token}
+              />
+              <AppDownloadRealtimes
+                dispatch={userDispatch}
+                callForData={getRealtimes}
+                token={token}
+              />
+              <AppDownloadRealtimes
+                dispatch={userDispatch}
+                callForData={getTop10News}
+                token={token}
+              />
+            </>
           ) : (
             <></>
           )}
-          <AppDownloadRealtimes dispatch={userDispatch} getRealtimes={getRealtimes} token={token} />
           {/* {isForceDownload ||
           (Object.keys(favorites).length > 0 && Object.keys(symbols).length > 0) ? (
             <Link underline="none" variant="subtitle2" component={RouterLink} to="/dashboard/user">

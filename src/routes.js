@@ -8,6 +8,7 @@ import Products from './pages/Products';
 import Tutorial from './pages/PageTutorial';
 import Blog from './pages/Blog';
 import User from './pages/User';
+import PageTop10News from './pages/PageTop10News';
 import NotFound from './pages/Page404';
 import { useUserState, useUserDispatch } from './components/UserContext';
 //
@@ -30,7 +31,7 @@ const RT_EXPLAINERS = require('./layouts/Realtime/ButtonSetup.json');
 
 export default function Router() {
   const userDispatch = useUserDispatch();
-  const { symbols, favorites, realtimes } = useUserState();
+  const { symbols, favorites, realtimes, top10news } = useUserState();
 
   return useRoutes([
     {
@@ -69,6 +70,7 @@ export default function Router() {
             />
           )
         },
+        { path: 'news', element: <PageTop10News newsList={top10news} /> },
         { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }

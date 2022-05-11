@@ -31,6 +31,7 @@ export function getWithExpiry(key) {
 const keyToken = 'token';
 const keySymbols = 'symbols';
 const keyRealtimes = 'realtimes';
+const keyTop10News = 'top10news';
 const keyFavorites = 'favorites';
 const oneMinute = 1000 * 60;
 const oneHour = 1000 * 60 * 60;
@@ -51,6 +52,10 @@ export function CookieSetRealtimes(value) {
   setWithExpiry(keyRealtimes, value, oneHour * 8);
 }
 
+export function CookieSetTop10News(value) {
+  setWithExpiry(keyTop10News, value, oneHour * 8);
+}
+
 export function CookieUserAuthenticated() {
   return !!getWithExpiry(keyToken);
 }
@@ -60,16 +65,17 @@ export function CookieGetToken() {
   if (token) {
     CookieSetToken(token); // refresh token
   } else {
-    if (CookieGetFavorites()) CookieDeleteFavorites();
-    if (CookieGetSymbols()) CookieDeleteSymbols();
+    CookieSignOut();
   }
   return token;
 }
 
 export function CookieSignOut() {
-  if (CookieGetFavorites()) CookieDeleteFavorites();
-  if (CookieGetSymbols()) CookieDeleteSymbols();
-  if (CookieGetToken()) CookieDeleteToken();
+  if (CookieGetToken()) localStorage.removeItem(keyToken);
+  if (CookieGetSymbols()) localStorage.removeItem(keySymbols);
+  if (CookieGetFavorites()) localStorage.removeItem(keyFavorites);
+  if (CookieGetRealtimess()) localStorage.removeItem(keyRealtimes);
+  if (CookieGetTop10News()) localStorage.removeItem(keyTop10News);
 }
 
 export function CookieGetFavorites() {
@@ -84,18 +90,6 @@ export function CookieGetRealtimess() {
   return getWithExpiry(keyRealtimes);
 }
 
-export function CookieDeleteFavorites() {
-  localStorage.removeItem(keyFavorites);
-}
-
-export function CookieDeleteSymbols() {
-  localStorage.removeItem(keySymbols);
-}
-
-export function CookieDeleteRealtimes() {
-  localStorage.removeItem(keyRealtimes);
-}
-
-export function CookieDeleteToken() {
-  localStorage.removeItem(keyToken);
+export function CookieGetTop10News() {
+  return getWithExpiry(keyTop10News);
 }

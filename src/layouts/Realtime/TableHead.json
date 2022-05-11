@@ -54,7 +54,7 @@
         "info": "Daily supply and demand zone. The zone was not touched by previous pricement."
     },
     {
-        "id": "zone",
+        "id": "tf",
         "label": "Timeframe",
         "alignRight": false,
         "info": "Time frame (5-Min or 15-Min)"

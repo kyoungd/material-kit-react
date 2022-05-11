@@ -7,8 +7,10 @@ import {
   CookieGetFavorites,
   CookieGetToken,
   CookieGetSymbols,
+  CookieGetTop10News,
   CookieSetRealtimes,
   CookieSetFavorites,
+  CookieSetTop10News,
   CookieSetToken,
   CookieSetSymbols,
   CookieSignOut
@@ -37,6 +39,9 @@ function userReducer(state, action) {
     case 'REALTIME':
       CookieSetRealtimes(action.payload);
       return { ...state, realtimes: action.payload };
+    case 'TOP10NEWS':
+      CookieSetTop10News(action.payload);
+      return { ...state, top10news: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
     default:
@@ -49,6 +54,7 @@ function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, {
     isAuthenticated: CookieUserAuthenticated(),
     symbols: {},
+    top10news: [],
     favorites: {},
     settings: {},
     realtimes: []
@@ -251,24 +257,82 @@ function getRealtimes(
   downloadRealtimes(dispatch, token, setIsLoading, setError, setDownloadData);
 }
 
-function downloadSymbols(dispatch, token, setIsLoading, setError) {
+function httpGet(dispatch, token, setIsLoading, setError, url, key, dataCleanup) {
   setError(false);
   setIsLoading(true);
-  const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
   const bearerToken = makeBearToken(token);
   axios
-    .get(url1, bearerToken)
+    .get(url, bearerToken)
     .then((result) => {
       setIsLoading(false);
       setError(null);
-      const users = GetUsers(result.data.data.attributes.data);
-      dispatch({ type: 'SYMBOLS', payload: users });
+      const users = dataCleanup(result);
+      dispatch({ type: key, payload: users });
     })
     .catch((e) => {
       setIsLoading(false);
       setError(e.response);
       console.log('An error occurred:', e.response);
     });
+}
+
+function newsCleanup(result) {
+  const rows = result.data.data;
+  const results = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const row of rows) {
+    try {
+      const item = {
+        news_on: row.attributes.created_at,
+        headline: row.attributes.headline,
+        summary: row.attributes.summary,
+        sentiment: row.attributes.sentiment === undefined ? 0 : row.attributes.sentiment,
+        url: row.attributes.url,
+        symbols: row.attributes.symbols.toString()
+      };
+      results.push(item);
+    } catch (e) {
+      console.log('error: ', e, '  ', row);
+    }
+  }
+  return results;
+}
+
+function getTop10News(dispatch, token, setIsLoading, setError) {
+  const key = 'TOP10NEWS';
+  const data = CookieGetTop10News();
+  if (data === null) {
+    const url = process.env.REACT_APP_NEWS_TOP10_URL || 'http://localhost:1337/api/newsitems';
+    httpGet(dispatch, token, setIsLoading, setError, url, key, newsCleanup);
+  } else dispatch({ type: key, payload: data });
+}
+
+function cleanupSymbols(result) {
+  const data = GetUsers(result.data.data.attributes.data);
+  return data;
+}
+
+function downloadSymbols(dispatch, token, setIsLoading, setError) {
+  const key = 'SYMBOLS';
+  const url = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
+  httpGet(dispatch, token, setIsLoading, setError, url, key, cleanupSymbols);
+  // setError(false);
+  // setIsLoading(true);
+  // const url1 = process.env.REACT_APP_SYMBOL_SERVICE || 'http://localhost:1337/api/symbols';
+  // const bearerToken = makeBearToken(token);
+  // axios
+  //   .get(url1, bearerToken)
+  //   .then((result) => {
+  //     setIsLoading(false);
+  //     setError(null);
+  //     const users = GetUsers(result.data.data.attributes.data);
+  //     dispatch({ type: 'SYMBOLS', payload: users });
+  //   })
+  //   .catch((e) => {
+  //     setIsLoading(false);
+  //     setError(e.response);
+  //     console.log('An error occurred:', e.response);
+  //   });
 }
 
 function getSymbols(dispatch, token, setIsLoading, setError) {
@@ -435,6 +499,7 @@ function signOut(dispatch) {
 export {
   getFavorites,
   getSymbols,
+  getTop10News,
   getRealtimes,
   UserProvider,
   useUserState,
