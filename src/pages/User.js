@@ -38,7 +38,7 @@ import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
 import ChartPopup from '../components/stockchart/ChartPopup';
 import { useUserState } from '../components/UserContext';
 
-import UserPopup from '../components/UserPopup';
+// import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
 
 // ----------------------------------------------------------------------

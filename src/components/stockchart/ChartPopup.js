@@ -7,7 +7,6 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -19,7 +18,8 @@ import TextField from '@mui/material/TextField';
 // import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import CandleStickChart from './CandleStickCharts';
-import { downloadStockData } from '../UserContext';
+import { downloadStockData, downloadNewsData } from '../UserContext';
+import NewsTable from './components/NewsTable';
 
 ChartPopup.propTypes = {
   symbol: PropTypes.string,
@@ -33,6 +33,7 @@ export default function ChartPopup(props) {
   const [open, setOpen] = React.useState(false);
   const [timeframe, setTimeframe] = React.useState('d');
   const [stockData, setStockData] = React.useState({});
+  const [newsData, setNewsData] = React.useState({});
   const [chartSymbol, setChartSymbol] = React.useState('');
   const [fibonachi, setFibonachi] = React.useState({});
   const [description, setDescription] = React.useState('');
@@ -44,6 +45,7 @@ export default function ChartPopup(props) {
 
   React.useEffect(() => {
     downloadStockData(stockData, props.symbol, setStockData, setChartSymbol);
+    downloadNewsData(newsData, props.symbol, setNewsData);
     setFibonachi({ fib1: 0, fib2: 0 });
     const item = props.favs[props.data.name];
     const valueDescription = item === undefined ? '' : item.description;
@@ -53,7 +55,7 @@ export default function ChartPopup(props) {
     setIChartData(interactiveChartData);
     const vstate = item === undefined ? '' : item.rank;
     setViewState(vstate);
-  }, [props, stockData]);
+  }, [props, stockData, newsData]);
 
   const handleSetChartData = (value) => {
     console.log('handleIChartData', value);
@@ -298,6 +300,19 @@ export default function ChartPopup(props) {
     </Box>
   );
 
+  const selectionNews = () => (
+    <Box m={2} pt={3}>
+      <Typography component="div">
+        <Box fontWeight="fontWeightMedium" display="inline">
+          NEWS (last 21 days):
+        </Box>{' '}
+      </Typography>
+      <Typography component="div">
+        <NewsTable newsList={newsData[chartSymbol] === undefined ? [] : newsData[chartSymbol]} />
+      </Typography>
+    </Box>
+  );
+
   return (
     <div>
       <Button onClick={handleClickOpen}>{props.symbol}</Button>
@@ -321,6 +336,9 @@ export default function ChartPopup(props) {
                 </Button>
                 <Button variant={timeframe === 'i' ? 'contained' : 'outlined'} value="i">
                   Information
+                </Button>
+                <Button variant={timeframe === 'n' ? 'contained' : 'outlined'} value="n">
+                  News
                 </Button>
               </ButtonGroup>
             </FormControl>
@@ -351,6 +369,7 @@ export default function ChartPopup(props) {
                 />
               )}
               {timeframe === 'i' && selectionDashboard()}
+              {timeframe === 'n' && selectionNews()}
             </Card>
           </Typography>
         </DialogContent>

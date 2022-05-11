@@ -42,7 +42,7 @@ export default function getStockData(pState, symbol = 'MSFT', pushData, pushSymb
   // yesterdate date string
   const beforeDate = new Date(afterDate.setDate(afterDate.getDate() - 360));
   const yesterday = dateFormat(beforeDate, '%Y-%m-%dT%H:%M:%S.000Z', false);
-  const apiurl = `${apiUrl}/${symbol}//bars?start=${yesterday}&end=${today}&timeframe=${apiTimeFrame}`;
+  const apiurl = `${apiUrl}/${symbol}/bars?start=${yesterday}&end=${today}&timeframe=${apiTimeFrame}`;
   fetch(apiurl, {
     method: 'GET',
     headers: {

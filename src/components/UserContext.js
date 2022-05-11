@@ -166,43 +166,44 @@ function sortRealtime(data) {
   );
 }
 
-function groupBySymbol(data) {
-  const groupByCategory = data.reduce((group, row) => {
-    const { name } = row;
-    group[name] = group[name] ?? [];
-    group[name].push(row);
-    return group;
-  }, {});
-  return groupByCategory;
-}
+// function groupBySymbol(data) {
+//   const groupByCategory = data.reduce((group, row) => {
+//     const { name } = row;
+//     group[name] = group[name] ?? [];
+//     group[name].push(row);
+//     return group;
+//   }, {});
+//   return groupByCategory;
+// }
 
-function filterTf(rows) {
-  const min15 = rows.filter((row) => row.tf === '15Min');
-  const min5 = rows.filter((row) => row.tf === '5Min');
-  let tf = min5 ? '5-Min' : '';
-  if (min15) tf += tf.length > 0 ? ',15-Min' : '15-Min';
-  return tf;
-}
+// function filterTf(rows) {
+//   const min15 = rows.filter((row) => row.tf === '15Min');
+//   const min5 = rows.filter((row) => row.tf === '5Min');
+//   let tf = min5 ? '5-Min' : '';
+//   if (min15) tf += tf.length > 0 ? ',15-Min' : '15-Min';
+//   return tf;
+// }
 
-function cleanUpRealtime(data) {
-  const result = Object.keys(data).map((key) => {
-    const rows = data[key].sort((row1, row2) => row2.up.localeCompare(row1.up));
-    const row = rows[0];
-    let cs = 0;
-    let vs = 0;
-    rows.forEach((item) => {
-      // eslint-disable-next-line no-bitwise
-      cs |= item.cs;
-      // eslint-disable-next-line no-bitwise
-      vs |= item.vs;
-    });
-    row.cs = cs;
-    row.vs = vs;
-    row.tf = filterTf(rows);
-    return row;
-  });
-  return result;
-}
+// function cleanUpRealtime(data) {
+//   const result = Object.keys(data).map((key) => {
+//     const rows = data[key].sort((row1, row2) => row2.up.localeCompare(row1.up));
+//     const row = rows[0];
+//     let cs = 0;
+//     let vs = 0;
+//     rows.forEach((item) => {
+//       // eslint-disable-next-line no-bitwise
+//       cs |= item.cs;
+//       // eslint-disable-next-line no-bitwise
+//       vs |= item.vs;
+//     });
+//     row.cs = cs;
+//     row.vs = vs;
+//     row.tf = filterTf(rows);
+//     return row;
+//   });
+//   return result;
+// }
+
 function parseRealtimes(data) {
   const data1 = extractRealtime(data);
   const data2 = sortRealtime(data1);
@@ -307,6 +308,32 @@ function downloadStockData(pState, symbol, pushData, pushSymbol) {
     })
     .catch((e) => {
       console.log('An error occurred:', e.response);
+    });
+}
+
+function downloadNewsData(pState, symbol, pushData) {
+  const token = CookieGetToken();
+  const url = process.env.REACT_APP_NEWS_URL || 'http://localhost:1337/api/newsstocks';
+  const fullUrl = `${url}?symbol=${symbol}`;
+  const bearerToken = makeBearToken(token);
+  axios
+    .get(fullUrl, bearerToken)
+    .then((result) => {
+      try {
+        const dataArray = [];
+        // eslint-disable-next-line no-restricted-syntax
+        for (const item of result.data.data) {
+          dataArray.push(item.attributes);
+        }
+        const newData = pState;
+        newData[symbol] = dataArray;
+        pushData(newData);
+      } catch (ex) {
+        console.log('downloadNewsData(): An error occurred:', ex);
+      }
+    })
+    .catch((e) => {
+      console.log('downloadNewsData(): An error occurred:', e.response);
     });
 }
 
@@ -416,5 +443,6 @@ export {
   loginSuccess,
   signOut,
   downloadStockData,
+  downloadNewsData,
   registerUser
 };
