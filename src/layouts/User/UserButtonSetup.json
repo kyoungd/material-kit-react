@@ -2,20 +2,20 @@
     {
         "id": "newtrend",
         "label": "CONFLUENCE - New Trend",
-        "info": "These are assets that has been trending daily for a 15 days or more.  ",
+        "info": "A new trend, punctured by a lower low/high or higher low/high.  The price is also near a weekly trend line and 50 ema.",
         "text": "level and ema50 and rev > 1 and rev <= 2 and price < 30"
     },
     {
         "id": "vc",
         "label": "MARKET CYCLE - VSA",
-        "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).  2. Buying/selling climax (reversal).  3 and 4. Effort and spread divergence (reversal).  5. No supply Bar (continuation).  6. Pseudo Up/down thrust (continuation). 7. Pseudo inverse down/up thrust (reversal).  8. Inverse down/up thrust (reversal). 9. Failed effort buying/selling climax (reversal).  10. wyckoff doji (reversal).",
+        "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).",
         "text": "vsa = 1 or vsa = 2"
     },
     {
         "id": "wickoff",
         "label": "MARKET CYCLE - Wyckoff AD",
         "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
-        "text": "ad and price >= 10"
+        "text": "ad"
     },
     {
         "id": "overnight",

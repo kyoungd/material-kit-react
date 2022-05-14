@@ -37,7 +37,7 @@ const oneMinute = 1000 * 60;
 const oneHour = 1000 * 60 * 60;
 
 export function CookieSetToken(value) {
-  setWithExpiry(keyToken, value, oneMinute * 30);
+  setWithExpiry(keyToken, value, oneHour * 2);
 }
 
 export function CookieSetFavorites(value) {

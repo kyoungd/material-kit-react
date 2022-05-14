@@ -46,6 +46,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function Login() {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
+  const [isOpen3, setOpen3] = useState(false);
   return (
     <RootStyle title="Login | TradeSimp">
       <AuthLayout>
@@ -91,7 +92,7 @@ export default function Login() {
                   onClose={() => setOpen1(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                  INTRODUCTION
+                  SWING-TRADE
                 </Button>
               </Typography>
               <Typography sx={{ color: 'text.secondary', padding: 1 }}>
@@ -103,7 +104,19 @@ export default function Login() {
                   onClose={() => setOpen2(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                  DEMONSTRATION
+                  DAY-TRADE
+                </Button>
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
+                <ModalVideo
+                  channel="youtube"
+                  autoplay
+                  isOpen={isOpen3}
+                  videoId="0XIjoHJWLgs"
+                  onClose={() => setOpen2(false)}
+                />
+                <Button variant="contained" color="primary" onClick={() => setOpen3(true)}>
+                  INTRODUCTION
                 </Button>
               </Typography>
             </Stack>

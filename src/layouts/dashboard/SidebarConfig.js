@@ -31,7 +31,7 @@ const sidebarConfig = [
     icon: getIcon(alertCircle)
   },
   {
-    title: 'tutorial',
+    title: 'archives',
     path: '/dashboard/products',
     icon: getIcon(playButton)
   }
