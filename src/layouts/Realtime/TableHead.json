@@ -12,34 +12,16 @@
         "info": "closing price"
     },
     {
-        "id": "thrust",
-        "label": "Up/Down Thrust",
+        "id": "candle",
+        "label": "Candle Pattern",
         "alignRight": false,
-        "info": "Trend count the consecutive higher higher (up) /lower lows (down).  Reverse counts the break from the last consecutive trend.  Streak counts the nubmer of days an asset has been rising/falling rapidly.  It is calculated by price being outside of ema 14 and ema 50, and ema 14 being outside of ema 50."
+        "info": "Candle stick pattern.  Up/down Thrust, Selling/buying Climax, Engulfing, Evening/Morning star."
     },
     {
-        "id": "climax",
-        "label": "Selling/Buying Cliamx",
+        "id": "abc",
+        "label": "ABC Pattern",
         "alignRight": false,
-        "info": "(SR)weekly support/resistance line, (V)olume profile"
-    },
-    {
-        "id": "engulf",
-        "label": "Engulfing Candle",
-        "alignRight": false,
-        "info": "Candlestick pattern, Engulfing candle."
-    },
-    {
-        "id": "star",
-        "label": "Star Candle",
-        "alignRight": false,
-        "info": "Morning/Evening Star candle."
-    },
-    {
-        "id": "abcd",
-        "label": "ABCD Pattern",
-        "alignRight": false,
-        "info": "ABCD pattern.  Look for momentum with MACD histogram."
+        "info": "ABC pattern.  Look for momentum with MACD histogram."
     },
     {
         "id": "pivot",

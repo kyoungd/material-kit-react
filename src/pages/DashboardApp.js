@@ -100,7 +100,7 @@ export default function DashboardApp() {
           )}
           {isForceDownload || Object.keys(symbols).length <= 0 ? (
             <>
-              <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} />
+              {/* <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} /> */}
               <AppDownloadRealtimes
                 dispatch={userDispatch}
                 callForData={getSymbols}

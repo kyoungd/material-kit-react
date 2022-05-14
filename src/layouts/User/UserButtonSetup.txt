@@ -1,5 +1,17 @@
 [
     {
+        "id": "doubletop",
+        "label": "CONFLUENCE - Double Top",
+        "info": "Multiple tops/bottoms or engulfing cnadle with key levels and ema 50 and recent long wicks.  The market structure is worth investigating.",
+        "text": "level and ema50 and wick > 100 and (dtop or engulf)"
+    },
+    {
+        "id": "trending",
+        "label": "CONFLUENCE - Reversal",
+        "info": "These are assets that has been trending daily for a 15 days or more.  The close price is near a key level and ema50 with long wicks.  In Elliot wave pattern, it should be finished the last wave and starting a new one.  Wave 1 or Wave A.",
+        "text": "level and ema50 and rev > 0 and rev <= 1 and streak > 10"
+    },
+    {
         "id": "newtrend",
         "label": "CONFLUENCE - New Trend",
         "info": "These are assets that has been trending daily for a 15 days or more.  ",

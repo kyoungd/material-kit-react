@@ -2,7 +2,9 @@ import { Icon } from '@iconify/react';
 import pieChart2Fill from '@iconify/icons-eva/pie-chart-2-fill';
 import peopleFill from '@iconify/icons-eva/people-fill';
 import activityFill from '@iconify/icons-eva/activity-fill';
-import alert from '@iconify/icons-eva/alert-triangle-outline';
+import alertCircle from '@iconify/icons-eva/alert-circle-outline';
+import playButton from '@iconify/icons-eva/arrow-right-outline';
+
 // ----------------------------------------------------------------------
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
@@ -26,12 +28,12 @@ const sidebarConfig = [
   {
     title: 'news',
     path: '/dashboard/news',
-    icon: getIcon(activityFill)
+    icon: getIcon(alertCircle)
   },
   {
     title: 'tutorial',
     path: '/dashboard/products',
-    icon: getIcon(alert)
+    icon: getIcon(playButton)
   }
 ];
 
