@@ -359,7 +359,7 @@ export default function ChartPopup(props) {
               {timeframe === 'w' && (
                 <CandleStickChart
                   type="svg"
-                  data={daily}
+                  data={weekly}
                   price={props.price}
                   symbol={chartSymbol}
                   fib1={fib1}
