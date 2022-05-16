@@ -3,8 +3,8 @@ import { TableCell } from '@mui/material';
 
 export default function UserRow(row) {
   let candle = '';
-  candle += (row.vsa & 1) === 1 ? ' thrust' : '';
-  candle += (row.vsa & 2) === 2 ? ' climax' : '';
+  candle += row.vsa === 1 ? ' thrust' : '';
+  candle += row.vsa === 2 ? ' climax' : '';
   candle += (row.cs & 1) === 1 ? ' engulf' : '';
   candle += (row.cs & 2) === 2 ? ' star' : '';
   return (
