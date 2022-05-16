@@ -1,13 +1,13 @@
 [
     {
-        "id": "thrust",
-        "label": "thrust/climax",
+        "id": "vsa",
+        "label": "Volume Analysis",
         "info": "Wyckoff pattern.  Low spread and extremely high volume in a trending market.  Future reversal indicator.",
         "text": "thrust or climax"
     },
     {
         "id": "zone",
-        "label": "Supply and Demand zone",
+        "label": "Supply-Demand",
         "info": "supply and demand.  Do not use this indicator within the first 30 minutes of the market open.",
         "text": "zone"
     },

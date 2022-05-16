@@ -1,19 +1,19 @@
 [
     {
         "id": "newtrend",
-        "label": "CONFLUENCE - New Trend",
+        "label": "New Trends",
         "info": "A new trend, punctured by a lower low/high or higher low/high.  The price is also near a weekly trend line and 50 ema.",
         "text": "level and ema50 and rev > 1 and rev <= 2 and price < 30"
     },
     {
-        "id": "vc",
-        "label": "MARKET CYCLE - VSA",
+        "id": "vsa",
+        "label": "Voulme Analysis",
         "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).",
         "text": "vsa = 1 or vsa = 2"
     },
     {
         "id": "wickoff",
-        "label": "MARKET CYCLE - Wyckoff AD",
+        "label": "Wyckoff Cycle",
         "info": "Wyckoff market cycle.  List assets that was in accumulation - distribution phase by the Market Makaers within last 6 weeks..",
         "text": "ad"
     },
