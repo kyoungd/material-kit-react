@@ -3,7 +3,7 @@
         "id": "newtrend",
         "label": "New Trends",
         "info": "A new trend, punctured by a lower low/high or higher low/high.  The price is also near a weekly trend line and 50 ema.",
-        "text": "level and ema50 and rev > 1 and rev <= 2 and price < 30"
+        "text": "level and ema50 and rev > 1 and rev < 3 and price < 50"
     },
     {
         "id": "vsa",
