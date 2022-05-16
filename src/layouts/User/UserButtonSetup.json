@@ -20,7 +20,7 @@
     {
         "id": "overnight",
         "label": "Overnight Gapper",
-        "info": "For a quick day trading fun, overnight gapper is a good start",
-        "text": "ogap > 5"
+        "info": "Big price jump overnight (after market).  Last night only.",
+        "text": "ogap >= 10"
     }
 ]

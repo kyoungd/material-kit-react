@@ -73,7 +73,7 @@ export default function Login() {
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
               {' '}
-              FIND STOCKS TO TRADE WITH A FEW MOUSE CLICKS
+              USING AI TO FIND STOCKS TO TRADE FOR RETAIL TRADERS
             </Typography>
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
