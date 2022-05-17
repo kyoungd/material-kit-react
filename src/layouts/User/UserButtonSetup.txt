@@ -33,6 +33,6 @@
         "id": "overnight",
         "label": "Overnight Gapper",
         "info": "For a quick day trading fun, overnight gapper is a good start",
-        "text": "ogap > 5"
+        "text": "ogap > 5 and level"
     }
 ]

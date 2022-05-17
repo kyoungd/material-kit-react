@@ -21,6 +21,6 @@
         "id": "overnight",
         "label": "Overnight Gapper",
         "info": "Big price jump overnight (after market).  Last night only.",
-        "text": "ogap >= 10"
+        "text": "ogap > 5 and level"
     }
 ]
