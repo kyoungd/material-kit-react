@@ -22,5 +22,17 @@
         "label": "Overnight Gapper",
         "info": "Big price jump overnight (after market).  Last night only.",
         "text": "ogap > 5 and level"
+    },
+    {
+        "id": "gap",
+        "label": "Gap",
+        "info": "Big gap in overnight price in last 6 days.",
+        "text": "gap and level"
+    },
+    {
+        "id": "rsi",
+        "label": "RSI Divergence",
+        "info": "Divergence between price and RSI near a key level and ema50",
+        "text": "rsi and level and ema50"
     }
 ]
