@@ -50,7 +50,7 @@ export default function DashboardApp() {
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Welcome to TradeSimp</Typography>
         </Box>
-        <Box sx={{ pb: 5 }}>
+        {/* <Box sx={{ pb: 5 }}>
           <Button variant="contained" color="primary" onClick={() => setForceDownload(true)}>
             FORCE DOWNLOAD
           </Button>
@@ -87,7 +87,7 @@ export default function DashboardApp() {
           <Button variant="contained" color="primary" onClick={() => setOpen4(true)}>
             VIDEO EXPLAINER
           </Button>
-        </Box>
+        </Box> */}
         <Box sx={{ pb: 5 }}>
           {isForceDownload || Object.keys(favorites).length <= 0 ? (
             <AppDownloadFavorites

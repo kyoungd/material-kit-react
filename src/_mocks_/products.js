@@ -6,28 +6,38 @@ import { mockImgProduct } from '../utils/mockImages';
 // ----------------------------------------------------------------------
 
 const PRODUCT_NAME = [
-  'OVERVIEW',
-  'CONFLUENCE - Double Tops',
-  'ADVANCED OPERATION',
-  'PRICE ACTION',
-  'TREND REVERSAL',
-  'NEW TREND',
-  'DOUBLE TOPS',
-  'VOLUME CLIMAX',
-  'WYCKOFF PRICE CYCLE',
-  'VOLUME PROFILE CENTER OF CONTROL'
+  'Morning Gapper',
+  'Overview - Day Trading',
+  'ABCD Pattern, Live Trading',
+  'Engulfing Candles, Live Trading',
+  'Reversal, New Trend',
+  'ABCD Pattern',
+  'ABCD Pattern',
+  'Morning Gapper',
+  'Top 10 News',
+  'Reversal, New Trend',
+  'Reversal, New Trend',
+  'Reversal, New Trend',
+  'Reversal, New Trend',
+  'Gap',
+  'Reversal, New Trend'
 ];
 const VIDEO_URL = [
-  '0XIjoHJWLgs',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4',
-  'asDBegQaupM',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4',
-  'QH2-TGUlwu4'
+  'OSzCJ94I8ZU',
+  'rF-QcJwdN44',
+  '8x6Q7jCSwAw',
+  'qhBdPNJNv7o',
+  'O4aps4HI5Io',
+  'sbOvh3qg7uo',
+  '76OvD8v0j_4',
+  'qu0f6d2YPXY',
+  'Y_fDUpF08Hg',
+  'nON0dw8d_io',
+  'b5fJfVE188I',
+  'up2rhqdUSS4',
+  'h3sYbUUpoFA',
+  '9tTaKcmuN3Y',
+  'HPoHNpuXcTo'
 ];
 const PRODUCT_COLOR = [
   '#00AB55',
@@ -41,6 +51,8 @@ const PRODUCT_COLOR = [
 ];
 
 // ----------------------------------------------------------------------
+// price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 }),
+// priceSale: setIndex % 3 ? null : faker.datatype.number({ min: 19, max: 29, precision: 0.01 }),
 
 const products = [...Array(10)].map((_, index) => {
   const setIndex = index + 1;
@@ -50,8 +62,8 @@ const products = [...Array(10)].map((_, index) => {
     cover: mockImgProduct(setIndex),
     name: PRODUCT_NAME[index],
     videoUrl: VIDEO_URL[index],
-    price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 }),
-    priceSale: setIndex % 3 ? null : faker.datatype.number({ min: 19, max: 29, precision: 0.01 }),
+    price: 0,
+    priceSale: 0,
     colors:
       (setIndex === 1 && PRODUCT_COLOR.slice(0, 2)) ||
       (setIndex === 2 && PRODUCT_COLOR.slice(1, 3)) ||

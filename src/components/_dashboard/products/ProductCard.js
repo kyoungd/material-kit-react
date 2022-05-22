@@ -74,7 +74,7 @@ export default function ShopProductCard({ product }) {
                 {description}
               </Typography>
             </Typography>
-            {price && price > 0 && (
+            {/* {price && price > 0 && (
               <Box
                 sx={{
                   padding: '0.5rem',
@@ -94,7 +94,7 @@ export default function ShopProductCard({ product }) {
                 &nbsp;
                 {fCurrency(price)}
               </Box>
-            )}
+            )} */}
           </Stack>
         </Stack>
       </Card>
