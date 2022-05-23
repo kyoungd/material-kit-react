@@ -78,8 +78,7 @@ export default function Login() {
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
-              Trading is not hard. Finding the right setup for trades, that is the hard part. We can
-              help with that.
+              Automate finding the right setup for trades.
               <br />
             </Typography>
             <Stack direction="row" spacing={2}>
