@@ -31,9 +31,9 @@
     },
     {
         "id": "zone",
-        "label": "Supply Demand",
+        "label": "Key Levels",
         "alignRight": false,
-        "info": "Daily supply and demand zone. The zone was not touched by previous pricement."
+        "info": "The current price near a weekly key support and resistance level.  Look for price action, ema and volume to determine if this stock is worth looking at."
     },
     {
         "id": "tf",
