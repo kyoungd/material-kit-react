@@ -91,7 +91,7 @@ export default function Login() {
                   onClose={() => setOpen1(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                  OVERVIEW
+                  VIDEO <br /> OVERVIEW
                 </Button>
               </Typography>
               <Typography sx={{ color: 'text.secondary', padding: 1 }}>
@@ -99,11 +99,11 @@ export default function Login() {
                   channel="youtube"
                   autoplay
                   isOpen={isOpen2}
-                  videoId="nON0dw8d_io"
+                  videoId="0XIjoHJWLgs"
                   onClose={() => setOpen2(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                  SWING-TRADE
+                  VIDEO <br /> TRADING
                 </Button>
               </Typography>
               <Typography sx={{ color: 'text.secondary', padding: 1 }}>
@@ -115,7 +115,7 @@ export default function Login() {
                   onClose={() => setOpen3(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen3(true)}>
-                  DAY-TRADE
+                  VIDEO <br /> SIGN IN
                 </Button>
               </Typography>
             </Stack>

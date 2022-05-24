@@ -54,7 +54,8 @@ const PRODUCT_COLOR = [
 // price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 }),
 // priceSale: setIndex % 3 ? null : faker.datatype.number({ min: 19, max: 29, precision: 0.01 }),
 
-const products = [...Array(10)].map((_, index) => {
+const videoTotals = VIDEO_URL.length;
+const products = [...Array(videoTotals)].map((_, index) => {
   const setIndex = index + 1;
 
   return {
@@ -72,7 +73,8 @@ const products = [...Array(10)].map((_, index) => {
       (setIndex === 23 && PRODUCT_COLOR.slice(4, 6)) ||
       (setIndex === 24 && PRODUCT_COLOR.slice(5, 6)) ||
       PRODUCT_COLOR,
-    status: sample(['sale', 'new', '', ''])
+    status: ''
+    // status: sample(['sale', 'new', '', ''])
   };
 });
 
