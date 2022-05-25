@@ -24,12 +24,6 @@
         "info": "ABC pattern.  Look for momentum with MACD histogram."
     },
     {
-        "id": "pivot",
-        "label": "Pivot Anchor",
-        "alignRight": false,
-        "info": "Pivot can be an anchor if the close of the data started near the pivot, moved away and come back."
-    },
-    {
         "id": "zone",
         "label": "Key Levels",
         "alignRight": false,

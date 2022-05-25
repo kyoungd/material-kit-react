@@ -6,27 +6,15 @@
         "text": "thrust or climax"
     },
     {
-        "id": "zone",
-        "label": "Key Levels",
-        "info": "The current price near a weekly support and resistance level.  Look for price action, ema and volume to determine if this stock is worth investigating.",
-        "text": "zone"
-    },
-    {
         "id": "abcd",
         "label": "ABCD pattern",
         "info": "ABCD pattern with MACD Histogram",
         "text": "abcd"
     },
     {
-        "id": "pivot",
-        "label": "Pivot Anchor",
-        "info": "Use pivot point as an anchor",
-        "text": "pivot"
-    },
-    {
-        "id": "stick",
-        "label": "Candle Stick",
-        "info": "Candle Stick Patterns.  Englufing candle or morning/evening star candle.",
-        "text": "engulf or star"
+        "id": "zone",
+        "label": "Key Levels",
+        "info": "The current price near a weekly support and resistance level.  Look for price action, ema and volume to determine if this stock is worth investigating.",
+        "text": "zone"
     }
 ]
