@@ -15,6 +15,8 @@ import { useUserState, useUserDispatch } from './components/UserContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
+import PRODUCTS from './_mocks_/products';
+import TUTORIALS from './_mocks_/tutorials';
 
 import USER_ROW from './layouts/User/UserRow';
 import RT_ROW from './layouts/Realtime/DisplayRow';
@@ -72,7 +74,8 @@ export default function Router() {
         },
         { path: 'news', element: <PageTop10News newsList={top10news} /> },
         { path: 'tutorial', element: <Tutorial /> },
-        { path: 'products', element: <Products /> },
+        { path: 'products', element: <Products videolist={PRODUCTS} name="Videos" /> },
+        { path: 'tutorials', element: <Products videolist={TUTORIALS} name="Tutorials" /> },
         { path: 'blog', element: <Blog /> }
       ]
     },

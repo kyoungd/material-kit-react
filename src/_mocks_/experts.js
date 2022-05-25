@@ -22,7 +22,7 @@ const EXPERTS = [
   {
     title: 'INTRADAY TRADE',
     description:
-      'This one searches the 15-minute bars to detect a certain pattern.  It flags stocks that are at Supply-Demand zone, ABC pattern, Pivot Point and VSA.  There are too much noise in smaller time frames.',
+      'This one searches the 15-minute bars to detect a certain pattern.  It flags stocks that are near support-resistance, ABC pattern, Pivot Point and VSA.  There are too much noise in smaller time frames.',
     cover: '/static/mock-images/covers/expert_2.jpg',
     videlUrl: 'C9G5KgB9Ze4',
     link: 'expert/market-cycle',

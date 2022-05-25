@@ -7,8 +7,8 @@
     },
     {
         "id": "zone",
-        "label": "Supply-Demand",
-        "info": "supply and demand.  Do not use this indicator within the first 30 minutes of the market open.",
+        "label": "Key Levels",
+        "info": "The current price near a weekly support and resistance level.  Look for price action, ema and volume to determine if this stock is worth investigating.",
         "text": "zone"
     },
     {

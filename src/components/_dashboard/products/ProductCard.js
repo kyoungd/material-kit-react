@@ -42,7 +42,7 @@ export default function ShopProductCard({ product }) {
       />
 
       <Card onClick={() => setOpen(true)}>
-        <Box sx={{ pt: '100%', position: 'relative' }}>
+        <Box sx={{ pt: '50%', position: 'relative' }}>
           {status && (
             <Label
               variant="filled"

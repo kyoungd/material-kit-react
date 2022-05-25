@@ -63,7 +63,7 @@ export default function AppCurrentVisits() {
 
   return (
     <Card>
-      <CardHeader title="Tutorials" />
+      <CardHeader title="Videos" />
       <ChartWrapperStyle dir="ltr">
         <ReactApexChart type="pie" series={CHART_DATA} options={chartOptions} height={280} />
       </ChartWrapperStyle>

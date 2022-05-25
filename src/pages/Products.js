@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 // material
 import { Container, Stack, Typography } from '@mui/material';
 // components
@@ -11,11 +13,15 @@ import {
   ProductFilterSidebar
 } from '../components/_dashboard/products';
 //
-import PRODUCTS from '../_mocks_/products';
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceShop() {
+EcommerceShop.propTypes = {
+  videolist: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired
+};
+
+export default function EcommerceShop(props) {
   const [openFilter, setOpenFilter] = useState(false);
 
   const formik = useFormik({
@@ -47,10 +53,10 @@ export default function EcommerceShop() {
   };
 
   return (
-    <Page title="Dashboard: Products | TradeSimp">
+    <Page title="Dashboard: {props.name} | TradeSimp">
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Video Tutorials
+          {props.name}
         </Typography>
 
         <Stack
@@ -72,7 +78,7 @@ export default function EcommerceShop() {
           </Stack>
         </Stack>
 
-        <ProductList products={PRODUCTS} />
+        <ProductList products={props.videolist} />
         <ProductCartWidget />
       </Container>
     </Page>
