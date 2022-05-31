@@ -13,7 +13,7 @@
     },
     {
         "id": "pivot",
-        "label": "First and second pull-back",
+        "label": "Pull Back",
         "info": "The first second pullback of the day, above 9 ema.",
         "text": "pivot"
     }
