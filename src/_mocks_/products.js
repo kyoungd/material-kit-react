@@ -6,7 +6,6 @@ import { mockImgProduct } from '../utils/mockImages';
 // ----------------------------------------------------------------------
 
 const PRODUCT_NAME = [
-  'Explains ABCD Pattern',
   'Morning Gapper',
   'Overview - Day Trading',
   'ABCD Pattern, Live Trading',
@@ -24,7 +23,6 @@ const PRODUCT_NAME = [
   'Reversal, New Trend'
 ];
 const VIDEO_URL = [
-  'zYzWcT4zmzk',
   'OSzCJ94I8ZU',
   'rF-QcJwdN44',
   '8x6Q7jCSwAw',

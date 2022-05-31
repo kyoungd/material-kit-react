@@ -12,6 +12,12 @@
         "text": "abcd"
     },
     {
+        "id": "pivot",
+        "label": "First and second pull-back",
+        "info": "The first second pullback of the day, above 9 ema.",
+        "text": "pivot"
+    }
+    {
         "id": "zone",
         "label": "Key Levels",
         "info": "The current price near a weekly support and resistance level.  Look for price action, ema and volume to determine if this stock is worth investigating.",

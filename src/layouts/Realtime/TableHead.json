@@ -24,6 +24,12 @@
         "info": "ABC pattern.  Look for momentum with MACD histogram."
     },
     {
+        "id": "pivot",
+        "label": "pivot",
+        "alignRight": false,
+        "info": "First and second pullback of the day above 9-ema"
+    },
+    {
         "id": "zone",
         "label": "Key Levels",
         "alignRight": false,
