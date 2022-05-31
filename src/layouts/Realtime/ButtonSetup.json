@@ -12,11 +12,11 @@
         "text": "abcd"
     },
     {
-        "id": "pivot",
+        "id": "pullback",
         "label": "Pull Back",
         "info": "The first second pullback of the day, above 9 ema.",
         "text": "pivot"
-    }
+    },
     {
         "id": "zone",
         "label": "Key Levels",
