@@ -13,7 +13,7 @@
     "engulf": " (data['cs'] & 1) === 1 ",
     "star": " (data['cs'] & 2) === 2 ",
     "abcd": " (data['cs'] & 4) === 4 ",
-    "pivot": " (data['cs'] & 8) === 8 ",
+    "pullback": " (data['cs'] & 8) === 8 ",
     "zone": " (data['cs'] & 16) === 16 ",
     "%": "",
     "$": "",
