@@ -168,7 +168,7 @@ function extractRealtime(data) {
 
 function sortRealtime(data) {
   return data.sort(
-    (row1, row2) => row2.tf.localeCompare(row1.tf) || row1.name.localeCompare(row2.name)
+    (row1, row2) => row1.name.localeCompare(row2.name) || row2.tf.localeCompare(row1.tf)
   );
 }
 

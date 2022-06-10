@@ -19,8 +19,8 @@
     },
     {
         "id": "zone",
-        "label": "Key Levels",
-        "info": "The current price near a weekly support and resistance level.  Look for price action, ema and volume to determine if this stock is worth investigating.",
+        "label": "MacD",
+        "info": "MacD reveral with large price spread.",
         "text": "zone"
     }
 ]

@@ -24,21 +24,27 @@
         "info": "ABC pattern.  Look for momentum with MACD histogram."
     },
     {
-        "id": "pivot",
-        "label": "pivot",
+        "id": "pullback",
+        "label": "Pullback",
         "alignRight": false,
         "info": "First and second pullback of the day above 9-ema"
     },
     {
-        "id": "zone",
-        "label": "Key Levels",
+        "id": "macd",
+        "label": "MacD",
         "alignRight": false,
-        "info": "The current price near a weekly key support and resistance level.  Look for price action, ema and volume to determine if this stock is worth looking at."
+        "info": "Price and MACD histogram reversal"
     },
     {
         "id": "tf",
         "label": "Timeframe",
         "alignRight": false,
         "info": "Time frame (5-Min or 15-Min)"
+    },
+    {
+        "id": "up",
+        "label": "Time",
+        "alignRight": false,
+        "info": "current time"
     }
 ]

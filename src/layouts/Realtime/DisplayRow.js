@@ -1,4 +1,5 @@
 /* eslint-disable no-bitwise */
+import moment from 'moment';
 import { TableCell } from '@mui/material';
 
 export default function UserRow(row) {
@@ -13,6 +14,7 @@ export default function UserRow(row) {
       <TableCell align="center">{(row.cs & 8) === 8 ? 'yes' : ''}</TableCell>
       <TableCell align="center">{(row.cs & 16) === 16 ? 'yes' : ''}</TableCell>
       <TableCell align="center">{row.tf}</TableCell>
+      <TableCell align="center">{moment(row.up).format('h:mm')}</TableCell>
     </>
   );
 }
