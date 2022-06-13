@@ -87,11 +87,11 @@ export default function Login() {
                   channel="youtube"
                   autoplay
                   isOpen={isOpen1}
-                  videoId="9Pc226w3HFM"
+                  videoId="lCSDr9W418g"
                   onClose={() => setOpen1(false)}
                 />
                 <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                  VIDEO <br /> OVERVIEW
+                  ABOUT <br /> US
                 </Button>
               </Typography>
               <Typography sx={{ color: 'text.secondary', padding: 1 }}>
