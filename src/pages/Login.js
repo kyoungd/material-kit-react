@@ -11,6 +11,7 @@ import Page from '../components/Page';
 import { MHidden } from '../components/@material-extend';
 import { LoginForm } from '../components/authentication/login';
 import AuthSocial from '../components/authentication/AuthSocial';
+import HomeVideos from '../components/authentication/HomeVideos';
 
 import 'react-modal-video/scss/modal-video.scss';
 
@@ -67,58 +68,14 @@ export default function Login() {
 
       <Container maxWidth="sm">
         <ContentStyle>
+          <HomeVideos />
           <Stack sx={{ mb: 5 }}>
-            <Typography variant="h4" gutterBottom>
-              TradeSimp
-            </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
-              {' '}
-              USING AI TO FIND STOCKS TO TRADE FOR RETAIL TRADERS
-            </Typography>
             <Typography sx={{ color: 'text.secondary', padding: 2 }}>
               {' '}
               <br />
-              Automate finding the right setup for trades.
+              Our AI and Trade Experts are your trading edge.
               <br />
             </Typography>
-            <Stack direction="row" spacing={2}>
-              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
-                <ModalVideo
-                  channel="youtube"
-                  autoplay
-                  isOpen={isOpen1}
-                  videoId="lCSDr9W418g"
-                  onClose={() => setOpen1(false)}
-                />
-                <Button variant="contained" color="primary" onClick={() => setOpen1(true)}>
-                  ABOUT <br /> US
-                </Button>
-              </Typography>
-              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
-                <ModalVideo
-                  channel="youtube"
-                  autoplay
-                  isOpen={isOpen2}
-                  videoId="0XIjoHJWLgs"
-                  onClose={() => setOpen2(false)}
-                />
-                <Button variant="contained" color="primary" onClick={() => setOpen2(true)}>
-                  VIDEO <br /> TRADING
-                </Button>
-              </Typography>
-              <Typography sx={{ color: 'text.secondary', padding: 1 }}>
-                <ModalVideo
-                  channel="youtube"
-                  autoplay
-                  isOpen={isOpen3}
-                  videoId="XvoV_cPJ08s"
-                  onClose={() => setOpen3(false)}
-                />
-                <Button variant="contained" color="primary" onClick={() => setOpen3(true)}>
-                  VIDEO <br /> SIGN IN
-                </Button>
-              </Typography>
-            </Stack>
           </Stack>
           <AuthSocial />
 
