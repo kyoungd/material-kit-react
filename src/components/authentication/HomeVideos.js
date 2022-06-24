@@ -42,16 +42,18 @@ export default function HomeVideos() {
           videoId="_mhWwh1Y3vQ"
           onClose={() => setOpen2(false)}
         />
-        <Button
-          fullWidth
-          size="large"
-          color="inherit"
-          variant="outlined"
-          onClick={() => setOpen2(true)}
-        >
-          <Icon icon={personDoneOutline} color="#1877F2" height={24} />
-          &nbsp;MY STORY
-        </Button>
+        <Tooltip title="Learn about why TRADESIMP started and what problems it solves.">
+          <Button
+            fullWidth
+            size="large"
+            color="inherit"
+            variant="outlined"
+            onClick={() => setOpen2(true)}
+          >
+            <Icon icon={personDoneOutline} color="#1877F2" height={24} />
+            &nbsp;MY STORY
+          </Button>
+        </Tooltip>
 
         <ModalVideo
           channel="youtube"
@@ -60,16 +62,18 @@ export default function HomeVideos() {
           videoId="XvoV_cPJ08s"
           onClose={() => setOpen3(false)}
         />
-        <Button
-          fullWidth
-          size="large"
-          color="inherit"
-          variant="outlined"
-          onClick={() => setOpen3(true)}
-        >
-          <Icon icon={playCircleOutline} color="#1C9CEA" height={24} />
-          &nbsp;START
-        </Button>
+        <Tooltip title="Basic TRADESIMP tutorials.  Learn how to login to the system and use it.">
+          <Button
+            fullWidth
+            size="large"
+            color="inherit"
+            variant="outlined"
+            onClick={() => setOpen3(true)}
+          >
+            <Icon icon={playCircleOutline} color="#1C9CEA" height={24} />
+            &nbsp;START
+          </Button>
+        </Tooltip>
       </Stack>
 
       <Divider sx={{ my: 3 }}>
