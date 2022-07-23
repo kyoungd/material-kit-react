@@ -8,6 +8,7 @@ import Products from './pages/Products';
 import Tutorial from './pages/PageTutorial';
 import Blog from './pages/Blog';
 import User from './pages/User';
+import Favorites from './pages/Favorites';
 import PageTop10News from './pages/PageTop10News';
 import NotFound from './pages/Page404';
 import { useUserState, useUserDispatch } from './components/UserContext';
@@ -73,6 +74,10 @@ export default function Router() {
           )
         },
         { path: 'news', element: <PageTop10News newsList={top10news} /> },
+        {
+          path: 'favorites',
+          element: <Favorites favorites={favorites} userDispatch={userDispatch} />
+        },
         { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products videolist={PRODUCTS} name="Videos" /> },
         { path: 'tutorials', element: <Products videolist={TUTORIALS} name="Tutorials" /> },

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 // material
 import { Grid } from '@mui/material';
-import ShopProductCard from './ProductCard';
+// import ShopProductCard from './ProductCard';
+import ExpertCard from './ExpertCard';
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +15,8 @@ export default function ProductList({ products, ...other }) {
     <Grid container spacing={3} {...other}>
       {products.map((product) => (
         <Grid key={product.id} item xs={12} sm={8} md={4}>
-          <ShopProductCard product={product} />
+          {/* <ShopProductCard product={product} /> */}
+          <ExpertCard product={product} />
         </Grid>
       ))}
     </Grid>
