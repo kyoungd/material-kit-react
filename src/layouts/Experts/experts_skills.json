@@ -1,0 +1,64 @@
+[
+    {
+        "id": 101,
+        "person": {
+            "name": "Young Kwon",
+            "summary": "Day-trading with numbers",
+            "description": "A hybrid trading system combines the objective rules of an AI with the discretionary decisions of a trader which are based on the dominant themes of the market, current risk sentiment, price action and recent economic news.",
+            "image": "/static/mock-images/avatars/ykphoto.jpeg"
+        },
+        "data": [
+            {
+                "title": "First pullback",
+                "subtitle": "April 29, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "ABCD Pattern",
+                "subtitle": "July 19, 2022",
+                "summary": "It is a classic pattern with a little twist. It will only select this pattern if B, C and D are above the 9 ema, and MacD Histogram is above 0.",
+                "description": "Method:\n This is a classic.  It is paired with 9 ema and MACD histogram. \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  The B, C and D is above the 9 EMA, and it should also be above 0. \n For additional confluence, you should check the 2-min, 5-min and 15 min chart and see the ABCD pattern there, too. \n  For even more confluence, look for higher than normal volume.",
+                "image": "/static/mock-images/products/product_1.jpg",
+
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "Squeeze",
+                "subtitle": "June 15, 2016",
+                "summary": "It happens rather fast.  There is a huge pressure that moves the price in the opposite direction of the trend.  It is a brief, but huge retracement with extremely long wicks that clears up stocks to allow the trend continue.",
+                "description": "Method:\n This does not happen often, but it is one of the best indicator.  \n It happens in a trending asset.  In order for price to move higher, people have to sell.  It is a squeeze.  The price slams down forcing people to sell, and than the market makers buys up the available stocks to continue the price trend.  The pattern is easily visible because the price drops with a long wick to a previous key-level and it bounces up just as quickly. \n However, you have to catch it quickly.  It does not last long.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "person": {
+            "name": "Young Kwon",
+            "summary": "News driven trading",
+            "description": "Using machine learning, predict how correlated stocks behaved to a news in last 4 weeks.  In a steady market, we expect the market segment to react similarly to news.",
+            "image": "/static/mock-images/avatars/ykphoto.jpeg"
+        },
+        "data": [
+            {
+                "title": "News driven trading",
+                "subtitle": "September 1, 2012",
+                "summary": "Market is random and unpredictable, but investors' behaviors are not.  Here, we use machine learning to predict how correlated stocks behaved after a news is published.",
+                "description":
+                    "Method:\n There is a statistical significance to how investors behave to the news. \n  It only applies to medium and large cap stocks.  Small and microstocks are too unpredictable.  The pricing behavior depends on the quality of the news, price, volume, correlation, and time from the news.  We do not sample behavior on a long time scale due to market sentiment changes.  A machine learning alorithm maps out the price action reaction on 30 minute segments, and it groups news reaction of all correlated stocks into a single model. The model can be a useful indicator.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "person": {},
+        "data": []
+    }
+]
+
