@@ -10,11 +10,14 @@ import {
   CookieGetTop10News,
   CookieSetRealtimes,
   CookieSetFavorites,
+  CookieGetTechniques,
+  CookieSetTechniques,
   CookieSetTop10News,
   CookieSetToken,
   CookieSetSymbols,
   CookieSignOut
 } from '../utils/cookies';
+import StandarizeTechniques from './context/standardTechniques';
 
 const UserStateContext = React.createContext();
 const UserDispatchContext = React.createContext();
@@ -36,6 +39,10 @@ function userReducer(state, action) {
         saveFavorites(action.payload);
       }
       return { ...state, favorites: action.payload };
+    case 'TECHNIQUES':
+      console.log('TECHNIQUES:', action);
+      CookieSetTechniques(action.payload);
+      return { ...state, techniques: action.payload };
     case 'REALTIME':
       CookieSetRealtimes(action.payload);
       return { ...state, realtimes: action.payload };
@@ -57,7 +64,8 @@ function UserProvider({ children }) {
     top10news: [],
     favorites: {},
     settings: {},
-    realtimes: []
+    realtimes: [],
+    techniques: []
   });
 
   return (
@@ -91,6 +99,48 @@ function makeBearToken(token) {
       Authorization: `Bearer ${token}`
     }
   };
+}
+
+function downloadTechniques(dispatch, token, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const url = process.env.REACT_APP_TECHNIQUE_SERVICE || 'http://localhost:1337/api/techniques';
+  const bearerToken = makeBearToken(token);
+  axios
+    .get(url, bearerToken)
+    .then((result) => {
+      console.log('>>>>>>> result:', result);
+      setIsLoading(false);
+      setError(null);
+      try {
+        // const jsondata = result.data.data;
+        const jsondata = StandarizeTechniques(result.data.data);
+        dispatch({ type: 'TECHNIQUES', payload: jsondata });
+      } catch (ex) {
+        console.log('downloadFavorite(): An error occurred:', ex);
+        dispatch({ type: 'TECHNIQUES', payload: [] });
+      }
+    })
+    .catch((e) => {
+      console.log('>>>>>>> error:', e);
+      dispatch({ type: 'TECHNIQUES', payload: [] });
+      setIsLoading(false);
+      setError(null);
+      console.log('An error occurred:', e);
+    });
+}
+
+function getTechniques(dispatch, token, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const jsondata = CookieGetTechniques();
+  if (jsondata === null || jsondata.length === 0)
+    downloadTechniques(dispatch, token, setIsLoading, setError);
+  else {
+    dispatch({ type: 'TECHNIQUES', payload: jsondata });
+    setIsLoading(false);
+    setError(null);
+  }
 }
 
 function downloadFavorite(dispatch, token, setIsLoading, setError) {
@@ -501,6 +551,7 @@ export {
   getSymbols,
   getTop10News,
   getRealtimes,
+  getTechniques,
   UserProvider,
   useUserState,
   useUserDispatch,

@@ -78,7 +78,6 @@ export default function Router() {
           path: 'expert',
           element: <Expert />
         },
-        { path: 'tutorial', element: <Tutorial /> },
         { path: 'products', element: <Products videolist={PRODUCTS} name="Videos" /> },
         { path: 'tutorials', element: <Products videolist={TUTORIALS} name="Tutorials" /> },
         { path: 'blog', element: <Blog /> }

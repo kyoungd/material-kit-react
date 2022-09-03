@@ -102,7 +102,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography gutterBottom variant="h6">
-              Want more?
+              &nbsp;
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               Currently in BETA
@@ -110,7 +110,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           </Box>
 
           <Button fullWidth href="https://ecom-live.com/" target="_blank" variant="contained">
-            Coming soon.
+            Coming soon-ish
           </Button>
         </Stack>
       </Box>

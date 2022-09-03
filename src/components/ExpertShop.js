@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 // material
 import { Container, Stack } from '@mui/material';
 // components
@@ -10,13 +12,18 @@ import {
   ProductFilterSidebar
 } from './_dashboard/products';
 //
-import EXPERTS from '../_mocks_/experts';
+// import EXPERTS from '../_mocks_/experts';
 
 // ----------------------------------------------------------------------
 
-export default function ExpertShop() {
+ExpertShop.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default function ExpertShop(props) {
   const [openFilter, setOpenFilter] = useState(false);
 
+  const EXPERTS = props.data;
   const formik = useFormik({
     initialValues: {
       gender: '',
@@ -72,7 +79,7 @@ export default function ExpertShop() {
         </Stack>
 
         <ProductList products={EXPERTS} />
-        <ProductCartWidget />
+        {/* <ProductCartWidget /> */}
       </Container>
     </>
   );

@@ -45,6 +45,13 @@ const PRODUCT_COLOR = [
   '#FFFFFF',
   '#FFC0CB',
   '#FF4842',
+  '#00AB55',
+  '#FFFFFF',
+  '#1890FF',
+  '#94D82D',
+  '#FFC107',
+  '#00AB55',
+  '#FFFFFF',
   '#1890FF',
   '#94D82D',
   '#FFC107'
@@ -73,7 +80,8 @@ const products = [...Array(videoTotals)].map((_, index) => {
       (setIndex === 23 && PRODUCT_COLOR.slice(4, 6)) ||
       (setIndex === 24 && PRODUCT_COLOR.slice(5, 6)) ||
       PRODUCT_COLOR,
-    status: ''
+    status: '',
+    link: '#'
     // status: sample(['sale', 'new', '', ''])
   };
 });

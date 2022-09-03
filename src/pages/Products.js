@@ -17,7 +17,7 @@ import {
 // ----------------------------------------------------------------------
 
 EcommerceShop.propTypes = {
-  videolist: PropTypes.object.isRequired,
+  videolist: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired
 };
 
@@ -79,7 +79,7 @@ export default function EcommerceShop(props) {
         </Stack>
 
         <ProductList products={props.videolist} />
-        <ProductCartWidget />
+        {/* <ProductCartWidget /> */}
       </Container>
     </Page>
   );

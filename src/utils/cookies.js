@@ -33,6 +33,7 @@ const keySymbols = 'symbols';
 const keyRealtimes = 'realtimes';
 const keyTop10News = 'top10news';
 const keyFavorites = 'favorites';
+const keyTechniques = 'techniques';
 const oneMinute = 1000 * 60;
 const oneHour = 1000 * 60 * 60;
 
@@ -50,6 +51,10 @@ export function CookieSetSymbols(value) {
 
 export function CookieSetRealtimes(value) {
   setWithExpiry(keyRealtimes, value, oneHour * 8);
+}
+
+export function CookieSetTechniques(value) {
+  setWithExpiry(keyTechniques, value, oneHour * 8);
 }
 
 export function CookieSetTop10News(value) {
@@ -76,6 +81,7 @@ export function CookieSignOut() {
   if (CookieGetFavorites()) localStorage.removeItem(keyFavorites);
   if (CookieGetRealtimess()) localStorage.removeItem(keyRealtimes);
   if (CookieGetTop10News()) localStorage.removeItem(keyTop10News);
+  if (CookieGetTechniques()) localStorage.removeItem(keyTechniques);
 }
 
 export function CookieGetFavorites() {
@@ -92,4 +98,8 @@ export function CookieGetRealtimess() {
 
 export function CookieGetTop10News() {
   return getWithExpiry(keyTop10News);
+}
+
+export function CookieGetTechniques() {
+  return getWithExpiry(keyTechniques);
 }

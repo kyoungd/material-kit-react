@@ -31,6 +31,7 @@ const PRODUCT_COLOR = [
   '#000000',
   '#FFFFFF',
   '#FFC0CB',
+  '#FFC0CB',
   '#FF4842',
   '#1890FF',
   '#94D82D',
@@ -60,7 +61,8 @@ const tutorialVideos = [...Array(videoTotals)].map((_, index) => {
       (setIndex === 23 && PRODUCT_COLOR.slice(4, 6)) ||
       (setIndex === 24 && PRODUCT_COLOR.slice(5, 6)) ||
       PRODUCT_COLOR,
-    status: ''
+    status: '',
+    link: '#'
     // status: sample(['sale', 'new', '', ''])
   };
 });

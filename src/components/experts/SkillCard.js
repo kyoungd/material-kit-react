@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PropTypes from 'prop-types';
@@ -92,7 +92,7 @@ export default function SkillCard({ title, subtitle, summary, description, image
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="video" onClick={() => setOpen(true)}>
-            <ShareIcon />
+            <YouTubeIcon />
           </IconButton>
           <ExpandMore
             expand={expanded}

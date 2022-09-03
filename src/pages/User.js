@@ -47,7 +47,7 @@ User.propTypes = {
   favorites: PropTypes.object.isRequired,
   symbols: PropTypes.array.isRequired,
   userDispatch: PropTypes.func.isRequired,
-  translation: PropTypes.array.isRequired,
+  translation: PropTypes.object.isRequired,
   tableHead: PropTypes.array.isRequired,
   explainers: PropTypes.array.isRequired,
   rowContent: PropTypes.func.isRequired,

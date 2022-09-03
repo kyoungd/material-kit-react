@@ -6,11 +6,14 @@ import {
   CardContent,
   CardMedia,
   Divider,
+  Grid,
+  IconButton,
   Link,
   Tooltip,
   Typography
 } from '@mui/material';
 import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import PropTypes from 'prop-types';
 import ModalVideo from 'react-modal-video';
 import { Link as RouterLink } from 'react-router-dom';
@@ -43,20 +46,15 @@ export default function ExpertCard({ product }) {
           <Typography variant="body2" color="text.secondary">
             {description}
           </Typography>
-          <CardActions>
-            {status === 'active' && (
-              <Tooltip title="already a subscriber" sx={{ paddingRight: 0.5 }}>
-                <DataSaverOnIcon />
-              </Tooltip>
-            )}
+          <CardActions disableSpacing>
             <Link to={link} state={{ id }} color="inherit" underline="hover" component={RouterLink}>
               <Typography variant="subtitle2" noWrap>
                 {learnMoreText}
               </Typography>
             </Link>
-            <Button size="small" onClick={() => setOpen(true)}>
-              Video
-            </Button>
+            <IconButton aria-label="video" onClick={() => setOpen(true)}>
+              <YouTubeIcon />
+            </IconButton>
           </CardActions>
         </CardContent>
       </Card>

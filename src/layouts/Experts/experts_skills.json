@@ -2,9 +2,68 @@
     {
         "id": 101,
         "person": {
+            "name": "John Kaufman",
+            "summary": "Swing trading",
+            "description": "",
+            "image": "/static/mock-images/avatars/ykphoto.jpeg"
+        },
+        "data": [
+            {
+                "title": "New Trend",
+                "subtitle": "Jan 4, 2022",
+                "summary": "New Trend, or a reveral after a long trend.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "Volume Analysis",
+                "subtitle": "Jan 4, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "Wyckoff Cycle",
+                "subtitle": "Jan 4, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "Morning Gapper",
+                "subtitle": "Jan 4, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "Gap",
+                "subtitle": "Jan 4, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            },
+            {
+                "title": "RSI Divergence",
+                "subtitle": "Jan 4, 2022",
+                "summary": "First pullback after a reversal.  This is an ABD pattern formation where A is the reversal of a trend, B is the height of the recent movement and C is the low of the first pullback.",
+                "description": "Method:\n It will be the first pullback of the day.  \n The price range is between $3-$100.  ATR is above $0.20-$2.00.  It is recommended that you verify the B and C is above 9 ema on the 2-minute, 5-minute and 15 minute for confluence.  The signal is usually the strongest in the first hour of the market opening.  Also look for unusually high volume, and the volume on the pullback is smaller.",
+                "image": "/static/mock-images/products/product_1.jpg",
+                "video": "wPXVR2LYovU"
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "person": {
             "name": "Young Kwon",
             "summary": "Day-trading with numbers",
-            "description": "A hybrid trading system combines the objective rules of an AI with the discretionary decisions of a trader which are based on the dominant themes of the market, current risk sentiment, price action and recent economic news.",
+            "description": "Instead of watching multiple monitors all day, let our AI alert you when a stock is ready to trade.  We will analyze the market in real time, and identify the right setup for your trading style.",
             "image": "/static/mock-images/avatars/ykphoto.jpeg"
         },
         "data": [
@@ -36,7 +95,7 @@
         ]
     },
     {
-        "id": 102,
+        "id": 103,
         "person": {
             "name": "Young Kwon",
             "summary": "News driven trading",
@@ -54,11 +113,6 @@
                 "video": "wPXVR2LYovU"
             }
         ]
-    },
-    {
-        "id": 103,
-        "person": {},
-        "data": []
     }
 ]
 

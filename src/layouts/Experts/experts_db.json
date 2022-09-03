@@ -1,0 +1,1371 @@
+{
+    "data": [
+        {
+            "id": 3,
+            "attributes": {
+                "name": "NEWS PROFILE",
+                "summary": "The market may be random, but there is a certain predictability in how investors react to news.  We have created a news reaction tool that demonstrates how the market has reacted to a news.",
+                "video": "2BVGAz2Jd5w",
+                "price": 99.99,
+                "sales_price": 0,
+                "is_on_sale": false,
+                "createdAt": "2022-08-02T19:39:20.161Z",
+                "updatedAt": "2022-08-14T02:52:27.842Z",
+                "publishedAt": "2022-08-02T19:39:59.909Z",
+                "description": "The market is random, but how investors react to the news is predictable to a degree.  This AI model the price movement that occurs in response to news. It models the sentiment score, price movement, stock correlation, market size and limited period.  It is recommended that this is a higher quality indicator when there is continuation in the market.  It can be upward, downward or sideways as long as it is continuiting.",
+                "access": "paid",
+                "techName": "Young Kwon",
+                "techSummary": "summary",
+                "techDescription": "description",
+                "photo": {
+                    "data": {
+                        "id": 3,
+                        "attributes": {
+                            "name": "expert_3.png",
+                            "alternativeText": "expert_3.png",
+                            "caption": "expert_3.png",
+                            "width": 2560,
+                            "height": 1440,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                    "hash": "large_expert_3_8ca948088a",
+                                    "mime": "image/png",
+                                    "name": "large_expert_3.png",
+                                    "path": null,
+                                    "size": 140.96,
+                                    "width": 1000,
+                                    "height": 563
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                    "hash": "small_expert_3_8ca948088a",
+                                    "mime": "image/png",
+                                    "name": "small_expert_3.png",
+                                    "path": null,
+                                    "size": 59.75,
+                                    "width": 500,
+                                    "height": 281
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                    "hash": "medium_expert_3_8ca948088a",
+                                    "mime": "image/png",
+                                    "name": "medium_expert_3.png",
+                                    "path": null,
+                                    "size": 98.38,
+                                    "width": 750,
+                                    "height": 422
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_expert_3.png",
+                                    "path": null,
+                                    "size": 22.63,
+                                    "width": 245,
+                                    "height": 138
+                                }
+                            },
+                            "hash": "expert_3_8ca948088a",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 81.43,
+                            "url": "/uploads/expert_3_8ca948088a.png",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-02T19:38:57.041Z",
+                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                        }
+                    }
+                },
+                "technique_details": {
+                    "data": [
+                        {
+                            "id": 9,
+                            "attributes": {
+                                "sequence": 1,
+                                "title": "Daily Projection",
+                                "subtitle": "Hourly result",
+                                "description": "Price action by the hour, and probability of the price movement based on its past performance.  At the end of the first hour after the news, will the price go up?  After 36 hours, will the price continue to rise?  That kind of question.",
+                                "video": "N9SUmtuGnHQ",
+                                "createdAt": "2022-08-10T18:33:55.954Z",
+                                "updatedAt": "2022-08-14T06:04:10.062Z",
+                                "publishedAt": "2022-08-10T18:34:01.756Z",
+                                "summary": "Price action is predicted every hour from the first time the news is published.  We feel there is a bit too much noise at this level.",
+                                "photo": {
+                                    "data": null
+                                }
+                            }
+                        },
+                        {
+                            "id": 12,
+                            "attributes": {
+                                "sequence": 4,
+                                "title": "daily",
+                                "subtitle": "September 1, 2022",
+                                "description": "Price action by the hour, and probability of the price movement based on its past performance.  At the end of the first hour after the news, will the price go up?  It makes a prediction on price action every day at the market close after the news.",
+                                "video": "2BVGAz2Jd5w",
+                                "createdAt": "2022-08-10T18:49:59.745Z",
+                                "updatedAt": "2022-08-14T06:02:41.380Z",
+                                "publishedAt": "2022-08-10T18:50:29.280Z",
+                                "summary": "Price action predicted the market close from the first time the news is published.",
+                                "photo": {
+                                    "data": {
+                                        "id": 1,
+                                        "attributes": {
+                                            "name": "expert_1.png",
+                                            "alternativeText": "expert_1.png",
+                                            "caption": "expert_1.png",
+                                            "width": 1024,
+                                            "height": 480,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_1_f983f03f44.png",
+                                                    "hash": "large_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_1.png",
+                                                    "path": null,
+                                                    "size": 128.83,
+                                                    "width": 1000,
+                                                    "height": 469
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_1_f983f03f44.png",
+                                                    "hash": "small_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_1.png",
+                                                    "path": null,
+                                                    "size": 55.68,
+                                                    "width": 500,
+                                                    "height": 234
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_1_f983f03f44.png",
+                                                    "hash": "medium_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_1.png",
+                                                    "path": null,
+                                                    "size": 89.39,
+                                                    "width": 750,
+                                                    "height": 352
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_1_f983f03f44.png",
+                                                    "hash": "thumbnail_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_1.png",
+                                                    "path": null,
+                                                    "size": 21.34,
+                                                    "width": 245,
+                                                    "height": 115
+                                                }
+                                            },
+                                            "hash": "expert_1_f983f03f44",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 27.84,
+                                            "url": "/uploads/expert_1_f983f03f44.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:24:01.834Z",
+                                            "updatedAt": "2022-08-02T19:24:01.834Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 11,
+                            "attributes": {
+                                "sequence": 3,
+                                "title": "4 hour result",
+                                "subtitle": "September 1, 2022",
+                                "description": "Price action by the hour, and probability of the price movement based on its past performance.  At the end of the first 4 hours after the news, will the price go up?  It makes price action prediction after every 4 hours.",
+                                "video": "2BVGAz2Jd5w",
+                                "createdAt": "2022-08-10T18:41:57.497Z",
+                                "updatedAt": "2022-08-14T06:02:56.813Z",
+                                "publishedAt": "2022-08-10T18:50:24.447Z",
+                                "summary": "Price action predicted every four hours from the first time the news is published.",
+                                "photo": {
+                                    "data": {
+                                        "id": 1,
+                                        "attributes": {
+                                            "name": "expert_1.png",
+                                            "alternativeText": "expert_1.png",
+                                            "caption": "expert_1.png",
+                                            "width": 1024,
+                                            "height": 480,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_1_f983f03f44.png",
+                                                    "hash": "large_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_1.png",
+                                                    "path": null,
+                                                    "size": 128.83,
+                                                    "width": 1000,
+                                                    "height": 469
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_1_f983f03f44.png",
+                                                    "hash": "small_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_1.png",
+                                                    "path": null,
+                                                    "size": 55.68,
+                                                    "width": 500,
+                                                    "height": 234
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_1_f983f03f44.png",
+                                                    "hash": "medium_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_1.png",
+                                                    "path": null,
+                                                    "size": 89.39,
+                                                    "width": 750,
+                                                    "height": 352
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_1_f983f03f44.png",
+                                                    "hash": "thumbnail_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_1.png",
+                                                    "path": null,
+                                                    "size": 21.34,
+                                                    "width": 245,
+                                                    "height": 115
+                                                }
+                                            },
+                                            "hash": "expert_1_f983f03f44",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 27.84,
+                                            "url": "/uploads/expert_1_f983f03f44.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:24:01.834Z",
+                                            "updatedAt": "2022-08-02T19:24:01.834Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 10,
+                            "attributes": {
+                                "sequence": 2,
+                                "title": "2 Hour Result",
+                                "subtitle": "September 1, 2022",
+                                "description": "Price action by the hour, and probability of the price movement based on its past performance.  At the end of the two hours after the news, will the price go up?  It makes price action prediction after every two hours.",
+                                "video": "N9SUmtuGnHQ",
+                                "createdAt": "2022-08-10T18:39:37.438Z",
+                                "updatedAt": "2022-08-14T06:03:33.284Z",
+                                "publishedAt": "2022-08-10T18:41:01.236Z",
+                                "summary": "Price action is predicted every two hours from the first time the news is published.  We feel there is a bit too much noise at this level.",
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                "techPhoto": {
+                    "data": {
+                        "id": 4,
+                        "attributes": {
+                            "name": "young-kwon-pix.jpg",
+                            "alternativeText": "young-kwon-pix.jpg",
+                            "caption": "young-kwon-pix.jpg",
+                            "width": 640,
+                            "height": 960,
+                            "formats": {
+                                "small": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/small_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "small_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "small_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 17.45,
+                                    "width": 333,
+                                    "height": 500
+                                },
+                                "medium": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/medium_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "medium_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "medium_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 35.73,
+                                    "width": 500,
+                                    "height": 750
+                                },
+                                "thumbnail": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/thumbnail_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "thumbnail_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "thumbnail_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 3.05,
+                                    "width": 104,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "young_kwon_pix_8cbd9777f9",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 56.92,
+                            "url": "/uploads/young_kwon_pix_8cbd9777f9.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-14T00:19:16.532Z",
+                            "updatedAt": "2022-08-14T00:19:16.532Z"
+                        }
+                    }
+                },
+                "status": "active"
+            }
+        },
+        {
+            "id": 1,
+            "attributes": {
+                "name": "SWING TRADE",
+                "summary": "These tools are designed for swing-trades. We prefer trend-trading, and this application is good for finding new trends. There are other tools like volume spread analysis, double top, overnight gap, and others.",
+                "video": "N9SUmtuGnHQ",
+                "price": 99.95,
+                "sales_price": 0,
+                "is_on_sale": false,
+                "createdAt": "2022-08-02T19:24:58.633Z",
+                "updatedAt": "2022-08-14T02:52:51.091Z",
+                "publishedAt": "2022-08-02T19:28:35.172Z",
+                "description": "Swing trading is a style of trading that attempts to capture short- to medium-term gains in a stock (or any financial instrument) over a period of a few days to several weeks. Swing traders primarily use technical analysis to look for trading opportunities.  Our AI is tuned to recognize several well-known technical analysis patterns that have demonstrated high-probability price movements.  Of course, you should not rely solely on an AI and do your own due-diligence.  but it will save you a lot of time.",
+                "access": "free",
+                "techName": "Young Kwon",
+                "techSummary": "summary",
+                "techDescription": "description",
+                "photo": {
+                    "data": {
+                        "id": 1,
+                        "attributes": {
+                            "name": "expert_1.png",
+                            "alternativeText": "expert_1.png",
+                            "caption": "expert_1.png",
+                            "width": 1024,
+                            "height": 480,
+                            "formats": {
+                                "large": {
+                                    "ext": ".png",
+                                    "url": "/uploads/large_expert_1_f983f03f44.png",
+                                    "hash": "large_expert_1_f983f03f44",
+                                    "mime": "image/png",
+                                    "name": "large_expert_1.png",
+                                    "path": null,
+                                    "size": 128.83,
+                                    "width": 1000,
+                                    "height": 469
+                                },
+                                "small": {
+                                    "ext": ".png",
+                                    "url": "/uploads/small_expert_1_f983f03f44.png",
+                                    "hash": "small_expert_1_f983f03f44",
+                                    "mime": "image/png",
+                                    "name": "small_expert_1.png",
+                                    "path": null,
+                                    "size": 55.68,
+                                    "width": 500,
+                                    "height": 234
+                                },
+                                "medium": {
+                                    "ext": ".png",
+                                    "url": "/uploads/medium_expert_1_f983f03f44.png",
+                                    "hash": "medium_expert_1_f983f03f44",
+                                    "mime": "image/png",
+                                    "name": "medium_expert_1.png",
+                                    "path": null,
+                                    "size": 89.39,
+                                    "width": 750,
+                                    "height": 352
+                                },
+                                "thumbnail": {
+                                    "ext": ".png",
+                                    "url": "/uploads/thumbnail_expert_1_f983f03f44.png",
+                                    "hash": "thumbnail_expert_1_f983f03f44",
+                                    "mime": "image/png",
+                                    "name": "thumbnail_expert_1.png",
+                                    "path": null,
+                                    "size": 21.34,
+                                    "width": 245,
+                                    "height": 115
+                                }
+                            },
+                            "hash": "expert_1_f983f03f44",
+                            "ext": ".png",
+                            "mime": "image/png",
+                            "size": 27.84,
+                            "url": "/uploads/expert_1_f983f03f44.png",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-02T19:24:01.834Z",
+                            "updatedAt": "2022-08-02T19:24:01.834Z"
+                        }
+                    }
+                },
+                "technique_details": {
+                    "data": [
+                        {
+                            "id": 3,
+                            "attributes": {
+                                "sequence": 3,
+                                "title": "VOLUME ANALYSIS (SWING)",
+                                "subtitle": "August 1, 2022",
+                                "description": "When price is pushed down by a strong Bearish pressure, a strong counterattack of Bullish pressure is required to break the decline. As a result, when \"Smart Money\" are in need to break a strong decline, they must put a lot of buying pressure and we receive a strong volume surge.\n\nPrice should be in a down-trend.  The last lowest bar should be on extremely high (ultra-high) volume suggesting the \"Smart Money\" entered the game and they are trying to beat the strong Bears who are the main engine of a decline.\nThe last lowest bar should be narrow bar, or it can be a long bar yet with close above the middle of the bar (long lower shadow if candlesticks are used). This would signal that the Bearish pressure was broken, and the Bears yielded to the \"Smart Money\"\nThis chart pattern could be any of the Bullish reversal candlestick patterns (Bullish Abandoned Baby, Bullish Doji Star, Bullish Counterattack and etc.) accompanied by a strong volume surge on the lowest candle.\n\nThe main point of this chart pattern is that you must see a broken Bearish pressure at the bottom of a down move on ultra-high volume.\n\nAfter such a heavy volume surge we should expect a strong bullish reversal. A stronger volume surge was witnessed during the Selling climax - stronger pressure was applied against the Bears and a stronger reversal up could be expected. While Buying Climax is a strong reversal signal, it is still could be recommended to see the next bar as a confirmation of this Sign of Strength.",
+                                "video": "2BVGAz2Jd5w",
+                                "createdAt": "2022-08-03T00:09:01.339Z",
+                                "updatedAt": "2022-08-03T05:40:15.516Z",
+                                "publishedAt": "2022-08-03T00:11:04.164Z",
+                                "summary": null,
+                                "photo": {
+                                    "data": {
+                                        "id": 2,
+                                        "attributes": {
+                                            "name": "expert_2.jpg",
+                                            "alternativeText": "expert_2.jpg",
+                                            "caption": "expert_2.jpg",
+                                            "width": 4167,
+                                            "height": 2344,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/large_expert_2_c4c222f07c.jpg",
+                                                    "hash": "large_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "large_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 75.97,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/small_expert_2_c4c222f07c.jpg",
+                                                    "hash": "small_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "small_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 20.06,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/medium_expert_2_c4c222f07c.jpg",
+                                                    "hash": "medium_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "medium_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 44.13,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/thumbnail_expert_2_c4c222f07c.jpg",
+                                                    "hash": "thumbnail_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 4.81,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_2_c4c222f07c",
+                                            "ext": ".jpg",
+                                            "mime": "image/jpeg",
+                                            "size": 581.33,
+                                            "url": "/uploads/expert_2_c4c222f07c.jpg",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:33:09.323Z",
+                                            "updatedAt": "2022-08-02T19:33:09.323Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "attributes": {
+                                "sequence": 5,
+                                "title": "GAP (SWING)",
+                                "subtitle": "August 1, 2022",
+                                "description": "Gaps are areas on a chart where the price of a stock (or another financial instrument) moves sharply up or down, with little or no trading in between. \n\nIn volatile markets, traders can benefit from large jumps in asset prices, if they can be turned into opportunities. As a result, the assets chart shows a gap in the normal price pattern. The enterprising trader can interpret and exploit these gaps for profit. This article will help you understand how and why gaps occur, and how you can use them to make profitable trades.\nGaps occur because of underlying fundamental or technical factors. For example, if a company's earnings are much higher than expected, the company's stock may gap up the next day. This means the stock price opened higher than it closed the day before, thereby leaving a gap. In the forex market, it is not uncommon for a report to generate so much buzz that it widens the bid and ask spread to a point where a significant gap can be seen. Similarly, a stock breaking a new high in the current session may open higher in the next session, thus gapping up for technical reasons.",
+                                "video": "N9SUmtuGnHQ",
+                                "createdAt": "2022-08-03T00:50:42.452Z",
+                                "updatedAt": "2022-08-14T06:21:31.906Z",
+                                "publishedAt": "2022-08-03T01:33:00.909Z",
+                                "summary": "Looking to fill the gap in the stock price movement.  Here is an easy way to do it.",
+                                "photo": {
+                                    "data": {
+                                        "id": 1,
+                                        "attributes": {
+                                            "name": "expert_1.png",
+                                            "alternativeText": "expert_1.png",
+                                            "caption": "expert_1.png",
+                                            "width": 1024,
+                                            "height": 480,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_1_f983f03f44.png",
+                                                    "hash": "large_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_1.png",
+                                                    "path": null,
+                                                    "size": 128.83,
+                                                    "width": 1000,
+                                                    "height": 469
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_1_f983f03f44.png",
+                                                    "hash": "small_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_1.png",
+                                                    "path": null,
+                                                    "size": 55.68,
+                                                    "width": 500,
+                                                    "height": 234
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_1_f983f03f44.png",
+                                                    "hash": "medium_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_1.png",
+                                                    "path": null,
+                                                    "size": 89.39,
+                                                    "width": 750,
+                                                    "height": 352
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_1_f983f03f44.png",
+                                                    "hash": "thumbnail_expert_1_f983f03f44",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_1.png",
+                                                    "path": null,
+                                                    "size": 21.34,
+                                                    "width": 245,
+                                                    "height": 115
+                                                }
+                                            },
+                                            "hash": "expert_1_f983f03f44",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 27.84,
+                                            "url": "/uploads/expert_1_f983f03f44.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:24:01.834Z",
+                                            "updatedAt": "2022-08-02T19:24:01.834Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "attributes": {
+                                "sequence": 2,
+                                "title": "DOUBLE TOP (SWING)",
+                                "subtitle": "August 2, 2022",
+                                "description": "A double top is an extremely bearish technical reversal pattern that forms after an asset reaches a high price two consecutive times with a moderate decline between the two highs. It is confirmed once the asset's price falls below a support level equal to the low between the two prior highs.\nA double top is a bearish technical reversal pattern.\nIt is not as easy to spot as one would think because there needs to be confirmation with a break below support.\nA double top signals a medium or long-term trend change in an asset class. The chart above is of Amazon.com Inc. (AMZN) and shows a double top pattern that formed in the stock between September and October 2018 around a price of $2,050. The important support level in this case formed around $1,880. Despite the stock falling nearly 8% from October peak to support at $1,880, one could not confirm the double top until after the stock fell below $1,880. From that point forward the shares went on to plunge almost 31% further.",
+                                "video": null,
+                                "createdAt": "2022-08-02T22:42:34.680Z",
+                                "updatedAt": "2022-08-14T06:18:01.530Z",
+                                "publishedAt": "2022-08-02T23:52:34.466Z",
+                                "summary": "A double top near a supply and demand zone is a high-value signal especially in the early hours of trading.",
+                                "photo": {
+                                    "data": {
+                                        "id": 2,
+                                        "attributes": {
+                                            "name": "expert_2.jpg",
+                                            "alternativeText": "expert_2.jpg",
+                                            "caption": "expert_2.jpg",
+                                            "width": 4167,
+                                            "height": 2344,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/large_expert_2_c4c222f07c.jpg",
+                                                    "hash": "large_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "large_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 75.97,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/small_expert_2_c4c222f07c.jpg",
+                                                    "hash": "small_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "small_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 20.06,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/medium_expert_2_c4c222f07c.jpg",
+                                                    "hash": "medium_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "medium_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 44.13,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".jpg",
+                                                    "url": "/uploads/thumbnail_expert_2_c4c222f07c.jpg",
+                                                    "hash": "thumbnail_expert_2_c4c222f07c",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_expert_2.jpg",
+                                                    "path": null,
+                                                    "size": 4.81,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_2_c4c222f07c",
+                                            "ext": ".jpg",
+                                            "mime": "image/jpeg",
+                                            "size": 581.33,
+                                            "url": "/uploads/expert_2_c4c222f07c.jpg",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:33:09.323Z",
+                                            "updatedAt": "2022-08-02T19:33:09.323Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "attributes": {
+                                "sequence": 1,
+                                "title": "REVERSAL AND FIRST PULLBACK (SWING)",
+                                "subtitle": "August 2, 2022",
+                                "description": "Pullback strategies are popular because they are relatively simple to identify and have a solid track record in terms of investor returns.\nTrading pullbacks requires a degree of patience. The price movement is one big giveaway that a pullback is occurring – price falling away from a price peak being the obvious signal. There are other metrics to consider and, as importantly, at what time to step into the market to trade. At the time that price starts to change direction, there is every chance that the move could be more than short-lived.\nIf trading volumes increase at the time of the trade reversal, the move might be more fundamental in nature. If volumes are consistent, then there is more chance that the price move is short term in nature.\nAny price move accompanied by, or triggered by, market events or company news could signal a change in the perception of valuations and that the price move will be greater and longer-lasting.\nIf technical indicators such as trend lines and moving averages offer support to price, then this is an indication that the move is down to buyers temporarily running out of steam. The buyers are there, just at lower price levels. If price crashes through support levels, then this could be a sign that the price change is based on something else.",
+                                "video": "2BVGAz2Jd5w",
+                                "createdAt": "2022-08-03T01:52:18.844Z",
+                                "updatedAt": "2022-08-14T06:25:21.451Z",
+                                "publishedAt": "2022-08-03T01:52:46.773Z",
+                                "summary": "One of the best trading strategies used by experts and novices alike.  Trade the reversal, but only after the first pullback.  Experts usually seek additional confirmation through price action, volume, support/resistance, ema 20/50 and Bollinger bands.",
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "attributes": {
+                                "sequence": 4,
+                                "title": "MORNING GAP (SWING)",
+                                "subtitle": "August 2, 2022",
+                                "description": "It is one of the most profitable patterns that many professional day traders use to make the bulk of their trading profits. \nThe morning gap is a byproduct of built-up trading activity that occurs overnight due to an economic number, earnings release, or company-specific news event.",
+                                "video": "N9SUmtuGnHQ",
+                                "createdAt": "2022-08-03T00:23:35.536Z",
+                                "updatedAt": "2022-08-14T06:22:48.415Z",
+                                "publishedAt": "2022-08-03T00:44:57.439Z",
+                                "summary": "A rapid price movement during the off-hours can be an opportunity.  You can find out if you can master this technique.",
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                "techPhoto": {
+                    "data": {
+                        "id": 4,
+                        "attributes": {
+                            "name": "young-kwon-pix.jpg",
+                            "alternativeText": "young-kwon-pix.jpg",
+                            "caption": "young-kwon-pix.jpg",
+                            "width": 640,
+                            "height": 960,
+                            "formats": {
+                                "small": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/small_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "small_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "small_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 17.45,
+                                    "width": 333,
+                                    "height": 500
+                                },
+                                "medium": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/medium_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "medium_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "medium_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 35.73,
+                                    "width": 500,
+                                    "height": 750
+                                },
+                                "thumbnail": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/thumbnail_young_kwon_pix_8cbd9777f9.jpg",
+                                    "hash": "thumbnail_young_kwon_pix_8cbd9777f9",
+                                    "mime": "image/jpeg",
+                                    "name": "thumbnail_young-kwon-pix.jpg",
+                                    "path": null,
+                                    "size": 3.05,
+                                    "width": 104,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "young_kwon_pix_8cbd9777f9",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 56.92,
+                            "url": "/uploads/young_kwon_pix_8cbd9777f9.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-14T00:19:16.532Z",
+                            "updatedAt": "2022-08-14T00:19:16.532Z"
+                        }
+                    }
+                },
+                "status": "active"
+            }
+        },
+        {
+            "id": 2,
+            "attributes": {
+                "name": "INTRADAY TRADE",
+                "summary": "This one searches the 15-minute bars to detect a certain pattern.  It flags stocks that are near support-resistance, ABC pattern, Pivot Point and VSA.  There are too much noise in smaller time frames.",
+                "video": "C9G5KgB9Ze4",
+                "price": 99.99,
+                "sales_price": 0,
+                "is_on_sale": false,
+                "createdAt": "2022-08-02T19:33:33.037Z",
+                "updatedAt": "2022-08-14T02:52:03.612Z",
+                "publishedAt": "2022-08-02T19:33:59.361Z",
+                "description": "Our Day trader AI is attuned to events that cause short-term market moves. It continuously monitors the entire market and looks for certain technical patterns that have shown a predictable price movement in the past.  It also considers volume and pricing to make sure the techniques are applied to the right situations.\nIt will help you eliminate wasted time and keep you fresh for those moments when you trade.",
+                "access": "paid",
+                "techName": "John Kaufman",
+                "techSummary": "summary",
+                "techDescription": "description",
+                "photo": {
+                    "data": {
+                        "id": 2,
+                        "attributes": {
+                            "name": "expert_2.jpg",
+                            "alternativeText": "expert_2.jpg",
+                            "caption": "expert_2.jpg",
+                            "width": 4167,
+                            "height": 2344,
+                            "formats": {
+                                "large": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/large_expert_2_c4c222f07c.jpg",
+                                    "hash": "large_expert_2_c4c222f07c",
+                                    "mime": "image/jpeg",
+                                    "name": "large_expert_2.jpg",
+                                    "path": null,
+                                    "size": 75.97,
+                                    "width": 1000,
+                                    "height": 563
+                                },
+                                "small": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/small_expert_2_c4c222f07c.jpg",
+                                    "hash": "small_expert_2_c4c222f07c",
+                                    "mime": "image/jpeg",
+                                    "name": "small_expert_2.jpg",
+                                    "path": null,
+                                    "size": 20.06,
+                                    "width": 500,
+                                    "height": 281
+                                },
+                                "medium": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/medium_expert_2_c4c222f07c.jpg",
+                                    "hash": "medium_expert_2_c4c222f07c",
+                                    "mime": "image/jpeg",
+                                    "name": "medium_expert_2.jpg",
+                                    "path": null,
+                                    "size": 44.13,
+                                    "width": 750,
+                                    "height": 422
+                                },
+                                "thumbnail": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/thumbnail_expert_2_c4c222f07c.jpg",
+                                    "hash": "thumbnail_expert_2_c4c222f07c",
+                                    "mime": "image/jpeg",
+                                    "name": "thumbnail_expert_2.jpg",
+                                    "path": null,
+                                    "size": 4.81,
+                                    "width": 245,
+                                    "height": 138
+                                }
+                            },
+                            "hash": "expert_2_c4c222f07c",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 581.33,
+                            "url": "/uploads/expert_2_c4c222f07c.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-02T19:33:09.323Z",
+                            "updatedAt": "2022-08-02T19:33:09.323Z"
+                        }
+                    }
+                },
+                "technique_details": {
+                    "data": [
+                        {
+                            "id": 1,
+                            "attributes": {
+                                "sequence": 1,
+                                "title": "FIRST PULLBACK AFTER REVERSAL (DAY)",
+                                "subtitle": "August 1, 2022",
+                                "description": "Pullback strategies are popular because they are relatively simple to identify and have a solid track record in terms of investor returns.\nTrading pullbacks requires a degree of patience. The price movement is one big giveaway that a pullback is occurring – price falling away from a price peak being the obvious signal. There are other metrics to consider and, as importantly, at what time to step into the market to trade. At the time that price starts to change direction, there is every chance that the move could be more than short-lived.\nIf trading volumes increase at the time of the trade reversal, the move might be more fundamental in nature. If volumes are consistent, then there is more chance that the price move is short term in nature.\nAny price move accompanied by, or triggered by, market events or company news could signal a change in the perception of valuations and that the price move will be greater and longer-lasting.\nIf technical indicators such as trend lines and moving averages offer support to price, then this is an indication that the move is down to buyers temporarily running out of steam. The buyers are there, just at lower price levels. If price crashes through support levels, then this could be a sign that the price change is based on something else.",
+                                "video": "N9SUmtuGnHQ",
+                                "createdAt": "2022-08-02T22:29:27.756Z",
+                                "updatedAt": "2022-08-14T06:16:40.196Z",
+                                "publishedAt": "2022-08-02T22:34:11.544Z",
+                                "summary": "The first pullback of the day is a tried-and-true strategy used by seasoned and novice traders alike. It is the right entry and exit that makes the difference. ",
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 8,
+                            "attributes": {
+                                "sequence": 3,
+                                "title": "VOLUME ANALYSIS (DAY)",
+                                "subtitle": "August 2, 2022",
+                                "description": "When price is pushed down by a strong Bearish pressure, a strong counterattack of Bullish pressure is required to break the decline. As a result, when \"Smart Money\" are in need to break a strong decline, they must put a lot of buying pressure and we receive a strong volume surge.\n\nPrice should be in a down-trend.  The last lowest bar should be on extremely high (ultra-high) volume suggesting the \"Smart Money\" entered the game and they are trying to beat the strong Bears who are the main engine of a decline.\nThe last lowest bar should be narrow bar, or it can be a long bar yet with close above the middle of the bar (long lower shadow if candlesticks are used). This would signal that the Bearish pressure was broken, and the Bears yielded to the \"Smart Money\"\nThis chart pattern could be any of the Bullish reversal candlestick patterns (Bullish Abandoned Baby, Bullish Doji Star, Bullish Counterattack and etc.) accompanied by a strong volume surge on the lowest candle.\n\nThe main point of this chart pattern is that you must see a broken Bearish pressure at the bottom of a down move on ultra-high volume.\n\nAfter such a heavy volume surge we should expect a strong bullish reversal. A stronger volume surge was witnessed during the Selling climax - stronger pressure was applied against the Bears and a stronger reversal up could be expected. While Buying Climax is a strong reversal signal, it is still could be recommended to see the next bar as a confirmation of this Sign of Strength.",
+                                "video": "C9G5KgB9Ze4",
+                                "createdAt": "2022-08-03T03:16:14.721Z",
+                                "updatedAt": "2022-08-03T05:38:28.830Z",
+                                "publishedAt": "2022-08-03T03:17:08.260Z",
+                                "summary": null,
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "attributes": {
+                                "sequence": 2,
+                                "title": "ABCD PATTERN (DAY)",
+                                "subtitle": "August 2, 2022",
+                                "description": "The ABCD pattern is a highly recognizable value pattern that happens in stocks across the globe every day. \nThe main recognizable feature of an ABCD pattern is that the A to B leg (AB leg) matches the C to D leg (CD leg) — in other words, AB ≈ CD. The B to C leg (BC leg) meanwhile, represents pullbacks and consolidation of value. These patterns can go both ways and can thus be bullish or bearish. Depending on which it is, the investor will either buy or sell at the D point.\nThe ABCD pattern, though varied, is one of the most reliable and established patterns in trading. It can be used for investments in both bearish and bullish trends and gives the information necessary to avoid heavy losses. Although these patterns offer information to the investor, it is still paramount that they do their own research before investing, as markets can be affected by a plethora of external factors.",
+                                "video": "C9G5KgB9Ze4",
+                                "createdAt": "2022-08-03T02:28:18.118Z",
+                                "updatedAt": "2022-08-14T06:11:46.704Z",
+                                "publishedAt": "2022-08-03T02:41:19.175Z",
+                                "summary": "The ABCD pattern is one of the most popular strategies.  It is easy to recognize and implement.  It is common to look for additional confirmation with volume, MACD histogram, level 2 and time of the day.",
+                                "photo": {
+                                    "data": {
+                                        "id": 3,
+                                        "attributes": {
+                                            "name": "expert_3.png",
+                                            "alternativeText": "expert_3.png",
+                                            "caption": "expert_3.png",
+                                            "width": 2560,
+                                            "height": 1440,
+                                            "formats": {
+                                                "large": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/large_expert_3_8ca948088a.png",
+                                                    "hash": "large_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "large_expert_3.png",
+                                                    "path": null,
+                                                    "size": 140.96,
+                                                    "width": 1000,
+                                                    "height": 563
+                                                },
+                                                "small": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/small_expert_3_8ca948088a.png",
+                                                    "hash": "small_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "small_expert_3.png",
+                                                    "path": null,
+                                                    "size": 59.75,
+                                                    "width": 500,
+                                                    "height": 281
+                                                },
+                                                "medium": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/medium_expert_3_8ca948088a.png",
+                                                    "hash": "medium_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "medium_expert_3.png",
+                                                    "path": null,
+                                                    "size": 98.38,
+                                                    "width": 750,
+                                                    "height": 422
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".png",
+                                                    "url": "/uploads/thumbnail_expert_3_8ca948088a.png",
+                                                    "hash": "thumbnail_expert_3_8ca948088a",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_expert_3.png",
+                                                    "path": null,
+                                                    "size": 22.63,
+                                                    "width": 245,
+                                                    "height": 138
+                                                }
+                                            },
+                                            "hash": "expert_3_8ca948088a",
+                                            "ext": ".png",
+                                            "mime": "image/png",
+                                            "size": 81.43,
+                                            "url": "/uploads/expert_3_8ca948088a.png",
+                                            "previewUrl": null,
+                                            "provider": "local",
+                                            "provider_metadata": null,
+                                            "createdAt": "2022-08-02T19:38:57.041Z",
+                                            "updatedAt": "2022-08-02T19:38:57.041Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                "techPhoto": {
+                    "data": {
+                        "id": 6,
+                        "attributes": {
+                            "name": "john-kaufman-pix.jpg",
+                            "alternativeText": "john-kaufman-pix.jpg",
+                            "caption": "john-kaufman-pix.jpg",
+                            "width": 640,
+                            "height": 959,
+                            "formats": {
+                                "small": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/small_john_kaufman_pix_08ffe1368c.jpg",
+                                    "hash": "small_john_kaufman_pix_08ffe1368c",
+                                    "mime": "image/jpeg",
+                                    "name": "small_john-kaufman-pix.jpg",
+                                    "path": null,
+                                    "size": 35.24,
+                                    "width": 334,
+                                    "height": 500
+                                },
+                                "medium": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/medium_john_kaufman_pix_08ffe1368c.jpg",
+                                    "hash": "medium_john_kaufman_pix_08ffe1368c",
+                                    "mime": "image/jpeg",
+                                    "name": "medium_john-kaufman-pix.jpg",
+                                    "path": null,
+                                    "size": 67.97,
+                                    "width": 501,
+                                    "height": 750
+                                },
+                                "thumbnail": {
+                                    "ext": ".jpg",
+                                    "url": "/uploads/thumbnail_john_kaufman_pix_08ffe1368c.jpg",
+                                    "hash": "thumbnail_john_kaufman_pix_08ffe1368c",
+                                    "mime": "image/jpeg",
+                                    "name": "thumbnail_john-kaufman-pix.jpg",
+                                    "path": null,
+                                    "size": 5.63,
+                                    "width": 104,
+                                    "height": 156
+                                }
+                            },
+                            "hash": "john_kaufman_pix_08ffe1368c",
+                            "ext": ".jpg",
+                            "mime": "image/jpeg",
+                            "size": 103.74,
+                            "url": "/uploads/john_kaufman_pix_08ffe1368c.jpg",
+                            "previewUrl": null,
+                            "provider": "local",
+                            "provider_metadata": null,
+                            "createdAt": "2022-08-14T02:12:04.308Z",
+                            "updatedAt": "2022-08-14T02:12:04.308Z"
+                        }
+                    }
+                },
+                "status": ""
+            }
+        }
+    ],
+    "meta": {}
+}

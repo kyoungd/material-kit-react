@@ -60,9 +60,9 @@ export default function Login() {
       <MHidden width="mdDown">
         <SectionStyle>
           <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            TRADESIMP
+            &nbsp;
           </Typography>
-          <img src="/static/illustrations/illustration_login.png" alt="login" />
+          <img src="/static/illustrations/illustration_design3.png" alt="login" />
         </SectionStyle>
       </MHidden>
 
