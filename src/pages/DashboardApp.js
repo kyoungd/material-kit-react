@@ -54,11 +54,11 @@ export default function DashboardApp() {
                 callForData={getSymbols}
                 token={token}
               />
-              <AppDownloadRealtimes
+              {/* <AppDownloadRealtimes
                 dispatch={userDispatch}
                 callForData={getRealtimes}
                 token={token}
-              />
+              /> */}
               <AppDownloadRealtimes
                 dispatch={userDispatch}
                 callForData={getTop10News}

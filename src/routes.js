@@ -1,3 +1,4 @@
+import faker from 'faker';
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
@@ -5,7 +6,6 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
-import Tutorial from './pages/PageTutorial';
 import Blog from './pages/Blog';
 import User from './pages/User';
 import Expert from './pages/Expert';
@@ -18,23 +18,28 @@ import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
 import PRODUCTS from './_mocks_/products';
 import TUTORIALS from './_mocks_/tutorials';
+import RealtimeList from './pages/RealtimeList';
 
 import USER_ROW from './layouts/User/UserRow';
-import RT_ROW from './layouts/Realtime/DisplayRow';
 
 const USER_TRANSLATION = require('./layouts/User/UserTranslation.json');
 const USER_TABLE_HEAD = require('./layouts/User/UserTableHead.json');
 const USER_EXPLAINERS = require('./layouts/User/UserButtonSetup.json');
 
-const RT_TRANSLATION = require('./layouts/Realtime/Translation.json');
-const RT_TABLE_HEAD = require('./layouts/Realtime/TableHead.json');
-const RT_EXPLAINERS = require('./layouts/Realtime/ButtonSetup.json');
+// import Tutorial from './pages/PageTutorial';
+// import RT_ROW from './layouts/Realtime/DisplayRow';
+// const RT_TRANSLATION = require('./layouts/Realtime/Translation.json');
+// const RT_TABLE_HEAD = require('./layouts/Realtime/TableHead.json');
+// const RT_EXPLAINERS = require('./layouts/Realtime/ButtonSetup.json');
 
 // --------------------------------- yes -------------------------------------
 
 export default function Router() {
   const userDispatch = useUserDispatch();
-  const { symbols, favorites, realtimes, top10news } = useUserState();
+  const { symbols, favorites, top10news } = useUserState();
+
+  const uname = faker.datatype.uuid();
+  const eventStandard = process.env.REACT_APP_EVENT_STANDARD || 'EVENT-BAR-TRADE-ADD';
 
   return useRoutes([
     {
@@ -61,16 +66,17 @@ export default function Router() {
         {
           path: 'realtime',
           element: (
-            <User
-              symbols={realtimes}
-              favorites={favorites}
-              userDispatch={userDispatch}
-              translation={RT_TRANSLATION}
-              tableHead={RT_TABLE_HEAD}
-              explainers={RT_EXPLAINERS}
-              rowContent={RT_ROW}
-              pageType="REALTIME"
-            />
+            <RealtimeList room={eventStandard} username={uname} />
+            // <User
+            //   symbols={realtimes}
+            //   favorites={favorites}
+            //   userDispatch={userDispatch}
+            //   translation={RT_TRANSLATION}
+            //   tableHead={RT_TABLE_HEAD}
+            //   explainers={RT_EXPLAINERS}
+            //   rowContent={RT_ROW}
+            //   pageType="REALTIME"
+            // />
           )
         },
         { path: 'news', element: <PageTop10News newsList={top10news} /> },

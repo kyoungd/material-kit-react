@@ -26,3 +26,21 @@ export default function App() {
     </ThemeConfig>
   );
 }
+
+// integrate with discord server api to create a new user
+// https://discord.com/developers/docs/resources/user#create-user
+// https://discord.com/developers/docs/resources/user#modify-current-user-json-params
+// https://discord.com/developers/docs/resources/user#get-current-user
+// https://discord.com/developers/docs/resources/user#get-user
+// https://discord.com/developers/docs/resources/user#get-current-user-guilds
+// https://discord.com/developers/docs/resources/user#get-user-connections
+// https://discord.com/developers/docs/resources/user#get-current-user-connections
+// https://discord.com/developers/docs/resources/user#get-user-voice-connections
+// https://discord.com/developers/docs/resources/user#modify-current-user
+// https://discord.com/developers/docs/resources/user#modify-current-user-json-params
+// https://discord.com/developers/docs/resources/user#modify-current-user-voice-state
+// https://discord.com/developers/docs/resources/user#modify-current-user-voice-state-json-params
+// https://discord.com/developers/docs/resources/user#modify-current-user-nickname
+// https://discord.com/developers/docs/resources/user#modify-current-user-nickname-json-params
+// https://discord.com/developers/docs/resources/user#modify-current-user-voice-state
+// https://discord.com/developers/docs/resources/user#modify-current-user-voice-state-json-params
