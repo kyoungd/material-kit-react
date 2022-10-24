@@ -12,6 +12,9 @@
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src"
   },
+  "engines": {
+    "node": "16.13.1"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
