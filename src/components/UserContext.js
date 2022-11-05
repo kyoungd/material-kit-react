@@ -25,7 +25,7 @@ const UserDispatchContext = React.createContext();
 function userReducer(state, action) {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      return { ...state, isAuthenticated: true };
+      return { ...state, isAuthenticated: true, user: action.payload };
     case 'SIGN_OUT_SUCCESS':
       CookieSignOut();
       return { ...state, isAuthenticated: false };

@@ -5,7 +5,7 @@ import Page from '../components/Page';
 import SkillCardGrid from '../components/experts/SkillCardGrid';
 import PaymentPopup from './PaymentPopup';
 import { useUserState } from '../components/UserContext';
-import activeExperts from '../layouts/Experts/experts_skills.json';
+import { CookieGetToken } from '../utils/cookies';
 
 export default function Expert() {
   const location = useLocation();
@@ -13,9 +13,12 @@ export default function Expert() {
   const { isAuthenticated, techniques } = useUserState();
 
   if (!isAuthenticated) return <Navigate to="/login" replace />;
+  const token = isAuthenticated ? CookieGetToken() : '';
+
   const EXPERTS = techniques;
 
-  const expert = EXPERTS.find((user) => user.id === id).features;
+  const techn = EXPERTS.find((user) => user.id === id);
+  const expert = techn.features;
   const isSubscribed = expert.sales.access === 'paid' && expert.sales.status === 'active';
   const isFree = expert.sales.access === 'free';
   const isOnSales = expert.sales.priceSale > 0;
@@ -66,7 +69,7 @@ export default function Expert() {
                     </Button>
                   )}
                   {!isSubscribed && !isFree && (
-                    <PaymentPopup data={expert} onClose={() => console.log('close subscribe')} />
+                    <PaymentPopup priceId={techn.stripePriceId} token={token} />
                   )}
                 </Typography>
               </Box>

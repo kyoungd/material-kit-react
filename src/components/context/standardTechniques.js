@@ -47,7 +47,8 @@ const StandarizeTechniques = (data) => {
           access: item.attributes.access,
           status: item.attributes.status
         }
-      }
+      },
+      stripePriceId: item.attributes.stripePriceId
     };
     return row;
   });

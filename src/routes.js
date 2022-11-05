@@ -19,6 +19,9 @@ import LoginRedirect from './pages/LoginRedirect';
 import PRODUCTS from './_mocks_/products';
 import TUTORIALS from './_mocks_/tutorials';
 import RealtimeList from './pages/RealtimeList';
+import STRIPE_SUCCESS from './pages/stripe-success';
+import STRIPE_CANCEL from './pages/stripe-cancel';
+import ACCOUNT from './pages/Account';
 
 import USER_ROW from './layouts/User/UserRow';
 
@@ -86,7 +89,10 @@ export default function Router() {
         },
         { path: 'products', element: <Products videolist={PRODUCTS} name="Videos" /> },
         { path: 'tutorials', element: <Products videolist={TUTORIALS} name="Tutorials" /> },
-        { path: 'blog', element: <Blog /> }
+        { path: 'blog', element: <Blog /> },
+        { path: 'stripe-success', element: <STRIPE_SUCCESS /> },
+        { path: 'stripe-cancel', element: <STRIPE_CANCEL /> },
+        { path: 'account', element: <ACCOUNT /> }
       ]
     },
     {
