@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Divider,
-  Grid,
   IconButton,
   Link,
-  Tooltip,
   Typography
 } from '@mui/material';
-import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import PropTypes from 'prop-types';
 import ModalVideo from 'react-modal-video';

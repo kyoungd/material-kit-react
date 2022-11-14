@@ -6,10 +6,8 @@ import ModalVideo from 'react-modal-video';
 import { Box, Card, Link, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // utils
-import { fCurrency } from '../../../utils/formatNumber';
 //
 import Label from '../../Label';
-import ColorPreview from '../../ColorPreview';
 
 // ----------------------------------------------------------------------
 
@@ -29,7 +27,8 @@ ShopProductCard.propTypes = {
 
 export default function ShopProductCard({ product }) {
   const [isOpen, setOpen] = useState(false);
-  const { name, cover, price, colors, status, priceSale, videoUrl, description } = product;
+  // const { name, cover, price, colors, status, priceSale, videoUrl, description } = product;
+  const { name, cover, status, videoUrl, description } = product;
 
   return (
     <>

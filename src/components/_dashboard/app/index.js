@@ -1,4 +1,4 @@
-import AppDownloadRealtimes from './AppDownloadRealtimes';
+// import AppDownloadRealtimes from './AppDownloadRealtimes';
 
 export { default as AppDownloadSymbols } from './AppDownloadSymbols';
 export { default as AppConversionRates } from './AppConversionRates';

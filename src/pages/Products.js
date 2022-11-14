@@ -9,7 +9,7 @@ import Page from '../components/Page';
 import {
   ProductSort,
   ProductList,
-  ProductCartWidget,
+  // ProductCartWidget,
   ProductFilterSidebar
 } from '../components/_dashboard/products';
 //

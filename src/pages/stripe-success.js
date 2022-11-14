@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
 import { useNavigate } from 'react-router-dom';
 import { Card, Stack, Container, Typography } from '@mui/material';
@@ -11,7 +10,7 @@ const StripeSuccess = () => {
   useEffect(() => {
     const getSubscriptionStatus = async () => {
       setTimeout(() => {
-        navigate('/dashboard/account');
+        navigate('/dashboard/account', { replace: true });
       }, 1000);
     };
 

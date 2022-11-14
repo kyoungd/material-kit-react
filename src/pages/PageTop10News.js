@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Navigate } from 'react-router-dom';
 // material
-import { Stack, Container, Tooltip, Typography } from '@mui/material';
+import { Stack, Container, Typography } from '@mui/material';
 
 // components
 import Page from '../components/Page';

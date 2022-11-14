@@ -6,6 +6,18 @@
         "text": "level and ema50 and rev > 1 and rev < 3 and price < 50"
     },
     {
+        "id": "doubletop",
+        "label": "Double Top",
+        "info": "Multiple tops/bottoms with key levels and ema 50.  The market structure is worth investigating.",
+        "text": "level and ema50 and dtop"
+    },
+    {
+        "id": "rsi",
+        "label": "RSI Divergence",
+        "info": "Divergence between price and RSI near a key level and ema50",
+        "text": "rsi and level and ema50"
+    },
+    {
         "id": "vsa",
         "label": "Voulme Analysis",
         "info": "Volume Spread Analysis is a future indicator related to the Wyckoff market cycle. 1. Up/down thrust (reversal).",
@@ -28,11 +40,5 @@
         "label": "Gap",
         "info": "Big gap in overnight price in last 6 days.",
         "text": "gap and level"
-    },
-    {
-        "id": "rsi",
-        "label": "RSI Divergence",
-        "info": "Divergence between price and RSI near a key level and ema50",
-        "text": "rsi and level and ema50"
     }
 ]

@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { LinearProgress, Button, Card, Stack, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import axios from 'axios';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card, Stack, Container, Typography } from '@mui/material';
 import { getSubscriptions, getSubscriptionManagement } from '../utils/stripe-subscriptions';
 import Page from '../components/Page';
+
+const ContainerStyle = styled('div')(({ theme }) => ({
+  margin: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  padding: theme.spacing(2)
+}));
 
 const Account = () => {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -39,11 +47,10 @@ const Account = () => {
         </Stack>
 
         <Card>
-          {subscriptions &&
+          {subscriptions ? (
             subscriptions.map((sub) => (
-              <div key={sub.id}>
+              <ContainerStyle key={sub.id}>
                 <section>
-                  <hr />
                   <h4 className="fw-bold">{sub.plan.nickname}</h4>
                   <h5>
                     {(sub.plan.amount / 100).toLocaleString('en-US', {
@@ -73,8 +80,11 @@ const Account = () => {
                     Manage Subscription
                   </Button>
                 </section>
-              </div>
-            ))}
+              </ContainerStyle>
+            ))
+          ) : (
+            <LinearProgress />
+          )}
         </Card>
       </Container>
     </Page>

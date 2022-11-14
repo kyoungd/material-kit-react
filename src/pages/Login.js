@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Button, Card, Stack, Link, Container, Typography } from '@mui/material';
-import ModalVideo from 'react-modal-video';
+import { Card, Stack, Link, Container, Typography } from '@mui/material';
 // layouts
 import AuthLayout from '../layouts/AuthLayout';
 // components
@@ -45,9 +43,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const [isOpen1, setOpen1] = useState(false);
-  const [isOpen2, setOpen2] = useState(false);
-  const [isOpen3, setOpen3] = useState(false);
   return (
     <RootStyle title="Login | TradeSimp">
       <AuthLayout>

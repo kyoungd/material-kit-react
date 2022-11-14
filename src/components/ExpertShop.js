@@ -8,7 +8,7 @@ import { Container, Stack } from '@mui/material';
 import {
   ProductSort,
   ProductList,
-  ProductCartWidget,
+  // ProductCartWidget,
   ProductFilterSidebar
 } from './_dashboard/products';
 //

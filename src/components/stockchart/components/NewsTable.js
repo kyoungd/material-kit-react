@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
@@ -25,36 +26,57 @@ function dateString(ondate) {
   return `${mm}-${dd}`;
 }
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14
+  }
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0
+  }
+}));
+
 export default function NewsTable(props) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            {props.includeSymbols && <TableCell align="right">Symbols</TableCell>}
-            <TableCell align="right">Sentiment</TableCell>
-            <TableCell align="right">Headline</TableCell>
-            <TableCell align="right">Summary</TableCell>
-            <TableCell align="right">News</TableCell>
+            <StyledTableCell>Date</StyledTableCell>
+            {props.includeSymbols && <StyledTableCell align="right">Symbols</StyledTableCell>}
+            <StyledTableCell align="right">Sentiment</StyledTableCell>
+            <StyledTableCell align="right">Headline</StyledTableCell>
+            <StyledTableCell align="right">Summary</StyledTableCell>
+            <StyledTableCell align="right">News</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.newsList.map((row) => (
-            <TableRow key={row.news_on} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th" scope="row" sx={{ minWidth: 80 }}>
-                {dateString(row.news_on)}
-              </TableCell>
-              <TableCell align="center">{row.symbols}</TableCell>
-              <TableCell align="right">{(row.sentiment * 100).toFixed(2)}</TableCell>
-              <TableCell align="right">{row.headline}</TableCell>
-              <TableCell align="right">{row.summary}</TableCell>
-              <TableCell align="right">
+            <StyledTableRow
+              key={row.news_on}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <StyledTableCell>{dateString(row.news_on)}</StyledTableCell>
+              <StyledTableCell align="center">{row.symbols.replace(/,/g, ', ')}</StyledTableCell>
+              <StyledTableCell align="right">{(row.sentiment * 100).toFixed(2)}</StyledTableCell>
+              <StyledTableCell align="right">{row.headline}</StyledTableCell>
+              <StyledTableCell align="right">{row.summary}</StyledTableCell>
+              <StyledTableCell align="right">
                 <a href={row.url} target="_blank" rel="noreferrer">
                   NEWS SOURCE
                 </a>
-              </TableCell>
-            </TableRow>
+              </StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>

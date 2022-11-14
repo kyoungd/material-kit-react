@@ -207,7 +207,7 @@ class CandlestickChart extends React.Component {
       })
       .accessor((d) => d.rsi);
 
-    const { type, data: initialData, symbol, width, ratio, price } = this.props;
+    const { type, data: initialData, width, ratio, price } = this.props;
 
     const calculatedData = ema12(ema50(rsiCalculator(initialData)));
     const xScaleProvider = discontinuousTimeScaleProvider.inputDateAccessor((d) => d.date);

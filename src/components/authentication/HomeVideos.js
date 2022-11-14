@@ -8,10 +8,10 @@ import personDoneOutline from '@iconify/icons-eva/person-done-outline';
 import { Stack, Button, Divider, Tooltip, Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+// const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export default function HomeVideos() {
-  const [isOpen1, setOpen1] = useState(false);
+  // const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
   const [isOpen3, setOpen3] = useState(false);
   return (

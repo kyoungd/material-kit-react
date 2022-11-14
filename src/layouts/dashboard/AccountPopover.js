@@ -21,15 +21,15 @@ const MENU_OPTIONS = [
     icon: homeFill,
     linkTo: '/'
   },
+  // {
+  //   label: 'Profile',
+  //   icon: personFill,
+  //   linkTo: '#'
+  // },
   {
-    label: 'Profile',
-    icon: personFill,
-    linkTo: '#'
-  },
-  {
-    label: 'Settings',
+    label: 'Billing',
     icon: settings2Fill,
-    linkTo: '#'
+    linkTo: '/dashboard/account'
   }
 ];
 

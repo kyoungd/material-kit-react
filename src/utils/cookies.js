@@ -42,7 +42,7 @@ export function CookieSetToken(value) {
 }
 
 export function CookieSetFavorites(value) {
-  setWithExpiry(keyFavorites, value, oneHour * 8);
+  setWithExpiry(keyFavorites, value, oneMinute * 10);
 }
 
 export function CookieSetSymbols(value) {
@@ -54,11 +54,11 @@ export function CookieSetRealtimes(value) {
 }
 
 export function CookieSetTechniques(value) {
-  setWithExpiry(keyTechniques, value, oneHour * 8);
+  setWithExpiry(keyTechniques, value, oneHour * 2);
 }
 
 export function CookieSetTop10News(value) {
-  setWithExpiry(keyTop10News, value, oneHour * 8);
+  setWithExpiry(keyTop10News, value, oneMinute * 5);
 }
 
 export function CookieUserAuthenticated() {
