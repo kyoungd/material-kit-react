@@ -23,6 +23,7 @@ import STRIPE_SUCCESS from './pages/stripe-success';
 import STRIPE_CANCEL from './pages/stripe-cancel';
 import ACCOUNT from './pages/Account';
 import EXPERTCHANNELS from './pages/ExpertChannels';
+import MonthlyCalendar from './components/monthlycalendar/MonthlyCalendar';
 
 import USER_ROW from './layouts/User/UserRow';
 
@@ -94,6 +95,7 @@ export default function Router() {
         { path: 'stripe-success', element: <STRIPE_SUCCESS /> },
         { path: 'stripe-cancel', element: <STRIPE_CANCEL /> },
         { path: 'account', element: <ACCOUNT /> },
+        { path: 'schedule', element: <MonthlyCalendar /> },
         { path: 'channels', element: <EXPERTCHANNELS /> }
       ]
     },

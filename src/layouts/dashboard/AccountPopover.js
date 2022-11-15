@@ -19,13 +19,13 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: homeFill,
-    linkTo: '/'
+    linkTo: '/dashboard/app'
   },
-  // {
-  //   label: 'Profile',
-  //   icon: personFill,
-  //   linkTo: '#'
-  // },
+  {
+    label: 'Schedule',
+    icon: personFill,
+    linkTo: '/dashboard/schedule'
+  },
   {
     label: 'Billing',
     icon: settings2Fill,
