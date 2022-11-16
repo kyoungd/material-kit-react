@@ -51,6 +51,8 @@ function userReducer(state, action) {
       return { ...state, top10news: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
+    case 'SCHEDULE':
+      return { ...state, schedules: action.payload };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -65,7 +67,8 @@ function UserProvider({ children }) {
     favorites: {},
     settings: {},
     realtimes: [],
-    techniques: []
+    techniques: [],
+    schedules: null
   });
 
   return (
@@ -141,6 +144,34 @@ function getTechniques(dispatch, token, setIsLoading, setError) {
     setIsLoading(false);
     setError(null);
   }
+}
+
+function downloadSchedule(dispatch, token, setIsLoading, setError) {
+  setError(false);
+  setIsLoading(true);
+  const url = process.env.REACT_APP_SCHEDULE_SERVICE || 'http://localhost:1337/api/get-schedule';
+  const bearerToken = makeBearToken(token);
+  axios
+    .get(url, bearerToken)
+    .then((result) => {
+      console.log('>>>>>>> result:', result);
+      setIsLoading(false);
+      setError(null);
+      try {
+        const jsondata = result;
+        dispatch({ type: 'SCHEDULE', payload: jsondata });
+      } catch (ex) {
+        console.log('downloadSchedule(): An error occurred:', ex);
+        dispatch({ type: 'SCHEDULE', payload: [] });
+      }
+    })
+    .catch((e) => {
+      console.log('>>>>>>> error:', e);
+      dispatch({ type: 'SCHEDULE', payload: [] });
+      setIsLoading(false);
+      setError(null);
+      console.log('An error occurred:', e);
+    });
 }
 
 function downloadFavorite(dispatch, token, setIsLoading, setError) {
@@ -560,5 +591,6 @@ export {
   signOut,
   downloadStockData,
   downloadNewsData,
+  downloadSchedule,
   registerUser
 };

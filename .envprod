@@ -1,0 +1,15 @@
+REACT_APP_SYMBOL_SERVICE=https://simp-admin.herokuapp.com/api/symbols/1
+REACT_APP_FAVORITE_SERVICE=https://simp-admin.herokuapp.com/api/favorites
+REACT_APP_REALTIME_SERVICE=https://simp-admin.herokuapp.com/api/realtimes?datatype=VSA&timeframe=15Min
+REACT_APP_SERVER_LOGIN=https://simp-admin.herokuapp.com/api/auth/local
+REACT_APP_SERVER_REGISTER=https://simp-admin.herokuapp.com/api/auth/local/register
+REACT_APP_APCA_API_KEY_ID=AKAV2Z5H0NJNXYF7K24D
+REACT_APP_APCA_API_SECRET_KEY=262cAEeIRrL1KEZYKSTjZA79tj25XWrMtvz0Bezu
+REACT_APP_APCA_URL=https://data.alpaca.markets/v2/stocks
+REACT_APP_APCA_TIMEFRAME=1Day
+REACT_APP_BACKEND_URL=https://simp-admin.herokuapp.com
+REACT_APP_ASSET_DATA_URL=https://simp-admin.herokuapp.com/api/assets
+REACT_APP_NEWS_URL=https://simp-admin.herokuapp.com/api/newsstocks
+REACT_APP_NEWS_TOP10_URL=https://simp-admin.herokuapp.com/api/newsitems
+REACT_APP_TECHNIQUE_SERVICE=https://simp-admin.herokuapp.com/api/techniques
+REACT_APP_REALTIME_EVENT_STANDARD=EVENT-BAR-TRADE-ADD

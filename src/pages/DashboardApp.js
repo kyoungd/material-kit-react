@@ -1,6 +1,5 @@
 // material
-import { useState } from 'react';
-import { Button, Box, Grid, Container, Typography } from '@mui/material';
+import { Box, Grid, Container } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 // components
 import Page from '../components/Page';
@@ -14,9 +13,9 @@ import {
   useUserDispatch,
   getFavorites,
   getSymbols,
-  getRealtimes,
   getTop10News,
   getTechniques,
+  downloadSchedule,
   useUserState
 } from '../components/UserContext';
 import 'react-modal-video/scss/modal-video.scss';
@@ -25,7 +24,6 @@ import ExpertShop from '../components/ExpertShop';
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const [isForceDownload, setForceDownload] = useState(false);
   const userDispatch = useUserDispatch();
   const { isAuthenticated, symbols, favorites, techniques } = useUserState();
 
@@ -37,7 +35,7 @@ export default function DashboardApp() {
     <Page title="Dashboard | TradeSimp">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          {isForceDownload || Object.keys(favorites).length <= 0 ? (
+          {Object.keys(favorites).length <= 0 ? (
             <AppDownloadFavorites
               dispatch={userDispatch}
               getFavorites={getFavorites}
@@ -46,7 +44,7 @@ export default function DashboardApp() {
           ) : (
             <></>
           )}
-          {isForceDownload || Object.keys(symbols).length <= 0 ? (
+          {Object.keys(symbols).length <= 0 ? (
             <>
               {/* <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} /> */}
               <AppDownloadRealtimes
@@ -67,6 +65,11 @@ export default function DashboardApp() {
               <AppDownloadRealtimes
                 dispatch={userDispatch}
                 callForData={getTechniques}
+                token={token}
+              />
+              <AppDownloadRealtimes
+                dispatch={userDispatch}
+                callForData={downloadSchedule}
                 token={token}
               />
             </>
