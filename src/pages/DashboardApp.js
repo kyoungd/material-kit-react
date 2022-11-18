@@ -8,7 +8,7 @@ import {
   AppDownloadRealtimes,
   AppOrderTimeline
 } from '../components/_dashboard/app';
-import { CookieGetToken } from '../utils/cookies';
+import Cookie from '../utils/cookies';
 import {
   useUserDispatch,
   getFavorites,
@@ -25,11 +25,9 @@ import ExpertShop from '../components/ExpertShop';
 
 export default function DashboardApp() {
   const userDispatch = useUserDispatch();
-  const { isAuthenticated, symbols, favorites, techniques } = useUserState();
+  const { symbols, favorites, techniques } = useUserState();
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-
-  const token = isAuthenticated ? CookieGetToken() : '';
+  const token = Cookie.token();
 
   return (
     <Page title="Dashboard | TradeSimp">

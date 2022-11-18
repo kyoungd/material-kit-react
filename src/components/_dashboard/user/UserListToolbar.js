@@ -8,7 +8,7 @@ import arrowDown from '@iconify/icons-eva/arrow-circle-down-outline';
 import { styled } from '@mui/material/styles';
 import { Box, Toolbar, Tooltip, IconButton, OutlinedInput, InputAdornment } from '@mui/material';
 import { getRealtimes, getSymbols, useUserDispatch } from '../../UserContext';
-import { CookieGetToken } from '../../../utils/cookies';
+import Cookie from '../../../utils/cookies';
 
 // ----------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ export default function UserListToolbar({
   pageType
 }) {
   const userDispatch = useUserDispatch();
-  const token = CookieGetToken();
+  const token = Cookie.token();
   return (
     <RootStyle
       sx={{

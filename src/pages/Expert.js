@@ -5,15 +5,14 @@ import Page from '../components/Page';
 import SkillCardGrid from '../components/experts/SkillCardGrid';
 import PaymentPopup from './PaymentPopup';
 import { useUserState } from '../components/UserContext';
-import { CookieGetToken } from '../utils/cookies';
+import Cookie from '../utils/cookies';
 
 export default function Expert() {
   const location = useLocation();
   const { id } = location.state;
-  const { isAuthenticated, techniques } = useUserState();
+  const { techniques } = useUserState();
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  const token = isAuthenticated ? CookieGetToken() : '';
+  const token = Cookie.token();
 
   const EXPERTS = techniques;
 

@@ -1,22 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import _ from 'lodash';
+
 // import { setMilliseconds } from 'date-fns';
 import { GetUsers } from '../_mocks_/user';
-import {
-  CookieUserAuthenticated,
-  CookieGetFavorites,
-  CookieGetToken,
-  CookieGetSymbols,
-  CookieGetTop10News,
-  CookieSetRealtimes,
-  CookieSetFavorites,
-  CookieGetTechniques,
-  CookieSetTechniques,
-  CookieSetTop10News,
-  CookieSetToken,
-  CookieSetSymbols,
-  CookieSignOut
-} from '../utils/cookies';
+import Cookie from '../utils/cookies';
 import StandarizeTechniques from './context/standardTechniques';
 
 const UserStateContext = React.createContext();
@@ -27,31 +15,31 @@ function userReducer(state, action) {
     case 'LOGIN_SUCCESS':
       return { ...state, isAuthenticated: true, user: action.payload };
     case 'SIGN_OUT_SUCCESS':
-      CookieSignOut();
+      Cookie.signOut();
       return { ...state, isAuthenticated: false };
     case 'SYMBOLS':
-      CookieSetSymbols(action.payload);
+      Cookie.setWithExpiry(Cookie.keySymbols, action.payload);
       return { ...state, symbols: action.payload };
     case 'FAVORITES':
       console.log('FAVORITES:', action);
       if ('work' in action && action.work === 'SAVE') {
-        CookieSetFavorites(action.payload);
         saveFavorites(action.payload);
       }
       return { ...state, favorites: action.payload };
     case 'TECHNIQUES':
       console.log('TECHNIQUES:', action);
-      CookieSetTechniques(action.payload);
+      Cookie.setWithExpiry(Cookie.keyTechniques, action.payload);
       return { ...state, techniques: action.payload };
     case 'REALTIME':
-      CookieSetRealtimes(action.payload);
+      Cookie.setWithExpiry(Cookie.keyRealtime, action.payload);
       return { ...state, realtimes: action.payload };
     case 'TOP10NEWS':
-      CookieSetTop10News(action.payload);
+      Cookie.setWithExpiry(Cookie.keyTop10News, action.payload);
       return { ...state, top10news: action.payload };
     case 'SETTINGS':
       return { ...state, settings: action.payload };
     case 'SCHEDULE':
+      Cookie.setWithExpiry(Cookie.keySchedule, action.payload);
       return { ...state, schedules: action.payload };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -61,14 +49,14 @@ function userReducer(state, action) {
 // eslint-disable-next-line react/prop-types
 function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: CookieUserAuthenticated(),
-    symbols: {},
-    top10news: [],
-    favorites: {},
-    settings: {},
-    realtimes: [],
-    techniques: [],
-    schedules: null
+    isAuthenticated: Cookie.isAuthenticated(),
+    symbols: Cookie.getWithExpiry(Cookie.keySymbols),
+    top10news: Cookie.getWithExpiry(Cookie.keyTop10News),
+    favorites: Cookie.getWithExpiry(Cookie.keyFavorites),
+    settings: Cookie.getWithExpiry(Cookie.keySettings),
+    realtimes: Cookie.getWithExpiry(Cookie.keyRealtime),
+    techniques: Cookie.getWithExpiry(Cookie.keyTechniques),
+    schedules: Cookie.getWithExpiry(Cookie.keySchedule)
   });
 
   return (
@@ -120,7 +108,7 @@ function downloadTechniques(dispatch, token, setIsLoading, setError) {
         const jsondata = StandarizeTechniques(result.data.data);
         dispatch({ type: 'TECHNIQUES', payload: jsondata });
       } catch (ex) {
-        console.log('downloadFavorite(): An error occurred:', ex);
+        console.log('downloadTechniques(): An error occurred:', ex);
         dispatch({ type: 'TECHNIQUES', payload: [] });
       }
     })
@@ -136,7 +124,7 @@ function downloadTechniques(dispatch, token, setIsLoading, setError) {
 function getTechniques(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
-  const jsondata = CookieGetTechniques();
+  const jsondata = Cookie.getWithExpiry(Cookie.keyTechniques);
   if (jsondata === null || jsondata.length === 0)
     downloadTechniques(dispatch, token, setIsLoading, setError);
   else {
@@ -189,13 +177,13 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
         const jsondata = result.data.data.attributes.data;
         dispatch({ type: 'FAVORITES', payload: jsondata });
       } catch (ex) {
-        console.log('downloadFavorite(): An error occurred:', ex);
-        dispatch({ type: 'FAVORITES', payload: [] });
+        console.log('downloadFavorite(): No favorite to download:', ex);
+        dispatch({ type: 'FAVORITES', payload: {} });
       }
     })
     .catch((e) => {
       console.log('>>>>>>> error:', e);
-      dispatch({ type: 'FAVORITES', payload: [] });
+      dispatch({ type: 'FAVORITES', payload: {} });
       setIsLoading(false);
       setError(null);
       console.log('An error occurred:', e);
@@ -205,8 +193,8 @@ function downloadFavorite(dispatch, token, setIsLoading, setError) {
 function getFavorites(dispatch, token, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
-  const jsondata = CookieGetFavorites();
-  if (jsondata === null) downloadFavorite(dispatch, token, setIsLoading, setError);
+  const jsondata = Cookie.getWithExpiry(Cookie.keyFavorites);
+  if (_.isEmpty(jsondata)) downloadFavorite(dispatch, token, setIsLoading, setError);
   else {
     dispatch({ type: 'FAVORITES', payload: jsondata });
     setIsLoading(false);
@@ -216,12 +204,13 @@ function getFavorites(dispatch, token, setIsLoading, setError) {
 
 function saveFavorites(favorites) {
   // const token = localStorage.getItem('id_token');
-  const token = CookieGetToken();
+  const token = Cookie.token();
   const url = process.env.REACT_APP_FAVORITE_SERVICE || 'http://localhost:1337/api/favorites';
   const bearerToken = makeBearToken(token);
   axios
     .post(url, favorites, bearerToken)
     .then(() => {
+      Cookie.setWithExpiry(Cookie.Favorites, favorites);
       console.log('saveFavorites(): favorite saved to server');
     })
     .catch((e) => {
@@ -381,7 +370,7 @@ function newsCleanup(result) {
 
 function getTop10News(dispatch, token, setIsLoading, setError) {
   const key = 'TOP10NEWS';
-  const data = CookieGetTop10News();
+  const data = Cookie.getWithExpiry(Cookie.keyTop10News);
   if (data === null) {
     const url = process.env.REACT_APP_NEWS_TOP10_URL || 'http://localhost:1337/api/newsitems';
     httpGet(dispatch, token, setIsLoading, setError, url, key, newsCleanup);
@@ -417,13 +406,13 @@ function downloadSymbols(dispatch, token, setIsLoading, setError) {
 }
 
 function getSymbols(dispatch, token, setIsLoading, setError) {
-  const data = CookieGetSymbols();
-  if (data === null) downloadSymbols(dispatch, token, setIsLoading, setError);
+  const data = Cookie.getWithExpiry(Cookie.Symbol);
+  if (_.isEmpty(data)) downloadSymbols(dispatch, token, setIsLoading, setError);
   else dispatch({ type: 'SYMBOLS', payload: data });
 }
 
 function downloadStockData(pState, symbol, pushData, pushSymbol) {
-  const token = CookieGetToken();
+  const token = Cookie.token();
   const url = process.env.REACT_APP_ASSET_DATA_URL || 'http://localhost:1337/api/assets';
   const fullUrl = `${url}?symbol=${symbol}&timeframe=1Day`;
   const bearerToken = makeBearToken(token);
@@ -448,7 +437,7 @@ function downloadStockData(pState, symbol, pushData, pushSymbol) {
         pushData(newData);
         pushSymbol(symbol);
       } catch (ex) {
-        console.log('downloadFavorite(): An error occurred:', ex);
+        console.log('downloadStockData(): An error occurred:', ex);
       }
     })
     .catch((e) => {
@@ -457,7 +446,7 @@ function downloadStockData(pState, symbol, pushData, pushSymbol) {
 }
 
 function downloadNewsData(pState, symbol, pushData) {
-  const token = CookieGetToken();
+  const token = Cookie.token();
   const url = process.env.REACT_APP_NEWS_URL || 'http://localhost:1337/api/newsstocks';
   const fullUrl = `${url}?symbol=${symbol}`;
   const bearerToken = makeBearToken(token);
@@ -484,7 +473,7 @@ function downloadNewsData(pState, symbol, pushData) {
 
 function loginSuccess(dispatch, navigate, user, jwt) {
   console.log('loginSuccess():', user);
-  CookieSetToken(jwt);
+  Cookie.setWithExpiry(Cookie.keyToken, jwt);
   localStorage.setItem('id_token', jwt);
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
   navigate('/dashboard/app', { replace: true });
@@ -505,7 +494,7 @@ function loginUser(dispatch, login, password, navigate, setIsLoading, setError) 
         // Handle success.
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
-        CookieSetToken(response.data.jwt);
+        Cookie.setWithExpiry(Cookie.keyToken, response.data.jwt);
         // localStorage.setItem('id_token', response.data.jwt);
         setError(null);
         setIsLoading(false);
@@ -552,7 +541,7 @@ function registerUser(dispatch, navigate, name, email, password, setIsLoading, s
         // console.log('User profile', response.data.user);
         // console.log('User token', response.data.jwt);
         // localStorage.setItem('id_token', response.data.jwt);
-        CookieSetToken(response.data.jwt);
+        Cookie.setWithExpiry(Cookie.keyToken, response.data.jwt);
         setError('');
         setIsLoading(false);
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user });

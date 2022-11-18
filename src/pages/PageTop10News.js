@@ -8,7 +8,6 @@ import { Stack, Container, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
 import NewsTable from '../components/stockchart/components/NewsTable';
-import { useUserState } from '../components/UserContext';
 
 // ----------------------------------------------------------------------
 
@@ -22,9 +21,6 @@ export default function PageTop10News(props) {
   useEffect(() => {
     setTop10(props.newsList);
   }, [props]);
-
-  const { isAuthenticated } = useUserState();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
 
   return (
     <Page title="TRADESIMP">

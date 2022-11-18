@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
 //
+import Cookie from '../../utils/cookies';
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
+import { useUserState } from '../../components/UserContext';
 
 // ----------------------------------------------------------------------
 
@@ -34,6 +36,12 @@ const MainStyle = styled('div')(({ theme }) => ({
 
 export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
+
+  const { isAuthenticated } = useUserState();
+  if (!isAuthenticated) {
+    Cookie.signOut();
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <RootStyle>

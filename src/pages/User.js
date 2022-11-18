@@ -5,9 +5,7 @@
 // import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import plusFill from '@iconify/icons-eva/plus-fill';  const { isAuthenticated, symbols, favorites } = useUserState();
-
-import { Navigate } from 'react-router-dom';
+// import plusFill from '@iconify/icons-eva/plus-fill';
 // material
 import {
   Card,
@@ -36,7 +34,6 @@ import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar } from '../components/_dashboard/user';
 // import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 import ChartPopup from '../components/stockchart/ChartPopup';
-import { useUserState } from '../components/UserContext';
 
 // import UserPopup from '../components/UserPopup';
 import StockSearchButtons from '../components/StockSearchButtons';
@@ -130,8 +127,6 @@ export default function User(props) {
     setSelected(newSelecteds);
   }, [props]);
 
-  const { isAuthenticated } = useUserState();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
   // if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
 
   const handleRequestSort = (event, property) => {

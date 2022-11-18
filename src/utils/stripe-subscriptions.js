@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CookieGetToken } from './cookies';
+import Cookie from './cookies';
 
 // export async function getPrices() {
 //   const { data } = await axios.get('/prices');
@@ -32,7 +32,7 @@ async function getSubs(token) {
 }
 
 export async function getSubscriptions() {
-  const token = CookieGetToken();
+  const token = Cookie.token();
 
   const data = await getPrices(token);
   const subs = await getSubs(token);
@@ -47,7 +47,7 @@ export async function getSubscriptions() {
 }
 
 export async function getSubscriptionManagement() {
-  const token = CookieGetToken();
+  const token = Cookie.token();
   const url = `${process.env.REACT_APP_BACKEND_URL}/api/get-subscription-portal`;
   const { data } = await axios.get(url, makeBearToken(token));
   return data.data.attributes.url;

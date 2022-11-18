@@ -10,7 +10,7 @@ import axios from 'axios';
 import Page from '../components/Page';
 import CollapsibleTable from '../components/CollapsibleTable';
 import { useUserState } from '../components/UserContext';
-import { CookieGetToken } from '../utils/cookies';
+import Cookie from '../utils/cookies';
 
 // ----------------------------------------------------------------------
 
@@ -54,19 +54,17 @@ function makeBearToken(token) {
 
 export default function ExpertChannels() {
   const [channelInfo, setChannelInfo] = useState([]);
-  const { isAuthenticated } = useUserState();
 
   useEffect(() => {
     (async () => {
-      if (!isAuthenticated) return <Navigate to="/login" replace />;
-      const token = CookieGetToken();
+      const token = Cookie.token();
       const url = `${process.env.REACT_APP_BACKEND_URL}/api/get-expert-subscriptions`;
       const { data } = await axios.get(url, makeBearToken(token));
       const chanData = data.data.attributes.result;
       setChannelInfo(chanData);
       return data;
     })();
-  }, [isAuthenticated, setChannelInfo]);
+  }, [setChannelInfo]);
 
   return (
     <Page title="TRADESIMP">

@@ -4,9 +4,8 @@
 // import { Icon } from '@iconify/react';
 // import { sentenceCase } from 'change-case';
 import PropTypes from 'prop-types';
-// import plusFill from '@iconify/icons-eva/plus-fill';  const { isAuthenticated, symbols, favorites } = useUserState();
-
-import { Navigate } from 'react-router-dom';
+// import plusFill from '@iconify/icons-eva/plus-fill';
+// import { Navigate } from 'react-router-dom';
 // material
 import { Card, Stack, Container, TableContainer, Typography } from '@mui/material';
 
@@ -15,8 +14,7 @@ import RealtimeMessages from '../components/RealtimeMessages';
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 // import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
-import { useUserState } from '../components/UserContext';
-import { CookieGetToken } from '../utils/cookies';
+import Cookie from '../utils/cookies';
 
 // import UserPopup from '../components/UserPopup';
 
@@ -28,9 +26,7 @@ RealtimeList.propTypes = {
 };
 
 export default function RealtimeList({ room, username }) {
-  const { isAuthenticated } = useUserState();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  const token = isAuthenticated ? CookieGetToken() : '';
+  const token = Cookie.token();
 
   // if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
 

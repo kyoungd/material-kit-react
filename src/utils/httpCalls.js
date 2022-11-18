@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CookieGetToken } from './cookies';
+import Cookie } from './cookies';
 
 function makeBearToken(token) {
   return {
@@ -44,7 +44,7 @@ export function httpGet(
 }
 
 export function httpPostSilent(url, jsonbody, callbackFunc = null) {
-  const token = CookieGetToken();
+  const token = Cookie.token();
   const bearerToken = makeBearToken(token);
   axios
     .post(url, jsonbody, bearerToken)

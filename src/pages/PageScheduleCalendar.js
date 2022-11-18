@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
 
 // material
 import { Stack, Container, Typography } from '@mui/material';
@@ -80,8 +79,6 @@ export default function PageScheduleCalendar() {
 
   console.log(startDate);
   console.log(events);
-  const { isAuthenticated } = useUserState();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
 
   return (
     <Page title="TRADESIMP">
