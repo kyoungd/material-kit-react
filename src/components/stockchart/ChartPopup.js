@@ -18,7 +18,7 @@ import TextField from '@mui/material/TextField';
 // import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import CandleStickChart from './CandleStickCharts';
-import { downloadStockData, downloadNewsData } from '../UserContext';
+import { downloadStockData, downloadNewsData } from '../UserContextDownload';
 import NewsTable from './components/NewsTable';
 
 ChartPopup.propTypes = {

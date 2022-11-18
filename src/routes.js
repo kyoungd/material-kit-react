@@ -57,7 +57,7 @@ export default function Router() {
           path: 'user',
           element: (
             <User
-              symbols={symbols.length === undefined ? [] : symbols}
+              symbols={symbols}
               favorites={favorites}
               userDispatch={userDispatch}
               translation={USER_TRANSLATION}

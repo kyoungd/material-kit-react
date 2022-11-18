@@ -6,8 +6,7 @@ import { styled } from '@mui/material/styles';
 import Cookie from '../../utils/cookies';
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
-import { useUserState } from '../../components/UserContext';
-
+import { useUserState, useUserDispatch, signOut } from '../../components/UserContext';
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -37,9 +36,10 @@ const MainStyle = styled('div')(({ theme }) => ({
 export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
 
+  const dispatch = useUserDispatch();
   const { isAuthenticated } = useUserState();
   if (!isAuthenticated) {
-    Cookie.signOut();
+    signOut(dispatch);
     return <Navigate to="/login" replace />;
   }
 

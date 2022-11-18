@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 class Cookie {
   static keyToken = 'token';
 
@@ -98,7 +100,14 @@ class Cookie {
     return item.value;
   }
 
+  static isEmpty(key) {
+    const value = Cookie.getWithExpiry(key);
+    const defalut = Cookie.getDefault(key);
+    return _.isEqual(value, defalut);
+  }
+
   static signOut(isRemoveToken = true) {
+    // const dispatch = useUserDispatch();
     if (isRemoveToken) localStorage.removeItem(Cookie.keyToken);
     localStorage.removeItem(Cookie.keySymbols);
     localStorage.removeItem(Cookie.keyFavorites);

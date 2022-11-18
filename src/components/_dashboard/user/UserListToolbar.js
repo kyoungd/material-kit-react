@@ -7,7 +7,8 @@ import arrowDown from '@iconify/icons-eva/arrow-circle-down-outline';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Toolbar, Tooltip, IconButton, OutlinedInput, InputAdornment } from '@mui/material';
-import { getRealtimes, getSymbols, useUserDispatch } from '../../UserContext';
+import { useUserDispatch } from '../../UserContext';
+import { getRealtimes, getSymbols } from '../../UserContextDownload';
 import Cookie from '../../../utils/cookies';
 
 // ----------------------------------------------------------------------

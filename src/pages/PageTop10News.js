@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Navigate } from 'react-router-dom';
 // material
 import { Stack, Container, Typography } from '@mui/material';
 

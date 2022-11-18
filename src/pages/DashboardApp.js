@@ -1,6 +1,6 @@
 // material
 import { Box, Grid, Container } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 // components
 import Page from '../components/Page';
 import {
@@ -9,15 +9,15 @@ import {
   AppOrderTimeline
 } from '../components/_dashboard/app';
 import Cookie from '../utils/cookies';
+import { useUserDispatch, useUserState } from '../components/UserContext';
 import {
-  useUserDispatch,
   getFavorites,
   getSymbols,
   getTop10News,
   getTechniques,
-  downloadSchedule,
-  useUserState
-} from '../components/UserContext';
+  downloadSchedule
+} from '../components/UserContextDownload';
+
 import 'react-modal-video/scss/modal-video.scss';
 import ExpertShop from '../components/ExpertShop';
 
@@ -33,7 +33,7 @@ export default function DashboardApp() {
     <Page title="Dashboard | TradeSimp">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          {Object.keys(favorites).length <= 0 ? (
+          {!favorites || Object.keys(favorites).length <= 0 ? (
             <AppDownloadFavorites
               dispatch={userDispatch}
               getFavorites={getFavorites}
@@ -42,7 +42,7 @@ export default function DashboardApp() {
           ) : (
             <></>
           )}
-          {Object.keys(symbols).length <= 0 ? (
+          {!symbols || Object.keys(symbols).length <= 0 ? (
             <>
               {/* <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} /> */}
               <AppDownloadRealtimes
