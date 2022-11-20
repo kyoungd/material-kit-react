@@ -18,7 +18,7 @@ import Register from './pages/Register';
 import LoginRedirect from './pages/LoginRedirect';
 import PRODUCTS from './_mocks_/products';
 import TUTORIALS from './_mocks_/tutorials';
-import RealtimeList from './pages/RealtimeList';
+import PageDayTrade from './pages/PageDayTrade';
 import STRIPE_SUCCESS from './pages/stripe-success';
 import STRIPE_CANCEL from './pages/stripe-cancel';
 import ACCOUNT from './pages/Account';
@@ -71,7 +71,7 @@ export default function Router() {
         {
           path: 'realtime',
           element: (
-            <RealtimeList room={eventStandard} username={uname} />
+            <PageDayTrade room={eventStandard} username={uname} />
             // <User
             //   symbols={realtimes}
             //   favorites={favorites}

@@ -264,7 +264,7 @@ export default function User(props) {
 
   return (
     <Page title="TRADESIMP">
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             {props.pageType === 'DAILY' ? 'DAILY' : 'INTRADAY'}

@@ -20,19 +20,19 @@ import Cookie from '../utils/cookies';
 
 // ----------------------------------------------------------------------
 
-RealtimeList.propTypes = {
+PageDayTrade.propTypes = {
   room: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired
 };
 
-export default function RealtimeList({ room, username }) {
+export default function PageDayTrade({ room, username }) {
   const token = Cookie.token();
 
   // if (Object.keys(props.symbols).length <= 0) return <Navigate to="/dashboard/app" replace />;
 
   return (
     <Page title="TRADESIMP">
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             INTRADAY

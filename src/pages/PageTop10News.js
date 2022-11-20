@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // material
-import { Stack, Container, Typography } from '@mui/material';
+import { Card, Container, Stack, TableContainer, Typography } from '@mui/material';
+import Scrollbar from '../components/Scrollbar';
 
 // components
 import Page from '../components/Page';
@@ -23,15 +24,19 @@ export default function PageTop10News(props) {
 
   return (
     <Page title="TRADESIMP">
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             Best and Worst 5 News
           </Typography>
         </Stack>
-        <Container maxwidth="lg">
-          <NewsTable newsList={top10} includeSymbols />
-        </Container>
+        <Card>
+          <Scrollbar>
+            <TableContainer sx={{ minWidth: 800 }}>
+              <NewsTable newsList={top10} includeSymbols />
+            </TableContainer>
+          </Scrollbar>
+        </Card>
       </Container>
     </Page>
   );
