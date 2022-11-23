@@ -85,7 +85,7 @@ export default function PageScheduleCalendar() {
       <Container maxWidth="lg">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Best and Worst 5 News
+            Event Schedules
           </Typography>
         </Stack>
         <Container maxwidth="lg">

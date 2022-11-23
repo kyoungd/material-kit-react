@@ -29,7 +29,7 @@ function IconDownloadComplete(name, isFailed) {
   );
 }
 
-export default function AppDownloadRealtimes({ dispatch, callForData, token }) {
+export default function AppDownloadRealtimes({ dispatch, callForData, token, name }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('not loaded');
 
@@ -41,7 +41,7 @@ export default function AppDownloadRealtimes({ dispatch, callForData, token }) {
 
   return (
     <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-      {isLoading ? IconDownloading() : IconDownloadComplete(error)}
+      {isLoading ? IconDownloading(name) : IconDownloadComplete(name, error)}
     </Typography>
   );
 }
