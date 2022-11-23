@@ -12,6 +12,8 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import PropTypes from 'prop-types';
 import ModalVideo from 'react-modal-video';
 import { Link as RouterLink } from 'react-router-dom';
+import MotionFadeIn from '../../MotionFadeIn';
+import MotionHover from '../../MotionHover';
 
 ExpertCard.propTypes = {
   product: PropTypes.object
@@ -24,7 +26,7 @@ export default function ExpertCard({ product }) {
   const learnMoreText = status === 'active' ? 'Subscription' : 'Learn More';
 
   return (
-    <>
+    <MotionFadeIn>
       <ModalVideo
         channel="youtube"
         autoplay={false}
@@ -33,7 +35,15 @@ export default function ExpertCard({ product }) {
         onClose={() => setOpen(false)}
       />
       <Card sx={{ maxWidth: 345 }}>
-        <CardMedia component="img" alt={name} height="140" image={cover} />
+        <MotionHover>
+          <CardMedia
+            component="img"
+            alt={name}
+            height="240"
+            image={cover}
+            onClick={() => setOpen(true)}
+          />
+        </MotionHover>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
@@ -53,6 +63,6 @@ export default function ExpertCard({ product }) {
           </CardActions>
         </CardContent>
       </Card>
-    </>
+    </MotionFadeIn>
   );
 }

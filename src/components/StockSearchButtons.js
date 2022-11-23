@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Box, Typography, Grid, Tooltip, Button, Stack } from '@mui/material';
 import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
 
 StockSearchButtons.propTypes = {
   data: PropTypes.arrayOf(
@@ -16,6 +17,11 @@ StockSearchButtons.propTypes = {
   searchFunc: PropTypes.func.isRequired,
   resetFunc: PropTypes.func.isRequired
 };
+
+const SearchButtonStyle = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  textAlign: 'center'
+}));
 
 export default function StockSearchButtons(props) {
   const showButtonGroup = (data, searchFunc, resetFunc) => {
@@ -43,14 +49,12 @@ export default function StockSearchButtons(props) {
   };
 
   return (
-    <>
-      <Box fullWidth="md" maxWidth>
-        <Typography component="div">
-          <Grid container spacing={3}>
-            {showButtonGroup(props.data, props.searchFunc, props.resetFunc)}
-          </Grid>
-        </Typography>
-      </Box>
-    </>
+    <SearchButtonStyle>
+      <Typography component="div">
+        <Grid container spacing={3} justifyContent="center">
+          {showButtonGroup(props.data, props.searchFunc, props.resetFunc)}
+        </Grid>
+      </Typography>
+    </SearchButtonStyle>
   );
 }

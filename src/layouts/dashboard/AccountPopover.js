@@ -3,23 +3,26 @@ import { useRef, useState } from 'react';
 import homeFill from '@iconify/icons-eva/home-fill';
 import personFill from '@iconify/icons-eva/person-fill';
 import settings2Fill from '@iconify/icons-eva/settings-2-fill';
+import settingsOutline from '@iconify/icons-eva/settings-outline';
+
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // material
 import { alpha } from '@mui/material/styles';
 import { Button, Box, Divider, MenuItem, Typography, Avatar, IconButton } from '@mui/material';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 // components
 import MenuPopover from '../../components/MenuPopover';
 //
 import account from '../../_mocks_/account';
-import { useUserDispatch, signOut } from '../../components/UserContext';
+import { useUserState, useUserDispatch, signOut } from '../../components/UserContext';
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
-    icon: homeFill,
-    linkTo: '/dashboard/app'
+    label: 'Settings',
+    icon: settingsOutline,
+    linkTo: '/dashboard/settings'
   },
   {
     label: 'Schedule',
@@ -39,6 +42,8 @@ export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const userDispatch = useUserDispatch();
+
+  const { user } = useUserState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -69,7 +74,9 @@ export default function AccountPopover() {
           })
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar sx={{ bgcolor: deepOrange[500] }}>
+          {user && user.displayName ? user.displayName.chatAt(0) : user.username.charAt(0)}
+        </Avatar>
       </IconButton>
 
       <MenuPopover
@@ -80,10 +87,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {account.displayName}
+            {user.displayName ? user.displayName : user.username}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {user.email}
           </Typography>
         </Box>
 

@@ -15,6 +15,8 @@ class Cookie {
 
   static keySchedule = 'schedule';
 
+  static keyUser = 'user';
+
   static oneMinute = 1000 * 60;
 
   static oneHour = 1000 * 60 * 60;
@@ -26,15 +28,11 @@ class Cookie {
   static expiry(name) {
     switch (name) {
       case Cookie.keyToken:
-        return Cookie.oneHour;
+      case Cookie.keyUser:
       case Cookie.keySymbols:
-        return Cookie.oneHour;
       case Cookie.keyRealtimes:
-        return Cookie.oneHour;
       case Cookie.keyTop10News:
-        return Cookie.oneHour;
       case Cookie.keyFavorites:
-        return Cookie.oneHour;
       case Cookie.keyTechniques:
         return Cookie.oneHour;
       case Cookie.keySchedule:
@@ -76,6 +74,8 @@ class Cookie {
         return [];
       case Cookie.keySchedule:
         return [];
+      case Cookie.keyUser:
+        return {};
       default:
         return [];
     }

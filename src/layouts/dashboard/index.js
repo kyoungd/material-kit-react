@@ -3,7 +3,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
 //
-import Cookie from '../../utils/cookies';
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
 import { useUserState, useUserDispatch, signOut } from '../../components/UserContext';

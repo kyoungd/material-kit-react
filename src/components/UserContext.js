@@ -11,8 +11,10 @@ const UserDispatchContext = React.createContext();
 function userReducer(state, action) {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
+      Cookie.setWithExpiry(Cookie.keyUser, action.payload);
       return { ...state, isAuthenticated: true, user: action.payload };
     case 'SIGN_OUT_SUCCESS':
+      Cookie.signOut();
       return { ...state, isAuthenticated: false };
     case 'SYMBOLS':
       Cookie.setWithExpiry(Cookie.keySymbols, action.payload);
@@ -55,7 +57,8 @@ function UserProvider({ children }) {
     settings: Cookie.getWithExpiry(Cookie.keySettings),
     realtimes: Cookie.getWithExpiry(Cookie.keyRealtime),
     techniques: Cookie.getWithExpiry(Cookie.keyTechniques),
-    schedules: Cookie.getWithExpiry(Cookie.keySchedule)
+    schedules: Cookie.getWithExpiry(Cookie.keySchedule),
+    user: Cookie.getWithExpiry(Cookie.keyUser)
   });
 
   return (
@@ -86,7 +89,7 @@ function useUserDispatch() {
 function loginSuccess(dispatch, navigate, user, jwt) {
   console.log('loginSuccess():', user);
   Cookie.setWithExpiry(Cookie.keyToken, jwt);
-  localStorage.setItem('id_token', jwt);
+  // localStorage.setItem('id_token', jwt);
   dispatch({ type: 'LOGIN_SUCCESS', payload: user });
   navigate('/dashboard/app', { replace: true });
 }
@@ -177,7 +180,6 @@ function signOut(dispatch) {
   // localStorage.removeItem('id_token');
   dispatch({ type: 'RESET' });
   dispatch({ type: 'SIGN_OUT_SUCCESS' });
-  Cookie.signOut();
 }
 
 export {

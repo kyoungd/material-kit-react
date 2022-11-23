@@ -23,6 +23,25 @@ import ExpertShop from '../components/ExpertShop';
 
 // ----------------------------------------------------------------------
 
+function IconBox({ children }) {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        borderRadius: '50%',
+        position: 'relative',
+        alignItems: 'center',
+        transition: (theme) =>
+          theme.transitions.create('all', {
+            duration: theme.transitions.duration.shortest
+          })
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
+
 export default function DashboardApp() {
   const userDispatch = useUserDispatch();
   const { symbols, favorites, techniques } = useUserState();
@@ -32,49 +51,48 @@ export default function DashboardApp() {
   return (
     <Page title="Dashboard | TradeSimp">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 5 }}>
-          {!favorites || Object.keys(favorites).length <= 0 ? (
-            <AppDownloadFavorites
+        {!symbols || Object.keys(symbols).length <= 0 ? (
+          <IconBox>
+            {/* <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} /> */}
+            <AppDownloadRealtimes
               dispatch={userDispatch}
-              getFavorites={getFavorites}
+              callForData={getFavorites}
               token={token}
+              name="favorites"
             />
-          ) : (
-            <></>
-          )}
-          {!symbols || Object.keys(symbols).length <= 0 ? (
-            <>
-              {/* <AppDownloadSymbols dispatch={userDispatch} getSymbols={getSymbols} token={token} /> */}
-              <AppDownloadRealtimes
-                dispatch={userDispatch}
-                callForData={getSymbols}
-                token={token}
-              />
-              {/* <AppDownloadRealtimes
+            <AppDownloadRealtimes
+              dispatch={userDispatch}
+              callForData={getSymbols}
+              token={token}
+              name="symbols"
+            />
+            {/* <AppDownloadRealtimes
                 dispatch={userDispatch}
                 callForData={getRealtimes}
                 token={token}
               /> */}
-              <AppDownloadRealtimes
-                dispatch={userDispatch}
-                callForData={getTop10News}
-                token={token}
-              />
-              <AppDownloadRealtimes
-                dispatch={userDispatch}
-                callForData={getTechniques}
-                token={token}
-              />
-              <AppDownloadRealtimes
-                dispatch={userDispatch}
-                callForData={downloadSchedule}
-                token={token}
-              />
-            </>
-          ) : (
-            <></>
-          )}
-        </Box>
+            <AppDownloadRealtimes
+              dispatch={userDispatch}
+              callForData={getTop10News}
+              token={token}
+              name="top10news"
+            />
+            <AppDownloadRealtimes
+              dispatch={userDispatch}
+              callForData={getTechniques}
+              token={token}
+              name="techniques"
+            />
+            <AppDownloadRealtimes
+              dispatch={userDispatch}
+              callForData={downloadSchedule}
+              token={token}
+              name="schedule"
+            />
+          </IconBox>
+        ) : (
+          <></>
+        )}
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
             {techniques && techniques.length > 0 && <ExpertShop data={techniques} />}

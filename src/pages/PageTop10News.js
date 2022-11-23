@@ -8,6 +8,7 @@ import Scrollbar from '../components/Scrollbar';
 // components
 import Page from '../components/Page';
 import NewsTable from '../components/stockchart/components/NewsTable';
+import MotionFadeIn from '../components/MotionFadeIn';
 
 // ----------------------------------------------------------------------
 
@@ -30,13 +31,16 @@ export default function PageTop10News(props) {
             Best and Worst 5 News
           </Typography>
         </Stack>
-        <Card>
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <NewsTable newsList={top10} includeSymbols />
-            </TableContainer>
-          </Scrollbar>
-        </Card>
+
+        <MotionFadeIn>
+          <Card>
+            <Scrollbar>
+              <TableContainer sx={{ minWidth: 800 }}>
+                <NewsTable newsList={top10} includeSymbols />
+              </TableContainer>
+            </Scrollbar>
+          </Card>
+        </MotionFadeIn>
       </Container>
     </Page>
   );

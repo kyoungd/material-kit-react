@@ -7,7 +7,7 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Blog from './pages/Blog';
-import User from './pages/User';
+import PageSwingTrade from './pages/PageSwingTrade';
 import Expert from './pages/Expert';
 import PageTop10News from './pages/PageTop10News';
 import NotFound from './pages/Page404';
@@ -56,7 +56,7 @@ export default function Router() {
         {
           path: 'user',
           element: (
-            <User
+            <PageSwingTrade
               symbols={symbols}
               favorites={favorites}
               userDispatch={userDispatch}
@@ -70,19 +70,7 @@ export default function Router() {
         },
         {
           path: 'realtime',
-          element: (
-            <PageDayTrade room={eventStandard} username={uname} />
-            // <User
-            //   symbols={realtimes}
-            //   favorites={favorites}
-            //   userDispatch={userDispatch}
-            //   translation={RT_TRANSLATION}
-            //   tableHead={RT_TABLE_HEAD}
-            //   explainers={RT_EXPLAINERS}
-            //   rowContent={RT_ROW}
-            //   pageType="REALTIME"
-            // />
-          )
+          element: <PageDayTrade room={eventStandard} username={uname} />
         },
         { path: 'news', element: <PageTop10News newsList={top10news} /> },
         {

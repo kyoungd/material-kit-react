@@ -29,16 +29,6 @@ const sidebarConfig = [
     title: 'news',
     path: '/dashboard/news',
     icon: getIcon(alertCircle)
-  },
-  {
-    title: 'videos',
-    path: '/dashboard/products',
-    icon: getIcon(playButton)
-  },
-  {
-    title: 'tutorials',
-    path: '/dashboard/tutorials',
-    icon: getIcon(playButton)
   }
 ];
 
