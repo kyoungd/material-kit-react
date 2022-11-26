@@ -15,7 +15,7 @@ const ContainerStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(2)
 }));
 
-const Account = () => {
+function Account() {
   const [subscriptions, setSubscriptions] = useState([]);
   const navigate = useNavigate();
 
@@ -89,6 +89,6 @@ const Account = () => {
       </Container>
     </Page>
   );
-};
+}
 
 export default Account;

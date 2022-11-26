@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Avatar, Button, Box, Container, Typography, Divider, Grid } from '@mui/material';
 import Page from '../components/Page';
 import SkillCardGrid from '../components/experts/SkillCardGrid';

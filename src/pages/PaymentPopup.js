@@ -32,10 +32,8 @@ export default function PaymentPopup(props) {
   };
 
   return (
-    <>
-      <Button variant="contained" color="primary" onClick={subscribeNow}>
-        Subscribe Now
-      </Button>
-    </>
+    <Button variant="contained" color="primary" onClick={subscribeNow}>
+      Subscribe Now
+    </Button>
   );
 }

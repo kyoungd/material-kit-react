@@ -53,34 +53,32 @@ export default function ExpertShop(props) {
   };
 
   return (
-    <>
-      <Container>
-        {/* <Typography variant="h4" sx={{ mb: 5 }}>
-          TRADE EXPERTS
-        </Typography> */}
+    <Container>
+      {/* <Typography variant="h4" sx={{ mb: 5 }}>
+        TRADE EXPERTS
+      </Typography> */}
 
-        <Stack
-          direction="row"
-          flexWrap="wrap-reverse"
-          alignItems="center"
-          justifyContent="flex-end"
-          sx={{ mb: 5 }}
-        >
-          <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <ProductFilterSidebar
-              formik={formik}
-              isOpenFilter={openFilter}
-              onResetFilter={handleResetFilter}
-              onOpenFilter={handleOpenFilter}
-              onCloseFilter={handleCloseFilter}
-            />
-            <ProductSort />
-          </Stack>
+      <Stack
+        direction="row"
+        flexWrap="wrap-reverse"
+        alignItems="center"
+        justifyContent="flex-end"
+        sx={{ mb: 5 }}
+      >
+        <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+          <ProductFilterSidebar
+            formik={formik}
+            isOpenFilter={openFilter}
+            onResetFilter={handleResetFilter}
+            onOpenFilter={handleOpenFilter}
+            onCloseFilter={handleCloseFilter}
+          />
+          <ProductSort />
         </Stack>
+      </Stack>
 
-        <ProductList products={EXPERTS} />
-        {/* <ProductCartWidget /> */}
-      </Container>
-    </>
+      <ProductList products={EXPERTS} />
+      {/* <ProductCartWidget /> */}
+    </Container>
   );
 }

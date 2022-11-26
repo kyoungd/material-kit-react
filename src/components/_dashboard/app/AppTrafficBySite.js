@@ -1,4 +1,4 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import googleFill from '@iconify/icons-eva/google-fill';

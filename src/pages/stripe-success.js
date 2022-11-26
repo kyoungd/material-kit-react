@@ -5,7 +5,7 @@ import { Card, Stack, Container, Typography } from '@mui/material';
 import Page from '../components/Page';
 import Cookie from '../utils/cookies';
 
-const StripeSuccess = () => {
+function StripeSuccess() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +34,6 @@ const StripeSuccess = () => {
       </Container>
     </Page>
   );
-};
+}
 
 export default StripeSuccess;

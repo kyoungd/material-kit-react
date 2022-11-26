@@ -72,9 +72,11 @@ function applySortFilter(array, comparator, query, translation) {
   });
   if (query) {
     let command = '';
-    const regex1 = new RegExp('\\(', 'g');
+    // const regex1 = new RegExp('\\(', 'g');
+    const regex1 = /\\\\\(/g;
     query = query.replace(regex1, '( ');
-    const regex2 = new RegExp('\\)', 'g');
+    // const regex2 = new RegExp('\\)', 'g');
+    const regex2 = /\\\\\)/g;
     query = query.replace(regex2, ' )');
     query.split(' ').forEach((q) => {
       const found = Object.keys(translation).find((key) => key === q);
@@ -229,7 +231,7 @@ export default function SwingTrade(props) {
 
   const showPriority = (favs, symbol) => {
     const item = favs[symbol];
-    if (item === undefined) return <></>;
+    if (item === undefined) return null;
     switch (item.rank) {
       case 'a':
         return (
@@ -250,7 +252,7 @@ export default function SwingTrade(props) {
           </Tooltip>
         );
       default:
-        return <></>;
+        return null;
     }
   };
 

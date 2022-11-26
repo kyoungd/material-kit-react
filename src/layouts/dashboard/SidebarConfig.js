@@ -3,7 +3,6 @@ import pieChart2Fill from '@iconify/icons-eva/pie-chart-2-fill';
 import peopleFill from '@iconify/icons-eva/people-fill';
 import activityFill from '@iconify/icons-eva/activity-fill';
 import alertCircle from '@iconify/icons-eva/alert-circle-outline';
-import playButton from '@iconify/icons-eva/arrow-right-outline';
 
 // ----------------------------------------------------------------------
 

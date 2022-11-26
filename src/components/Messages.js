@@ -102,7 +102,7 @@ function Messages({ socket }) {
                   </StyledTableRow>
                 );
               } catch (e) {
-                return <></>;
+                return null;
               }
             })}
         </TableBody>

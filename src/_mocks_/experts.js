@@ -14,7 +14,7 @@ const standarizeDetail = (data) => {
 
 const standarizePhoto = (photo, size) => {
   try {
-    return process.env.REACT_APP_BACKEND_URL + photo.data.attributes.formats[size].url;
+    return photo.data.attributes.formats[size].url;
   } catch (e) {
     return '';
   }

@@ -1,4 +1,4 @@
-import { Typography, LinearProgress } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import WhatshotIcon from '@mui/icons-material/Whatshot';

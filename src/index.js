@@ -1,7 +1,9 @@
 // scroll bar
 import 'simplebar/src/simplebar.css';
 
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -13,15 +15,28 @@ import { UserProvider } from './components/UserContext';
 
 // ----------------------------------------------------------------------
 
-ReactDOM.render(
-  <HelmetProvider>
-    <UserProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </UserProvider>
-  </HelmetProvider>,
-  document.getElementById('root')
+// ReactDOM.render(
+//   <HelmetProvider>
+//     <UserProvider>
+//       <BrowserRouter>
+//         <App />
+//       </BrowserRouter>
+//     </UserProvider>
+//   </HelmetProvider>,
+//   document.getElementById('root')
+// );
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
+    </HelmetProvider>
+  </React.StrictMode>
 );
 
 // If you want to enable client cache, register instead.

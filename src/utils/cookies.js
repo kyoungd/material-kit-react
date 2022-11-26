@@ -63,7 +63,7 @@ class Cookie {
       case Cookie.keyToken:
         return '';
       case Cookie.keySymbols:
-        return {};
+        return [];
       case Cookie.keyRealtimes:
         return [];
       case Cookie.keyTop10News:

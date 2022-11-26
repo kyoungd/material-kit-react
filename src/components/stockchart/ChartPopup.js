@@ -168,19 +168,17 @@ export default function ChartPopup(props) {
   );
 
   const showCik = (cik) => (
-    <>
-      <a
-        href={
-          cik === '0' || cik === undefined
-            ? `https://www.sec.gov/edgar/searchedgar/companysearch.html`
-            : `https://www.sec.gov/edgar/browse/?CIK=${cik}&owner=exclude`
-        }
-        target="_blank"
-        rel="noreferrer"
-      >
-        SEC filings
-      </a>
-    </>
+    <a
+      href={
+        cik === '0' || cik === undefined
+          ? `https://www.sec.gov/edgar/searchedgar/companysearch.html`
+          : `https://www.sec.gov/edgar/browse/?CIK=${cik}&owner=exclude`
+      }
+      target="_blank"
+      rel="noreferrer"
+    >
+      SEC filings
+    </a>
   );
 
   const handleDescriptionChange = (event) => {

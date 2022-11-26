@@ -26,7 +26,8 @@ function RealtimeMessages({ jwt, username, room }) {
     return () => newSocket.close();
   }, [jwt, username, room]);
 
-  return <>{socket ? <Messages socket={socket} /> : <div>Not Connected</div>}</>;
+  if (socket) return <Messages socket={socket} />;
+  return <div>Not connected</div>;
 }
 
 export default RealtimeMessages;

@@ -1,13 +1,10 @@
 // material
 import { Box, Grid, Container } from '@mui/material';
+import PropTypes from 'prop-types';
 // import { Navigate } from 'react-router-dom';
 // components
 import Page from '../components/Page';
-import {
-  AppDownloadFavorites,
-  AppDownloadRealtimes,
-  AppOrderTimeline
-} from '../components/_dashboard/app';
+import { AppDownloadRealtimes, AppOrderTimeline } from '../components/_dashboard/app';
 import Cookie from '../utils/cookies';
 import { useUserDispatch, useUserState } from '../components/UserContext';
 import {
@@ -22,6 +19,10 @@ import 'react-modal-video/scss/modal-video.scss';
 import ExpertShop from '../components/ExpertShop';
 
 // ----------------------------------------------------------------------
+
+IconBox.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 function IconBox({ children }) {
   return (
@@ -44,7 +45,7 @@ function IconBox({ children }) {
 
 export default function DashboardApp() {
   const userDispatch = useUserDispatch();
-  const { symbols, favorites, techniques } = useUserState();
+  const { symbols, techniques } = useUserState();
 
   const token = Cookie.token();
 
@@ -90,9 +91,7 @@ export default function DashboardApp() {
               name="schedule"
             />
           </IconBox>
-        ) : (
-          <></>
-        )}
+        ) : null}
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
             {techniques && techniques.length > 0 && <ExpertShop data={techniques} />}

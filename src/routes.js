@@ -1,4 +1,4 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
@@ -6,7 +6,6 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
-import Blog from './pages/Blog';
 import PageSwingTrade from './pages/PageSwingTrade';
 import Expert from './pages/Expert';
 import PageTop10News from './pages/PageTop10News';
@@ -79,7 +78,6 @@ export default function Router() {
         },
         { path: 'products', element: <Products videolist={PRODUCTS} name="Videos" /> },
         { path: 'tutorials', element: <Products videolist={TUTORIALS} name="Tutorials" /> },
-        { path: 'blog', element: <Blog /> },
         { path: 'stripe-success', element: <STRIPE_SUCCESS /> },
         { path: 'stripe-cancel', element: <STRIPE_CANCEL /> },
         { path: 'account', element: <ACCOUNT /> },
