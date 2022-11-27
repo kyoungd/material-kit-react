@@ -23,6 +23,7 @@ import STRIPE_CANCEL from './pages/stripe-cancel';
 import ACCOUNT from './pages/Account';
 import EXPERTCHANNELS from './pages/ExpertChannels';
 import PageScheduleCalendar from './pages/PageScheduleCalendar';
+import PageUserSettings from './pages/PageUserSettings';
 
 import USER_ROW from './layouts/User/UserRow';
 
@@ -82,6 +83,7 @@ export default function Router() {
         { path: 'stripe-cancel', element: <STRIPE_CANCEL /> },
         { path: 'account', element: <ACCOUNT /> },
         { path: 'schedule', element: <PageScheduleCalendar /> },
+        { path: 'settings', element: <PageUserSettings /> },
         { path: 'channels', element: <EXPERTCHANNELS /> }
       ]
     },

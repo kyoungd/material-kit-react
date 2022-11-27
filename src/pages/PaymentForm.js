@@ -1,8 +1,7 @@
 import React from 'react'; // , {useState }
 import { TextField, Grid, Typography } from '@material-ui/core';
-import Container from '@mui/material/Container';
 
-const PaymentForm = () => {
+function PaymentForm() {
   const [postalcode, setPostalcode] = React.useState('');
   const [cardname, setCardname] = React.useState('');
   const [cardnumber, setCardnumber] = React.useState('');
@@ -104,6 +103,6 @@ const PaymentForm = () => {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default PaymentForm;
