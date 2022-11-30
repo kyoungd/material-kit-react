@@ -1,4 +1,5 @@
 import React from 'react'; // , {useState }
+import _ from 'lodash';
 import { Container, TextField, Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import useSWR from 'swr';
@@ -35,8 +36,12 @@ function UserSettings({ url, token }) {
               }}
               onLoad={() => setDiscordId(data.data.attributes.discordId)}
               defaultValue={data.data.attributes.discordId}
-              onChange={(e) => setDiscordId(e.target.value)}
-              onBlur={() => dataPut(putUrl, token, { discordId })}
+              onChange={(e) => {
+                setDiscordId(e.target.value);
+                _.debounce(async () => {
+                  await dataPut(putUrl, token, { discordId });
+                }, 500)();
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -51,8 +56,12 @@ function UserSettings({ url, token }) {
               }}
               onLoad={() => setDisplayName(data.data.attributes.name)}
               defaultValue={data.data.attributes.name}
-              onChange={(e) => setDisplayName(e.target.value)}
-              onBlur={() => dataPut(putUrl, token, { name: displayName })}
+              onChange={(e) => {
+                setDisplayName(e.target.value);
+                _.debounce(async () => {
+                  await dataPut(putUrl, token, { name: displayName });
+                }, 500)();
+              }}
             />
           </Grid>
         </Grid>

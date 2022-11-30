@@ -1,0 +1,17 @@
+REACT_APP_SYMBOL_SERVICE=http://localhost:1337/api/symbols/1
+REACT_APP_FAVORITE_SERVICE=http://localhost:1337/api/favorites
+REACT_APP_REALTIME_SERVICE=http://localhost:1337/api/realtimes?datatype=VSA&timeframe=15Min
+REACT_APP_SERVER_LOGIN=http://localhost:1337/api/auth/local
+REACT_APP_SERVER_REGISTER=http://localhost:1337/api/auth/local/register
+REACT_APP_APCA_API_KEY_ID=AKAV2Z5H0NJNXYF7K24D
+REACT_APP_APCA_API_SECRET_KEY=262cAEeIRrL1KEZYKSTjZA79tj25XWrMtvz0Bezu
+REACT_APP_APCA_URL=https://data.alpaca.markets/v2/stocks
+REACT_APP_APCA_TIMEFRAME=1Day
+REACT_APP_BACKEND_URL=http://localhost:1337
+REACT_APP_ASSET_DATA_URL=http://localhost:1337/api/assets
+REACT_APP_NEWS_URL=http://localhost:1337/api/newsstocks
+REACT_APP_NEWS_TOP10_URL=http://localhost:1337/api/newsitems
+REACT_APP_TECHNIQUE_SERVICE=http://localhost:1337/api/techniques
+REACT_APP_REALTIME_EVENT_STANDARD=EVENT-BAR-TRADE-ADD
+REACT_APP_SCHEDULE_SERVICE=http://localhost:1337/api/get-schedule
+REACT_APP_ACCOUNT_SERVICE=http://localhost:1337/api/accounts

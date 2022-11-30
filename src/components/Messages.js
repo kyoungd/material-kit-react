@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,7 +10,8 @@ import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
 
 Messages.propTypes = {
-  socket: PropTypes.object.isRequired
+  socket: PropTypes.object.isRequired,
+  initMessages: PropTypes.array.isRequired
 };
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,8 +34,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
 }));
 
-function Messages({ socket }) {
+function Messages({ socket, initMessages }) {
   const [messages, setMessages] = useState({});
+
+  useEffect(() => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const message of initMessages)
+      setMessages((prev) => ({
+        ...prev,
+        [message.id]: message
+      }));
+  }, [initMessages]);
 
   useEffect(() => {
     const messageListener = (message) => {
@@ -102,6 +112,7 @@ function Messages({ socket }) {
                   </StyledTableRow>
                 );
               } catch (e) {
+                console.log(e);
                 return null;
               }
             })}

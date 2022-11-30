@@ -1,12 +1,4 @@
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-// import { filter } from 'lodash';
-// import { Icon } from '@iconify/react';
-// import { sentenceCase } from 'change-case';
 import PropTypes from 'prop-types';
-// import plusFill from '@iconify/icons-eva/plus-fill';
-// import { Navigate } from 'react-router-dom';
-// material
 import { Card, Stack, Container, TableContainer, Typography } from '@mui/material';
 
 // components
